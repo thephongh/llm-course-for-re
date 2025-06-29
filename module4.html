@@ -126,10 +126,98 @@
             font-weight: bold;
         }
 
+        /* Step Navigation */
+        .step-navigation {
+            background: #F9FAFB;
+            padding: 2rem;
+            border-bottom: 1px solid #E5E7EB;
+            position: sticky;
+            top: 80px;
+            z-index: 40;
+        }
+
+        .step-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .step-indicator {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .step-dot {
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 50%;
+            background: #E5E7EB;
+            color: #9CA3AF;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 0.875rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .step-dot.active {
+            background: linear-gradient(135deg, #8B5CF6 0%, #EC4899 100%);
+            color: #FFFFFF;
+            transform: scale(1.1);
+            box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
+        }
+
+        .step-dot.completed {
+            background: #10B981;
+            color: #FFFFFF;
+        }
+
+        .step-dot:hover:not(.active) {
+            background: #D1D5DB;
+            transform: scale(1.05);
+        }
+
+        .step-connector {
+            width: 3rem;
+            height: 2px;
+            background: #E5E7EB;
+            transition: background 0.3s ease;
+        }
+
+        .step-connector.completed {
+            background: #10B981;
+        }
+
+        .step-label {
+            position: absolute;
+            top: 3rem;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: #6B7280;
+            white-space: nowrap;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .step-dot:hover .step-label,
+        .step-dot.active .step-label {
+            opacity: 1;
+        }
+
         /* Content Sections */
         .content-section {
             background: #FFFFFF;
             padding: 4rem 2rem;
+            min-height: 70vh;
         }
 
         .container {
@@ -137,23 +225,47 @@
             margin: 0 auto;
         }
 
+        .step-content {
+            display: none;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .step-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
         .section-title {
-            font-size: clamp(1.5rem, 3vw, 2rem);
-            font-weight: 600;
+            font-size: clamp(1.5rem, 3vw, 2.5rem);
+            font-weight: 700;
             line-height: 1.3;
             color: #000000;
             margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #8B5CF6 0%, #EC4899 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .content p {
             font-size: 1.125rem;
             font-weight: 400;
-            line-height: 1.6;
+            line-height: 1.7;
             color: #6B7280;
             margin-bottom: 1.5rem;
         }
 
-        .content ul, .content ol {
+        .content ul {
             margin-bottom: 2rem;
             padding-left: 1.5rem;
         }
@@ -176,30 +288,101 @@
             font-weight: 500;
         }
 
-        /* Image Container */
-        .image-container {
+        /* Interactive Elements */
+        .interactive-card {
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.1) 0%, rgba(236, 72, 153, 0.1) 100%);
+            border: 1px solid rgba(139, 92, 246, 0.2);
+            border-radius: 1rem;
+            padding: 2rem;
+            margin: 2rem 0;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .interactive-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(139, 92, 246, 0.15);
+            border-color: rgba(139, 92, 246, 0.4);
+        }
+
+        .interactive-card h4 {
+            color: #8B5CF6;
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .card-icon {
+            width: 2rem;
+            height: 2rem;
+            background: linear-gradient(135deg, #8B5CF6 0%, #EC4899 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            color: #FFFFFF;
+        }
+
+        /* Principle Cards */
+        .principles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .principle-card {
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
-            border-radius: 0.75rem;
+            border-radius: 1rem;
             border: 1px solid rgba(229, 231, 235, 0.3);
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
             padding: 2rem;
-            margin: 3rem 0;
-            text-align: center;
+            transition: all 0.3s ease;
+            transform: translateY(20px);
+            opacity: 0;
+            animation: slideInUp 0.6s ease forwards;
         }
 
-        .image-container img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 0.5rem;
+        .principle-card:nth-child(1) { animation-delay: 0.1s; }
+        .principle-card:nth-child(2) { animation-delay: 0.2s; }
+        .principle-card:nth-child(3) { animation-delay: 0.3s; }
+        .principle-card:nth-child(4) { animation-delay: 0.4s; }
+        .principle-card:nth-child(5) { animation-delay: 0.5s; }
+        .principle-card:nth-child(6) { animation-delay: 0.6s; }
+
+        @keyframes slideInUp {
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .principle-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.15);
+        }
+
+        .principle-number {
+            display: inline-block;
+            background: linear-gradient(135deg, #F472B6 0%, #A855F7 50%, #3B82F6 100%);
+            color: #FFFFFF;
+            font-size: 1rem;
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
             margin-bottom: 1rem;
         }
 
-        .image-container figcaption {
-            font-size: 0.875rem;
-            color: #6B7280;
-            font-style: italic;
-            line-height: 1.5;
+        .principle-card h3 {
+            color: #000000;
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
         }
 
         /* Prompt Examples */
@@ -211,21 +394,6 @@
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
             overflow: hidden;
             margin: 2rem 0;
-        }
-
-        .prompt-header {
-            background: #F9FAFB;
-            border-bottom: 1px solid #E5E7EB;
-            padding: 0.75rem 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .prompt-header h4 {
-            color: #000000;
-            font-size: 1rem;
-            font-weight: 600;
         }
 
         .prompt-content {
@@ -267,30 +435,39 @@
             color: #16A34A;
         }
 
-        /* Energy Examples Section */
-        .energy-examples-section {
-            background: #F9FAFB;
-            padding: 4rem 2rem;
-            margin: 3rem 0;
-            border-radius: 1rem;
-        }
-
-        .energy-example-grid {
+        /* Template Cards */
+        .template-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
             gap: 2rem;
-            margin-top: 2rem;
+            margin: 2rem 0;
         }
 
-        .energy-example-card {
+        .template-card {
             background: #FFFFFF;
             border: 1px solid #E5E7EB;
             border-radius: 1rem;
             padding: 2rem;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            transform: translateY(20px);
+            opacity: 0;
+            animation: slideInUp 0.6s ease forwards;
         }
 
-        .energy-example-card h4 {
+        .template-card:nth-child(1) { animation-delay: 0.1s; }
+        .template-card:nth-child(2) { animation-delay: 0.2s; }
+        .template-card:nth-child(3) { animation-delay: 0.3s; }
+        .template-card:nth-child(4) { animation-delay: 0.4s; }
+        .template-card:nth-child(5) { animation-delay: 0.5s; }
+        .template-card:nth-child(6) { animation-delay: 0.6s; }
+
+        .template-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+        }
+
+        .template-card h4 {
             color: #000000;
             font-size: 1.25rem;
             font-weight: 600;
@@ -300,7 +477,7 @@
             gap: 0.5rem;
         }
 
-        .energy-icon {
+        .template-icon {
             width: 2rem;
             height: 2rem;
             background: linear-gradient(135deg, #8B5CF6 0%, #EC4899 100%);
@@ -312,26 +489,24 @@
             color: #FFFFFF;
         }
 
-        /* Techniques Section */
-        .techniques-section {
-            background: linear-gradient(135deg, #8B5A2B 0%, #D97706 25%, #F59E0B 50%, #EF4444 75%, #7C2D12 100%);
-            padding: 4rem 2rem;
-            position: relative;
+        .technique-example {
+            background: #F3F4F6;
+            border-left: 4px solid #8B5CF6;
+            padding: 1rem;
+            margin: 0.75rem 0;
+            border-radius: 0.375rem;
+            font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
+            font-size: 0.875rem;
+            color: #374151;
+            font-style: italic;
         }
 
-        .techniques-section h2 {
-            font-size: clamp(2rem, 5vw, 3.5rem);
-            font-weight: 700;
-            line-height: 1.2;
-            color: #FFFFFF;
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
+        /* Technique Cards */
         .techniques-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 2rem;
+            margin: 2rem 0;
         }
 
         .technique-card {
@@ -341,6 +516,21 @@
             border: 1px solid rgba(229, 231, 235, 0.3);
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
             padding: 2rem;
+            transform: translateY(20px);
+            opacity: 0;
+            animation: slideInUp 0.6s ease forwards;
+        }
+
+        .technique-card:nth-child(1) { animation-delay: 0.1s; }
+        .technique-card:nth-child(2) { animation-delay: 0.2s; }
+        .technique-card:nth-child(3) { animation-delay: 0.3s; }
+        .technique-card:nth-child(4) { animation-delay: 0.4s; }
+        .technique-card:nth-child(5) { animation-delay: 0.5s; }
+        .technique-card:nth-child(6) { animation-delay: 0.6s; }
+
+        .technique-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.15);
         }
 
         .technique-card h3 {
@@ -365,68 +555,10 @@
             color: #FFFFFF;
         }
 
-        .technique-card p {
-            color: #6B7280;
-            font-size: 1rem;
-            line-height: 1.5;
-            margin-bottom: 1rem;
-        }
-
-        .technique-example {
-            background: #F3F4F6;
-            border-left: 4px solid #8B5CF6;
-            padding: 1rem;
-            margin: 0.5rem 0;
-            border-radius: 0.375rem;
-            font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
-            font-size: 0.875rem;
-            color: #374151;
-        }
-
-        /* Principles Cards */
-        .principles-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin: 3rem 0;
-        }
-
-        .principle-card {
-            background: #FFFFFF;
-            border: 1px solid #E5E7EB;
-            border-radius: 1rem;
-            padding: 2rem;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-            transition: all 0.2s ease;
-        }
-
-        .principle-card:hover {
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-            transform: translateY(-2px);
-        }
-
-        .principle-number {
-            display: inline-block;
-            background: linear-gradient(135deg, #F472B6 0%, #A855F7 50%, #3B82F6 100%);
-            color: #FFFFFF;
-            font-size: 1rem;
-            font-weight: 600;
-            padding: 0.5rem 1rem;
-            border-radius: 9999px;
-            margin-bottom: 1rem;
-        }
-
-        .principle-card h3 {
-            color: #000000;
-            font-size: 1.25rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
-
-        /* Real-world Scenario */
+        /* Scenario Section */
         .scenario-section {
             background: linear-gradient(135deg, #1E40AF 0%, #3B82F6 100%);
-            padding: 4rem 2rem;
+            padding: 3rem 2rem;
             margin: 3rem 0;
             border-radius: 1rem;
         }
@@ -436,7 +568,7 @@
             backdrop-filter: blur(10px);
             border-radius: 1rem;
             padding: 2rem;
-            max-width: 900px;
+            max-width: 800px;
             margin: 0 auto;
         }
 
@@ -480,7 +612,7 @@
         /* Quiz Section */
         .quiz-section {
             background: #F9FAFB;
-            padding: 4rem 2rem;
+            padding: 3rem 2rem;
             margin: 3rem 0;
             border-radius: 1rem;
         }
@@ -601,7 +733,43 @@
         }
 
         /* Navigation Buttons */
-        .nav-buttons {
+        .step-navigation-buttons {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid #E5E7EB;
+        }
+
+        .btn-prev, .btn-next {
+            background: linear-gradient(135deg, #8B5CF6 0%, #EC4899 100%);
+            color: #FFFFFF;
+            border: none;
+            border-radius: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-prev:hover, .btn-next:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
+        }
+
+        .btn-prev:disabled, .btn-next:disabled {
+            background: #D1D5DB;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .module-nav-buttons {
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -631,7 +799,7 @@
             color: #374151;
         }
 
-        .btn-next {
+        .btn-forward {
             background: #000000;
             color: #FFFFFF;
             border: none;
@@ -647,9 +815,27 @@
             gap: 0.5rem;
         }
 
-        .btn-next:hover {
+        .btn-forward:hover {
             background: #1F2937;
             transform: translateY(-1px);
+        }
+
+        /* Progress Indicator */
+        .progress-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.2);
+            z-index: 100;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #8B5CF6, #EC4899);
+            width: 0%;
+            transition: width 0.3s ease;
         }
 
         /* Responsive Design */
@@ -670,32 +856,35 @@
                 padding: 2rem 1rem;
             }
             
-            .techniques-section {
-                padding: 2rem 1rem;
+            .step-container {
+                flex-wrap: wrap;
+                gap: 0.5rem;
+            }
+            
+            .step-connector {
+                display: none;
             }
             
             .principles-grid,
-            .techniques-grid,
-            .energy-example-grid {
+            .template-grid,
+            .techniques-grid {
                 grid-template-columns: 1fr;
             }
             
-            .nav-buttons {
+            .step-navigation-buttons,
+            .module-nav-buttons {
                 flex-direction: column;
                 gap: 1rem;
-            }
-
-            .energy-example-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .energy-example-card {
-                min-width: auto;
             }
         }
     </style>
 </head>
 <body>
+    <!-- Progress Bar -->
+    <div class="progress-container">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+
     <!-- Navigation -->
     <nav class="nav">
         <a href="index.html" class="nav-logo">LLM Training Course</a>
@@ -726,110 +915,193 @@
         </div>
     </section>
 
-    <!-- Content Section -->
-    <section class="content-section">
-        <div class="container">
-            <div class="content">
-                <p>The quality of AI output directly depends on the quality of your input. <strong>Prompt Engineering</strong> is the art and science of crafting effective instructions to get the best possible results from AI systems. For energy professionals, mastering this skill can transform how you approach analysis, reporting, planning, and problem-solving.</p>
-
-                <p><strong>Think of AI as your most capable assistant</strong> - one with vast knowledge but who needs clear, specific instructions to deliver exactly what you need. The difference between a vague request and a well-crafted prompt can mean the difference between generic, unhelpful responses and precise, actionable insights tailored to your energy projects.</p>
-
-                <h2 class="section-title">4.1 The Foundation: Understanding How AI Interprets Instructions</h2>
-                
-                <p>Before diving into techniques, it's crucial to understand how AI processes your requests:</p>
-                <ul>
-                    <li><strong>Context is King:</strong> AI doesn't remember previous conversations (in most cases), so each prompt must contain all necessary context</li>
-                    <li><strong>Specificity Drives Quality:</strong> The more specific your request, the more targeted and useful the response</li>
-                    <li><strong>Structure Matters:</strong> Well-organized prompts lead to well-organized responses</li>
-                    <li><strong>Examples Guide Behavior:</strong> Showing AI what you want is often more effective than just describing it</li>
-                </ul>
-
-                <h2 class="section-title">4.2 Core Principles for Energy Professionals</h2>
-                
-                <div class="principles-grid">
-                    <div class="principle-card">
-                        <span class="principle-number">1</span>
-                        <h3>Be Clear and Specific</h3>
-                        <p>Eliminate ambiguity by providing precise instructions and clear expectations.</p>
-                        
-                        <div class="prompt-example">
-                            <div class="prompt-content">
-                                <div class="prompt-label bad">❌ Vague Prompt:</div>
-                                <div class="prompt-bad">"Write about renewable energy storage."</div>
-                                
-                                <div class="prompt-label good">✅ Specific Prompt:</div>
-                                <div class="prompt-good">"Write a 300-word technical summary of lithium-ion battery energy storage systems for utility-scale applications, focusing on round-trip efficiency, degradation rates, and cost per MWh for a technical audience of grid operators."</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="principle-card">
-                        <span class="principle-number">2</span>
-                        <h3>Provide Rich Context</h3>
-                        <p>Give AI all the background information needed to understand your specific situation and requirements.</p>
-                        
-                        <div class="technique-example">"I'm a project manager for a 200MW offshore wind farm located 15 miles off the coast of Massachusetts. We're in the pre-construction phase and need to present to investors. Create an executive summary highlighting the project's competitive advantages, risk mitigation strategies, and expected returns over the 25-year operational period."</div>
-                    </div>
-
-                    <div class="principle-card">
-                        <span class="principle-number">3</span>
-                        <h3>Define Output Format and Constraints</h3>
-                        <p>Specify exactly how you want the information presented and what limitations to observe.</p>
-                        
-                        <div class="technique-example">"Analyze the pros and cons of natural gas peaker plants vs. battery storage for grid reliability. Present your analysis in a table format with columns for: Criteria, Natural Gas Peakers, Battery Storage, and Winner. Include exactly 8 criteria: Capital Cost, Operating Cost, Response Time, Environmental Impact, Permitting Complexity, Operational Flexibility, Maintenance Requirements, and Lifespan. Keep each cell to maximum 15 words."</div>
-                    </div>
-
-                    <div class="principle-card">
-                        <span class="principle-number">4</span>
-                        <h3>Break Down Complex Tasks</h3>
-                        <p>For multi-step problems, guide AI through each phase systematically.</p>
-                        
-                        <div class="technique-example">Instead of: "Create a comprehensive energy audit report for our manufacturing facility."<br><br>
-                        Try this sequence:<br>
-                        1. "First, outline the key sections that should be included in an energy audit report for a manufacturing facility."<br>
-                        2. "Now, for the 'Energy Consumption Analysis' section, create a framework for categorizing and analyzing different types of energy use."<br>
-                        3. "Based on the framework, draft the executive summary highlighting the top 3 energy-saving opportunities."</div>
-                    </div>
-
-                    <div class="principle-card">
-                        <span class="principle-number">5</span>
-                        <h3>Assign Roles and Perspectives</h3>
-                        <p>Tell AI to adopt specific professional roles or viewpoints for more targeted responses.</p>
-                        
-                        <div class="technique-example">"You are a senior energy economist with 15 years of experience in renewable energy markets. Explain the concept of 'grid parity' to a group of municipal leaders who are considering a community solar program. Focus on the financial implications and use simple analogies they can relate to."</div>
-                    </div>
-
-                    <div class="principle-card">
-                        <span class="principle-number">6</span>
-                        <h3>Request Self-Evaluation and Refinement</h3>
-                        <p>Ask AI to review and improve its own work for higher quality outputs.</p>
-                        
-                        <div class="technique-example">"Draft a response to this customer complaint about power outages. After writing the response, evaluate it for: 1) Empathy and understanding, 2) Clear explanation of the issue, 3) Specific next steps, and 4) Professional tone. Then provide an improved version addressing any weaknesses you identified."</div>
-                    </div>
+    <!-- Step Navigation -->
+    <div class="step-navigation">
+        <div class="step-container">
+            <div class="step-indicator">
+                <div class="step-dot active" data-step="1">
+                    1
+                    <div class="step-label">Foundation Principles</div>
                 </div>
-
-                <div class="image-container">
-                    <figure>
-                        <img src="public/media/prompt_engineering_flow.png" alt="Flowchart of prompt engineering process">
-                        <figcaption>Figure 4.1: The iterative prompt engineering process. Effective prompting involves continuous refinement based on output quality and specific requirements.</figcaption>
-                    </figure>
+                <div class="step-connector"></div>
+                <div class="step-dot" data-step="2">
+                    2
+                    <div class="step-label">Core Principles</div>
+                </div>
+                <div class="step-connector"></div>
+                <div class="step-dot" data-step="3">
+                    3
+                    <div class="step-label">Energy Templates</div>
+                </div>
+                <div class="step-connector"></div>
+                <div class="step-dot" data-step="4">
+                    4
+                    <div class="step-label">Advanced Techniques</div>
+                </div>
+                <div class="step-connector"></div>
+                <div class="step-dot" data-step="5">
+                    5
+                    <div class="step-label">Real-World Application</div>
+                </div>
+                <div class="step-connector"></div>
+                <div class="step-dot" data-step="6">
+                    6
+                    <div class="step-label">Knowledge Check</div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
 
-    <!-- Energy-Specific Examples Section -->
-    <div class="energy-examples-section">
+    <!-- Content Section -->
+    <section class="content-section">
         <div class="container">
-            <h2 class="section-title">4.3 Energy Sector Prompt Templates and Examples</h2>
-            <p>Here are proven prompt templates specifically designed for common energy sector tasks:</p>
+            <!-- Step 1: Foundation Principles -->
+            <div class="step-content active" id="step1">
+                <div class="content">
+                    <h2 class="section-title">Step 1: Understanding How AI Interprets Instructions</h2>
+                    <p>The quality of AI output directly depends on the quality of your input. <strong>Prompt Engineering</strong> is the art and science of crafting effective instructions to get the best possible results from AI systems. For energy professionals, mastering this skill can transform how you approach analysis, reporting, planning, and problem-solving.</p>
 
-            <div class="energy-example-grid">
-                <div class="energy-example-card">
-                    <h4><span class="energy-icon">📊</span>Technical Analysis Template</h4>
-                    <p><strong>Structure:</strong> Context + Data + Analysis Request + Output Format</p>
-                    
-                    <div class="technique-example">"I'm analyzing the performance of a 50MW solar farm in Arizona. The facility has been operational for 2 years. Here are the key metrics: [Capacity Factor: 28%, Availability: 97%, Performance Ratio: 0.85]. 
+                    <p><strong>Think of AI as your most capable assistant</strong> - one with vast knowledge but who needs clear, specific instructions to deliver exactly what you need. The difference between a vague request and a well-crafted prompt can mean the difference between generic, unhelpful responses and precise, actionable insights tailored to your energy projects.</p>
+
+                    <div class="interactive-card">
+                        <h4><span class="card-icon">🧠</span>How AI Processes Your Requests</h4>
+                        <p>Before diving into techniques, it's crucial to understand how AI processes your requests:</p>
+                        <ul>
+                            <li><strong>Context is King:</strong> AI doesn't remember previous conversations (in most cases), so each prompt must contain all necessary context</li>
+                            <li><strong>Specificity Drives Quality:</strong> The more specific your request, the more targeted and useful the response</li>
+                            <li><strong>Structure Matters:</strong> Well-organized prompts lead to well-organized responses</li>
+                            <li><strong>Examples Guide Behavior:</strong> Showing AI what you want is often more effective than just describing it</li>
+                        </ul>
+                    </div>
+
+                    <div class="prompt-example">
+                        <div class="prompt-content">
+                            <div class="prompt-label bad">❌ Ineffective Approach:</div>
+                            <div class="prompt-bad">"Tell me about renewable energy."</div>
+                            
+                            <div class="prompt-label good">✅ Effective Approach:</div>
+                            <div class="prompt-good">"You are a senior energy analyst. Create a 500-word executive briefing for utility executives on the current state of utility-scale solar deployment in Texas. Focus on capacity additions in 2024, grid integration challenges, and economic drivers. Include specific data points and cite recent industry reports where possible."</div>
+                        </div>
+                    </div>
+
+                    <div class="interactive-card">
+                        <h4><span class="card-icon">⚡</span>Why This Matters for Energy Professionals</h4>
+                        <p>In the energy sector, precision and accuracy are critical. Poor prompting can lead to:</p>
+                        <ul>
+                            <li><strong>Generic recommendations</strong> that don't apply to your specific project or region</li>
+                            <li><strong>Inaccurate technical specifications</strong> that could impact safety or performance</li>
+                            <li><strong>Outdated regulatory information</strong> that could lead to compliance issues</li>
+                            <li><strong>Missed opportunities</strong> for optimization and cost savings</li>
+                        </ul>
+                        <p>Effective prompting ensures you get targeted, actionable insights that directly support your professional objectives.</p>
+                    </div>
+                </div>
+
+                <div class="step-navigation-buttons">
+                    <button class="btn-prev" onclick="previousStep()" disabled>← Previous</button>
+                    <button class="btn-next" onclick="nextStep()">Next →</button>
+                </div>
+            </div>
+
+            <!-- Step 2: Core Principles -->
+            <div class="step-content" id="step2">
+                <div class="content">
+                    <h2 class="section-title">Step 2: Core Principles for Energy Professionals</h2>
+                    <p>Master these six fundamental principles to dramatically improve your AI interactions and get professional-quality results for energy sector applications.</p>
+
+                    <div class="principles-grid">
+                        <div class="principle-card">
+                            <span class="principle-number">1</span>
+                            <h3>Be Clear and Specific</h3>
+                            <p>Eliminate ambiguity by providing precise instructions and clear expectations.</p>
+                            
+                            <div class="prompt-example">
+                                <div class="prompt-content">
+                                    <div class="prompt-label bad">❌ Vague Prompt:</div>
+                                    <div class="prompt-bad">"Write about renewable energy storage."</div>
+                                    
+                                    <div class="prompt-label good">✅ Specific Prompt:</div>
+                                    <div class="prompt-good">"Write a 300-word technical summary of lithium-ion battery energy storage systems for utility-scale applications, focusing on round-trip efficiency, degradation rates, and cost per MWh for a technical audience of grid operators."</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="principle-card">
+                            <span class="principle-number">2</span>
+                            <h3>Provide Rich Context</h3>
+                            <p>Give AI all the background information needed to understand your specific situation and requirements.</p>
+                            
+                            <div class="technique-example">"I'm a project manager for a 200MW offshore wind farm located 15 miles off the coast of Massachusetts. We're in the pre-construction phase and need to present to investors. Create an executive summary highlighting the project's competitive advantages, risk mitigation strategies, and expected returns over the 25-year operational period."</div>
+                        </div>
+
+                        <div class="principle-card">
+                            <span class="principle-number">3</span>
+                            <h3>Define Output Format and Constraints</h3>
+                            <p>Specify exactly how you want the information presented and what limitations to observe.</p>
+                            
+                            <div class="technique-example">"Analyze the pros and cons of natural gas peaker plants vs. battery storage for grid reliability. Present your analysis in a table format with columns for: Criteria, Natural Gas Peakers, Battery Storage, and Winner. Include exactly 8 criteria: Capital Cost, Operating Cost, Response Time, Environmental Impact, Permitting Complexity, Operational Flexibility, Maintenance Requirements, and Lifespan. Keep each cell to maximum 15 words."</div>
+                        </div>
+
+                        <div class="principle-card">
+                            <span class="principle-number">4</span>
+                            <h3>Break Down Complex Tasks</h3>
+                            <p>For multi-step problems, guide AI through each phase systematically.</p>
+                            
+                            <div class="technique-example">Instead of: "Create a comprehensive energy audit report for our manufacturing facility."<br><br>
+                            Try this sequence:<br>
+                            1. "First, outline the key sections that should be included in an energy audit report for a manufacturing facility."<br>
+                            2. "Now, for the 'Energy Consumption Analysis' section, create a framework for categorizing and analyzing different types of energy use."<br>
+                            3. "Based on the framework, draft the executive summary highlighting the top 3 energy-saving opportunities."</div>
+                        </div>
+
+                        <div class="principle-card">
+                            <span class="principle-number">5</span>
+                            <h3>Assign Roles and Perspectives</h3>
+                            <p>Tell AI to adopt specific professional roles or viewpoints for more targeted responses.</p>
+                            
+                            <div class="technique-example">"You are a senior energy economist with 15 years of experience in renewable energy markets. Explain the concept of 'grid parity' to a group of municipal leaders who are considering a community solar program. Focus on the financial implications and use simple analogies they can relate to."</div>
+                        </div>
+
+                        <div class="principle-card">
+                            <span class="principle-number">6</span>
+                            <h3>Request Self-Evaluation and Refinement</h3>
+                            <p>Ask AI to review and improve its own work for higher quality outputs.</p>
+                            
+                            <div class="technique-example">"Draft a response to this customer complaint about power outages. After writing the response, evaluate it for: 1) Empathy and understanding, 2) Clear explanation of the issue, 3) Specific next steps, and 4) Professional tone. Then provide an improved version addressing any weaknesses you identified."</div>
+                        </div>
+                    </div>
+
+                    <div class="interactive-card">
+                        <h4><span class="card-icon">🎯</span>Quick Reference: The CLEAR Framework</h4>
+                        <p>Remember these principles with the CLEAR framework:</p>
+                        <ul>
+                            <li><strong>C</strong>ontext - Provide relevant background information</li>
+                            <li><strong>L</strong>ength - Specify desired output length and format</li>
+                            <li><strong>E</strong>xpertise - Assign appropriate professional roles</li>
+                            <li><strong>A</strong>udience - Define who will use this information</li>
+                            <li><strong>R</strong>equirements - List specific constraints and expectations</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="step-navigation-buttons">
+                    <button class="btn-prev" onclick="previousStep()">← Previous</button>
+                    <button class="btn-next" onclick="nextStep()">Next →</button>
+                </div>
+            </div>
+
+            <!-- Step 3: Energy Sector Templates -->
+            <div class="step-content" id="step3">
+                <div class="content">
+                    <h2 class="section-title">Step 3: Energy Sector Prompt Templates</h2>
+                    <p>Here are proven prompt templates specifically designed for common energy sector tasks. These templates provide structured approaches that consistently deliver professional-quality results.</p>
+
+                    <div class="template-grid">
+                        <div class="template-card">
+                            <h4><span class="template-icon">📊</span>Technical Analysis Template</h4>
+                            <p><strong>Structure:</strong> Context + Data + Analysis Request + Output Format</p>
+                            
+                            <div class="technique-example">"I'm analyzing the performance of a 50MW solar farm in Arizona. The facility has been operational for 2 years. Here are the key metrics: [Capacity Factor: 28%, Availability: 97%, Performance Ratio: 0.85]. 
 
 Compare these metrics to industry benchmarks for similar facilities in the Southwest US. Identify the top 3 areas for improvement and provide specific recommendations for each. Present your analysis in this format:
 
@@ -838,13 +1110,13 @@ Compare these metrics to industry benchmarks for similar facilities in the South
 3. Root Cause Analysis
 4. Specific Recommendations
 5. Expected Impact (quantified where possible)"</div>
-                </div>
+                        </div>
 
-                <div class="energy-example-card">
-                    <h4><span class="energy-icon">💼</span>Business Case Development</h4>
-                    <p><strong>Structure:</strong> Role + Audience + Objective + Constraints + Deliverable</p>
-                    
-                    <div class="technique-example">"You are a senior energy consultant preparing a business case for a corporate client. The audience is the C-suite of a Fortune 500 manufacturing company. They want to evaluate installing a 10MW rooftop solar system across their facilities.
+                        <div class="template-card">
+                            <h4><span class="template-icon">💼</span>Business Case Development</h4>
+                            <p><strong>Structure:</strong> Role + Audience + Objective + Constraints + Deliverable</p>
+                            
+                            <div class="technique-example">"You are a senior energy consultant preparing a business case for a corporate client. The audience is the C-suite of a Fortune 500 manufacturing company. They want to evaluate installing a 10MW rooftop solar system across their facilities.
 
 Create a compelling business case that includes:
 - Executive Summary (2 paragraphs max)
@@ -854,13 +1126,13 @@ Create a compelling business case that includes:
 - Competitive Advantages (how this supports their sustainability goals)
 
 Use professional language, include specific financial metrics, and emphasize strategic benefits beyond cost savings. Assume electricity costs of $0.12/kWh and solar LCOE of $0.08/kWh."</div>
-                </div>
+                        </div>
 
-                <div class="energy-example-card">
-                    <h4><span class="energy-icon">⚖️</span>Regulatory Analysis Template</h4>
-                    <p><strong>Structure:</strong> Regulation + Impact + Compliance + Recommendations</p>
-                    
-                    <div class="technique-example">"Analyze the impact of the new EPA Clean Power Plan 2.0 on our coal-fired power plant portfolio. We operate 5 plants totaling 2,000MW capacity across the Midwest.
+                        <div class="template-card">
+                            <h4><span class="template-icon">⚖️</span>Regulatory Analysis Template</h4>
+                            <p><strong>Structure:</strong> Regulation + Impact + Compliance + Recommendations</p>
+                            
+                            <div class="technique-example">"Analyze the impact of the new EPA Clean Power Plan 2.0 on our coal-fired power plant portfolio. We operate 5 plants totaling 2,000MW capacity across the Midwest.
 
 Provide analysis in this structure:
 1. Key Regulatory Requirements (summarize in bullet points)
@@ -870,13 +1142,13 @@ Provide analysis in this structure:
 5. Recommended Action Plan (prioritized by plant and timeline)
 
 Focus on practical implementation challenges and include estimated costs where possible. Consider both short-term compliance and long-term strategic positioning."</div>
-                </div>
+                        </div>
 
-                <div class="energy-example-card">
-                    <h4><span class="energy-icon">🔧</span>Troubleshooting Template</h4>
-                    <p><strong>Structure:</strong> Problem + Symptoms + Systematic Diagnosis + Solutions</p>
-                    
-                    <div class="technique-example">"I'm troubleshooting performance issues with a wind turbine. Here are the symptoms:
+                        <div class="template-card">
+                            <h4><span class="template-icon">🔧</span>Troubleshooting Template</h4>
+                            <p><strong>Structure:</strong> Problem + Symptoms + Systematic Diagnosis + Solutions</p>
+                            
+                            <div class="technique-example">"I'm troubleshooting performance issues with a wind turbine. Here are the symptoms:
 - Power output 20% below expected for current wind conditions
 - Gearbox temperature running 15°C higher than normal
 - Vibration levels increased in the last month
@@ -890,13 +1162,13 @@ Provide a systematic troubleshooting approach:
 5. Preventive Measures (to avoid future occurrences)
 
 Prioritize solutions by safety risk, revenue impact, and repair complexity."</div>
-                </div>
+                        </div>
 
-                <div class="energy-example-card">
-                    <h4><span class="energy-icon">📈</span>Market Research Template</h4>
-                    <p><strong>Structure:</strong> Market + Timeframe + Analysis + Strategic Implications</p>
-                    
-                    <div class="technique-example">"Research the current state and 5-year outlook for the energy storage market in Texas. Focus on utility-scale battery systems (>10MW).
+                        <div class="template-card">
+                            <h4><span class="template-icon">📈</span>Market Research Template</h4>
+                            <p><strong>Structure:</strong> Market + Timeframe + Analysis + Strategic Implications</p>
+                            
+                            <div class="technique-example">"Research the current state and 5-year outlook for the energy storage market in Texas. Focus on utility-scale battery systems (>10MW).
 
 Structure your analysis as follows:
 1. Current Market Size (installed capacity, key players, pricing trends)
@@ -907,13 +1179,13 @@ Structure your analysis as follows:
 6. Investment Opportunities (where to focus for maximum ROI)
 
 Include specific data points, cite recent industry reports, and highlight unique Texas market characteristics."</div>
-                </div>
+                        </div>
 
-                <div class="energy-example-card">
-                    <h4><span class="energy-icon">🎓</span>Training Content Template</h4>
-                    <p><strong>Structure:</strong> Audience + Learning Objectives + Content + Assessment</p>
-                    
-                    <div class="technique-example">"Create a training module on grid interconnection procedures for new electrical engineers joining our renewable energy development team.
+                        <div class="template-card">
+                            <h4><span class="template-icon">🎓</span>Training Content Template</h4>
+                            <p><strong>Structure:</strong> Audience + Learning Objectives + Content + Assessment</p>
+                            
+                            <div class="technique-example">"Create a training module on grid interconnection procedures for new electrical engineers joining our renewable energy development team.
 
 Design the training with:
 1. Learning Objectives (3-4 specific, measurable goals)
@@ -924,33 +1196,50 @@ Design the training with:
 6. Additional Resources (standards, regulations, industry guides)
 
 Make it practical and immediately applicable to their daily work. Include specific examples from recent projects where possible."</div>
+                        </div>
+                    </div>
+
+                    <div class="interactive-card">
+                        <h4><span class="card-icon">📋</span>Template Usage Tips</h4>
+                        <p>To maximize the effectiveness of these templates:</p>
+                        <ul>
+                            <li><strong>Customize the context:</strong> Replace generic examples with your specific project details</li>
+                            <li><strong>Adjust the structure:</strong> Modify sections based on your particular needs</li>
+                            <li><strong>Iterate and refine:</strong> Use follow-up prompts to drill down into specific areas</li>
+                            <li><strong>Build your library:</strong> Save successful variations for future use</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="step-navigation-buttons">
+                    <button class="btn-prev" onclick="previousStep()">← Previous</button>
+                    <button class="btn-next" onclick="nextStep()">Next →</button>
                 </div>
             </div>
-        </div>
-    </div>
 
-    <!-- Techniques Section -->
-    <section class="techniques-section">
-        <div class="container">
-            <h2>Advanced Prompting Techniques for Energy Professionals</h2>
-            
-            <div class="techniques-grid">
-                <div class="technique-card">
-                    <h3><span class="technique-icon">🎯</span>Zero-Shot Prompting</h3>
-                    <p>Direct instruction without examples. Best for straightforward tasks where you can clearly describe what you want.</p>
-                    
-                    <div class="technique-example">"Calculate the levelized cost of electricity (LCOE) for a 100MW solar farm with the following parameters: Capital cost $1.2M/MW, O&M $15/MWh, capacity factor 25%, discount rate 8%, project life 25 years. Show your calculation steps."</div>
-                    
-                    <h4 style="margin-top: 1.5rem; margin-bottom: 0.5rem; color: #000000;">Role-Based Zero-Shot:</h4>
-                    <div class="technique-example">"You are an experienced grid operator. Explain the challenges of integrating 30% renewable energy into the grid to a group of utility executives who need to make investment decisions."</div>
-                </div>
-                
-                <div class="technique-card">
-                    <h3><span class="technique-icon">📝</span>Few-Shot Prompting</h3>
-                    <p>Provide examples to guide AI behavior. Excellent for specific formats, analysis patterns, or when you want consistent output structure.</p>
-                    
-                    <h4 style="margin-top: 1rem; margin-bottom: 0.5rem; color: #000000;">Energy Project Risk Assessment Example:</h4>
-                    <div class="technique-example">Assess project risks using this format:
+            <!-- Step 4: Advanced Techniques -->
+            <div class="step-content" id="step4">
+                <div class="content">
+                    <h2 class="section-title">Step 4: Advanced Prompting Techniques</h2>
+                    <p>Master these sophisticated techniques to handle complex energy sector challenges and get expert-level results from AI systems.</p>
+
+                    <div class="techniques-grid">
+                        <div class="technique-card">
+                            <h3><span class="technique-icon">🎯</span>Zero-Shot Prompting</h3>
+                            <p>Direct instruction without examples. Best for straightforward tasks where you can clearly describe what you want.</p>
+                            
+                            <div class="technique-example">"Calculate the levelized cost of electricity (LCOE) for a 100MW solar farm with the following parameters: Capital cost $1.2M/MW, O&M $15/MWh, capacity factor 25%, discount rate 8%, project life 25 years. Show your calculation steps."</div>
+                            
+                            <h4 style="margin-top: 1.5rem; margin-bottom: 0.5rem; color: #000000;">Role-Based Zero-Shot:</h4>
+                            <div class="technique-example">"You are an experienced grid operator. Explain the challenges of integrating 30% renewable energy into the grid to a group of utility executives who need to make investment decisions."</div>
+                        </div>
+                        
+                        <div class="technique-card">
+                            <h3><span class="technique-icon">📝</span>Few-Shot Prompting</h3>
+                            <p>Provide examples to guide AI behavior. Excellent for specific formats, analysis patterns, or when you want consistent output structure.</p>
+                            
+                            <h4 style="margin-top: 1rem; margin-bottom: 0.5rem; color: #000000;">Energy Project Risk Assessment Example:</h4>
+                            <div class="technique-example">Assess project risks using this format:
 
 Risk: Permitting delays
 Probability: Medium (40%)
@@ -966,54 +1255,54 @@ Now assess these risks for our offshore wind project:
 - Weather window constraints
 - Foundation installation challenges
 - Grid interconnection delays</div>
-                </div>
-                
-                <div class="technique-card">
-                    <h3><span class="technique-icon">🧠</span>Chain-of-Thought Prompting</h3>
-                    <p>Ask AI to show its reasoning process. Critical for complex calculations, multi-step analysis, and when accuracy is paramount.</p>
-                    
-                    <div class="technique-example">"A wind farm has 50 turbines, each rated at 3MW. The capacity factor is 35% and the farm operates 8760 hours per year. The PPA price is $45/MWh. Calculate the annual revenue. Let's work through this step by step:
+                        </div>
+                        
+                        <div class="technique-card">
+                            <h3><span class="technique-icon">🧠</span>Chain-of-Thought Prompting</h3>
+                            <p>Ask AI to show its reasoning process. Critical for complex calculations, multi-step analysis, and when accuracy is paramount.</p>
+                            
+                            <div class="technique-example">"A wind farm has 50 turbines, each rated at 3MW. The capacity factor is 35% and the farm operates 8760 hours per year. The PPA price is $45/MWh. Calculate the annual revenue. Let's work through this step by step:
 
 1. First, calculate the total nameplate capacity
 2. Then, determine the actual annual generation
 3. Finally, calculate the revenue
 
 Show each calculation clearly."</div>
-                    
-                    <p style="margin-top: 1rem; font-size: 0.875rem; color: #6B7280;">This approach dramatically improves accuracy for complex energy calculations and helps you verify the AI's reasoning process.</p>
-                </div>
+                            
+                            <p style="margin-top: 1rem; font-size: 0.875rem; color: #6B7280;">This approach dramatically improves accuracy for complex energy calculations and helps you verify the AI's reasoning process.</p>
+                        </div>
 
-                <div class="technique-card">
-                    <h3><span class="technique-icon">🔄</span>Iterative Refinement</h3>
-                    <p>Build on previous responses to develop comprehensive solutions. Perfect for complex projects requiring multiple perspectives.</p>
-                    
-                    <div class="technique-example">Prompt 1: "Outline the key components of an energy management system for a large industrial facility."
+                        <div class="technique-card">
+                            <h3><span class="technique-icon">🔄</span>Iterative Refinement</h3>
+                            <p>Build on previous responses to develop comprehensive solutions. Perfect for complex projects requiring multiple perspectives.</p>
+                            
+                            <div class="technique-example">Prompt 1: "Outline the key components of an energy management system for a large industrial facility."
 
 Prompt 2: "Now, for each component you listed, identify the top 2 implementation challenges and potential solutions."
 
 Prompt 3: "Based on the challenges identified, create a phased implementation plan with timelines and resource requirements."
 
 Prompt 4: "Finally, develop KPIs to measure the success of each implementation phase."</div>
-                </div>
+                        </div>
 
-                <div class="technique-card">
-                    <h3><span class="technique-icon">🎭</span>Perspective Prompting</h3>
-                    <p>Ask AI to consider multiple viewpoints for balanced analysis. Essential for stakeholder management and comprehensive planning.</p>
-                    
-                    <div class="technique-example">"Analyze the proposed natural gas pipeline project from three perspectives:
+                        <div class="technique-card">
+                            <h3><span class="technique-icon">🎭</span>Perspective Prompting</h3>
+                            <p>Ask AI to consider multiple viewpoints for balanced analysis. Essential for stakeholder management and comprehensive planning.</p>
+                            
+                            <div class="technique-example">"Analyze the proposed natural gas pipeline project from three perspectives:
 
 1. Environmental advocate: Focus on climate impact, local ecosystem effects, and alternative solutions
 2. Economic development official: Emphasize job creation, tax revenue, and regional economic benefits  
 3. Energy security analyst: Consider supply reliability, geopolitical factors, and strategic importance
 
 For each perspective, provide the strongest arguments and main concerns. Then synthesize these viewpoints into balanced recommendations for decision-makers."</div>
-                </div>
+                        </div>
 
-                <div class="technique-card">
-                    <h3><span class="technique-icon">🔍</span>Constraint-Based Prompting</h3>
-                    <p>Use specific limitations to focus AI responses. Particularly useful for regulatory compliance and technical specifications.</p>
-                    
-                    <div class="technique-example">"Design a microgrid for a remote mining operation with these constraints:
+                        <div class="technique-card">
+                            <h3><span class="technique-icon">🔍</span>Constraint-Based Prompting</h3>
+                            <p>Use specific limitations to focus AI responses. Particularly useful for regulatory compliance and technical specifications.</p>
+                            
+                            <div class="technique-example">"Design a microgrid for a remote mining operation with these constraints:
 - Maximum budget: $5 million
 - Power requirement: 2MW continuous, 3MW peak
 - Fuel delivery limited to quarterly shipments
@@ -1022,217 +1311,254 @@ For each perspective, provide the strongest arguments and main concerns. Then sy
 - Installation must complete within 8 months
 
 Provide a system design that meets ALL constraints, with justification for each major component choice."</div>
+                        </div>
+                    </div>
+
+                    <div class="interactive-card">
+                        <h4><span class="card-icon">🎯</span>Choosing the Right Technique</h4>
+                        <p>Select techniques based on your specific needs:</p>
+                        <ul>
+                            <li><strong>Zero-shot:</strong> Simple, direct tasks with clear requirements</li>
+                            <li><strong>Few-shot:</strong> When you need consistent formatting or specific analysis patterns</li>
+                            <li><strong>Chain-of-thought:</strong> Complex calculations or multi-step reasoning</li>
+                            <li><strong>Iterative:</strong> Building comprehensive solutions over multiple interactions</li>
+                            <li><strong>Perspective:</strong> Stakeholder analysis or balanced decision-making</li>
+                            <li><strong>Constraint-based:</strong> Technical specifications or regulatory compliance</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="step-navigation-buttons">
+                    <button class="btn-prev" onclick="previousStep()">← Previous</button>
+                    <button class="btn-next" onclick="nextStep()">Next →</button>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <!-- Real-world Scenario -->
-    <div class="scenario-section">
-        <div class="container">
-            <div class="scenario-content">
-                <h3>Real-World Scenario: Developing a Comprehensive Energy Strategy</h3>
-                <p><strong>Situation:</strong> You're tasked with developing a 10-year energy strategy for a large manufacturing company. The CEO wants a presentation in 2 weeks covering decarbonization, cost reduction, and energy security.</p>
-                
-                <ol class="scenario-steps">
-                    <li><strong>Initial Framework:</strong> "I need to develop a 10-year energy strategy for a manufacturing company with 15 facilities across North America. They want to achieve net-zero by 2035 while reducing energy costs by 20%. Create a comprehensive framework covering all key strategic elements."</li>
-                    
-                    <li><strong>Detailed Analysis:</strong> "For each strategic element you identified, provide specific analysis for our situation: current energy spend $50M annually, 60% electricity/40% natural gas, facilities range from 50-500 employees. Include quantified targets and implementation approaches."</li>
-                    
-                    <li><strong>Financial Modeling:</strong> "Create a financial model framework for the energy strategy, including capital requirements, operational savings, risk factors, and ROI calculations. Structure it for C-suite presentation with clear assumptions and sensitivity analysis."</li>
-                    
-                    <li><strong>Implementation Roadmap:</strong> "Develop a detailed 10-year implementation roadmap with quarterly milestones, resource requirements, and success metrics. Prioritize initiatives by ROI and strategic impact."</li>
-                    
-                    <li><strong>Executive Presentation:</strong> "Transform this strategy into a compelling 15-slide executive presentation. Focus on strategic vision, financial benefits, competitive advantages, and clear next steps for board approval."</li>
-                </ol>
-                
-                <p><strong>Result:</strong> Using systematic prompting, you can develop a comprehensive, professional-quality energy strategy in days rather than weeks, allowing more time for stakeholder engagement and refinement.</p>
-            </div>
-        </div>
-    </div>
+            <!-- Step 5: Real-World Application -->
+            <div class="step-content" id="step5">
+                <div class="content">
+                    <h2 class="section-title">Step 5: Real-World Application & Refinement</h2>
+                    <p>Let's walk through a comprehensive real-world example and learn how to systematically improve your prompts when results don't meet expectations.</p>
 
-    <!-- Refinement Section -->
-    <section class="content-section">
-        <div class="container">
-            <div class="content">
-                <h2 class="section-title">4.4 Iteration and Refinement: When Results Don't Meet Expectations</h2>
-                <p>Prompt engineering is inherently iterative. Even experienced practitioners rarely get perfect results on the first try. Here's how to systematically improve your prompts:</p>
+                    <div class="scenario-section">
+                        <div class="scenario-content">
+                            <h3>Developing a Comprehensive Energy Strategy</h3>
+                            <p><strong>Situation:</strong> You're tasked with developing a 10-year energy strategy for a large manufacturing company. The CEO wants a presentation in 2 weeks covering decarbonization, cost reduction, and energy security.</p>
+                            
+                            <ol class="scenario-steps">
+                                <li><strong>Initial Framework:</strong> "I need to develop a 10-year energy strategy for a manufacturing company with 15 facilities across North America. They want to achieve net-zero by 2035 while reducing energy costs by 20%. Create a comprehensive framework covering all key strategic elements."</li>
+                                
+                                <li><strong>Detailed Analysis:</strong> "For each strategic element you identified, provide specific analysis for our situation: current energy spend $50M annually, 60% electricity/40% natural gas, facilities range from 50-500 employees. Include quantified targets and implementation approaches."</li>
+                                
+                                <li><strong>Financial Modeling:</strong> "Create a financial model framework for the energy strategy, including capital requirements, operational savings, risk factors, and ROI calculations. Structure it for C-suite presentation with clear assumptions and sensitivity analysis."</li>
+                                
+                                <li><strong>Implementation Roadmap:</strong> "Develop a detailed 10-year implementation roadmap with quarterly milestones, resource requirements, and success metrics. Prioritize initiatives by ROI and strategic impact."</li>
+                                
+                                <li><strong>Executive Presentation:</strong> "Transform this strategy into a compelling 15-slide executive presentation. Focus on strategic vision, financial benefits, competitive advantages, and clear next steps for board approval."</li>
+                            </ol>
+                            
+                            <p><strong>Result:</strong> Using systematic prompting, you can develop a comprehensive, professional-quality energy strategy in days rather than weeks, allowing more time for stakeholder engagement and refinement.</p>
+                        </div>
+                    </div>
 
-                <h3 style="color: #000000; font-size: 1.25rem; margin: 2rem 0 1rem 0;">Common Issues and Solutions:</h3>
-                <ul>
-                    <li><strong>Response too generic:</strong> Add more specific context, constraints, and examples from your industry</li>
-                    <li><strong>Wrong tone or audience:</strong> Explicitly specify the audience and desired communication style</li>
-                    <li><strong>Missing key information:</strong> Break down your request into smaller, more specific components</li>
-                    <li><strong>Inconsistent format:</strong> Provide clear formatting instructions and examples of desired output structure</li>
-                    <li><strong>Inaccurate technical details:</strong> Ask AI to show its reasoning and verify critical calculations independently</li>
-                </ul>
+                    <div class="interactive-card">
+                        <h4><span class="card-icon">🔧</span>When Results Don't Meet Expectations</h4>
+                        <p>Prompt engineering is inherently iterative. Here's how to systematically improve your prompts:</p>
+                        <ul>
+                            <li><strong>Response too generic:</strong> Add more specific context, constraints, and examples from your industry</li>
+                            <li><strong>Wrong tone or audience:</strong> Explicitly specify the audience and desired communication style</li>
+                            <li><strong>Missing key information:</strong> Break down your request into smaller, more specific components</li>
+                            <li><strong>Inconsistent format:</strong> Provide clear formatting instructions and examples of desired output structure</li>
+                            <li><strong>Inaccurate technical details:</strong> Ask AI to show its reasoning and verify critical calculations independently</li>
+                        </ul>
+                    </div>
 
-                <h3 style="color: #000000; font-size: 1.25rem; margin: 2rem 0 1rem 0;">Advanced Refinement Techniques:</h3>
-                <ul>
-                    <li><strong>Emphasis Techniques:</strong> Use CAPITAL LETTERS, **bold formatting**, or repetition for critical requirements</li>
-                    <li><strong>Negative Instructions:</strong> Explicitly state what NOT to include: "Do not include generic recommendations"</li>
-                    <li><strong>Output Validation:</strong> Ask AI to review its own work: "Check this analysis for accuracy and completeness"</li>
-                    <li><strong>Alternative Approaches:</strong> If one approach fails, try synonyms: "analyze" vs "evaluate" vs "assess"</li>
-                    <li><strong>Sandwich Technique:</strong> For long prompts, repeat key instructions at the beginning and end</li>
-                    <li><strong>Progressive Disclosure:</strong> Start broad, then narrow down with follow-up prompts</li>
-                </ul>
+                    <div class="interactive-card">
+                        <h4><span class="card-icon">⚡</span>Advanced Refinement Techniques</h4>
+                        <p>Professional-level prompt optimization strategies:</p>
+                        <ul>
+                            <li><strong>Emphasis Techniques:</strong> Use CAPITAL LETTERS, **bold formatting**, or repetition for critical requirements</li>
+                            <li><strong>Negative Instructions:</strong> Explicitly state what NOT to include: "Do not include generic recommendations"</li>
+                            <li><strong>Output Validation:</strong> Ask AI to review its own work: "Check this analysis for accuracy and completeness"</li>
+                            <li><strong>Alternative Approaches:</strong> If one approach fails, try synonyms: "analyze" vs "evaluate" vs "assess"</li>
+                            <li><strong>Progressive Disclosure:</strong> Start broad, then narrow down with follow-up prompts</li>
+                        </ul>
+                    </div>
 
-                <h3 style="color: #000000; font-size: 1.25rem; margin: 2rem 0 1rem 0;">Building Your Prompt Library:</h3>
-                <p>As you develop expertise, create a personal library of effective prompts for common tasks. Document what works well for your specific role and industry applications. This becomes a valuable professional asset that improves your efficiency over time.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Quiz Section -->
-    <section class="quiz-section">
-        <div class="container">
-            <div class="quiz-container">
-                <h2 class="section-title">Module 4 Knowledge Check</h2>
-                <p>Test your understanding of prompt engineering techniques for energy applications:</p>
-
-                <div class="quiz-question">
-                    <h4>Question 1: Which prompt engineering technique would be MOST effective for calculating complex energy financial metrics like LCOE?</h4>
-                    <ul class="quiz-options">
-                        <li>
-                            <label>
-                                <input type="radio" name="q1" value="a">
-                                Zero-shot prompting with a simple calculation request
-                            </label>
-                        </li>
-                        <li>
-                            <label>
-                                <input type="radio" name="q1" value="b">
-                                Chain-of-thought prompting asking AI to show each calculation step
-                            </label>
-                        </li>
-                        <li>
-                            <label>
-                                <input type="radio" name="q1" value="c">
-                                Few-shot prompting with multiple calculation examples
-                            </label>
-                        </li>
-                        <li>
-                            <label>
-                                <input type="radio" name="q1" value="d">
-                                Role-based prompting asking AI to act as a financial analyst
-                            </label>
-                        </li>
-                    </ul>
-                    <div class="quiz-result" id="result1"></div>
+                    <div class="interactive-card">
+                        <h4><span class="card-icon">📚</span>Building Your Professional Prompt Library</h4>
+                        <p>As you develop expertise, create a personal library of effective prompts:</p>
+                        <ul>
+                            <li><strong>Document successful patterns:</strong> Save prompts that consistently deliver quality results</li>
+                            <li><strong>Categorize by task type:</strong> Technical analysis, business cases, regulatory research, etc.</li>
+                            <li><strong>Note context variations:</strong> How prompts change for different audiences or project types</li>
+                            <li><strong>Track improvements:</strong> Record what modifications led to better outcomes</li>
+                            <li><strong>Share with team:</strong> Build organizational knowledge and consistency</li>
+                        </ul>
+                    </div>
                 </div>
 
-                <div class="quiz-question">
-                    <h4>Question 2: You need to create a business case for a solar project. Which prompt structure would be MOST effective?</h4>
-                    <ul class="quiz-options">
-                        <li>
-                            <label>
-                                <input type="radio" name="q2" value="a">
-                                "Create a business case for solar energy installation."
-                            </label>
-                        </li>
-                        <li>
-                            <label>
-                                <input type="radio" name="q2" value="b">
-                                Role + Audience + Specific Context + Deliverable Format + Constraints
-                            </label>
-                        </li>
-                        <li>
-                            <label>
-                                <input type="radio" name="q2" value="c">
-                                Simple request with multiple follow-up questions
-                            </label>
-                        </li>
-                        <li>
-                            <label>
-                                <input type="radio" name="q2" value="d">
-                                Generic business case template request
-                            </label>
-                        </li>
-                    </ul>
-                    <div class="quiz-result" id="result2"></div>
-                </div>
-
-                <div class="quiz-question">
-                    <h4>Question 3: When analyzing a complex energy policy from multiple stakeholder perspectives, which technique is most appropriate?</h4>
-                    <ul class="quiz-options">
-                        <li>
-                            <label>
-                                <input type="radio" name="q3" value="a">
-                                Zero-shot prompting for a single comprehensive analysis
-                            </label>
-                        </li>
-                        <li>
-                            <label>
-                                <input type="radio" name="q3" value="b">
-                                Perspective prompting asking AI to consider multiple viewpoints
-                            </label>
-                        </li>
-                        <li>
-                            <label>
-                                <input type="radio" name="q3" value="c">
-                                Chain-of-thought prompting for logical reasoning
-                            </label>
-                        </li>
-                        <li>
-                            <label>
-                                <input type="radio" name="q3" value="d">
-                                Constraint-based prompting with specific limitations
-                            </label>
-                        </li>
-                    </ul>
-                    <div class="quiz-result" id="result3"></div>
-                </div>
-
-                <div class="quiz-question">
-                    <h4>Question 4: Your first prompt for a wind turbine troubleshooting analysis produced generic results. What should you do FIRST to improve it?</h4>
-                    <ul class="quiz-options">
-                        <li>
-                            <label>
-                                <input type="radio" name="q4" value="a">
-                                Try a completely different AI platform
-                            </label>
-                        </li>
-                        <li>
-                            <label>
-                                <input type="radio" name="q4" value="b">
-                                Add specific context about the turbine model, symptoms, and operating conditions
-                            </label>
-                        </li>
-                        <li>
-                            <label>
-                                <input type="radio" name="q4" value="c">
-                                Make the prompt shorter and simpler
-                            </label>
-                        </li>
-                        <li>
-                            <label>
-                                <input type="radio" name="q4" value="d">
-                                Ask for a longer, more detailed response
-                            </label>
-                        </li>
-                    </ul>
-                    <div class="quiz-result" id="result4"></div>
-                </div>
-
-                <button class="quiz-submit" onclick="checkQuiz()">Submit Quiz</button>
-                
-                <div class="quiz-score" id="quizScore">
-                    <h3>Quiz Results</h3>
-                    <div class="score-display" id="scoreDisplay"></div>
-                    <p id="scoreMessage"></p>
+                <div class="step-navigation-buttons">
+                    <button class="btn-prev" onclick="previousStep()">← Previous</button>
+                    <button class="btn-next" onclick="nextStep()">Next →</button>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <!-- Navigation -->
-    <section class="content-section">
-        <div class="container">
-            <div class="nav-buttons">
+            <!-- Step 6: Knowledge Check -->
+            <div class="step-content" id="step6">
+                <div class="content">
+                    <h2 class="section-title">Step 6: Knowledge Check</h2>
+                    <p>Test your mastery of prompt engineering techniques for energy applications with this comprehensive quiz:</p>
+
+                    <div class="quiz-section">
+                        <div class="quiz-container">
+                            <div class="quiz-question">
+                                <h4>Question 1: Which prompt engineering technique would be MOST effective for calculating complex energy financial metrics like LCOE?</h4>
+                                <ul class="quiz-options">
+                                    <li>
+                                        <label>
+                                            <input type="radio" name="q1" value="a">
+                                            Zero-shot prompting with a simple calculation request
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label>
+                                            <input type="radio" name="q1" value="b">
+                                            Chain-of-thought prompting asking AI to show each calculation step
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label>
+                                            <input type="radio" name="q1" value="c">
+                                            Few-shot prompting with multiple calculation examples
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label>
+                                            <input type="radio" name="q1" value="d">
+                                            Role-based prompting asking AI to act as a financial analyst
+                                        </label>
+                                    </li>
+                                </ul>
+                                <div class="quiz-result" id="result1"></div>
+                            </div>
+
+                            <div class="quiz-question">
+                                <h4>Question 2: You need to create a business case for a solar project. Which prompt structure would be MOST effective?</h4>
+                                <ul class="quiz-options">
+                                    <li>
+                                        <label>
+                                            <input type="radio" name="q2" value="a">
+                                            "Create a business case for solar energy installation."
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label>
+                                            <input type="radio" name="q2" value="b">
+                                            Role + Audience + Specific Context + Deliverable Format + Constraints
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label>
+                                            <input type="radio" name="q2" value="c">
+                                            Simple request with multiple follow-up questions
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label>
+                                            <input type="radio" name="q2" value="d">
+                                            Generic business case template request
+                                        </label>
+                                    </li>
+                                </ul>
+                                <div class="quiz-result" id="result2"></div>
+                            </div>
+
+                            <div class="quiz-question">
+                                <h4>Question 3: When analyzing a complex energy policy from multiple stakeholder perspectives, which technique is most appropriate?</h4>
+                                <ul class="quiz-options">
+                                    <li>
+                                        <label>
+                                            <input type="radio" name="q3" value="a">
+                                            Zero-shot prompting for a single comprehensive analysis
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label>
+                                            <input type="radio" name="q3" value="b">
+                                            Perspective prompting asking AI to consider multiple viewpoints
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label>
+                                            <input type="radio" name="q3" value="c">
+                                            Chain-of-thought prompting for logical reasoning
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label>
+                                            <input type="radio" name="q3" value="d">
+                                            Constraint-based prompting with specific limitations
+                                        </label>
+                                    </li>
+                                </ul>
+                                <div class="quiz-result" id="result3"></div>
+                            </div>
+
+                            <div class="quiz-question">
+                                <h4>Question 4: Your first prompt for a wind turbine troubleshooting analysis produced generic results. What should you do FIRST to improve it?</h4>
+                                <ul class="quiz-options">
+                                    <li>
+                                        <label>
+                                            <input type="radio" name="q4" value="a">
+                                            Try a completely different AI platform
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label>
+                                            <input type="radio" name="q4" value="b">
+                                            Add specific context about the turbine model, symptoms, and operating conditions
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label>
+                                            <input type="radio" name="q4" value="c">
+                                            Make the prompt shorter and simpler
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label>
+                                            <input type="radio" name="q4" value="d">
+                                            Ask for a longer, more detailed response
+                                        </label>
+                                    </li>
+                                </ul>
+                                <div class="quiz-result" id="result4"></div>
+                            </div>
+
+                            <button class="quiz-submit" onclick="checkQuiz()">Submit Quiz</button>
+                            
+                            <div class="quiz-score" id="quizScore">
+                                <h3>Quiz Results</h3>
+                                <div class="score-display" id="scoreDisplay"></div>
+                                <p id="scoreMessage"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step-navigation-buttons">
+                    <button class="btn-prev" onclick="previousStep()">← Previous</button>
+                    <button class="btn-next" onclick="nextStep()" disabled>Complete Module</button>
+                </div>
+            </div>
+
+            <!-- Module Navigation -->
+            <div class="module-nav-buttons">
                 <a href="module3.html" class="btn-back">
                     ← Previous: Chatbots in Daily Work
                 </a>
-                <a href="module5.html" class="btn-next">
+                <a href="module5.html" class="btn-forward">
                     Next: Best Practices & Ethics →
                 </a>
             </div>
@@ -1240,6 +1566,125 @@ Provide a system design that meets ALL constraints, with justification for each 
     </section>
 
     <script>
+        // Global variables
+        let currentStep = 1;
+        const totalSteps = 6;
+        let completedSteps = new Set([]);
+
+        // Initialize the module
+        document.addEventListener('DOMContentLoaded', function() {
+            updateStepDisplay();
+            updateProgressBar();
+            
+            // Add click handlers to step dots
+            document.querySelectorAll('.step-dot').forEach(dot => {
+                dot.addEventListener('click', function() {
+                    const targetStep = parseInt(this.dataset.step);
+                    if (targetStep <= Math.max(...completedSteps, currentStep)) {
+                        goToStep(targetStep);
+                    }
+                });
+            });
+        });
+
+        // Step navigation functions
+        function nextStep() {
+            if (currentStep < totalSteps) {
+                completedSteps.add(currentStep);
+                currentStep++;
+                updateStepDisplay();
+                updateProgressBar();
+                scrollToTop();
+            }
+        }
+
+        function previousStep() {
+            if (currentStep > 1) {
+                currentStep--;
+                updateStepDisplay();
+                updateProgressBar();
+                scrollToTop();
+            }
+        }
+
+        function goToStep(stepNumber) {
+            if (stepNumber >= 1 && stepNumber <= totalSteps) {
+                currentStep = stepNumber;
+                updateStepDisplay();
+                updateProgressBar();
+                scrollToTop();
+            }
+        }
+
+        function updateStepDisplay() {
+            // Hide all step content
+            document.querySelectorAll('.step-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            // Show current step content
+            const currentContent = document.getElementById(`step${currentStep}`);
+            if (currentContent) {
+                currentContent.classList.add('active');
+            }
+            
+            // Update step dots
+            document.querySelectorAll('.step-dot').forEach((dot, index) => {
+                const stepNum = index + 1;
+                dot.classList.remove('active', 'completed');
+                
+                if (stepNum === currentStep) {
+                    dot.classList.add('active');
+                } else if (completedSteps.has(stepNum)) {
+                    dot.classList.add('completed');
+                }
+            });
+            
+            // Update step connectors
+            document.querySelectorAll('.step-connector').forEach((connector, index) => {
+                const stepNum = index + 1;
+                if (completedSteps.has(stepNum)) {
+                    connector.classList.add('completed');
+                } else {
+                    connector.classList.remove('completed');
+                }
+            });
+            
+            // Update navigation buttons
+            const prevBtn = document.querySelector('.btn-prev');
+            const nextBtn = document.querySelector('.btn-next');
+            
+            if (prevBtn) {
+                prevBtn.disabled = currentStep === 1;
+            }
+            
+            if (nextBtn) {
+                if (currentStep === totalSteps) {
+                    nextBtn.textContent = 'Complete Module';
+                    nextBtn.disabled = true;
+                } else {
+                    nextBtn.textContent = 'Next →';
+                    nextBtn.disabled = false;
+                }
+            }
+        }
+
+        function updateProgressBar() {
+            const progress = ((currentStep - 1) / (totalSteps - 1)) * 100;
+            const progressBar = document.getElementById('progressBar');
+            if (progressBar) {
+                progressBar.style.width = `${progress}%`;
+            }
+        }
+
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // Quiz functionality
         function checkQuiz() {
             const answers = {
                 q1: 'b', // Chain-of-thought for complex calculations
