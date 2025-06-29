@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introduction to LLM and Generative AI for Energy Professionals</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #6B7280;
+            background: #FFFFFF;
+        }
+
+        /* Navigation */
+        .nav {
+            background: #FFFFFF;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(229, 231, 235, 0.3);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            color: #000000;
+            font-size: 1.25rem;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #6B7280;
+            font-size: 1rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            color: #000000;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #6B46C1 0%, #7C3AED 15%, #8B5CF6 30%, #EC4899 45%, #F97316 60%, #EAB308 75%, #22C55E 90%, #06B6D4 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 700;
+            line-height: 1.1;
+            color: #FFFFFF;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-subtitle {
+            font-size: 1.125rem;
+            font-weight: 400;
+            line-height: 1.6;
+            color: #FFFFFF;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* Course Stats */
+        .course-stats {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 1rem;
+            padding: 2rem;
+            margin: 2rem auto 0;
+            max-width: 600px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            text-align: center;
+        }
+
+        .stat-item {
+            color: #FFFFFF;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            opacity: 0.9;
+        }
+
+        /* Buttons */
+        .btn-primary {
+            background: #000000;
+            color: #FFFFFF;
+            border: none;
+            border-radius: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary:hover {
+            background: #1F2937;
+            transform: translateY(-1px);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: #FFFFFF;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.4);
+        }
+
+        /* Content Sections */
+        .content-section {
+            background: #FFFFFF;
+            padding: 4rem 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 700;
+            line-height: 1.2;
+            color: #000000;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-subtitle {
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            font-weight: 600;
+            line-height: 1.3;
+            color: #000000;
+            margin-bottom: 1rem;
+        }
+
+        /* Module Cards */
+        .module-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .module-card {
+            background: #FFFFFF;
+            border: 1px solid #E5E7EB;
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            transition: all 0.2s ease;
+            text-decoration: none;
+            display: block;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .module-card:hover {
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            transform: translateY(-4px);
+        }
+
+        .module-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(135deg, #F472B6 0%, #A855F7 50%, #3B82F6 100%);
+        }
+
+        .module-card h3 {
+            color: #000000;
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            line-height: 1.3;
+        }
+
+        .module-card p {
+            color: #6B7280;
+            font-size: 1rem;
+            line-height: 1.5;
+            margin-bottom: 1.5rem;
+        }
+
+        .module-number {
+            display: inline-block;
+            background: linear-gradient(135deg, #F472B6 0%, #A855F7 50%, #3B82F6 100%);
+            color: #FFFFFF;
+            font-size: 0.875rem;
+            font-weight: 600;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            margin-bottom: 1rem;
+        }
+
+        .module-duration {
+            display: inline-block;
+            background: #F3F4F6;
+            color: #6B7280;
+            font-size: 0.75rem;
+            font-weight: 500;
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.375rem;
+            margin-left: 0.5rem;
+        }
+
+        .module-features {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .module-features li {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.875rem;
+            color: #6B7280;
+            margin-bottom: 0.5rem;
+        }
+
+        .module-features li::before {
+            content: "✓";
+            color: #10B981;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        /* Features Section */
+        .features-section {
+            background: linear-gradient(135deg, #8B5A2B 0%, #D97706 25%, #F59E0B 50%, #EF4444 75%, #7C2D12 100%);
+            padding: 4rem 2rem;
+            position: relative;
+        }
+
+        .features-section h2 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 700;
+            line-height: 1.2;
+            color: #FFFFFF;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .features-section p {
+            font-size: 1.125rem;
+            font-weight: 400;
+            line-height: 1.6;
+            color: #FFFFFF;
+            opacity: 0.9;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 0.75rem;
+            border: 1px solid rgba(229, 231, 235, 0.3);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .feature-icon {
+            width: 3rem;
+            height: 3rem;
+            background: linear-gradient(135deg, #8B5CF6 0%, #EC4899 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 1.5rem;
+            color: #FFFFFF;
+        }
+
+        .feature-card h3 {
+            color: #000000;
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-card p {
+            color: #6B7280;
+            font-size: 1rem;
+            line-height: 1.5;
+            opacity: 1;
+        }
+
+        /* Course Overview Section */
+        .overview-section {
+            background: #F9FAFB;
+            padding: 4rem 2rem;
+        }
+
+        .overview-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .overview-card {
+            background: #FFFFFF;
+            border: 1px solid #E5E7EB;
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .overview-card h3 {
+            color: #000000;
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .overview-icon {
+            width: 2rem;
+            height: 2rem;
+            background: linear-gradient(135deg, #3B82F6 0%, #10B981 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            color: #FFFFFF;
+        }
+
+        .overview-card p {
+            color: #6B7280;
+            font-size: 1rem;
+            line-height: 1.5;
+            margin-bottom: 1rem;
+        }
+
+        .overview-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .overview-card li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+            font-size: 0.875rem;
+            color: #6B7280;
+        }
+
+        .overview-card li::before {
+            content: "•";
+            color: #3B82F6;
+            font-weight: bold;
+            flex-shrink: 0;
+            margin-top: 0.125rem;
+        }
+
+        /* Footer */
+        .footer {
+            background: #111827;
+            color: #9CA3AF;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .footer p {
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .footer-author {
+            color: #FFFFFF;
+            font-weight: 500;
+            font-size: 1.125rem;
+        }
+
+        .footer-note {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid #374151;
+            font-size: 0.875rem;
+            opacity: 0.8;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav {
+                padding: 1rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .hero {
+                padding: 1rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .course-stats {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .content-section {
+                padding: 2rem 1rem;
+            }
+            
+            .features-section {
+                padding: 2rem 1rem;
+            }
+            
+            .overview-section {
+                padding: 2rem 1rem;
+            }
+            
+            .module-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .overview-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <a href="#" class="nav-logo">LLM Training Course</a>
+        <ul class="nav-links">
+            <li><a href="#modules">Modules</a></li>
+            <li><a href="#about">About</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Introduction to LLM and Generative AI</h1>
+            <p class="hero-subtitle">
+                <strong>For Energy Sector Professionals</strong><br>
+                Master the fundamentals of Large Language Models and Generative AI with practical applications tailored specifically for energy professionals. Learn through real-world examples, interactive quizzes, and hands-on scenarios.
+            </p>
+            <div class="hero-buttons">
+                <a href="#modules" class="btn-primary">Start Learning</a>
+                <a href="#about" class="btn-secondary">Learn More</a>
+            </div>
+            
+            <div class="course-stats">
+                <div class="stat-item">
+                    <span class="stat-number">3.5</span>
+                    <span class="stat-label">Hours Total</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">5</span>
+                    <span class="stat-label">Interactive Modules</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">20</span>
+                    <span class="stat-label">Quiz Questions</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Course Overview -->
+    <section class="overview-section" id="about">
+        <div class="container">
+            <h2 class="section-title">Course Overview</h2>
+            
+            <div class="overview-grid">
+                <div class="overview-card">
+                    <h3><span class="overview-icon">🎯</span>Target Audience</h3>
+                    <p>Energy sector professionals including:</p>
+                    <ul>
+                        <li>Project developers and managers</li>
+                        <li>Asset managers and operators</li>
+                        <li>Engineers and technical analysts</li>
+                        <li>Business development professionals</li>
+                        <li>Executives and decision makers</li>
+                        <li>Regulatory and compliance specialists</li>
+                    </ul>
+                </div>
+
+                <div class="overview-card">
+                    <h3><span class="overview-icon">📚</span>Learning Approach</h3>
+                    <p>Comprehensive, practical education featuring:</p>
+                    <ul>
+                        <li>Real-world energy sector examples</li>
+                        <li>Interactive quizzes with detailed feedback</li>
+                        <li>Hands-on scenarios and case studies</li>
+                        <li>Step-by-step practical guidance</li>
+                        <li>Best practices and ethical considerations</li>
+                        <li>Self-paced learning with progress tracking</li>
+                    </ul>
+                </div>
+
+                <div class="overview-card">
+                    <h3><span class="overview-icon">🚀</span>Course Objectives</h3>
+                    <p>By completion, you will be able to:</p>
+                    <ul>
+                        <li>Understand AI, ML, and Generative AI fundamentals</li>
+                        <li>Effectively use LLM tools in daily work</li>
+                        <li>Apply prompt engineering techniques</li>
+                        <li>Navigate ethical and security considerations</li>
+                        <li>Implement AI solutions responsibly</li>
+                        <li>Stay current with evolving AI capabilities</li>
+                    </ul>
+                </div>
+
+                <div class="overview-card">
+                    <h3><span class="overview-icon">⏱️</span>Time Investment</h3>
+                    <p>Structured for busy professionals:</p>
+                    <ul>
+                        <li>Total duration: 3.5 hours</li>
+                        <li>Average 42 minutes per module</li>
+                        <li>Self-paced learning format</li>
+                        <li>Can be completed over multiple sessions</li>
+                        <li>Interactive elements keep you engaged</li>
+                        <li>Immediate application to your work</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section">
+        <div class="container">
+            <h2>Why This Course Matters for Energy Professionals</h2>
+            <p>Discover how AI can transform your workflow, enhance decision-making, and drive innovation in the rapidly evolving energy sector.</p>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🧠</div>
+                    <h3>Practical Understanding</h3>
+                    <p>Learn AI concepts through real-world examples from wind farms, solar projects, grid operations, and energy trading scenarios.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Energy-Sector Focused</h3>
+                    <p>Every example, case study, and application is tailored specifically for energy professionals and industry challenges.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🚀</div>
+                    <h3>Immediate Application</h3>
+                    <p>Start using AI tools effectively in your daily work right away with practical prompts and proven techniques.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🛡️</div>
+                    <h3>Responsible AI Use</h3>
+                    <p>Learn critical security, privacy, and ethical considerations specific to energy infrastructure and operations.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>Interactive Learning</h3>
+                    <p>Engage with quizzes, scenarios, and hands-on exercises designed to reinforce key concepts and skills.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔄</div>
+                    <h3>Future-Ready Skills</h3>
+                    <p>Build foundational knowledge that will help you adapt as AI technology continues to evolve in the energy sector.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modules Section -->
+    <section class="content-section" id="modules">
+        <div class="container">
+            <h2 class="section-title">Course Modules</h2>
+            <p style="text-align: center; font-size: 1.125rem; margin-bottom: 2rem; max-width: 800px; margin-left: auto; margin-right: auto;">
+                Each module builds upon the previous one, taking you from AI fundamentals to advanced practical applications in energy sector workflows.
+            </p>
+            
+            <div class="module-grid">
+                <a href="module1.html" class="module-card">
+                    <span class="module-number">Module 1</span>
+                    <span class="module-duration">~42 min</span>
+                    <h3>AI, Machine Learning, and Generative AI Fundamentals</h3>
+                    <p>Build a solid foundation by understanding the relationships between AI, machine learning, and generative AI, with specific applications in energy sector operations.</p>
+                    <ul class="module-features">
+                        <li>Clear definitions and relationships between AI technologies</li>
+                        <li>Energy sector examples: predictive maintenance, grid optimization</li>
+                        <li>Real-world case studies from wind and solar operations</li>
+                        <li>Interactive 4-question knowledge check</li>
+                    </ul>
+                </a>
+                
+                <a href="module2.html" class="module-card">
+                    <span class="module-number">Module 2</span>
+                    <span class="module-duration">~42 min</span>
+                    <h3>Understanding Large Language Models (LLMs)</h3>
+                    <p>Dive deep into how LLMs work, what makes them "large," and their specific applications in energy sector documentation and analysis.</p>
+                    <ul class="module-features">
+                        <li>Technical concepts explained in accessible terms</li>
+                        <li>Energy applications: report generation, regulatory compliance</li>
+                        <li>Understanding tokens, parameters, and model capabilities</li>
+                        <li>Interactive 4-question knowledge check</li>
+                    </ul>
+                </a>
+                
+                <a href="module3.html" class="module-card">
+                    <span class="module-number">Module 3</span>
+                    <span class="module-duration">~42 min</span>
+                    <h3>Chatbots and AI Assistants in Daily Energy Work</h3>
+                    <p>Explore practical applications of AI chatbots for energy professionals, from project planning to stakeholder communication and technical analysis.</p>
+                    <ul class="module-features">
+                        <li>Comprehensive chatbot capabilities overview</li>
+                        <li>Energy-specific use cases and workflows</li>
+                        <li>Integration strategies for daily operations</li>
+                        <li>Interactive 4-question knowledge check</li>
+                    </ul>
+                </a>
+                
+                <a href="module4.html" class="module-card">
+                    <span class="module-number">Module 4</span>
+                    <span class="module-duration">~42 min</span>
+                    <h3>Mastering Prompt Engineering for Energy Applications</h3>
+                    <p>Learn the art and science of crafting effective prompts to get optimal results from AI tools, with energy sector examples and templates.</p>
+                    <ul class="module-features">
+                        <li>Proven prompt engineering techniques and frameworks</li>
+                        <li>Energy-specific prompt templates and examples</li>
+                        <li>Advanced strategies for complex technical queries</li>
+                        <li>Interactive 4-question knowledge check</li>
+                    </ul>
+                </a>
+                
+                <a href="module5.html" class="module-card">
+                    <span class="module-number">Module 5</span>
+                    <span class="module-duration">~42 min</span>
+                    <h3>Best Practices and Ethics in Energy AI Applications</h3>
+                    <p>Master responsible AI usage with critical security, privacy, and ethical considerations specific to energy infrastructure and operations.</p>
+                    <ul class="module-features">
+                        <li>Energy sector-specific ethical scenarios and solutions</li>
+                        <li>Critical data security guidelines for infrastructure</li>
+                        <li>Verification techniques and quality control methods</li>
+                        <li>Interactive 4-question knowledge check</li>
+                    </ul>
+                </a>
+            </div>
+
+            <div style="text-align: center; margin-top: 3rem; padding: 2rem; background: #F9FAFB; border-radius: 1rem;">
+                <h3 style="color: #000000; font-size: 1.25rem; font-weight: 600; margin-bottom: 1rem;">Ready to Transform Your Energy Career with AI?</h3>
+                <p style="font-size: 1rem; color: #6B7280; margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto;">
+                    Join thousands of energy professionals who are already leveraging AI to enhance their work, make better decisions, and drive innovation in the energy transition.
+                </p>
+                <a href="module1.html" class="btn-primary" style="font-size: 1.125rem; padding: 1rem 2rem;">
+                    Start Module 1 Now →
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>Thank you for participating in this comprehensive LLM and Generative AI training course!</p>
+            <p>We hope you feel confident in understanding and utilizing AI technologies to enhance your daily work in the energy sector.</p>
+            <p class="footer-author">Course Author: Phong Han</p>
+            
+            <div class="footer-note">
+                <p>This course represents the current state of AI technology and best practices as of 2024. The AI landscape evolves rapidly, so we encourage continued learning and staying updated with the latest developments in the field.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

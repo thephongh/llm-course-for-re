@@ -1,0 +1,1327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module 5: Best Practices and Ethics in Energy AI Applications</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #6B7280;
+            background: #FFFFFF;
+        }
+
+        /* Navigation */
+        .nav {
+            background: #FFFFFF;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(229, 231, 235, 0.3);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            color: #000000;
+            font-size: 1.25rem;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #6B7280;
+            font-size: 1rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            color: #000000;
+        }
+
+        .nav-links .active {
+            color: #000000;
+            border: 2px solid #000000;
+            border-radius: 0.5rem;
+            padding: 0.5rem 1rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #6B46C1 0%, #7C3AED 15%, #8B5CF6 30%, #EC4899 45%, #F97316 60%, #EAB308 75%, #22C55E 90%, #06B6D4 100%);
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 700;
+            line-height: 1.1;
+            color: #FFFFFF;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-subtitle {
+            font-size: 1.125rem;
+            font-weight: 400;
+            line-height: 1.6;
+            color: #FFFFFF;
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+
+        .learning-objectives {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 1rem;
+            padding: 2rem;
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        .learning-objectives h3 {
+            color: #FFFFFF;
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .learning-objectives ul {
+            list-style: none;
+            color: #FFFFFF;
+        }
+
+        .learning-objectives li {
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .learning-objectives li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #22C55E;
+            font-weight: bold;
+        }
+
+        /* Content Sections */
+        .content-section {
+            background: #FFFFFF;
+            padding: 4rem 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            font-weight: 600;
+            line-height: 1.3;
+            color: #000000;
+            margin-bottom: 1.5rem;
+        }
+
+        .content p {
+            font-size: 1.125rem;
+            font-weight: 400;
+            line-height: 1.6;
+            color: #6B7280;
+            margin-bottom: 1.5rem;
+        }
+
+        .content ul, .content ol {
+            margin-bottom: 2rem;
+            padding-left: 1.5rem;
+        }
+
+        .content li {
+            font-size: 1.125rem;
+            line-height: 1.6;
+            color: #6B7280;
+            margin-bottom: 0.75rem;
+        }
+
+        .content strong {
+            color: #000000;
+            font-weight: 600;
+        }
+
+        .content em {
+            color: #8B5CF6;
+            font-style: normal;
+            font-weight: 500;
+        }
+
+        /* Image Container */
+        .image-container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 0.75rem;
+            border: 1px solid rgba(229, 231, 235, 0.3);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            margin: 3rem 0;
+            text-align: center;
+        }
+
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .image-container figcaption {
+            font-size: 0.875rem;
+            color: #6B7280;
+            font-style: italic;
+            line-height: 1.5;
+        }
+
+        /* Ethics Section */
+        .ethics-section {
+            background: linear-gradient(135deg, #1E40AF 0%, #3B82F6 25%, #06B6D4 50%, #10B981 75%, #059669 100%);
+            padding: 4rem 2rem;
+            position: relative;
+        }
+
+        .ethics-section h2 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 700;
+            line-height: 1.2;
+            color: #FFFFFF;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .ethics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .ethics-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 0.75rem;
+            border: 1px solid rgba(229, 231, 235, 0.3);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+        }
+
+        .ethics-card h3 {
+            color: #000000;
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .ethics-icon {
+            width: 2rem;
+            height: 2rem;
+            background: linear-gradient(135deg, #3B82F6 0%, #10B981 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            color: #FFFFFF;
+        }
+
+        .ethics-card p {
+            color: #6B7280;
+            font-size: 1rem;
+            line-height: 1.5;
+            margin-bottom: 1rem;
+        }
+
+        .ethics-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .ethics-card li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+            font-size: 1rem;
+            line-height: 1.5;
+            color: #6B7280;
+        }
+
+        .ethics-card li::before {
+            content: "•";
+            color: #3B82F6;
+            font-weight: bold;
+            flex-shrink: 0;
+            margin-top: 0.125rem;
+        }
+
+        /* Security Warning */
+        .security-warning {
+            background: linear-gradient(135deg, #DC2626 0%, #EF4444 100%);
+            border-radius: 1rem;
+            padding: 2rem;
+            margin: 3rem 0;
+            text-align: center;
+        }
+
+        .security-warning h3 {
+            color: #FFFFFF;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .security-warning p {
+            color: #FFFFFF;
+            font-size: 1.125rem;
+            font-weight: 500;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* Best Practices Cards */
+        .practices-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .practice-card {
+            background: #FFFFFF;
+            border: 1px solid #E5E7EB;
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            transition: all 0.2s ease;
+        }
+
+        .practice-card:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .practice-card h3 {
+            color: #000000;
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .practice-icon {
+            width: 2rem;
+            height: 2rem;
+            background: linear-gradient(135deg, #F59E0B 0%, #EF4444 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            color: #FFFFFF;
+        }
+
+        /* Energy Scenarios Section */
+        .scenarios-section {
+            background: #F9FAFB;
+            padding: 4rem 2rem;
+            margin: 3rem 0;
+            border-radius: 1rem;
+        }
+
+        .scenario-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .scenario-card {
+            background: #FFFFFF;
+            border: 1px solid #E5E7EB;
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .scenario-card h4 {
+            color: #000000;
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .scenario-icon {
+            width: 2rem;
+            height: 2rem;
+            background: linear-gradient(135deg, #8B5CF6 0%, #EC4899 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            color: #FFFFFF;
+        }
+
+        .scenario-situation {
+            background: #FEF3C7;
+            border-left: 4px solid #F59E0B;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 0.375rem;
+            font-size: 0.875rem;
+            color: #92400E;
+        }
+
+        .scenario-analysis {
+            background: #DBEAFE;
+            border-left: 4px solid #3B82F6;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 0.375rem;
+            font-size: 0.875rem;
+            color: #1E40AF;
+        }
+
+        .scenario-action {
+            background: #D1FAE5;
+            border-left: 4px solid #10B981;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 0.375rem;
+            font-size: 0.875rem;
+            color: #065F46;
+        }
+
+        /* Future Outlook Section */
+        .future-section {
+            background: #F9FAFB;
+            padding: 4rem 2rem;
+            margin: 4rem 0;
+            border-radius: 1rem;
+        }
+
+        .future-section h2 {
+            color: #000000;
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .future-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .future-content p {
+            font-size: 1.125rem;
+            line-height: 1.6;
+            color: #6B7280;
+            margin-bottom: 1.5rem;
+        }
+
+        .future-highlight {
+            background: linear-gradient(135deg, #8B5CF6 0%, #EC4899 100%);
+            color: #FFFFFF;
+            padding: 2rem;
+            border-radius: 1rem;
+            margin: 2rem 0;
+        }
+
+        .future-highlight p {
+            color: #FFFFFF;
+            font-size: 1.25rem;
+            font-weight: 500;
+            margin: 0;
+        }
+
+        /* Quiz Section */
+        .quiz-section {
+            background: #F9FAFB;
+            padding: 4rem 2rem;
+            margin: 3rem 0;
+            border-radius: 1rem;
+        }
+
+        .quiz-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .quiz-question {
+            background: #FFFFFF;
+            border: 1px solid #E5E7EB;
+            border-radius: 1rem;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .quiz-question h4 {
+            color: #000000;
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .quiz-options {
+            list-style: none;
+        }
+
+        .quiz-options li {
+            margin-bottom: 1rem;
+        }
+
+        .quiz-options label {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem;
+            border: 2px solid #E5E7EB;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 1rem;
+            color: #374151;
+        }
+
+        .quiz-options label:hover {
+            border-color: #8B5CF6;
+            background: #F3F4F6;
+        }
+
+        .quiz-options input[type="radio"] {
+            width: 1.25rem;
+            height: 1.25rem;
+            accent-color: #8B5CF6;
+        }
+
+        .quiz-submit {
+            background: #8B5CF6;
+            color: #FFFFFF;
+            border: none;
+            border-radius: 0.5rem;
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            margin-top: 2rem;
+        }
+
+        .quiz-submit:hover {
+            background: #7C3AED;
+            transform: translateY(-1px);
+        }
+
+        .quiz-result {
+            margin-top: 1rem;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            font-weight: 500;
+            display: none;
+        }
+
+        .quiz-result.correct {
+            background: #D1FAE5;
+            color: #065F46;
+            border: 1px solid #10B981;
+        }
+
+        .quiz-result.incorrect {
+            background: #FEE2E2;
+            color: #991B1B;
+            border: 1px solid #EF4444;
+        }
+
+        .quiz-score {
+            background: #FFFFFF;
+            border: 2px solid #8B5CF6;
+            border-radius: 1rem;
+            padding: 2rem;
+            text-align: center;
+            margin-top: 2rem;
+            display: none;
+        }
+
+        .quiz-score h3 {
+            color: #8B5CF6;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .score-display {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #000000;
+            margin-bottom: 1rem;
+        }
+
+        /* Navigation Buttons */
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid #E5E7EB;
+        }
+
+        .btn-back {
+            background: transparent;
+            color: #6B7280;
+            border: 1px solid #E5E7EB;
+            border-radius: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-back:hover {
+            border-color: #9CA3AF;
+            color: #374151;
+        }
+
+        .btn-home {
+            background: #000000;
+            color: #FFFFFF;
+            border: none;
+            border-radius: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-home:hover {
+            background: #1F2937;
+            transform: translateY(-1px);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav {
+                padding: 1rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .hero {
+                padding: 2rem 1rem;
+            }
+            
+            .content-section {
+                padding: 2rem 1rem;
+            }
+            
+            .ethics-section {
+                padding: 2rem 1rem;
+            }
+            
+            .future-section {
+                padding: 2rem 1rem;
+            }
+            
+            .ethics-grid,
+            .practices-grid,
+            .scenario-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-buttons {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .scenario-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .scenario-card {
+                min-width: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <a href="index.html" class="nav-logo">LLM Training Course</a>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="module4.html">Module 4</a></li>
+            <li><a href="#" class="active">Module 5</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Module 5</h1>
+            <p class="hero-subtitle">Best Practices and Ethics in Energy AI Applications: Responsible Innovation for Critical Infrastructure</p>
+            
+            <div class="learning-objectives">
+                <h3>Learning Objectives</h3>
+                <ul>
+                    <li>Understand ethical considerations specific to AI use in energy infrastructure</li>
+                    <li>Master data security and privacy best practices for energy professionals</li>
+                    <li>Learn to verify AI outputs and maintain professional judgment</li>
+                    <li>Apply responsible AI principles to real energy sector scenarios</li>
+                    <li>Develop strategies for staying current with evolving AI capabilities and regulations</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Content Section -->
+    <section class="content-section">
+        <div class="container">
+            <div class="content">
+                <p>As AI becomes increasingly integrated into energy sector operations, the stakes for responsible usage have never been higher. <strong>Energy infrastructure is critical to society</strong> - decisions made using AI tools can impact millions of people, billions of dollars in investments, and the stability of our power systems. This module provides essential guidance for using AI responsibly in this high-stakes environment.</p>
+
+                <p><strong>The energy sector's unique challenges</strong> require special consideration when applying AI tools. Unlike other industries, energy professionals deal with safety-critical systems, regulatory compliance, environmental impact, and public trust. Every AI-assisted decision must be viewed through the lens of these responsibilities.</p>
+
+                <h2 class="section-title">5.1 Ethical Foundations for Energy AI Applications</h2>
+                
+                <p>Ethical AI use in the energy sector goes beyond general principles - it requires understanding the unique responsibilities that come with managing critical infrastructure and public resources.</p>
+
+                <div class="practices-grid">
+                    <div class="practice-card">
+                        <h3><span class="practice-icon">⚖️</span>Bias Awareness in Energy Decisions</h3>
+                        <p>AI models can reflect biases from their training data, which can have serious implications in energy planning and operations.</p>
+                        <ul>
+                            <li><strong>Geographic bias:</strong> AI might favor solutions common in certain regions over others</li>
+                            <li><strong>Technology bias:</strong> Overemphasis on popular technologies vs. emerging solutions</li>
+                            <li><strong>Economic bias:</strong> Assumptions about cost structures that don't apply universally</li>
+                            <li><strong>Mitigation:</strong> Always cross-reference AI recommendations with local conditions, diverse sources, and professional expertise</li>
+                        </ul>
+                    </div>
+
+                    <div class="practice-card">
+                        <h3><span class="practice-icon">🤝</span>Equity and Environmental Justice</h3>
+                        <p>Energy decisions significantly impact communities, particularly disadvantaged populations. AI-assisted planning must consider equity implications.</p>
+                        <ul>
+                            <li><strong>Community impact assessment:</strong> Consider how AI recommendations affect different communities</li>
+                            <li><strong>Access and affordability:</strong> Ensure AI-driven solutions don't exacerbate energy inequality</li>
+                            <li><strong>Environmental justice:</strong> Avoid concentrating negative impacts in vulnerable communities</li>
+                            <li><strong>Stakeholder engagement:</strong> Use AI to enhance, not replace, community consultation processes</li>
+                        </ul>
+                    </div>
+
+                    <div class="practice-card">
+                        <h3><span class="practice-icon">👁️</span>Transparency in Critical Decisions</h3>
+                        <p>Energy sector decisions often require public accountability and regulatory approval. Transparency about AI usage is essential.</p>
+                        <ul>
+                            <li><strong>Document AI assistance:</strong> Record when and how AI tools were used in analysis</li>
+                            <li><strong>Explain limitations:</strong> Be clear about what AI can and cannot determine</li>
+                            <li><strong>Maintain audit trails:</strong> Keep records of AI inputs and outputs for regulatory review</li>
+                            <li><strong>Public communication:</strong> Explain AI's role in public-facing decisions appropriately</li>
+                        </ul>
+                    </div>
+
+                    <div class="practice-card">
+                        <h3><span class="practice-icon">🛡️</span>Safety-First Approach</h3>
+                        <p>In energy systems, safety is paramount. AI recommendations must always be evaluated through a safety lens.</p>
+                        <ul>
+                            <li><strong>Safety verification:</strong> Never rely solely on AI for safety-critical decisions</li>
+                            <li><strong>Conservative approach:</strong> When in doubt, choose the safer option over AI optimization</li>
+                            <li><strong>Human oversight:</strong> Maintain qualified human review for all safety-related AI outputs</li>
+                            <li><strong>Fail-safe design:</strong> Ensure AI-assisted systems have appropriate backup procedures</li>
+                        </ul>
+                    </div>
+
+                    <div class="practice-card">
+                        <h3><span class="practice-icon">🌍</span>Environmental Responsibility</h3>
+                        <p>AI recommendations must align with environmental goals and sustainability commitments.</p>
+                        <ul>
+                            <li><strong>Lifecycle thinking:</strong> Consider full environmental impact, not just immediate efficiency</li>
+                            <li><strong>Climate alignment:</strong> Ensure AI recommendations support decarbonization goals</li>
+                            <li><strong>Resource efficiency:</strong> Optimize for sustainable resource use, not just cost</li>
+                            <li><strong>Long-term perspective:</strong> Balance short-term AI optimizations with long-term sustainability</li>
+                        </ul>
+                    </div>
+
+                    <div class="practice-card">
+                        <h3><span class="practice-icon">📋</span>Regulatory Compliance</h3>
+                        <p>Energy sector operations are heavily regulated. AI usage must comply with all applicable regulations and standards.</p>
+                        <ul>
+                            <li><strong>Regulatory awareness:</strong> Understand how AI use affects compliance obligations</li>
+                            <li><strong>Documentation requirements:</strong> Maintain records that satisfy regulatory standards</li>
+                            <li><strong>Professional standards:</strong> Ensure AI use aligns with engineering and professional codes</li>
+                            <li><strong>Emerging regulations:</strong> Stay informed about evolving AI governance requirements</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h2 class="section-title">5.2 Data Security and Privacy: Critical Considerations for Energy Professionals</h2>
+                
+                <div class="security-warning">
+                    <h3>🔒 CRITICAL SECURITY ALERT</h3>
+                    <p><strong>NEVER input sensitive energy infrastructure data into public AI systems.</strong> This includes grid topology, security protocols, operational parameters, customer data, financial information, or any data that could compromise energy security if exposed.</p>
+                </div>
+
+                <p><strong>Why energy data security is uniquely critical:</strong></p>
+                <ul>
+                    <li><strong>National Security:</strong> Energy infrastructure data can be used to plan attacks on critical systems</li>
+                    <li><strong>Competitive Intelligence:</strong> Operational data reveals strategic advantages and vulnerabilities</li>
+                    <li><strong>Customer Privacy:</strong> Energy usage data reveals intimate details about personal and business activities</li>
+                    <li><strong>Regulatory Compliance:</strong> Many jurisdictions have strict requirements for energy data protection</li>
+                    <li><strong>Market Manipulation:</strong> Operational data could be used for illegal trading or market manipulation</li>
+                </ul>
+
+                <h3 style="color: #000000; font-size: 1.25rem; margin: 2rem 0 1rem 0;">Energy-Specific Data Security Guidelines:</h3>
+                <ul>
+                    <li><strong>Grid Operations Data:</strong> Never share load forecasts, generation schedules, or transmission constraints</li>
+                    <li><strong>Customer Information:</strong> Protect all customer usage data, billing information, and service records</li>
+                    <li><strong>Infrastructure Details:</strong> Keep equipment specifications, maintenance records, and vulnerability assessments confidential</li>
+                    <li><strong>Financial Data:</strong> Protect trading positions, contract terms, and financial performance metrics</li>
+                    <li><strong>Security Protocols:</strong> Never discuss cybersecurity measures, access controls, or incident response procedures</li>
+                    <li><strong>Regulatory Filings:</strong> Treat draft regulatory submissions and compliance data as confidential</li>
+                </ul>
+
+                <h3 style="color: #000000; font-size: 1.25rem; margin: 2rem 0 1rem 0;">Safe Alternatives for AI Assistance:</h3>
+                <ul>
+                    <li><strong>Use anonymized examples:</strong> Create hypothetical scenarios based on public information</li>
+                    <li><strong>Leverage public data:</strong> Use publicly available industry benchmarks and standards</li>
+                    <li><strong>Enterprise AI solutions:</strong> Invest in secure, enterprise-grade AI tools with proper data protection</li>
+                    <li><strong>Offline AI tools:</strong> Use AI models that run locally without internet connectivity</li>
+                    <li><strong>Vendor partnerships:</strong> Work with trusted vendors who provide secure AI services</li>
+                </ul>
+
+                <div class="image-container">
+                    <figure>
+                        <img src="cursor-website-clone/public/media/data_privacy_security.png" alt="Data privacy and security illustration">
+                        <figcaption>Figure 5.1: Data security layers for energy sector AI applications. Multiple protection measures are essential when dealing with critical infrastructure data.</figcaption>
+                    </figure>
+                </div>
+
+                <h2 class="section-title">5.3 Verification and Quality Control: Maintaining Professional Standards</h2>
+                
+                <p>AI outputs are only as good as the verification processes you apply. In the energy sector, where accuracy can mean the difference between system reliability and failure, robust verification is non-negotiable.</p>
+
+                <h3 style="color: #000000; font-size: 1.25rem; margin: 2rem 0 1rem 0;">Essential Verification Techniques:</h3>
+                <ul>
+                    <li><strong>Cross-Reference Multiple Sources:</strong> Never rely on AI alone - verify against industry standards, regulations, and peer-reviewed sources</li>
+                    <li><strong>Sanity Check Calculations:</strong> Use basic engineering principles to verify AI-generated calculations and recommendations</li>
+                    <li><strong>Peer Review:</strong> Have qualified colleagues review AI-assisted work, especially for critical decisions</li>
+                    <li><strong>Regulatory Compliance Check:</strong> Ensure AI recommendations align with applicable codes, standards, and regulations</li>
+                    <li><strong>Historical Validation:</strong> Compare AI outputs with historical data and known benchmarks</li>
+                    <li><strong>Expert Consultation:</strong> Consult subject matter experts when AI provides recommendations outside your expertise</li>
+                </ul>
+
+                <h3 style="color: #000000; font-size: 1.25rem; margin: 2rem 0 1rem 0;">Red Flags That Require Extra Scrutiny:</h3>
+                <ul>
+                    <li><strong>Unusually optimistic projections:</strong> Be skeptical of AI outputs that seem too good to be true</li>
+                    <li><strong>Recommendations that contradict established practice:</strong> Investigate thoroughly before accepting novel approaches</li>
+                    <li><strong>Missing safety considerations:</strong> AI may not always prioritize safety in its recommendations</li>
+                    <li><strong>Incomplete cost analysis:</strong> Verify that all relevant costs and risks are included</li>
+                    <li><strong>Regulatory gaps:</strong> Check if AI recommendations consider all applicable regulations</li>
+                    <li><strong>Environmental oversights:</strong> Ensure environmental impacts are properly assessed</li>
+                </ul>
+
+                <h3 style="color: #000000; font-size: 1.25rem; margin: 2rem 0 1rem 0;">Documentation Best Practices:</h3>
+                <ul>
+                    <li><strong>Record AI tool used:</strong> Document which AI system provided the information</li>
+                    <li><strong>Save original prompts:</strong> Keep records of exactly what you asked the AI</li>
+                    <li><strong>Document verification steps:</strong> Record how you validated the AI output</li>
+                    <li><strong>Note limitations:</strong> Clearly state what the AI analysis does and doesn't cover</li>
+                    <li><strong>Professional judgment:</strong> Document your professional assessment of the AI recommendations</li>
+                    <li><strong>Version control:</strong> Track changes and updates to AI-assisted work</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Real-World Scenarios Section -->
+    <div class="scenarios-section">
+        <div class="container">
+            <h2 class="section-title">5.4 Real-World Ethical Scenarios in Energy AI Applications</h2>
+            <p>These scenarios illustrate common ethical dilemmas energy professionals face when using AI tools. Consider how you would handle each situation:</p>
+
+            <div class="scenario-grid">
+                <div class="scenario-card">
+                    <h4><span class="scenario-icon">⚡</span>Grid Optimization Dilemma</h4>
+                    
+                    <div class="scenario-situation">
+                        <strong>Situation:</strong> Your AI analysis suggests optimal grid operations that would reduce costs by $2M annually but would disproportionately impact low-income neighborhoods with more frequent brief outages during peak demand periods.
+                    </div>
+                    
+                    <div class="scenario-analysis">
+                        <strong>Ethical Considerations:</strong>
+                        • Economic efficiency vs. social equity
+                        • Utility shareholder interests vs. customer welfare
+                        • Short-term savings vs. long-term community trust
+                        • Regulatory compliance vs. moral responsibility
+                    </div>
+                    
+                    <div class="scenario-action">
+                        <strong>Recommended Approach:</strong>
+                        1. Engage affected communities in the decision-making process
+                        2. Explore alternative solutions that balance efficiency and equity
+                        3. Consider compensatory measures for affected neighborhoods
+                        4. Document the full social impact analysis alongside economic benefits
+                        5. Present multiple options to decision-makers with clear trade-offs
+                    </div>
+                </div>
+
+                <div class="scenario-card">
+                    <h4><span class="scenario-icon">🏭</span>Industrial Customer Data Privacy</h4>
+                    
+                    <div class="scenario-situation">
+                        <strong>Situation:</strong> You want to use AI to analyze industrial customer energy usage patterns to improve grid planning. The analysis would provide valuable insights but requires detailed customer consumption data that could reveal proprietary manufacturing processes.
+                    </div>
+                    
+                    <div class="scenario-analysis">
+                        <strong>Ethical Considerations:</strong>
+                        • Customer privacy vs. system optimization
+                        • Competitive intelligence protection
+                        • Consent and transparency requirements
+                        • Potential for data misuse or breaches
+                    </div>
+                    
+                    <div class="scenario-action">
+                        <strong>Recommended Approach:</strong>
+                        1. Obtain explicit customer consent for data use
+                        2. Use data anonymization and aggregation techniques
+                        3. Implement strict access controls and audit trails
+                        4. Consider using synthetic data for AI training
+                        5. Establish clear data governance policies and customer agreements
+                    </div>
+                </div>
+
+                <div class="scenario-card">
+                    <h4><span class="scenario-icon">🌱</span>Renewable Energy Siting Bias</h4>
+                    
+                    <div class="scenario-situation">
+                        <strong>Situation:</strong> Your AI-powered site selection tool consistently recommends renewable energy projects in rural, low-income areas while avoiding wealthier suburban locations, even when technical conditions are similar.
+                    </div>
+                    
+                    <div class="scenario-analysis">
+                        <strong>Ethical Considerations:</strong>
+                        • Environmental justice and fair distribution of impacts
+                        • AI bias reflecting historical patterns of inequality
+                        • Community consent and benefit-sharing
+                        • Long-term social sustainability of energy transition
+                    </div>
+                    
+                    <div class="scenario-action">
+                        <strong>Recommended Approach:</strong>
+                        1. Audit AI algorithms for bias in site selection criteria
+                        2. Include social equity factors in the optimization model
+                        3. Engage all affected communities equally in planning processes
+                        4. Develop benefit-sharing mechanisms for host communities
+                        5. Consider distributed generation options to spread benefits more equitably
+                    </div>
+                </div>
+
+                <div class="scenario-card">
+                    <h4><span class="scenario-icon">🔒</span>Cybersecurity vs. Transparency</h4>
+                    
+                    <div class="scenario-situation">
+                        <strong>Situation:</strong> Regulators request detailed information about your AI-assisted grid security measures for a public proceeding, but sharing this information could expose vulnerabilities that bad actors might exploit.
+                    </div>
+                    
+                    <div class="scenario-analysis">
+                        <strong>Ethical Considerations:</strong>
+                        • Public transparency vs. security protection
+                        • Regulatory compliance vs. operational security
+                        • Stakeholder trust vs. vulnerability exposure
+                        • Democratic oversight vs. critical infrastructure protection
+                    </div>
+                    
+                    <div class="scenario-action">
+                        <strong>Recommended Approach:</strong>
+                        1. Work with regulators to determine minimum necessary disclosure
+                        2. Provide information in protected, confidential settings when possible
+                        3. Focus on outcomes and effectiveness rather than specific methods
+                        4. Develop public summaries that inform without exposing vulnerabilities
+                        5. Establish clear protocols for handling sensitive security information
+                    </div>
+                </div>
+
+                <div class="scenario-card">
+                    <h4><span class="scenario-icon">💰</span>AI-Driven Market Manipulation Risk</h4>
+                    
+                    <div class="scenario-situation">
+                        <strong>Situation:</strong> Your AI trading algorithm identifies patterns that could be exploited for significant profit in energy markets, but using this information might constitute market manipulation or provide unfair advantages over smaller market participants.
+                    </div>
+                    
+                    <div class="scenario-analysis">
+                        <strong>Ethical Considerations:</strong>
+                        • Legal compliance vs. competitive advantage
+                        • Market fairness vs. shareholder returns
+                        • Information asymmetry and market integrity
+                        • Systemic risk from widespread AI adoption
+                    </div>
+                    
+                    <div class="scenario-action">
+                        <strong>Recommended Approach:</strong>
+                        1. Consult legal and compliance teams before implementation
+                        2. Review all applicable market rules and regulations
+                        3. Consider the broader impact on market fairness and stability
+                        4. Implement appropriate risk management and oversight controls
+                        5. Engage with regulators proactively about AI use in trading
+                    </div>
+                </div>
+
+                <div class="scenario-card">
+                    <h4><span class="scenario-icon">🏠</span>Smart Meter Data Analytics</h4>
+                    
+                    <div class="scenario-situation">
+                        <strong>Situation:</strong> AI analysis of smart meter data reveals that certain customers are likely growing marijuana (based on unusual electricity usage patterns). You're unsure whether to report this to authorities or ignore the findings.
+                    </div>
+                    
+                    <div class="scenario-analysis">
+                        <strong>Ethical Considerations:</strong>
+                        • Customer privacy vs. legal obligations
+                        • Purpose limitation for data collection
+                        • Law enforcement cooperation vs. customer trust
+                        • Potential for false positives and wrongful accusations
+                    </div>
+                    
+                    <div class="scenario-action">
+                        <strong>Recommended Approach:</strong>
+                        1. Review your company's data use policies and legal obligations
+                        2. Consult with legal counsel about reporting requirements
+                        3. Consider the accuracy and reliability of AI inferences
+                        4. Focus on legitimate utility purposes for data analysis
+                        5. Implement safeguards to prevent misuse of customer data insights
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Future Outlook Section -->
+    <div class="future-section">
+        <div class="container">
+            <div class="future-content">
+                <h2>5.5 Staying Current: The Evolving Landscape of AI in Energy</h2>
+                
+                <p>The AI landscape is evolving rapidly, with new capabilities, regulations, and best practices emerging constantly. Energy professionals must stay informed to use these tools responsibly and effectively.</p>
+
+                <h3 style="color: #000000; font-size: 1.25rem; margin: 2rem 0 1rem 0;">Key Areas to Monitor:</h3>
+                <ul>
+                    <li><strong>Regulatory Developments:</strong> AI governance frameworks, data protection laws, and sector-specific regulations</li>
+                    <li><strong>Technology Advances:</strong> New AI capabilities, improved accuracy, and specialized energy applications</li>
+                    <li><strong>Industry Standards:</strong> Professional guidelines, best practices, and certification programs</li>
+                    <li><strong>Security Threats:</strong> Emerging cybersecurity risks and protection strategies</li>
+                    <li><strong>Ethical Guidelines:</strong> Evolving principles for responsible AI use in critical infrastructure</li>
+                </ul>
+
+                <h3 style="color: #000000; font-size: 1.25rem; margin: 2rem 0 1rem 0;">Recommended Resources:</h3>
+                <ul>
+                    <li><strong>Professional Organizations:</strong> IEEE, ASME, and other engineering societies' AI guidance</li>
+                    <li><strong>Regulatory Bodies:</strong> FERC, NERC, EPA, and state utility commission publications</li>
+                    <li><strong>Industry Associations:</strong> EEI, APPA, NRECA, and renewable energy trade groups</li>
+                    <li><strong>Academic Research:</strong> University energy programs and peer-reviewed journals</li>
+                    <li><strong>Technology Vendors:</strong> Responsible AI initiatives from major technology companies</li>
+                </ul>
+
+                <div class="future-highlight">
+                    <p><strong>The Future of Energy AI:</strong> As AI becomes more sophisticated and ubiquitous in energy systems, the professionals who understand both the technology's potential and its limitations will be best positioned to drive responsible innovation. Your commitment to ethical AI use today shapes the energy sector's digital future.</p>
+                </div>
+
+                <h3 style="color: #000000; font-size: 1.25rem; margin: 2rem 0 1rem 0;">Building Your AI Ethics Framework:</h3>
+                <ul>
+                    <li><strong>Personal Guidelines:</strong> Develop your own ethical framework for AI use in your role</li>
+                    <li><strong>Team Standards:</strong> Work with colleagues to establish consistent practices</li>
+                    <li><strong>Organizational Policies:</strong> Advocate for comprehensive AI governance in your organization</li>
+                    <li><strong>Industry Leadership:</strong> Contribute to industry-wide discussions about responsible AI use</li>
+                    <li><strong>Continuous Learning:</strong> Commit to ongoing education about AI ethics and best practices</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quiz Section -->
+    <section class="quiz-section">
+        <div class="container">
+            <div class="quiz-container">
+                <h2 class="section-title">Module 5 Knowledge Check</h2>
+                <p>Test your understanding of AI ethics and best practices in energy applications:</p>
+
+                <div class="quiz-question">
+                    <h4>Question 1: You're analyzing grid optimization options using AI. The AI recommends a solution that saves money but disproportionately impacts low-income neighborhoods. What should be your FIRST step?</h4>
+                    <ul class="quiz-options">
+                        <li>
+                            <label>
+                                <input type="radio" name="q1" value="a">
+                                Implement the AI recommendation since it saves money
+                            </label>
+                        </li>
+                        <li>
+                            <label>
+                                <input type="radio" name="q1" value="b">
+                                Ignore the AI recommendation completely
+                            </label>
+                        </li>
+                        <li>
+                            <label>
+                                <input type="radio" name="q1" value="c">
+                                Engage affected communities and explore alternative solutions that balance efficiency and equity
+                            </label>
+                        </li>
+                        <li>
+                            <label>
+                                <input type="radio" name="q1" value="d">
+                                Ask the AI to provide a different recommendation
+                            </label>
+                        </li>
+                    </ul>
+                    <div class="quiz-result" id="result1"></div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>Question 2: Which type of energy sector data should NEVER be input into public AI systems?</h4>
+                    <ul class="quiz-options">
+                        <li>
+                            <label>
+                                <input type="radio" name="q2" value="a">
+                                Publicly available renewable energy statistics
+                            </label>
+                        </li>
+                        <li>
+                            <label>
+                                <input type="radio" name="q2" value="b">
+                                Grid topology, customer usage data, and security protocols
+                            </label>
+                        </li>
+                        <li>
+                            <label>
+                                <input type="radio" name="q2" value="c">
+                                General industry benchmarks and standards
+                            </label>
+                        </li>
+                        <li>
+                            <label>
+                                <input type="radio" name="q2" value="d">
+                                Published research on energy technologies
+                            </label>
+                        </li>
+                    </ul>
+                    <div class="quiz-result" id="result2"></div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>Question 3: When verifying AI-generated calculations for energy projects, what is the MOST important verification step?</h4>
+                    <ul class="quiz-options">
+                        <li>
+                            <label>
+                                <input type="radio" name="q3" value="a">
+                                Ask the AI to double-check its own work
+                            </label>
+                        </li>
+                        <li>
+                            <label>
+                                <input type="radio" name="q3" value="b">
+                                Cross-reference with industry standards, regulations, and peer-reviewed sources
+                            </label>
+                        </li>
+                        <li>
+                            <label>
+                                <input type="radio" name="q3" value="c">
+                                Accept the AI output if it looks reasonable
+                            </label>
+                        </li>
+                        <li>
+                            <label>
+                                <input type="radio" name="q3" value="d">
+                                Only verify if the numbers seem unusually high or low
+                            </label>
+                        </li>
+                    </ul>
+                    <div class="quiz-result" id="result3"></div>
+                </div>
+
+                <div class="quiz-question">
+                    <h4>Question 4: Your AI analysis of smart meter data reveals potential illegal activity by customers. What is the most appropriate ethical response?</h4>
+                    <ul class="quiz-options">
+                        <li>
+                            <label>
+                                <input type="radio" name="q4" value="a">
+                                Immediately report all findings to law enforcement
+                            </label>
+                        </li>
+                        <li>
+                            <label>
+                                <input type="radio" name="q4" value="b">
+                                Ignore the findings completely to protect customer privacy
+                            </label>
+                        </li>
+                        <li>
+                            <label>
+                                <input type="radio" name="q4" value="c">
+                                Review company policies, consult legal counsel, and consider data accuracy before taking action
+                            </label>
+                        </li>
+                        <li>
+                            <label>
+                                <input type="radio" name="q4" value="d">
+                                Use the information for internal security purposes only
+                            </label>
+                        </li>
+                    </ul>
+                    <div class="quiz-result" id="result4"></div>
+                </div>
+
+                <button class="quiz-submit" onclick="checkQuiz()">Submit Quiz</button>
+                
+                <div class="quiz-score" id="quizScore">
+                    <h3>Quiz Results</h3>
+                    <div class="score-display" id="scoreDisplay"></div>
+                    <p id="scoreMessage"></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Navigation -->
+    <section class="content-section">
+        <div class="container">
+            <div class="nav-buttons">
+                <a href="module4.html" class="btn-back">
+                    ← Previous: Prompt Engineering
+                </a>
+                <a href="index.html" class="btn-home">
+                    🏠 Course Home
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function checkQuiz() {
+            const answers = {
+                q1: 'c', // Engage communities and explore alternatives
+                q2: 'b', // Grid topology, customer data, security protocols should never be shared
+                q3: 'b', // Cross-reference with multiple sources is most important
+                q4: 'c'  // Review policies, consult legal counsel, consider accuracy
+            };
+
+            const explanations = {
+                q1: {
+                    correct: "Correct! When AI recommendations have equity implications, the first step should be engaging affected communities and exploring alternatives that balance efficiency with social equity. This demonstrates responsible AI use in critical infrastructure decisions.",
+                    incorrect: "Incorrect. When AI recommendations disproportionately impact vulnerable communities, the ethical approach is to engage those communities and explore alternatives that balance efficiency with equity, rather than simply implementing or ignoring the recommendation."
+                },
+                q2: {
+                    correct: "Correct! Grid topology, customer usage data, and security protocols are sensitive infrastructure information that should never be shared with public AI systems due to national security, privacy, and competitive intelligence concerns.",
+                    incorrect: "Incorrect. Sensitive energy infrastructure data including grid topology, customer usage data, and security protocols should never be input into public AI systems due to security, privacy, and competitive risks."
+                },
+                q3: {
+                    correct: "Correct! Cross-referencing AI outputs with industry standards, regulations, and peer-reviewed sources is the most important verification step, as it provides independent validation from authoritative sources.",
+                    incorrect: "Incorrect. The most important verification step is cross-referencing with industry standards, regulations, and peer-reviewed sources to provide independent validation from authoritative sources."
+                },
+                q4: {
+                    correct: "Correct! The ethical approach involves reviewing company policies, consulting legal counsel about obligations, and considering the accuracy of AI inferences before taking any action. This balances legal requirements with privacy protection.",
+                    incorrect: "Incorrect. The most ethical approach is to review company policies, consult legal counsel about reporting obligations, and carefully consider the accuracy and reliability of AI inferences before taking action."
+                }
+            };
+
+            let score = 0;
+            let totalQuestions = 4;
+
+            // Check each question
+            for (let i = 1; i <= totalQuestions; i++) {
+                const selectedAnswer = document.querySelector(`input[name="q${i}"]:checked`);
+                const resultDiv = document.getElementById(`result${i}`);
+                
+                if (selectedAnswer) {
+                    const isCorrect = selectedAnswer.value === answers[`q${i}`];
+                    if (isCorrect) {
+                        score++;
+                        resultDiv.className = 'quiz-result correct';
+                        resultDiv.textContent = explanations[`q${i}`].correct;
+                    } else {
+                        resultDiv.className = 'quiz-result incorrect';
+                        resultDiv.textContent = explanations[`q${i}`].incorrect;
+                    }
+                    resultDiv.style.display = 'block';
+                } else {
+                    const resultDiv = document.getElementById(`result${i}`);
+                    resultDiv.className = 'quiz-result incorrect';
+                    resultDiv.textContent = 'Please select an answer for this question.';
+                    resultDiv.style.display = 'block';
+                }
+            }
+
+            // Show overall score
+            const scoreDisplay = document.getElementById('scoreDisplay');
+            const scoreMessage = document.getElementById('scoreMessage');
+            const quizScore = document.getElementById('quizScore');
+
+            scoreDisplay.textContent = `${score}/${totalQuestions}`;
+            
+            if (score === totalQuestions) {
+                scoreMessage.textContent = "Outstanding! You have mastered the ethical principles and best practices for responsible AI use in energy applications. You're prepared to be a leader in ethical AI adoption in the energy sector.";
+            } else if (score >= totalQuestions * 0.75) {
+                scoreMessage.textContent = "Well done! You understand most key ethical principles. Review the areas you missed to strengthen your approach to responsible AI use in energy applications.";
+            } else if (score >= totalQuestions * 0.5) {
+                scoreMessage.textContent = "You're developing good awareness of AI ethics. Consider reviewing the module content, especially the sections on data security and verification practices.";
+            } else {
+                scoreMessage.textContent = "Please review the module content carefully, focusing on ethical principles, data security guidelines, and verification techniques for energy sector AI applications.";
+            }
+
+            quizScore.style.display = 'block';
+            
+            // Scroll to results
+            quizScore.scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module 2: Understanding Large Language Models (LLMs)</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #6B7280;
+            background: #FFFFFF;
+        }
+
+        /* Navigation */
+        .nav {
+            background: #FFFFFF;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(229, 231, 235, 0.3);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            color: #000000;
+            font-size: 1.25rem;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #6B7280;
+            font-size: 1rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            color: #000000;
+        }
+
+        .nav-links .active {
+            color: #000000;
+            border: 2px solid #000000;
+            border-radius: 0.5rem;
+            padding: 0.5rem 1rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #6B46C1 0%, #7C3AED 15%, #8B5CF6 30%, #EC4899 45%, #F97316 60%, #EAB308 75%, #22C55E 90%, #06B6D4 100%);
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 700;
+            line-height: 1.1;
+            color: #FFFFFF;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-subtitle {
+            font-size: 1.125rem;
+            font-weight: 400;
+            line-height: 1.6;
+            color: #FFFFFF;
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Content Sections */
+        .content-section {
+            background: #FFFFFF;
+            padding: 4rem 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            font-weight: 600;
+            line-height: 1.3;
+            color: #000000;
+            margin-bottom: 1.5rem;
+        }
+
+        .content p {
+            font-size: 1.125rem;
+            font-weight: 400;
+            line-height: 1.6;
+            color: #6B7280;
+            margin-bottom: 1.5rem;
+        }
+
+        .content ul {
+            margin-bottom: 2rem;
+            padding-left: 1.5rem;
+        }
+
+        .content ol {
+            margin-bottom: 2rem;
+            padding-left: 1.5rem;
+        }
+
+        .content li {
+            font-size: 1.125rem;
+            line-height: 1.6;
+            color: #6B7280;
+            margin-bottom: 0.75rem;
+        }
+
+        .content strong {
+            color: #000000;
+            font-weight: 600;
+        }
+
+        .content em {
+            color: #8B5CF6;
+            font-style: normal;
+            font-weight: 500;
+        }
+
+        /* Image Container */
+        .image-container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 0.75rem;
+            border: 1px solid rgba(229, 231, 235, 0.3);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            margin: 3rem 0;
+            text-align: center;
+        }
+
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .image-container figcaption {
+            font-size: 0.875rem;
+            color: #6B7280;
+            font-style: italic;
+            line-height: 1.5;
+        }
+
+        /* Code Editor Style for Process Steps */
+        .process-container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 0.75rem;
+            border: 1px solid rgba(229, 231, 235, 0.3);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            margin: 2rem 0;
+        }
+
+        .process-header {
+            background: #F9FAFB;
+            border-bottom: 1px solid #E5E7EB;
+            padding: 0.75rem 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .process-header h3 {
+            color: #000000;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .process-content {
+            background: #FFFFFF;
+            padding: 1.5rem;
+        }
+
+        .process-content ol {
+            list-style: none;
+            padding: 0;
+            counter-reset: step-counter;
+        }
+
+        .process-content li {
+            counter-increment: step-counter;
+            position: relative;
+            padding-left: 3rem;
+            margin-bottom: 1rem;
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        .process-content li::before {
+            content: counter(step-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: linear-gradient(135deg, #8B5CF6 0%, #EC4899 100%);
+            color: #FFFFFF;
+            width: 2rem;
+            height: 2rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 0.875rem;
+        }
+
+        /* Feature Cards */
+        .features-section {
+            background: linear-gradient(135deg, #8B5A2B 0%, #D97706 25%, #F59E0B 50%, #EF4444 75%, #7C2D12 100%);
+            padding: 4rem 2rem;
+            position: relative;
+        }
+
+        .features-section h2 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 700;
+            line-height: 1.2;
+            color: #FFFFFF;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 0.75rem;
+            border: 1px solid rgba(229, 231, 235, 0.3);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+        }
+
+        .feature-card h3 {
+            color: #000000;
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .feature-card li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+            font-size: 1rem;
+            line-height: 1.5;
+            color: #6B7280;
+        }
+
+        .feature-card li::before {
+            content: "✓";
+            color: #22C55E;
+            font-weight: bold;
+            flex-shrink: 0;
+            margin-top: 0.125rem;
+        }
+
+        /* Navigation Buttons */
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid #E5E7EB;
+        }
+
+        .btn-back {
+            background: transparent;
+            color: #6B7280;
+            border: 1px solid #E5E7EB;
+            border-radius: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-back:hover {
+            border-color: #9CA3AF;
+            color: #374151;
+        }
+
+        .btn-next {
+            background: #000000;
+            color: #FFFFFF;
+            border: none;
+            border-radius: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-next:hover {
+            background: #1F2937;
+            transform: translateY(-1px);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav {
+                padding: 1rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .hero {
+                padding: 2rem 1rem;
+            }
+            
+            .content-section {
+                padding: 2rem 1rem;
+            }
+            
+            .features-section {
+                padding: 2rem 1rem;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-buttons {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <a href="index.html" class="nav-logo">LLM Training Course</a>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="module1.html">Module 1</a></li>
+            <li><a href="#" class="active">Module 2</a></li>
+            <li><a href="module3.html">Module 3</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Module 2</h1>
+            <p class="hero-subtitle">Understanding Large Language Models (LLMs) - The Core Technology</p>
+        </div>
+    </section>
+
+    <!-- Content Section -->
+    <section class="content-section">
+        <div class="container">
+            <div class="content">
+                <p>Now that we understand Generative AI, let's dive deeper into Large Language Models (LLMs) - the specific technology powering the AI chatbots that can transform your daily work in the energy sector. This module will give you a solid understanding of how these remarkable tools actually work.</p>
+
+                <div style="background: #EBF8FF; border-left: 4px solid #3B82F6; padding: 1.5rem; margin: 2rem 0; border-radius: 0.5rem;">
+                    <h3 style="color: #1E40AF; font-size: 1.125rem; font-weight: 600; margin-bottom: 0.5rem;">💡 Learning Objectives</h3>
+                    <p style="color: #1E40AF; margin: 0;">By the end of this module, you'll understand what makes LLMs "large," how they process and generate text, and why they're particularly powerful for energy sector applications like report writing, data analysis, and technical documentation.</p>
+                </div>
+
+                <h2 class="section-title">2.1 What are Large Language Models?</h2>
+                <ul>
+                    <li><strong>Definition:</strong> LLMs are a type of Generative AI specifically designed to understand and generate human language. They're "large" because they're trained on massive amounts of text data and have billions (or even trillions) of parameters.</li>
+                    <li><strong>Think of them as:</strong> Extremely well-read assistants who have absorbed vast amounts of written knowledge and can help you with language-based tasks.</li>
+                    <li><strong>Popular Examples:</strong> ChatGPT (by OpenAI), Gemini (by Google), Claude (by Anthropic), and many others.</li>
+                    <li><strong>Energy Sector Relevance:</strong> These tools excel at tasks that energy professionals do daily - analyzing reports, writing documentation, summarizing complex technical information, and communicating findings to different stakeholders.</li>
+                </ul>
+
+                <h2 class="section-title">2.2 What is a Language Model? (Simple explanation)</h2>
+                <ul>
+                    <li>At its heart, a language model is like a very sophisticated prediction engine for words. Given a sequence of words, it tries to predict the next most likely word or sequence of words.</li>
+                    <li><strong>Example:</strong> If I start a sentence with "The sun rises in the...", a language model would predict "east" with high probability. It's constantly estimating the probability of words occurring together.</li>
+                </ul>
+
+                <h2 class="section-title">2.3 What makes LLMs "Large"? (Data and Parameters)</h2>
+                <ul>
+                    <li><strong>"Large" refers to two main things:</strong>
+                        <ul style="margin-top: 0.5rem; margin-left: 1.5rem;">
+                            <li><strong>Vast Amounts of Data:</strong> LLMs are trained on enormous datasets of text and code from the internet – billions and billions of words. This includes books, articles, websites, conversations, technical papers, and industry reports. This massive exposure to human language allows them to learn complex patterns, grammar, facts, and even different styles of writing.</li>
+                            <li><strong>Billions of Parameters:</strong> Think of "parameters" as the internal knobs and dials within the model that it adjusts during its learning process. The more parameters, the more complex patterns the model can recognize and generate. Modern LLMs have billions, even trillions, of these parameters.</li>
+                        </ul>
+                    </li>
+                    <li><strong>The result:</strong> This "largeness" enables LLMs to process longer texts, understand nuances, and perform complex tasks like summarization, translation, and answering questions in a surprisingly human-like way.</li>
+                    <li><strong>Energy Sector Advantage:</strong> Because LLMs have been trained on vast amounts of technical literature, including energy industry reports, research papers, and regulatory documents, they have substantial knowledge about energy concepts, terminology, and industry practices.</li>
+                </ul>
+
+                <div style="background: #FEF3C7; border-left: 4px solid #F59E0B; padding: 1.5rem; margin: 2rem 0; border-radius: 0.5rem;">
+                    <h3 style="color: #92400E; font-size: 1.125rem; font-weight: 600; margin-bottom: 0.5rem;">🔍 Real-World Example</h3>
+                    <p style="color: #92400E; margin: 0;"><strong>Scale Perspective:</strong> GPT-4 has approximately 1.76 trillion parameters and was trained on hundreds of billions of words. To put this in perspective, if you read one page per minute, 8 hours a day, it would take you over 1,000 years to read the amount of text these models process during training. This massive scale allows them to understand complex energy sector terminology, regulations, and technical concepts.</p>
+                </div>
+
+                <h2 class="section-title">2.3 How LLMs "Understand" and "Generate" Text</h2>
+                <ul>
+                    <li><strong>Tokens:</strong> LLMs don't read words letter by letter. They break down text into "tokens," which can be whole words, parts of words, or even punctuation. For example, "unbelievable" might be broken into "un," "believe," and "able." This helps them handle a massive vocabulary efficiently.</li>
+                </ul>
+
+                <div class="image-container">
+                    <figure>
+                        <img src="cursor-website-clone/public/media/tokens_illustration.png" alt="Illustration of text tokenization">
+                        <figcaption>Figure 2.1: How text is broken down into tokens. This process allows LLMs to efficiently handle complex vocabulary and understand word relationships.</figcaption>
+                    </figure>
+                </div>
+
+                <ul>
+                    <li><strong>Transformers (The "Brain"):</strong> This is the underlying architecture that makes LLMs so powerful. Without getting technical, imagine the Transformer as a clever system that allows the LLM to pay attention to different parts of the input text when generating an output.
+                        <ul style="margin-top: 0.5rem; margin-left: 1.5rem;">
+                            <li><strong>Example:</strong> If you ask an LLM to summarize a long report, the Transformer helps it identify and focus on the most important sentences and ideas throughout the entire document, rather than just the last few words. This is a huge leap from older models that had trouble remembering context from earlier in a conversation or document.</li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <div class="image-container">
+                    <figure>
+                        <img src="cursor-website-clone/public/media/transformer_simplified.png" alt="Simplified Transformer architecture diagram">
+                        <figcaption>Figure 2.2: Simplified diagram of a Transformer's attention mechanism. The Transformer allows the model to focus on relevant parts of the input when generating responses.</figcaption>
+                    </figure>
+                </div>
+
+                <div class="process-container">
+                    <div class="process-header">
+                        <h3>How LLMs Process Your Input</h3>
+                    </div>
+                    <div class="process-content">
+                        <p style="margin-bottom: 1.5rem; color: #6B7280;">When you give an LLM a prompt, it follows this process:</p>
+                        <ol>
+                            <li>Turns your prompt into tokens</li>
+                            <li>Processes these tokens using its "Transformer brain" and learned knowledge</li>
+                            <li>Predicts the most probable next token, then the next, and so on, until it forms a complete and coherent response</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Applications Section -->
+    <section class="features-section">
+        <div class="container">
+            <h2>LLM Applications in Energy Sector Work</h2>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3>📝 Report & Documentation</h3>
+                    <ul>
+                        <li>Environmental impact assessments</li>
+                        <li>Project feasibility studies</li>
+                        <li>Regulatory compliance documents</li>
+                        <li>Technical specifications</li>
+                        <li>Safety procedure manuals</li>
+                        <li>Stakeholder communications</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card">
+                    <h3>📊 Data Analysis & Insights</h3>
+                    <ul>
+                        <li>Energy consumption pattern analysis</li>
+                        <li>Market trend summaries</li>
+                        <li>Performance report generation</li>
+                        <li>Risk assessment documentation</li>
+                        <li>Cost-benefit analysis reports</li>
+                        <li>Equipment maintenance logs</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card">
+                    <h3>🔧 Technical Support</h3>
+                    <ul>
+                        <li>Troubleshooting guides</li>
+                        <li>Equipment operation manuals</li>
+                        <li>Training material development</li>
+                        <li>Code documentation</li>
+                        <li>Process optimization suggestions</li>
+                        <li>Industry standard explanations</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Energy-Specific Examples Section -->
+    <section class="content-section" style="background: #F8FAFC;">
+        <div class="container">
+            <h2 class="section-title">Real Energy Sector Examples</h2>
+            <div class="content">
+                <div style="background: #ECFDF5; border-left: 4px solid #10B981; padding: 1.5rem; margin: 2rem 0; border-radius: 0.5rem;">
+                    <h3 style="color: #047857; font-size: 1.125rem; font-weight: 600; margin-bottom: 0.5rem;">🌟 Example 1: Wind Farm Performance Report</h3>
+                    <p style="color: #047857; margin-bottom: 1rem;"><strong>Task:</strong> A wind farm manager needs to create a monthly performance report for stakeholders.</p>
+                    <p style="color: #047857; margin-bottom: 1rem;"><strong>LLM Input:</strong> "Generate a professional monthly performance report for our 50MW wind farm. Key data: 42.3 GWh generated, 87% capacity factor, 2 turbines offline for maintenance, wind speeds averaged 7.2 m/s, revenue of $2.1M."</p>
+                    <p style="color: #047857; margin: 0;"><strong>Result:</strong> The LLM produces a comprehensive report with executive summary, performance metrics, operational highlights, maintenance activities, and recommendations - saving hours of writing time.</p>
+                </div>
+
+                <div style="background: #EBF8FF; border-left: 4px solid #3B82F6; padding: 1.5rem; margin: 2rem 0; border-radius: 0.5rem;">
+                    <h3 style="color: #1E40AF; font-size: 1.125rem; font-weight: 600; margin-bottom: 0.5rem;">🌟 Example 2: Regulatory Compliance Summary</h3>
+                    <p style="color: #1E40AF; margin-bottom: 1rem;"><strong>Task:</strong> An energy project manager needs to understand new EPA regulations affecting their solar installation project.</p>
+                    <p style="color: #1E40AF; margin-bottom: 1rem;"><strong>LLM Input:</strong> "Summarize the key requirements from the new EPA Clean Energy Standards that affect utility-scale solar installations, focusing on environmental impact assessments and permitting requirements."</p>
+                    <p style="color: #1E40AF; margin: 0;"><strong>Result:</strong> The LLM provides a clear, structured summary of relevant regulations, compliance requirements, and action items - turning complex regulatory text into actionable insights.</p>
+                </div>
+
+                <div style="background: #FEF3C7; border-left: 4px solid #F59E0B; padding: 1.5rem; margin: 2rem 0; border-radius: 0.5rem;">
+                    <h3 style="color: #92400E; font-size: 1.125rem; font-weight: 600; margin-bottom: 0.5rem;">🌟 Example 3: Equipment Troubleshooting Guide</h3>
+                    <p style="color: #92400E; margin-bottom: 1rem;"><strong>Task:</strong> A maintenance technician encounters an unusual error code on a gas turbine control system.</p>
+                    <p style="color: #92400E; margin-bottom: 1rem;"><strong>LLM Input:</strong> "Explain error code GT-4472 on a Siemens SGT-800 gas turbine. What are the likely causes and recommended troubleshooting steps?"</p>
+                    <p style="color: #92400E; margin: 0;"><strong>Result:</strong> The LLM provides detailed troubleshooting steps, potential causes, safety considerations, and when to contact specialists - acting as an instant technical reference.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quiz Section -->
+    <section class="quiz-section">
+        <div class="quiz-container">
+            <h2 class="quiz-title">🧠 Knowledge Check: Module 2</h2>
+            <p style="text-align: center; color: #6B7280; margin-bottom: 2rem;">Test your understanding of Large Language Models and their applications in energy work.</p>
+            
+            <div class="quiz-question" id="question1">
+                <span class="question-number">Question 1 of 4</span>
+                <div class="question-text">What makes Large Language Models "large"?</div>
+                <ul class="quiz-options">
+                    <li class="quiz-option" data-answer="a">They take up a lot of physical storage space on computers</li>
+                    <li class="quiz-option" data-answer="b">They are trained on massive amounts of text data and have billions of parameters</li>
+                    <li class="quiz-option" data-answer="c">They can only work on large computer screens</li>
+                    <li class="quiz-option" data-answer="d">They require large teams of people to operate</li>
+                </ul>
+                <div class="quiz-feedback">
+                    <p><strong>Correct!</strong> LLMs are "large" because they're trained on enormous datasets (billions of words) and have billions or trillions of parameters (internal settings that help them understand and generate text). This scale is what gives them their impressive capabilities.</p>
+                </div>
+                <button class="quiz-button" onclick="checkAnswer(1, 'b')">Submit Answer</button>
+            </div>
+
+            <div class="quiz-question" id="question2" style="display: none;">
+                <span class="question-number">Question 2 of 4</span>
+                <div class="question-text">How do LLMs process text input?</div>
+                <ul class="quiz-options">
+                    <li class="quiz-option" data-answer="a">They read each letter one by one, like humans do</li>
+                    <li class="quiz-option" data-answer="b">They break text into "tokens" (words or word parts) and process them using Transformer architecture</li>
+                    <li class="quiz-option" data-answer="c">They only understand complete sentences, not individual words</li>
+                    <li class="quiz-option" data-answer="d">They translate everything into numbers first, then back to text</li>
+                </ul>
+                <div class="quiz-feedback">
+                    <p><strong>Excellent!</strong> LLMs break text into tokens (which can be whole words, parts of words, or punctuation) and use Transformer architecture to understand relationships between these tokens. This allows them to handle complex language patterns and maintain context across long texts.</p>
+                </div>
+                <button class="quiz-button" onclick="checkAnswer(2, 'b')">Submit Answer</button>
+            </div>
+
+            <div class="quiz-question" id="question3" style="display: none;">
+                <span class="question-number">Question 3 of 4</span>
+                <div class="question-text">Which energy sector task would be MOST suitable for an LLM?</div>
+                <ul class="quiz-options">
+                    <li class="quiz-option" data-answer="a">Physically repairing a broken wind turbine</li>
+                    <li class="quiz-option" data-answer="b">Measuring the exact temperature of a power plant boiler</li>
+                    <li class="quiz-option" data-answer="c">Drafting an environmental impact assessment report for a new solar farm</li>
+                    <li class="quiz-option" data-answer="d">Installing electrical cables in a substation</li>
+                </ul>
+                <div class="quiz-feedback">
+                    <p><strong>Perfect!</strong> LLMs excel at language-based tasks like writing reports, documentation, and analysis. Drafting an environmental impact assessment involves creating structured, technical content - exactly what LLMs do best. The other options require physical work or precise measurements that LLMs cannot perform.</p>
+                </div>
+                <button class="quiz-button" onclick="checkAnswer(3, 'c')">Submit Answer</button>
+            </div>
+
+            <div class="quiz-question" id="question4" style="display: none;">
+                <span class="question-number">Question 4 of 4</span>
+                <div class="question-text">What is the main advantage of LLMs having been trained on vast amounts of technical literature?</div>
+                <ul class="quiz-options">
+                    <li class="quiz-option" data-answer="a">They can replace all human engineers and technicians</li>
+                    <li class="quiz-option" data-answer="b">They understand energy sector terminology, concepts, and industry practices, making them valuable assistants for energy professionals</li>
+                    <li class="quiz-option" data-answer="c">They can predict the future of energy markets with 100% accuracy</li>
+                    <li class="quiz-option" data-answer="d">They eliminate the need for safety protocols in energy work</li>
+                </ul>
+                <div class="quiz-feedback">
+                    <p><strong>Exactly right!</strong> Because LLMs were trained on extensive technical literature including energy industry reports and research papers, they have substantial knowledge about energy concepts and terminology. This makes them powerful assistants for energy professionals, though they still require human expertise and oversight.</p>
+                </div>
+                <button class="quiz-button" onclick="checkAnswer(4, 'b')">Submit Answer</button>
+            </div>
+
+            <div class="quiz-results" id="quizResults">
+                <div class="quiz-score" id="finalScore">0/4</div>
+                <div class="quiz-message" id="scoreMessage">Great job completing the quiz!</div>
+                <p style="color: #047857; margin: 0;">You're ready to move on to Module 3, where we'll explore practical chatbot applications in your daily work.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Navigation -->
+    <section class="content-section">
+        <div class="container">
+            <div class="nav-buttons">
+                <a href="module1.html" class="btn-back">
+                    ← Previous: AI Fundamentals
+                </a>
+                <a href="module3.html" class="btn-next">
+                    Next: Chatbots in Daily Work →
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <style>
+        /* Quiz Styles */
+        .quiz-section {
+            background: #F8FAFC;
+            padding: 4rem 2rem;
+            margin: 4rem 0;
+            border-radius: 1rem;
+        }
+
+        .quiz-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .quiz-title {
+            color: #000000;
+            font-size: 2rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .quiz-question {
+            background: #FFFFFF;
+            border: 1px solid #E5E7EB;
+            border-radius: 1rem;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .question-number {
+            display: inline-block;
+            background: linear-gradient(135deg, #8B5CF6 0%, #EC4899 100%);
+            color: #FFFFFF;
+            font-size: 0.875rem;
+            font-weight: 600;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            margin-bottom: 1rem;
+        }
+
+        .question-text {
+            color: #000000;
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            line-height: 1.5;
+        }
+
+        .quiz-options {
+            list-style: none;
+            padding: 0;
+        }
+
+        .quiz-option {
+            background: #F9FAFB;
+            border: 2px solid #E5E7EB;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            margin-bottom: 0.75rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        .quiz-option:hover {
+            border-color: #8B5CF6;
+            background: #F3F4F6;
+        }
+
+        .quiz-option.selected {
+            border-color: #8B5CF6;
+            background: #EDE9FE;
+            color: #5B21B6;
+        }
+
+        .quiz-option.correct {
+            border-color: #10B981;
+            background: #ECFDF5;
+            color: #047857;
+        }
+
+        .quiz-option.incorrect {
+            border-color: #EF4444;
+            background: #FEF2F2;
+            color: #DC2626;
+        }
+
+        .quiz-feedback {
+            background: #EBF8FF;
+            border-left: 4px solid #3B82F6;
+            padding: 1rem;
+            margin-top: 1rem;
+            border-radius: 0.5rem;
+            display: none;
+        }
+
+        .quiz-feedback.show {
+            display: block;
+        }
+
+        .quiz-feedback p {
+            color: #1E40AF;
+            margin: 0;
+            font-size: 0.875rem;
+            line-height: 1.5;
+        }
+
+        .quiz-button {
+            background: #8B5CF6;
+            color: #FFFFFF;
+            border: none;
+            border-radius: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            margin-top: 1rem;
+        }
+
+        .quiz-button:hover {
+            background: #7C3AED;
+        }
+
+        .quiz-button:disabled {
+            background: #9CA3AF;
+            cursor: not-allowed;
+        }
+
+        .quiz-results {
+            background: #ECFDF5;
+            border: 1px solid #10B981;
+            border-radius: 1rem;
+            padding: 2rem;
+            text-align: center;
+            margin-top: 2rem;
+            display: none;
+        }
+
+        .quiz-results.show {
+            display: block;
+        }
+
+        .quiz-score {
+            color: #047857;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .quiz-message {
+            color: #047857;
+            font-size: 1.125rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+    </style>
+
+    <script>
+        let currentQuestion = 1;
+        let score = 0;
+        let answers = {};
+
+        function checkAnswer(questionNum, correctAnswer) {
+            const question = document.getElementById(`question${questionNum}`);
+            const options = question.querySelectorAll('.quiz-option');
+            const feedback = question.querySelector('.quiz-feedback');
+            const button = question.querySelector('.quiz-button');
+            
+            let selectedAnswer = null;
+            
+            // Find selected answer
+            options.forEach(option => {
+                if (option.classList.contains('selected')) {
+                    selectedAnswer = option.getAttribute('data-answer');
+                }
+            });
+            
+            if (!selectedAnswer) {
+                alert('Please select an answer before submitting.');
+                return;
+            }
+            
+            // Store answer
+            answers[questionNum] = selectedAnswer;
+            
+            // Show correct/incorrect styling
+            options.forEach(option => {
+                const answerValue = option.getAttribute('data-answer');
+                if (answerValue === correctAnswer) {
+                    option.classList.add('correct');
+                } else if (answerValue === selectedAnswer && selectedAnswer !== correctAnswer) {
+                    option.classList.add('incorrect');
+                }
+                option.style.pointerEvents = 'none';
+            });
+            
+            // Show feedback
+            feedback.classList.add('show');
+            
+            // Update score
+            if (selectedAnswer === correctAnswer) {
+                score++;
+            }
+            
+            // Disable button and change text
+            button.disabled = true;
+            button.textContent = 'Answer Submitted';
+            
+            // Show next question or results after delay
+            setTimeout(() => {
+                if (questionNum < 4) {
+                    question.style.display = 'none';
+                    document.getElementById(`question${questionNum + 1}`).style.display = 'block';
+                } else {
+                    showResults();
+                }
+            }, 2000);
+        }
+        
+        function showResults() {
+            document.getElementById('question4').style.display = 'none';
+            
+            const resultsDiv = document.getElementById('quizResults');
+            const scoreDiv = document.getElementById('finalScore');
+            const messageDiv = document.getElementById('scoreMessage');
+            
+            scoreDiv.textContent = `${score}/4`;
+            
+            let message = '';
+            if (score === 4) {
+                message = 'Outstanding! Perfect score! 🎉';
+            } else if (score === 3) {
+                message = 'Excellent work! You have a solid understanding! 👏';
+            } else if (score === 2) {
+                message = 'Good job! You\'re getting the hang of it! 👍';
+            } else {
+                message = 'Keep learning! Review the content and try again! 📚';
+            }
+            
+            messageDiv.textContent = message;
+            resultsDiv.classList.add('show');
+        }
+        
+        // Add click handlers for quiz options
+        document.addEventListener('DOMContentLoaded', function() {
+            const allOptions = document.querySelectorAll('.quiz-option');
+            
+            allOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    // Remove selected class from siblings
+                    const siblings = this.parentNode.querySelectorAll('.quiz-option');
+                    siblings.forEach(sibling => {
+                        sibling.classList.remove('selected');
+                    });
+                    
+                    // Add selected class to clicked option
+                    this.classList.add('selected');
+                });
+            });
+        });
+    </script>

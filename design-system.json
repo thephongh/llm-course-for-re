@@ -1,0 +1,83 @@
+{
+  "elementStyling": {
+    "body": {
+      "background": "#F3F4F6"
+    },
+    "header": {
+      "background": "#FFFFFF",
+      "borderBottom": "#E5E7EB",
+      "logo": {
+        "fill": "#000000"
+      },
+      "navLink": {
+        "text": "#4B5563",
+        "hover": {
+          "text": "#000000"
+        }
+      }
+    },
+    "cards": {
+      "background": "linear-gradient(135deg, #3B82F6 0%, #8B5CF6 100%)",
+      "border": "none",
+      "shadow": "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)",
+      "borderRadius": "1rem",
+      "content": {
+        "color": "#FFFFFF"
+      },
+      "icons": {
+        "fill": "#FFFFFF",
+        "background": "rgba(255, 255, 255, 0.1)"
+      }
+    },
+    "buttons": {
+      "primary": {
+        "background": "#000000",
+        "text": "#FFFFFF",
+        "borderRadius": "0.5rem",
+        "hover": {
+          "background": "#374151"
+        },
+        "disabled": {
+          "background": "#9CA3AF",
+          "text": "#E5E7EB"
+        }
+      },
+      "secondary": {
+        "background": "#FFFFFF",
+        "text": "#000000",
+        "border": "#E5E7EB",
+        "borderRadius": "0.5rem",
+        "hover": {
+          "background": "#F3F4F6"
+        }
+      }
+    },
+    "text": {
+      "h1": {
+        "color": "#FFFFFF",
+        "fontSize": "4.5rem",
+        "fontWeight": "800"
+      },
+      "h2": {
+        "color": "#111827",
+        "fontSize": "3rem",
+        "fontWeight": "800"
+      },
+      "p": {
+        "color": "#6B7280",
+        "fontSize": "1.125rem"
+      }
+    },
+    "code": {
+      "background": "#1F2937",
+      "text": "#F9FAFB",
+      "borderRadius": "0.5rem",
+      "shadow": "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)"
+    }
+  },
+  "doNot": [
+    "Use card gradients on icons or buttons.",
+    "Use primary button colors for text.",
+    "Apply shadows to text content."
+  ]
+}

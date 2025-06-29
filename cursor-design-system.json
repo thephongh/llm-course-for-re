@@ -1,0 +1,433 @@
+{
+  "designSystem": {
+    "name": "Cursor AI Design System",
+    "version": "1.0.0",
+    "description": "Comprehensive design system extracted from Cursor AI website screenshots",
+    
+    "colorPalette": {
+      "gradients": {
+        "primary": {
+          "background": "linear-gradient(135deg, #6B46C1 0%, #7C3AED 15%, #8B5CF6 30%, #EC4899 45%, #F97316 60%, #EAB308 75%, #22C55E 90%, #06B6D4 100%)",
+          "description": "Main hero gradient - purple to pink to orange to yellow to green to cyan",
+          "usage": "Hero sections, feature backgrounds, primary visual elements"
+        },
+        "secondary": {
+          "background": "linear-gradient(135deg, #8B5A2B 0%, #D97706 25%, #F59E0B 50%, #EF4444 75%, #7C2D12 100%)",
+          "description": "Warm gradient for secondary sections",
+          "usage": "Feature highlights, secondary backgrounds"
+        },
+        "card": {
+          "background": "linear-gradient(135deg, #F472B6 0%, #A855F7 50%, #3B82F6 100%)",
+          "description": "Card-specific gradient for pricing cards",
+          "usage": "Pricing cards, promotional elements"
+        }
+      },
+      "solid": {
+        "white": "#FFFFFF",
+        "black": "#000000",
+        "gray": {
+          "50": "#F9FAFB",
+          "100": "#F3F4F6",
+          "200": "#E5E7EB",
+          "300": "#D1D5DB",
+          "400": "#9CA3AF",
+          "500": "#6B7280",
+          "600": "#4B5563",
+          "700": "#374151",
+          "800": "#1F2937",
+          "900": "#111827"
+        },
+        "accent": {
+          "purple": "#8B5CF6",
+          "pink": "#EC4899",
+          "orange": "#F97316",
+          "blue": "#3B82F6"
+        }
+      }
+    },
+
+    "typography": {
+      "fontFamilies": {
+        "primary": "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
+        "code": "'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace"
+      },
+      "hierarchy": {
+        "hero": {
+          "fontSize": "clamp(3rem, 8vw, 6rem)",
+          "fontWeight": "700",
+          "lineHeight": "1.1",
+          "color": "#FFFFFF",
+          "usage": "Main hero headings on gradient backgrounds"
+        },
+        "h1": {
+          "fontSize": "clamp(2rem, 5vw, 3.5rem)",
+          "fontWeight": "700",
+          "lineHeight": "1.2",
+          "color": "#000000",
+          "usage": "Section headings on white backgrounds"
+        },
+        "h2": {
+          "fontSize": "clamp(1.5rem, 3vw, 2rem)",
+          "fontWeight": "600",
+          "lineHeight": "1.3",
+          "color": "#000000",
+          "usage": "Subsection headings"
+        },
+        "body": {
+          "fontSize": "1.125rem",
+          "fontWeight": "400",
+          "lineHeight": "1.6",
+          "color": "#6B7280",
+          "usage": "Body text, descriptions"
+        },
+        "bodyOnGradient": {
+          "fontSize": "1.125rem",
+          "fontWeight": "400",
+          "lineHeight": "1.6",
+          "color": "#FFFFFF",
+          "opacity": "0.9",
+          "usage": "Body text on gradient backgrounds"
+        }
+      }
+    },
+
+    "elementStyling": {
+      "navigation": {
+        "container": {
+          "background": "#FFFFFF",
+          "backdropFilter": "blur(10px)",
+          "borderBottom": "1px solid rgba(229, 231, 235, 0.3)",
+          "padding": "1rem 2rem",
+          "position": "sticky",
+          "zIndex": "50"
+        },
+        "logo": {
+          "color": "#000000",
+          "fontSize": "1.25rem",
+          "fontWeight": "600"
+        },
+        "links": {
+          "color": "#6B7280",
+          "fontSize": "1rem",
+          "fontWeight": "500",
+          "hover": {
+            "color": "#000000"
+          }
+        },
+        "activeLink": {
+          "color": "#000000",
+          "border": "2px solid #000000",
+          "borderRadius": "0.5rem",
+          "padding": "0.5rem 1rem"
+        }
+      },
+
+      "buttons": {
+        "primary": {
+          "background": "#000000",
+          "color": "#FFFFFF",
+          "border": "none",
+          "borderRadius": "0.5rem",
+          "padding": "0.75rem 1.5rem",
+          "fontSize": "1rem",
+          "fontWeight": "500",
+          "cursor": "pointer",
+          "transition": "all 0.2s ease",
+          "hover": {
+            "background": "#1F2937",
+            "transform": "translateY(-1px)"
+          },
+          "active": {
+            "transform": "translateY(0)"
+          },
+          "usage": "Primary actions, download buttons"
+        },
+        "secondary": {
+          "background": "#FFFFFF",
+          "color": "#000000",
+          "border": "2px solid rgba(255, 255, 255, 0.2)",
+          "borderRadius": "0.5rem",
+          "padding": "0.75rem 1.5rem",
+          "fontSize": "1rem",
+          "fontWeight": "500",
+          "cursor": "pointer",
+          "transition": "all 0.2s ease",
+          "hover": {
+            "background": "rgba(255, 255, 255, 0.1)",
+            "borderColor": "rgba(255, 255, 255, 0.4)"
+          },
+          "usage": "Secondary actions on gradient backgrounds"
+        },
+        "outline": {
+          "background": "transparent",
+          "color": "#6B7280",
+          "border": "1px solid #E5E7EB",
+          "borderRadius": "0.5rem",
+          "padding": "0.75rem 1.5rem",
+          "fontSize": "1rem",
+          "fontWeight": "500",
+          "cursor": "pointer",
+          "transition": "all 0.2s ease",
+          "hover": {
+            "borderColor": "#9CA3AF",
+            "color": "#374151"
+          },
+          "usage": "Alternative actions on white backgrounds"
+        }
+      },
+
+      "cards": {
+        "blog": {
+          "background": "#FFFFFF",
+          "border": "1px solid #E5E7EB",
+          "borderRadius": "1rem",
+          "padding": "1.5rem",
+          "shadow": "0 1px 3px rgba(0, 0, 0, 0.1)",
+          "transition": "all 0.2s ease",
+          "hover": {
+            "shadow": "0 4px 12px rgba(0, 0, 0, 0.15)",
+            "transform": "translateY(-2px)"
+          },
+          "title": {
+            "color": "#000000",
+            "fontSize": "1.25rem",
+            "fontWeight": "600",
+            "marginBottom": "0.5rem"
+          },
+          "description": {
+            "color": "#6B7280",
+            "fontSize": "1rem",
+            "lineHeight": "1.5",
+            "marginBottom": "1rem"
+          },
+          "author": {
+            "display": "flex",
+            "alignItems": "center",
+            "gap": "0.75rem",
+            "avatar": {
+              "width": "2.5rem",
+              "height": "2.5rem",
+              "borderRadius": "50%"
+            },
+            "name": {
+              "color": "#000000",
+              "fontSize": "0.875rem",
+              "fontWeight": "500"
+            },
+            "meta": {
+              "color": "#9CA3AF",
+              "fontSize": "0.875rem"
+            }
+          }
+        },
+        "pricing": {
+          "background": "#FFFFFF",
+          "border": "1px solid #E5E7EB",
+          "borderRadius": "1rem",
+          "padding": "2rem",
+          "shadow": "0 1px 3px rgba(0, 0, 0, 0.1)",
+          "transition": "all 0.2s ease",
+          "featured": {
+            "background": "linear-gradient(135deg, #F472B6 0%, #A855F7 50%, #3B82F6 100%)",
+            "border": "none",
+            "color": "#FFFFFF",
+            "shadow": "0 8px 25px rgba(168, 85, 247, 0.3)"
+          },
+          "planName": {
+            "fontSize": "1.125rem",
+            "fontWeight": "600",
+            "marginBottom": "0.5rem"
+          },
+          "price": {
+            "fontSize": "3rem",
+            "fontWeight": "700",
+            "marginBottom": "1rem"
+          },
+          "features": {
+            "listStyle": "none",
+            "padding": "0",
+            "item": {
+              "display": "flex",
+              "alignItems": "center",
+              "gap": "0.5rem",
+              "marginBottom": "0.75rem",
+              "fontSize": "0.875rem"
+            }
+          }
+        }
+      },
+
+      "codeEditor": {
+        "container": {
+          "background": "rgba(255, 255, 255, 0.95)",
+          "backdropFilter": "blur(10px)",
+          "borderRadius": "0.75rem",
+          "border": "1px solid rgba(229, 231, 235, 0.3)",
+          "shadow": "0 8px 32px rgba(0, 0, 0, 0.1)",
+          "overflow": "hidden"
+        },
+        "header": {
+          "background": "#F9FAFB",
+          "borderBottom": "1px solid #E5E7EB",
+          "padding": "0.75rem 1rem",
+          "display": "flex",
+          "alignItems": "center",
+          "gap": "0.5rem"
+        },
+        "tabs": {
+          "background": "transparent",
+          "color": "#6B7280",
+          "fontSize": "0.875rem",
+          "padding": "0.5rem 1rem",
+          "border": "none",
+          "borderRadius": "0.375rem",
+          "active": {
+            "background": "#FFFFFF",
+            "color": "#000000",
+            "shadow": "0 1px 2px rgba(0, 0, 0, 0.05)"
+          }
+        },
+        "content": {
+          "background": "#FFFFFF",
+          "padding": "1rem",
+          "fontFamily": "'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace",
+          "fontSize": "0.875rem",
+          "lineHeight": "1.5"
+        }
+      },
+
+      "sections": {
+        "hero": {
+          "background": "linear-gradient(135deg, #6B46C1 0%, #7C3AED 15%, #8B5CF6 30%, #EC4899 45%, #F97316 60%, #EAB308 75%, #22C55E 90%, #06B6D4 100%)",
+          "minHeight": "100vh",
+          "display": "flex",
+          "alignItems": "center",
+          "justifyContent": "center",
+          "textAlign": "center",
+          "padding": "2rem",
+          "position": "relative",
+          "overflow": "hidden"
+        },
+        "features": {
+          "background": "linear-gradient(135deg, #8B5A2B 0%, #D97706 25%, #F59E0B 50%, #EF4444 75%, #7C2D12 100%)",
+          "padding": "4rem 2rem",
+          "position": "relative"
+        },
+        "content": {
+          "background": "#FFFFFF",
+          "padding": "4rem 2rem"
+        }
+      },
+
+      "logos": {
+        "container": {
+          "display": "flex",
+          "alignItems": "center",
+          "justifyContent": "center",
+          "gap": "3rem",
+          "flexWrap": "wrap",
+          "opacity": "0.6",
+          "filter": "grayscale(100%)",
+          "transition": "all 0.3s ease"
+        },
+        "logo": {
+          "height": "2rem",
+          "width": "auto",
+          "hover": {
+            "opacity": "1",
+            "filter": "grayscale(0%)"
+          }
+        }
+      }
+    },
+
+    "spacing": {
+      "sections": "4rem",
+      "containers": "2rem",
+      "elements": "1rem",
+      "components": "1.5rem"
+    },
+
+    "borderRadius": {
+      "small": "0.375rem",
+      "medium": "0.5rem",
+      "large": "0.75rem",
+      "xlarge": "1rem",
+      "full": "9999px"
+    },
+
+    "shadows": {
+      "small": "0 1px 3px rgba(0, 0, 0, 0.1)",
+      "medium": "0 4px 12px rgba(0, 0, 0, 0.15)",
+      "large": "0 8px 25px rgba(0, 0, 0, 0.2)",
+      "colored": "0 8px 25px rgba(168, 85, 247, 0.3)"
+    },
+
+    "animations": {
+      "hover": {
+        "duration": "0.2s",
+        "easing": "ease",
+        "transform": "translateY(-2px)"
+      },
+      "button": {
+        "duration": "0.2s",
+        "easing": "ease"
+      }
+    },
+
+    "breakpoints": {
+      "mobile": "640px",
+      "tablet": "768px",
+      "desktop": "1024px",
+      "wide": "1280px"
+    },
+
+    "doNotRules": {
+      "gradients": [
+        "DO NOT apply the main hero gradient to individual icons or small UI elements",
+        "DO NOT use gradient backgrounds on text elements - gradients are for containers only",
+        "DO NOT apply card gradients to navigation or header elements",
+        "DO NOT mix multiple gradients on the same visual layer"
+      ],
+      "colors": [
+        "DO NOT use white text on white backgrounds",
+        "DO NOT apply button background colors to text content",
+        "DO NOT use gradient colors as solid fills for icons",
+        "DO NOT apply navigation link colors to body text"
+      ],
+      "typography": [
+        "DO NOT use hero typography sizes for body content",
+        "DO NOT apply code font family to regular text content",
+        "DO NOT use white text color on light backgrounds"
+      ],
+      "components": [
+        "DO NOT apply card styling to navigation elements",
+        "DO NOT use pricing card layouts for blog content",
+        "DO NOT apply code editor styling to regular content containers"
+      ],
+      "effects": [
+        "DO NOT apply hover transforms to static text elements",
+        "DO NOT use large shadows on small UI components",
+        "DO NOT apply backdrop blur to solid background elements"
+      ]
+    },
+
+    "usageGuidelines": {
+      "gradients": {
+        "primary": "Use for hero sections, main feature backgrounds, and primary visual impact areas",
+        "secondary": "Use for feature highlights and secondary content sections",
+        "card": "Use specifically for promotional cards and highlighted pricing tiers"
+      },
+      "buttons": {
+        "primary": "Use for main actions like downloads, sign-ups, primary CTAs",
+        "secondary": "Use for alternative actions on gradient backgrounds",
+        "outline": "Use for less important actions on white backgrounds"
+      },
+      "typography": {
+        "hero": "Use only for main page headings on gradient backgrounds",
+        "h1": "Use for section titles on white/light backgrounds",
+        "body": "Use for all descriptive content and secondary information"
+      }
+    }
+  }
+}
