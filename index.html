@@ -938,14 +938,9 @@
         }
 
         function startModule(moduleNum) {
-            // Check if module is accessible
-            if (moduleNum > currentModule && !completedModules.includes(moduleNum - 1) && moduleNum !== 1) {
-                alert('Please complete the previous modules first to unlock this one.');
-                return;
-            }
-            
-            // Navigate to module
-            window.location.href = `module${moduleNum}.html`;
+            // Modules are disabled in this homepage-only version
+            alert('This is a preview version. Individual modules are not available. Only the homepage is accessible.');
+            return;
         }
 
         // Function to mark module as completed (called from individual module pages)
