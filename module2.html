@@ -448,7 +448,7 @@
 
                 <div class="image-container">
                     <figure>
-                        <img src="cursor-website-clone/public/media/tokens_illustration.png" alt="Illustration of text tokenization">
+                        <img src="public/media/tokens_illustration.png" alt="Illustration of text tokenization">
                         <figcaption>Figure 2.1: How text is broken down into tokens. This process allows LLMs to efficiently handle complex vocabulary and understand word relationships.</figcaption>
                     </figure>
                 </div>
@@ -463,7 +463,7 @@
 
                 <div class="image-container">
                     <figure>
-                        <img src="cursor-website-clone/public/media/transformer_simplified.png" alt="Simplified Transformer architecture diagram">
+                        <img src="public/media/transformer_simplified.png" alt="Simplified Transformer architecture diagram">
                         <figcaption>Figure 2.2: Simplified diagram of a Transformer's attention mechanism. The Transformer allows the model to focus on relevant parts of the input when generating responses.</figcaption>
                     </figure>
                 </div>
@@ -847,27 +847,37 @@
                 option.style.pointerEvents = 'none';
             });
             
+            // Update feedback based on correct/incorrect answer
+            const isCorrect = selectedAnswer === correctAnswer;
+            if (isCorrect) {
+                feedback.style.background = '#ECFDF5';
+                feedback.style.borderColor = '#10B981';
+                feedback.querySelector('p').style.color = '#047857';
+                score++;
+            } else {
+                feedback.style.background = '#FEF2F2';
+                feedback.style.borderColor = '#EF4444';
+                feedback.querySelector('p').style.color = '#DC2626';
+                // Update feedback text for incorrect answers
+                const feedbackText = feedback.querySelector('p');
+                feedbackText.innerHTML = `<strong>Incorrect.</strong> ${feedbackText.innerHTML.replace('<strong>Correct!</strong>', 'The correct answer is:').replace('<strong>Excellent!</strong>', 'The correct answer is:').replace('<strong>Perfect!</strong>', 'The correct answer is:').replace('<strong>Exactly right!</strong>', 'The correct answer is:')}`;
+            }
+            
             // Show feedback
             feedback.classList.add('show');
             
-            // Update score
-            if (selectedAnswer === correctAnswer) {
-                score++;
-            }
-            
-            // Disable button and change text
-            button.disabled = true;
-            button.textContent = 'Answer Submitted';
-            
-            // Show next question or results after delay
-            setTimeout(() => {
-                if (questionNum < 4) {
+            // Change button to "Next" or "Done" and remove the timeout
+            if (questionNum < 4) {
+                button.textContent = 'Next Question';
+                button.onclick = () => {
                     question.style.display = 'none';
                     document.getElementById(`question${questionNum + 1}`).style.display = 'block';
-                } else {
-                    showResults();
-                }
-            }, 2000);
+                };
+            } else {
+                button.textContent = 'View Results';
+                button.onclick = () => showResults();
+            }
+            button.disabled = false;
         }
         
         function showResults() {

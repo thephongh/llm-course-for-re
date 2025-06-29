@@ -520,7 +520,7 @@
 
                 <div class="image-container">
                     <figure>
-                        <img src="cursor-website-clone/public/media/ai_ml_dl_venn_diagram.png" alt="Venn Diagram illustrating the relationship between AI, Machine Learning, and Deep Learning">
+                        <img src="public/media/ai_ml_dl_venn_diagram.png" alt="Venn Diagram illustrating the relationship between AI, Machine Learning, and Deep Learning">
                         <figcaption>Figure 1.1: Relationship between AI, Machine Learning, and Deep Learning. This diagram shows how these technologies build upon each other, with AI being the broadest concept.</figcaption>
                     </figure>
                 </div>
@@ -742,27 +742,37 @@
                 option.style.pointerEvents = 'none';
             });
             
+            // Update feedback based on correct/incorrect answer
+            const isCorrect = selectedAnswer === correctAnswer;
+            if (isCorrect) {
+                feedback.style.background = '#ECFDF5';
+                feedback.style.borderColor = '#10B981';
+                feedback.querySelector('p').style.color = '#047857';
+                score++;
+            } else {
+                feedback.style.background = '#FEF2F2';
+                feedback.style.borderColor = '#EF4444';
+                feedback.querySelector('p').style.color = '#DC2626';
+                // Update feedback text for incorrect answers
+                const feedbackText = feedback.querySelector('p');
+                feedbackText.innerHTML = `<strong>Incorrect.</strong> ${feedbackText.innerHTML.replace('<strong>Correct!</strong>', 'The correct answer is:')}`;
+            }
+            
             // Show feedback
             feedback.classList.add('show');
             
-            // Update score
-            if (selectedAnswer === correctAnswer) {
-                score++;
-            }
-            
-            // Disable button and change text
-            button.disabled = true;
-            button.textContent = 'Answer Submitted';
-            
-            // Show next question or results after delay
-            setTimeout(() => {
-                if (questionNum < 4) {
+            // Change button to "Next" or "Done" and remove the timeout
+            if (questionNum < 4) {
+                button.textContent = 'Next Question';
+                button.onclick = () => {
                     question.style.display = 'none';
                     document.getElementById(`question${questionNum + 1}`).style.display = 'block';
-                } else {
-                    showResults();
-                }
-            }, 2000);
+                };
+            } else {
+                button.textContent = 'View Results';
+                button.onclick = () => showResults();
+            }
+            button.disabled = false;
         }
         
         function showResults() {
