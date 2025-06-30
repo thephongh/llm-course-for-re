@@ -731,10 +731,21 @@
     <nav class="nav">
         <a href="index.html" class="nav-logo">🚀 LLM Training Course</a>
         <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="module1.html">Module 1</a></li>
-            <li><a href="#" class="active">Module 2</a></li>
-            <li><a href="module3.html">Module 3</a></li>
+            <li><a href="index.html" id="home-link">Home</a></li>
+            <li><a href="module1.html" id="module1-link">Module 1</a></li>
+            <li><a href="#" class="active" id="module2-link">Module 2</a></li>
+            <li><a href="module3.html" id="module3-link">Module 3</a></li>
+            <li class="language-switcher">
+                <div class="dropdown">
+                    <button class="dropbtn">
+                        <img id="current-flag" src="https://flagcdn.com/us.svg" alt="English Flag" width="24" height="18">
+                    </button>
+                    <div class="dropdown-content">
+                        <a href="#" data-lang="en"><img src="https://flagcdn.com/us.svg" alt="English Flag" width="24" height="18"> English</a>
+                        <a href="#" data-lang="vi"><img src="https://flagcdn.com/vn.svg" alt="Vietnamese Flag" width="24" height="18"> Tiếng Việt</a>
+                    </div>
+                </div>
+            </li>
         </ul>
     </nav>
 

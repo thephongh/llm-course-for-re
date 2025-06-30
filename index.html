@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Introduction to LLM and Generative AI for Energy Professionals</title>
+    <title id="page-title">Giới thiệu về LLM và AI tạo sinh cho chuyên gia năng lượng</title>
     <style>
         * {
             margin: 0;
@@ -55,6 +55,56 @@
 
         .nav-links a:hover {
             color: #000000;
+        }
+
+        /* Language Switcher */
+        .language-switcher {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropbtn {
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .dropbtn img {
+            vertical-align: middle;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+            right: 0; /* Align to the right */
+            border-radius: 0.5rem;
+            overflow: hidden;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1rem;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
         }
 
         /* Language Switcher */
@@ -653,7 +703,7 @@
             <li class="language-switcher">
                 <div class="dropdown">
                     <button class="dropbtn">
-                        <img id="current-flag" src="https://flagcdn.com/us.svg" alt="English Flag" width="24" height="18">
+                        <img id="current-flag" src="https://flagcdn.com/vn.svg" alt="Vietnamese Flag" width="24" height="18">
                     </button>
                     <div class="dropdown-content">
                         <a href="#" data-lang="en"><img src="https://flagcdn.com/us.svg" alt="English Flag" width="24" height="18"> English</a>
@@ -675,28 +725,28 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
-            <h1 id="hero-title">🤖 Interactive AI Training For Energy Professionals</h1>
+            <h1 id="hero-title">🤖 Đào tạo AI tương tác cho chuyên gia năng lượng</h1>
             <p class="hero-subtitle" id="hero-subtitle">
-                <strong>Master Large Language Models and Generative AI</strong><br>
-                Through an interactive, step-by-step learning experience. Each module builds upon the previous one, with hands-on examples, visual guides, and immediate feedback to ensure you truly understand each concept before moving forward.
+                <strong>Làm chủ các Mô hình ngôn ngữ lớn (LLM) và AI tạo sinh</strong><br>
+                Thông qua trải nghiệm học tập tương tác, từng bước. Mỗi mô-đun được xây dựng dựa trên mô-đun trước đó, với các ví dụ thực tế, hướng dẫn trực quan và phản hồi tức thì để đảm bảo bạn thực sự hiểu từng khái niệm trước khi tiếp tục.
             </p>
             <div class="hero-buttons">
-                <a href="#learning-path" class="btn-primary" id="start-learning-btn">🎯 Start Interactive Learning</a>
-                <a href="#about" class="btn-secondary" id="learn-more-btn">📚 Learn More</a>
+                <a href="#learning-path" class="btn-primary" id="start-learning-btn">🎯 Bắt đầu học tương tác</a>
+                <a href="#about" class="btn-secondary" id="learn-more-btn">📚 Tìm hiểu thêm</a>
             </div>
             
             <div class="course-stats">
                 <div class="stat-item">
                     <span class="stat-number" id="hours-total-num">4</span>
-                    <span class="stat-label" id="hours-total-label">Hours Total</span>
+                    <span class="stat-label" id="hours-total-label">Tổng số giờ</span>
                 </div>
                 <div class="stat-item">
                     <span class="stat-number" id="interactive-modules-num">5</span>
-                    <span class="stat-label" id="interactive-modules-label">Interactive Modules</span>
+                    <span class="stat-label" id="interactive-modules-label">Mô-đun tương tác</span>
                 </div>
                 <div class="stat-item">
                     <span class="stat-number" id="quiz-questions-num">20</span>
-                    <span class="stat-label" id="quiz-questions-label">Quiz Questions</span>
+                    <span class="stat-label" id="quiz-questions-label">Câu hỏi trắc nghiệm</span>
                 </div>
             </div>
         </div>
@@ -705,9 +755,9 @@
     <!-- Interactive Learning Path -->
     <section class="learning-path" id="learning-path">
         <div class="container">
-            <h2 class="section-title" id="learning-journey-title">🎯 Your Interactive Learning Journey</h2>
+            <h2 class="section-title" id="learning-journey-title">🎯 Hành trình học tập tương tác của bạn</h2>
             <p style="text-align: center; font-size: 1.125rem; margin-bottom: 3rem; max-width: 800px; margin-left: auto; margin-right: auto; color: #6B7280;" id="learning-journey-subtitle">
-                Follow this step-by-step path designed specifically for busy energy professionals. Each module unlocks only after completing the previous one, ensuring you build a solid foundation before advancing.
+                Hãy theo dõi lộ trình từng bước này được thiết kế đặc biệt cho các chuyên gia năng lượng bận rộn. Mỗi mô-đun chỉ mở khóa sau khi hoàn thành mô-đun trước đó, đảm bảo bạn xây dựng nền tảng vững chắc trước khi tiến xa hơn.
             </p>
             
             <div class="learning-steps">
@@ -715,19 +765,19 @@
                     <div class="step-number">1</div>
                     <div class="step-content">
                         <div class="step-meta">
-                            <span class="step-duration" id="module1-duration">⏱️ ~42 min</span>
-                            <span class="step-status" id="module1-status">Start Here</span>
+                            <span class="step-duration" id="module1-duration">⏱️ ~42 phút</span>
+                            <span class="step-status" id="module1-status">Bắt đầu tại đây</span>
                         </div>
-                        <h3 id="module1-title">🧠 AI Fundamentals & Energy Applications</h3>
-                        <p id="module1-description">Build your foundation by understanding AI, Machine Learning, and Generative AI with real energy sector examples. Interactive diagrams and case studies make complex concepts clear.</p>
+                        <h3 id="module1-title">🧠 Kiến thức cơ bản về AI & Ứng dụng năng lượng</h3>
+                        <p id="module1-description">Xây dựng nền tảng của bạn bằng cách hiểu về AI, Học máy và AI tạo sinh với các ví dụ thực tế trong ngành năng lượng. Các sơ đồ tương tác và nghiên cứu điển hình giúp các khái niệm phức tạp trở nên rõ ràng.</p>
                         <div class="module-preview">
                             <div class="preview-card">
-                                <h4 id="module1-learn-title">🔍 What You'll Learn</h4>
-                                <p id="module1-learn-description">Clear definitions, energy sector applications, predictive maintenance examples, and interactive knowledge checks.</p>
+                                <h4 id="module1-learn-title">🔍 Bạn sẽ học gì</h4>
+                                <p id="module1-learn-description">Các định nghĩa rõ ràng, ứng dụng trong ngành năng lượng, ví dụ về bảo trì dự đoán và kiểm tra kiến thức tương tác.</p>
                             </div>
                             <div class="preview-card">
-                                <h4 id="module1-outcome-title">🎯 Key Outcome</h4>
-                                <p id="module1-outcome-description">Confidently explain AI concepts and identify opportunities in your energy work.</p>
+                                <h4 id="module1-outcome-title">🎯 Kết quả chính</h4>
+                                <p id="module1-outcome-description">Tự tin giải thích các khái niệm AI và xác định các cơ hội trong công việc năng lượng của bạn.</p>
                             </div>
                         </div>
                     </div>
@@ -737,19 +787,19 @@
                     <div class="step-number">2</div>
                     <div class="step-content">
                         <div class="step-meta">
-                            <span class="step-duration" id="module2-duration">⏱️ ~42 min</span>
-                            <span class="step-status" id="module2-status">Locked</span>
+                            <span class="step-duration" id="module2-duration">⏱️ ~42 phút</span>
+                            <span class="step-status" id="module2-status">Đã khóa</span>
                         </div>
-                        <h3 id="module2-title">🤖 Understanding Large Language Models</h3>
-                        <p id="module2-description">Dive deep into how LLMs work with visual explanations of tokens, parameters, and transformers. See exactly how these models process and generate text.</p>
+                        <h3 id="module2-title">🤖 Hiểu về các Mô hình ngôn ngữ lớn (LLM)</h3>
+                        <p id="module2-description">Đi sâu vào cách LLM hoạt động với các giải thích trực quan về token, tham số và bộ biến đổi. Xem chính xác cách các mô hình này xử lý và tạo văn bản.</p>
                         <div class="module-preview">
                             <div class="preview-card">
-                                <h4 id="module2-learn-title">🔍 What You'll Learn</h4>
-                                <p id="module2-learn-description">LLM architecture, token processing, model capabilities, and energy documentation applications.</p>
+                                <h4 id="module2-learn-title">🔍 Bạn sẽ học gì</h4>
+                                <p id="module2-learn-description">Kiến trúc LLM, xử lý token, khả năng của mô hình và ứng dụng tài liệu năng lượng.</p>
                             </div>
                             <div class="preview-card">
-                                <h4 id="module2-outcome-title">🎯 Key Outcome</h4>
-                                <p id="module2-outcome-description">Understand how LLMs work and their limitations for professional use.</p>
+                                <h4 id="module2-outcome-title">🎯 Kết quả chính</h4>
+                                <p id="module2-outcome-description">Hiểu cách LLM hoạt động và những hạn chế của chúng để sử dụng chuyên nghiệp.</p>
                             </div>
                         </div>
                     </div>
@@ -759,19 +809,19 @@
                     <div class="step-number">3</div>
                     <div class="step-content">
                         <div class="step-meta">
-                            <span class="step-duration" id="module3-duration">⏱️ ~42 min</span>
-                            <span class="step-status" id="module3-status">Locked</span>
+                            <span class="step-duration" id="module3-duration">⏱️ ~42 phút</span>
+                            <span class="step-status" id="module3-status">Đã khóa</span>
                         </div>
-                        <h3 id="module3-title">💬 AI Chatbots in Daily Energy Work</h3>
-                        <p id="module3-description">Explore practical chatbot applications with interactive demos. Learn to integrate AI assistants into project planning, analysis, and stakeholder communication.</p>
+                        <h3 id="module3-title">💬 Chatbot AI trong công việc năng lượng hàng ngày</h3>
+                        <p id="module3-description">Khám phá các ứng dụng chatbot thực tế với các bản demo tương tác. Học cách tích hợp trợ lý AI vào lập kế hoạch dự án, phân tích và giao tiếp với các bên liên quan.</p>
                         <div class="module-preview">
                             <div class="preview-card">
-                                <h4 id="module3-learn-title">🔍 What You'll Learn</h4>
-                                <p id="module3-learn-description">Chatbot capabilities, energy workflows, integration strategies, and hands-on practice scenarios.</p>
+                                <h4 id="module3-learn-title">🔍 Bạn sẽ học gì</h4>
+                                <p id="module3-learn-description">Khả năng của Chatbot, quy trình làm việc năng lượng, chiến lược tích hợp và các tình huống thực hành.</p>
                             </div>
                             <div class="preview-card">
-                                <h4 id="module3-outcome-title">🎯 Key Outcome</h4>
-                                <p id="module3-outcome-description">Effectively use AI chatbots to enhance your daily energy sector work.</p>
+                                <h4 id="module3-outcome-title">🎯 Kết quả chính</h4>
+                                <p id="module3-outcome-description">Sử dụng chatbot AI hiệu quả để nâng cao công việc hàng ngày trong ngành năng lượng của bạn.</p>
                             </div>
                         </div>
                     </div>
@@ -781,19 +831,20 @@
                     <div class="step-number">4</div>
                     <div class="step-content">
                         <div class="step-meta">
-                            <span class="step-duration" id="module4-duration">⏱️ ~42 min</span>
-                            <span class="step-status" id="module4-status">Locked</span>
+                            <span class="step-duration" id="module4-duration">⏱️ ~42 phút</span>
+                            <span class="step-status" id="module4-status">Đã khóa</span>
                         </div>
-                        <h3 id="module4-title">✍️ Mastering Prompt Engineering</h3>
-                        <p id="module4-description">Learn the art of crafting effective prompts through interactive exercises. Practice with energy-specific templates and see immediate results.</p>
+                        <h3 id="module4-title">✍️ Làm chủ kỹ thuật Prompt Engineering</h3>
+                        <p id="module4-description">Học nghệ thuật tạo ra các prompt hiệu quả thông qua các bài tập tương tác. Thực hành với các mẫu dành riêng cho năng lượng và xem kết quả tức thì.</p>
                         <div class="module-preview">
                             <div class="preview-card">
-                                <h4 id="module4-learn-title">🔍 What You'll Learn</h4>
-                                <p id="module4-learn-description">Prompt frameworks, energy templates, advanced techniques, and interactive prompt builder.</p>
+                                <h4 id="module4-learn-title">🔍 Bạn sẽ học gì</h4>
+                                <p id="module4-learn-description">Các khung prompt, mẫu năng lượng, kỹ thuật nâng cao và trình tạo prompt tương tác.
+</p>
                             </div>
                             <div class="preview-card">
-                                <h4 id="module4-outcome-title">🎯 Key Outcome</h4>
-                                <p id="module4-outcome-description">Create powerful prompts that get optimal results for energy applications.</p>
+                                <h4 id="module4-outcome-title">🎯 Kết quả chính</h4>
+                                <p id="module4-outcome-description">Tạo các prompt mạnh mẽ mang lại kết quả tối ưu cho các ứng dụng năng lượng.</p>
                             </div>
                         </div>
                     </div>
@@ -803,19 +854,19 @@
                     <div class="step-number">5</div>
                     <div class="step-content">
                         <div class="step-meta">
-                            <span class="step-duration" id="module5-duration">⏱️ ~42 min</span>
-                            <span class="step-status" id="module5-status">Locked</span>
+                            <span class="step-duration" id="module5-duration">⏱️ ~42 phút</span>
+                            <span class="step-status" id="module5-status">Đã khóa</span>
                         </div>
-                        <h3 id="module5-title">🛡️ Ethics & Best Practices</h3>
-                        <p id="module5-description">Master responsible AI usage with interactive scenarios specific to energy infrastructure. Learn critical security and verification techniques.</p>
+                        <h3 id="module5-title">🛡️ Đạo đức & Thực hành tốt nhất</h3>
+                        <p id="module5-description">Làm chủ việc sử dụng AI có trách nhiệm với các tình huống tương tác dành riêng cho cơ sở hạ tầng năng lượng. Học các kỹ thuật bảo mật và xác minh quan trọng.</p>
                         <div class="module-preview">
                             <div class="preview-card">
-                                <h4 id="module5-learn-title">🔍 What You'll Learn</h4>
-                                <p id="module5-learn-description">Energy ethics scenarios, security guidelines, verification techniques, and responsible AI frameworks.</p>
+                                <h4 id="module5-learn-title">🔍 Bạn sẽ học gì</h4>
+                                <p id="module5-learn-description">Các tình huống đạo đức năng lượng, hướng dẫn bảo mật, kỹ thuật xác minh và khung AI có trách nhiệm.</p>
                             </div>
                             <div class="preview-card">
-                                <h4 id="module5-outcome-title">🎯 Key Outcome</h4>
-                                <p id="module5-outcome-description">Implement AI solutions safely and responsibly in energy infrastructure.</p>
+                                <h4 id="module5-outcome-title">🎯 Kết quả chính</h4>
+                                <p id="module5-outcome-description">Triển khai các giải pháp AI một cách an toàn và có trách nhiệm trong cơ sở hạ tầng năng lượng.</p>
                             </div>
                         </div>
                     </div>
@@ -823,12 +874,12 @@
             </div>
 
             <div style="text-align: center; margin-top: 3rem; padding: 2rem; background: #FFFFFF; border-radius: 1rem; border: 2px solid #10B981;">
-                <h3 style="color: #047857; font-size: 1.5rem; font-weight: 600; margin-bottom: 1rem;" id="ready-to-transform-title">🎉 Ready to Transform Your Energy Career with AI?</h3>
+                <h3 style="color: #047857; font-size: 1.5rem; font-weight: 600; margin-bottom: 1rem;" id="ready-to-transform-title">🎉 Sẵn sàng thay đổi sự nghiệp năng lượng của bạn với AI?</h3>
                 <p style="font-size: 1rem; color: #6B7280; margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto;" id="ready-to-transform-description">
-                    Join thousands of energy professionals who are already leveraging AI to enhance their work, make better decisions, and drive innovation in the energy transition.
+                    Tham gia cùng hàng ngàn chuyên gia năng lượng đang tận dụng AI để nâng cao công việc của họ, đưa ra quyết định tốt hơn và thúc đẩy đổi mới trong quá trình chuyển đổi năng lượng.
                 </p>
                 <button onclick="startModule(1)" class="btn-primary" style="font-size: 1.125rem; padding: 1rem 2rem; background: #047857;" id="begin-journey-btn">
-                    🚀 Begin Your AI Journey →
+                    🚀 Bắt đầu hành trình AI của bạn →
                 </button>
             </div>
         </div>
@@ -837,39 +888,39 @@
     <!-- Interactive Features Section -->
     <section class="features-section">
         <div class="container">
-            <h2 class="section-title" id="why-training-works-title">🌟 Why This Interactive Training Works</h2>
-            <p id="why-training-works-subtitle">Experience a revolutionary approach to AI education designed specifically for busy energy professionals who need practical, applicable knowledge.</p>
+            <h2 id="why-training-works-title">🌟 Tại sao khóa đào tạo tương tác này hiệu quả</h2>
+            <p id="why-training-works-subtitle">Trải nghiệm một phương pháp tiếp cận mang tính cách mạng đối với giáo dục AI được thiết kế đặc biệt cho các chuyên gia năng lượng bận rộn, những người cần kiến thức thực tế, có thể áp dụng.</p>
             
             <div class="features-grid">
                 <div class="feature-card">
                     <div class="feature-icon">🎯</div>
-                    <h3 id="step-by-step-title">Step-by-Step Learning</h3>
-                    <p id="step-by-step-description">Content is revealed progressively, preventing information overload. Each concept builds naturally on the previous one, ensuring solid understanding.</p>
+                    <h3 id="step-by-step-title">Học từng bước</h3>
+                    <p id="step-by-step-description">Nội dung được tiết lộ dần dần, ngăn ngừa tình trạng quá tải thông tin. Mỗi khái niệm được xây dựng một cách tự nhiên dựa trên khái niệm trước đó, đảm bảo sự hiểu biết vững chắc.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">🔒</div>
-                    <h3 id="guided-progression-title">Guided Progression</h3>
-                    <p id="guided-progression-description">Modules unlock only after completing prerequisites, ensuring you master fundamentals before advancing to complex applications.</p>
+                    <h3 id="guided-progression-title">Tiến trình có hướng dẫn</h3>
+                    <p id="guided-progression-description">Các mô-đun chỉ mở khóa sau khi hoàn thành các điều kiện tiên quyết, đảm bảo bạn nắm vững các kiến thức cơ bản trước khi chuyển sang các ứng dụng phức tạp.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">⚡</div>
-                    <h3 id="energy-focused-title">Energy-Focused Examples</h3>
-                    <p id="energy-focused-description">Every example, case study, and application is tailored specifically for energy professionals and real industry challenges.</p>
+                    <h3 id="energy-focused-title">Ví dụ tập trung vào năng lượng</h3>
+                    <p id="energy-focused-description">Mọi ví dụ, nghiên cứu điển hình và ứng dụng đều được điều chỉnh đặc biệt cho các chuyên gia năng lượng và các thách thức thực tế của ngành.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">🎮</div>
-                    <h3 id="interactive-elements-title">Interactive Elements</h3>
-                    <p id="interactive-elements-description">Engage with visual diagrams, interactive quizzes, hands-on exercises, and immediate feedback to reinforce learning.</p>
+                    <h3 id="interactive-elements-title">Các yếu tố tương tác</h3>
+                    <p id="interactive-elements-description">Tham gia vào các sơ đồ trực quan, câu đố tương tác, bài tập thực hành và phản hồi tức thì để củng cố việc học.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">📊</div>
-                    <h3 id="progress-tracking-title">Progress Tracking</h3>
-                    <p id="progress-tracking-description">Visual progress indicators and completion status help you stay motivated and track your learning journey.</p>
+                    <h3 id="progress-tracking-title">Theo dõi tiến độ</h3>
+                    <p id="progress-tracking-description">Các chỉ số tiến độ trực quan và trạng thái hoàn thành giúp bạn duy trì động lực và theo dõi hành trình học tập của mình.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">🚀</div>
-                    <h3 id="immediate-application-title">Immediate Application</h3>
-                    <p id="immediate-application-description">Start using AI tools effectively in your daily work right away with practical prompts and proven techniques.</p>
+                    <h3 id="immediate-application-title">Ứng dụng tức thì</h3>
+                    <p id="immediate-application-description">Bắt đầu sử dụng các công cụ AI một cách hiệu quả trong công việc hàng ngày của bạn ngay lập tức với các prompt thực tế và các kỹ thuật đã được chứng minh.</p>
                 </div>
             </div>
         </div>
@@ -878,58 +929,58 @@
     <!-- Course Overview -->
     <section class="overview-section" id="about">
         <div class="container">
-            <h2 class="section-title" id="course-overview-title">📚 Course Overview</h2>
+            <h2 class="section-title" id="course-overview-title">📚 Tổng quan khóa học</h2>
             
             <div class="overview-grid">
                 <div class="overview-card">
-                    <h3 id="target-audience-title"><span class="overview-icon">🎯</span>Target Audience</h3>
-                    <p id="target-audience-description">Energy sector professionals including:</p>
+                    <h3 id="target-audience-title"><span class="overview-icon">🎯</span>Đối tượng mục tiêu</h3>
+                    <p id="target-audience-description">Các chuyên gia trong ngành năng lượng bao gồm:</p>
                     <ul id="target-audience-list">
-                        <li>Project developers and managers</li>
-                        <li>Asset managers and operators</li>
-                        <li>Engineers and technical analysts</li>
-                        <li>Business development professionals</li>
-                        <li>Executives and decision makers</li>
-                        <li>Regulatory and compliance specialists</li>
+                        <li>Các nhà phát triển và quản lý dự án</li>
+                        <li>Các nhà quản lý và vận hành tài sản</li>
+                        <li>Kỹ sư và nhà phân tích kỹ thuật</li>
+                        <li>Các chuyên gia phát triển kinh doanh</li>
+                        <li>Các giám đốc điều hành và nhà ra quyết định</li>
+                        <li>Các chuyên gia về quy định và tuân thủ</li>
                     </ul>
                 </div>
 
                 <div class="overview-card">
-                    <h3 id="interactive-learning-title"><span class="overview-icon">📚</span>Interactive Learning</h3>
-                    <p id="interactive-learning-description">Revolutionary training approach featuring:</p>
+                    <h3 id="interactive-learning-title"><span class="overview-icon">📚</span>Học tập tương tác</h3>
+                    <p id="interactive-learning-description">Phương pháp đào tạo mang tính cách mạng với:</p>
                     <ul id="interactive-learning-list">
-                        <li>Step-by-step content revelation</li>
-                        <li>Interactive visual diagrams and animations</li>
-                        <li>Hands-on scenarios and case studies</li>
-                        <li>Immediate feedback and progress tracking</li>
-                        <li>Energy-specific examples throughout</li>
-                        <li>Self-paced with guided progression</li>
+                        <li>Tiết lộ nội dung từng bước</li>
+                        <li>Sơ đồ và hoạt ảnh trực quan tương tác</li>
+                        <li>Các tình huống và nghiên cứu điển hình thực hành</li>
+                        <li>Phản hồi tức thì và theo dõi tiến độ</li>
+                        <li>Các ví dụ cụ thể về năng lượng xuyên suốt</li>
+                        <li>Tự học theo tốc độ của riêng bạn với hướng dẫn</li>
                     </ul>
                 </div>
 
                 <div class="overview-card">
-                    <h3 id="learning-outcomes-title"><span class="overview-icon">🚀</span>Learning Outcomes</h3>
-                    <p id="learning-outcomes-description">By completion, you will confidently:</p>
+                    <h3 id="learning-outcomes-title"><span class="overview-icon">🚀</span>Kết quả học tập</h3>
+                    <p id="learning-outcomes-description">Sau khi hoàn thành, bạn sẽ tự tin:</p>
                     <ul id="learning-outcomes-list">
-                        <li>Understand AI, ML, and Generative AI fundamentals</li>
-                        <li>Effectively use LLM tools in daily work</li>
-                        <li>Apply advanced prompt engineering techniques</li>
-                        <li>Navigate ethical and security considerations</li>
-                        <li>Implement AI solutions responsibly</li>
-                        <li>Stay current with evolving AI capabilities</li>
+                        <li>Hiểu các nguyên tắc cơ bản về AI, ML và AI tạo sinh</li>
+                        <li>Sử dụng hiệu quả các công cụ LLM trong công việc hàng ngày</li>
+                        <li>Áp dụng các kỹ thuật prompt engineering nâng cao</li>
+                        <li>Điều hướng các cân nhắc về đạo đức và bảo mật</li>
+                        <li>Triển khai các giải pháp AI một cách có trách nhiệm</li>
+                        <li>Luôn cập nhật các khả năng AI đang phát triển</li>
                     </ul>
                 </div>
 
                 <div class="overview-card">
-                    <h3 id="time-investment-title"><span class="overview-icon">⏱️</span>Time Investment</h3>
-                    <p id="time-investment-description">Optimized for busy professionals:</p>
+                    <h3 id="time-investment-title"><span class="overview-icon">⏱️</span>Thời gian đầu tư</h3>
+                    <p id="time-investment-description">Tối ưu hóa cho các chuyên gia bận rộn:</p>
                     <ul id="time-investment-list">
-                        <li>Total duration: 3.5 hours</li>
-                        <li>Average 42 minutes per module</li>
-                        <li>Interactive, engaging format</li>
-                        <li>Can be completed over multiple sessions</li>
-                        <li>Progress automatically saved</li>
-                        <li>Immediate application to your work</li>
+                        <li>Tổng thời lượng: 3.5 giờ</li>
+                        <li>Trung bình 42 phút mỗi mô-đun</li>
+                        <li>Định dạng tương tác, hấp dẫn</li>
+                        <li>Có thể hoàn thành trong nhiều buổi</li>
+                        <li>Tiến độ tự động lưu</li>
+                        <li>Ứng dụng ngay lập tức vào công việc của bạn</li>
                     </ul>
                 </div>
             </div>
@@ -939,12 +990,12 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p id="footer-thanks">🎓 Thank you for choosing this interactive AI training experience!</p>
-            <p id="footer-confident">We're confident you'll gain practical skills to enhance your energy sector work with AI technologies.</p>
-            <p class="footer-author" id="footer-author">Course Author: Phong Han</p>
+            <p id="footer-thanks">🎓 Cảm ơn bạn đã chọn trải nghiệm đào tạo AI tương tác này!</p>
+            <p id="footer-confident">Chúng tôi tin rằng bạn sẽ có được các kỹ năng thực tế để nâng cao công việc trong ngành năng lượng của mình với các công nghệ AI.</p>
+            <p class="footer-author" id="footer-author">Tác giả khóa học: Phong Han</p>
             
             <div class="footer-note">
-                <p id="footer-note-text">This interactive course represents the current state of AI technology and best practices as of 2024. The AI landscape evolves rapidly, so we encourage continued learning and staying updated with the latest developments in the field.</p>
+                <p id="footer-note-text">Khóa học tương tác này thể hiện trạng thái hiện tại của công nghệ AI và các phương pháp hay nhất tính đến năm 2024. Bối cảnh AI phát triển nhanh chóng, vì vậy chúng tôi khuyến khích tiếp tục học hỏi và cập nhật những phát triển mới nhất trong lĩnh vực này.</p>
             </div>
         </div>
     </footer>
@@ -953,7 +1004,7 @@
         // Progress tracking and module management
         let completedModules = JSON.parse(localStorage.getItem('completedModules') || '[]');
         let currentModule = parseInt(localStorage.getItem('currentModule') || '1');
-        let currentLanguage = localStorage.getItem('language') || 'en'; // Default to English
+        let currentLanguage = localStorage.getItem('language') || 'vi'; // Default to Vietnamese
 
         // Translations object
         const translations = {
