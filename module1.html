@@ -55,13 +55,64 @@
 
         .nav-links a:hover {
             color: #000000;
+            background: #F3F4F6;
         }
 
         .nav-links .active {
             color: #000000;
-            border: 2px solid #000000;
-            border-radius: 0.5rem;
-            padding: 0.5rem 1rem;
+            background: #E5E7EB;
+            font-weight: 600;
+        }
+
+        .nav-module-links {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        .nav-module-links a {
+            padding: 0.375rem 0.75rem;
+            font-size: 0.875rem;
+            border: 1px solid #E5E7EB;
+            border-radius: 0.375rem;
+            background: #FFFFFF;
+        }
+
+        .nav-module-links a:hover {
+            border-color: #8B5CF6;
+            background: #F3F4F6;
+        }
+
+        .nav-module-links .disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+
+        .nav-prev-next {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        .nav-prev-next a {
+            padding: 0.375rem 0.75rem;
+            font-size: 0.875rem;
+            border: 1px solid #E5E7EB;
+            border-radius: 0.375rem;
+            background: #FFFFFF;
+            font-weight: 500;
+        }
+
+        .nav-prev-next a:hover {
+            border-color: #8B5CF6;
+            background: #F3F4F6;
+        }
+
+        .nav-prev-next .disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            pointer-events: none;
         }
 
         /* Progress Bar */
@@ -731,9 +782,29 @@
     <nav class="nav">
         <a href="index.html" class="nav-logo">🚀 LLM Training Course</a>
         <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="#" class="active">Module 1</a></li>
-            <li><a href="module2.html">Module 2</a></li>
+            <li><a href="index.html" id="home-link">Home</a></li>
+            <li class="nav-module-links">
+                <a href="module1.html" class="active" id="module1-link">Module 1</a>
+                <a href="module2.html" id="module2-link">Module 2</a>
+                <a href="module3.html">Module 3</a>
+                <a href="module4.html">Module 4</a>
+                <a href="module5.html">Module 5</a>
+            </li>
+            <li class="nav-prev-next">
+                <a href="index.html" class="disabled">← Prev</a>
+                <a href="module2.html">Next →</a>
+            </li>
+            <li class="language-switcher">
+                <div class="dropdown">
+                    <button class="dropbtn">
+                        <img id="current-flag" src="https://flagcdn.com/vn.svg" alt="Vietnamese Flag" width="24" height="18">
+                    </button>
+                    <div class="dropdown-content">
+                        <a href="#" data-lang="en"><img src="https://flagcdn.com/us.svg" alt="English Flag" width="24" height="18"> English</a>
+                        <a href="#" data-lang="vi"><img src="https://flagcdn.com/vn.svg" alt="Vietnamese Flag" width="24" height="18"> Tiếng Việt</a>
+                    </div>
+                </div>
+            </li>
         </ul>
     </nav>
 
@@ -748,8 +819,8 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="container">
-            <h1>🧠 Module 1</h1>
-            <p class="hero-subtitle">AI, Machine Learning, and Generative AI: Interactive Learning Experience</p>
+            <h1 id="hero-title">🧠 Module 1</h1>
+            <p class="hero-subtitle" id="hero-subtitle">AI, Machine Learning, and Generative AI: Interactive Learning Experience</p>
         </div>
     </section>
 
@@ -773,33 +844,33 @@
         <div class="content-step active" id="step1">
             <div class="step-header">
                 <div class="step-number">1</div>
-                <div class="step-title">🎯 Welcome & Learning Objectives</div>
+                <div class="step-title" id="step1-title">🎯 Welcome & Learning Objectives</div>
             </div>
             <div class="content">
                 <div class="interactive-element">
-                    <h3>💡 Learning Objectives</h3>
-                    <p>By the end of this module, you'll understand the fundamental differences between AI, ML, and Generative AI, and recognize how these technologies are already being used in energy sector applications.</p>
+                    <h3 id="step1-objective-title">💡 Learning Objectives</h3>
+                    <p id="step1-objective">By the end of this module, you'll understand the fundamental differences between AI, ML, and Generative AI, and recognize how these technologies are already being used in energy sector applications.</p>
                 </div>
 
-                <p>Welcome to this comprehensive course! Over the next 42 minutes, we'll demystify some of the most transformative technologies in today's energy sector: Artificial Intelligence, Machine Learning, and Generative AI.</p>
+                <p id="step1-text1">Welcome to this comprehensive course! Over the next 42 minutes, we'll demystify some of the most transformative technologies in today's energy sector: Artificial Intelligence, Machine Learning, and Generative AI.</p>
 
-                <p>You'll learn not just <strong>what</strong> these technologies are, but <strong>how</strong> they're already revolutionizing energy operations and <strong>how you can leverage them</strong> in your daily work.</p>
+                <p id="step1-text2">You'll learn not just <strong>what</strong> these technologies are, but <strong>how</strong> they're already revolutionizing energy operations and <strong>how you can leverage them</strong> in your daily work.</p>
 
                 <div class="image-container">
                     <figure>
                         <img src="public/media/cover.png" alt="AI Training Course Cover - Energy professionals learning about AI technologies">
-                        <figcaption>🚀 Your journey into AI for energy professionals starts here! This interactive course will transform how you think about and use AI technologies.</figcaption>
+                        <figcaption id="step1-figcaption">🚀 Your journey into AI for energy professionals starts here! This interactive course will transform how you think about and use AI technologies.</figcaption>
                     </figure>
                 </div>
 
                 <div class="example-box">
-                    <h3>🔍 What Makes This Training Different?</h3>
-                    <p><strong>Interactive Learning:</strong> Content is revealed step-by-step, preventing information overload. Each concept builds naturally on the previous one, with immediate feedback and visual reinforcement to ensure solid understanding before moving forward.</p>
+                    <h3 id="step1-example-title">🔍 What Makes This Training Different?</h3>
+                    <p id="step1-example-text"><strong>Interactive Learning:</strong> Content is revealed step-by-step, preventing information overload. Each concept builds naturally on the previous one, with immediate feedback and visual reinforcement to ensure solid understanding before moving forward.</p>
                 </div>
             </div>
             <div class="step-controls">
                 <div></div>
-                <button class="btn-step" onclick="nextStep()">Continue Learning →</button>
+                <button class="btn-step" onclick="nextStep()" id="continue-learning-btn">Continue Learning →</button>
             </div>
         </div>
 
@@ -807,39 +878,39 @@
         <div class="content-step" id="step2">
             <div class="step-header">
                 <div class="step-number">2</div>
-                <div class="step-title">🤖 Artificial Intelligence - The Foundation</div>
+                <div class="step-title" id="step2-title">🤖 Artificial Intelligence - The Foundation</div>
             </div>
             <div class="content">
-                <p><strong>What is AI?</strong> AI is the broad field of making computers capable of performing tasks that typically require human intelligence - understanding language, recognizing patterns, making decisions, and solving complex problems.</p>
+                <p id="step2-text1"><strong>What is AI?</strong> AI is the broad field of making computers capable of performing tasks that typically require human intelligence - understanding language, recognizing patterns, making decisions, and solving complex problems.</p>
 
                 <div class="interactive-element">
-                    <h3>🎯 Think of it like this</h3>
-                    <p>AI is like having a digital assistant that can process vast amounts of information and help you make informed decisions, much faster than humanly possible.</p>
+                    <h3 id="step2-think-title">🎯 Think of it like this</h3>
+                    <p id="step2-think">AI is like having a digital assistant that can process vast amounts of information and help you make informed decisions, much faster than humanly possible.</p>
                 </div>
 
                 <div class="image-container">
                     <figure>
                         <img src="public/media/ai_ml_dl_venn_diagram.png" alt="Venn Diagram illustrating the relationship between AI, Machine Learning, and Deep Learning">
-                        <figcaption>🔍 <strong>Figure 1.1:</strong> Relationship between AI, Machine Learning, and Deep Learning. This diagram shows how these technologies build upon each other, with AI being the broadest concept.</figcaption>
+                        <figcaption id="step2-figcaption">🔍 <strong>Figure 1.1:</strong> Relationship between AI, Machine Learning, and Deep Learning. This diagram shows how these technologies build upon each other, with AI being the broadest concept.</figcaption>
                     </figure>
                 </div>
 
-                <h3 style="color: #000000; font-size: 1.25rem; font-weight: 600; margin: 2rem 0 1rem;">⚡ Energy Sector Examples:</h3>
+                <h3 id="step2-examples-title" style="color: #000000; font-size: 1.25rem; font-weight: 600; margin: 2rem 0 1rem;">⚡ Energy Sector Examples:</h3>
                 <ul>
-                    <li><strong>Predictive Maintenance:</strong> AI systems analyze sensor data from wind turbines to predict when components might fail, preventing costly downtime</li>
-                    <li><strong>Grid Optimization:</strong> AI manages electricity distribution across smart grids, automatically balancing supply and demand in real-time</li>
-                    <li><strong>Energy Trading:</strong> AI algorithms analyze market conditions, weather patterns, and demand forecasts to optimize energy trading decisions</li>
-                    <li><strong>Site Selection:</strong> AI processes satellite imagery, weather data, and geographical information to identify optimal locations for solar farms or wind installations</li>
+                    <li id="step2-example1"><strong>Predictive Maintenance:</strong> AI systems analyze sensor data from wind turbines to predict when components might fail, preventing costly downtime</li>
+                    <li id="step2-example2"><strong>Grid Optimization:</strong> AI manages electricity distribution across smart grids, automatically balancing supply and demand in real-time</li>
+                    <li id="step2-example3"><strong>Energy Trading:</strong> AI algorithms analyze market conditions, weather patterns, and demand forecasts to optimize energy trading decisions</li>
+                    <li id="step2-example4"><strong>Site Selection:</strong> AI processes satellite imagery, weather data, and geographical information to identify optimal locations for solar farms or wind installations</li>
                 </ul>
 
                 <div class="success-box">
-                    <h3>🌟 Key Takeaway</h3>
-                    <p>AI is already working behind the scenes in many energy applications you might use daily. It's not futuristic - it's here now, making energy systems smarter and more efficient.</p>
+                    <h3 id="step2-key-takeaway-title">🌟 Key Takeaway</h3>
+                    <p id="step2-key-takeaway-text">AI is already working behind the scenes in many energy applications you might use daily. It's not futuristic - it's here now, making energy systems smarter and more efficient.</p>
                 </div>
             </div>
             <div class="step-controls">
-                <button class="btn-secondary" onclick="previousStep()">← Previous</button>
-                <button class="btn-step" onclick="nextStep()">Continue to Machine Learning →</button>
+                <button class="btn-secondary" onclick="previousStep()" id="previous-btn-2">← Previous</button>
+                <button class="btn-step" onclick="nextStep()" id="continue-ml-btn">Continue to Machine Learning →</button>
             </div>
         </div>
 
@@ -847,40 +918,40 @@
         <div class="content-step" id="step3">
             <div class="step-header">
                 <div class="step-number">3</div>
-                <div class="step-title">🧠 Machine Learning - How Computers Learn</div>
+                <div class="step-title" id="step3-title">🧠 Machine Learning - How Computers Learn</div>
             </div>
             <div class="content">
-                <p><strong>What is Machine Learning?</strong> Machine Learning is a <em>subset</em> of AI. It's about teaching computers to learn from data without being explicitly programmed for every single task. Instead of giving a computer specific rules, you give it lots of examples, and it figures out the rules itself.</p>
+                <p id="step3-text1"><strong>What is Machine Learning?</strong> Machine Learning is a <em>subset</em> of AI. It's about teaching computers to learn from data without being explicitly programmed for every single task. Instead of giving a computer specific rules, you give it lots of examples, and it figures out the rules itself.</p>
 
                 <div class="interactive-element">
-                    <h3>🎯 Simple Cooking Analogy</h3>
-                    <p>Think of machine learning like learning to cook your grandmother's famous recipe. Instead of getting a detailed recipe with exact measurements, you watch her cook the dish 100 times, noting what ingredients she uses, how long she cooks it, and what the final result looks like. Eventually, you learn to recognize the patterns - when the onions are perfectly golden, how the sauce should smell, what texture means it's ready. You can then cook the dish yourself, even adapting it for different occasions. That's exactly how machine learning works - it learns patterns from lots of examples.</p>
+                    <h3 id="step3-analogy-title">🎯 Simple Cooking Analogy</h3>
+                    <p id="step3-analogy-text">Think of machine learning like learning to cook your grandmother's famous recipe. Instead of getting a detailed recipe with exact measurements, you watch her cook the dish 100 times, noting what ingredients she uses, how long she cooks it, and what the final result looks like. Eventually, you learn to recognize the patterns - when the onions are perfectly golden, how the sauce should smell, what texture means it's ready. You can then cook the dish yourself, even adapting it for different occasions. That's exactly how machine learning works - it learns patterns from lots of examples.</p>
                 </div>
 
                 <div class="image-container">
                     <figure>
                         <img src="public/media/ml_workflow_simple.png" alt="Simple workflow diagram showing the machine learning process: data input, pattern learning, and prediction output">
-                        <figcaption>🔍 <strong>Figure 1.2:</strong> Machine Learning Process - A clear, step-by-step view showing how machine learning works: data goes in, the system learns patterns, and predictions come out. This simplified diagram illustrates the core concept without overwhelming technical details.</figcaption>
+                        <figcaption id="step3-figcaption">🔍 <strong>Figure 1.2:</strong> Machine Learning Process - A clear, step-by-step view showing how machine learning works: data goes in, the system learns patterns, and predictions come out. This simplified diagram illustrates the core concept without overwhelming technical details.</figcaption>
                     </figure>
                 </div>
 
-                <h3 style="color: #000000; font-size: 1.25rem; font-weight: 600; margin: 2rem 0 1rem;">⚡ Energy Sector Applications:</h3>
+                <h3 id="step3-examples-title" style="color: #000000; font-size: 1.25rem; font-weight: 600; margin: 2rem 0 1rem;">⚡ Energy Sector Applications:</h3>
                 <ul>
-                    <li><strong>Demand Forecasting:</strong> ML analyzes historical consumption data, weather patterns, and economic indicators to predict future energy demand</li>
-                    <li><strong>Equipment Health Monitoring:</strong> ML models learn normal operating patterns of turbines, transformers, and other equipment to detect anomalies that signal potential failures</li>
-                    <li><strong>Energy Price Prediction:</strong> ML processes market data, supply/demand trends, and external factors to forecast energy prices</li>
-                    <li><strong>Renewable Energy Output Forecasting:</strong> ML predicts solar and wind energy generation based on weather forecasts and historical performance data</li>
-                    <li><strong>Load Balancing:</strong> ML optimizes energy distribution across the grid by learning consumption patterns and automatically adjusting supply</li>
+                    <li id="step3-example1"><strong>Demand Forecasting:</strong> ML analyzes historical consumption data, weather patterns, and economic indicators to predict future energy demand</li>
+                    <li id="step3-example2"><strong>Equipment Health Monitoring:</strong> ML models learn normal operating patterns of turbines, transformers, and other equipment to detect anomalies that signal potential failures</li>
+                    <li id="step3-example3"><strong>Energy Price Prediction:</strong> ML processes market data, supply/demand trends, and external factors to forecast energy prices</li>
+                    <li id="step3-example4"><strong>Renewable Energy Output Forecasting:</strong> ML predicts solar and wind energy generation based on weather forecasts and historical performance data</li>
+                    <li id="step3-example5"><strong>Load Balancing:</strong> ML optimizes energy distribution across the grid by learning consumption patterns and automatically adjusting supply</li>
                 </ul>
 
                 <div class="example-box">
-                    <h3>💡 Real-World Example</h3>
-                    <p><strong>Predictive Maintenance at Wind Farms:</strong> A wind farm operator uses ML to analyze vibration data, temperature readings, and power output from 100 turbines over 5 years. The ML system learns to identify patterns that occur 2-3 weeks before a gearbox failure, allowing maintenance teams to replace components during scheduled downtime rather than dealing with emergency repairs that could cost 10x more.</p>
+                    <h3 id="step3-real-world-title">💡 Real-World Example</h3>
+                    <p id="step3-real-world-text"><strong>Predictive Maintenance at Wind Farms:</strong> A wind farm operator uses ML to analyze vibration data, temperature readings, and power output from 100 turbines over 5 years. The ML system learns to identify patterns that occur 2-3 weeks before a gearbox failure, allowing maintenance teams to replace components during scheduled downtime rather than dealing with emergency repairs that could cost 10x more.</p>
                 </div>
             </div>
             <div class="step-controls">
-                <button class="btn-secondary" onclick="previousStep()">← Previous</button>
-                <button class="btn-step" onclick="nextStep()">Continue to Generative AI →</button>
+                <button class="btn-secondary" onclick="previousStep()" id="previous-btn-3">← Previous</button>
+                <button class="btn-step" onclick="nextStep()" id="continue-genai-btn">Continue to Generative AI →</button>
             </div>
         </div>
 
@@ -888,46 +959,46 @@
         <div class="content-step" id="step4">
             <div class="step-header">
                 <div class="step-number">4</div>
-                <div class="step-title">✨ Generative AI - AI That Creates</div>
+                <div class="step-title" id="step4-title">✨ Generative AI - AI That Creates</div>
             </div>
             <div class="content">
-                <p><strong>What is Generative AI?</strong> Generative AI is a special kind of AI that <em>creates</em> new content. Unlike traditional AI that might analyze existing data or make predictions, Generative AI can produce original text, images, audio, video, or even code.</p>
+                <p id="step4-text1"><strong>What is Generative AI?</strong> Generative AI is a special kind of AI that <em>creates</em> new content. Unlike traditional AI that might analyze existing data or make predictions, Generative AI can produce original text, images, audio, video, or even code.</p>
 
                 <div class="interactive-element">
-                    <h3>🎯 Think of it like this</h3>
-                    <p>A skilled engineer who has studied thousands of project reports and can now draft new ones in the appropriate style and format, or an experienced consultant who has analyzed countless energy market reports and can generate new insights and recommendations.</p>
+                    <h3 id="step4-think-title">🎯 Think of it like this</h3>
+                    <p id="step4-think">A skilled engineer who has studied thousands of project reports and can now draft new ones in the appropriate style and format, or an experienced consultant who has analyzed countless energy market reports and can generate new insights and recommendations.</p>
                 </div>
 
                 <div class="image-container">
                     <figure>
                         <img src="public/media/chatbot_interface_example.png" alt="Example of a chatbot interface showing AI-generated content for energy sector applications">
-                        <figcaption>🔍 <strong>Figure 1.3:</strong> Generative AI in Action - Modern chatbots powered by Generative AI can create comprehensive, professional content tailored to energy sector needs.</figcaption>
+                        <figcaption id="step4-figcaption">🔍 <strong>Figure 1.3:</strong> Generative AI in Action - Modern chatbots powered by Generative AI can create comprehensive, professional content tailored to energy sector needs.</figcaption>
                     </figure>
                 </div>
 
-                <h3 style="color: #000000; font-size: 1.25rem; font-weight: 600; margin: 2rem 0 1rem;">⚡ Energy Sector Applications:</h3>
+                <h3 id="step4-examples-title" style="color: #000000; font-size: 1.25rem; font-weight: 600; margin: 2rem 0 1rem;">⚡ Energy Sector Applications:</h3>
                 <ul>
-                    <li><strong>Report Generation:</strong> Create environmental impact assessments, project summaries, and regulatory compliance documents</li>
-                    <li><strong>Technical Documentation:</strong> Generate operation and maintenance manuals, safety procedures, and training materials</li>
-                    <li><strong>Proposal Writing:</strong> Draft project proposals, grant applications, and stakeholder communications</li>
-                    <li><strong>Data Analysis Summaries:</strong> Convert complex technical data into executive-friendly reports and presentations</li>
-                    <li><strong>Risk Assessment Documents:</strong> Generate comprehensive risk analysis reports for new energy projects</li>
-                    <li><strong>Regulatory Correspondence:</strong> Draft responses to regulatory inquiries and compliance documentation</li>
+                    <li id="step4-example1"><strong>Report Generation:</strong> Create environmental impact assessments, project summaries, and regulatory compliance documents</li>
+                    <li id="step4-example2"><strong>Technical Documentation:</strong> Generate operation and maintenance manuals, safety procedures, and training materials</li>
+                    <li id="step4-example3"><strong>Proposal Writing:</strong> Draft project proposals, grant applications, and stakeholder communications</li>
+                    <li id="step4-example4"><strong>Data Analysis Summaries:</strong> Convert complex technical data into executive-friendly reports and presentations</li>
+                    <li id="step4-example5"><strong>Risk Assessment Documents:</strong> Generate comprehensive risk analysis reports for new energy projects</li>
+                    <li id="step4-example6"><strong>Regulatory Correspondence:</strong> Draft responses to regulatory inquiries and compliance documentation</li>
                 </ul>
 
                 <div class="success-box">
-                    <h3>🌟 Why This Matters for You</h3>
-                    <p>Generative AI, especially in the form of Large Language Models (LLMs), is what powers the advanced chatbots like ChatGPT, Gemini, and Claude that we'll discuss. These tools can directly assist you in generating reports, summarizing documents, brainstorming ideas, and much more - all tailored to energy sector needs.</p>
+                    <h3 id="step4-why-matter-title">🌟 Why This Matters for You</h3>
+                    <p id="step4-why-matter-text">Generative AI, especially in the form of Large Language Models (LLMs), is what powers the advanced chatbots like ChatGPT, Gemini, and Claude that we'll discuss. These tools can directly assist you in generating reports, summarizing documents, brainstorming ideas, and much more - all tailored to energy sector needs.</p>
                 </div>
 
                 <div class="example-box">
-                    <h3>💡 Practical Example</h3>
-                    <p><strong>Environmental Impact Assessment:</strong> An energy project manager needs to draft an environmental impact section for a new offshore wind farm. Instead of starting from scratch, they provide the AI with key project details (location, capacity, timeline) and ask it to generate a comprehensive environmental impact assessment. The AI produces a well-structured document covering marine ecosystem impacts, noise considerations, visual impact, and mitigation measures - providing an excellent first draft that the manager can then refine with specific technical details.</p>
+                    <h3 id="step4-practical-title">💡 Practical Example</h3>
+                    <p id="step4-practical-text"><strong>Environmental Impact Assessment:</strong> An energy project manager needs to draft an environmental impact section for a new offshore wind farm. Instead of starting from scratch, they provide the AI with key project details (location, capacity, timeline) and ask it to generate a comprehensive environmental impact assessment. The AI produces a well-structured document covering marine ecosystem impacts, noise considerations, visual impact, and mitigation measures - providing an excellent first draft that the manager can then refine with specific technical details.</p>
                 </div>
             </div>
             <div class="step-controls">
-                <button class="btn-secondary" onclick="previousStep()">← Previous</button>
-                <button class="btn-step" onclick="nextStep()">Continue to Key Takeaways →</button>
+                <button class="btn-secondary" onclick="previousStep()" id="previous-btn-4">← Previous</button>
+                <button class="btn-step" onclick="nextStep()" id="continue-takeaways-btn">Continue to Key Takeaways →</button>
             </div>
         </div>
 
@@ -935,33 +1006,33 @@
         <div class="content-step" id="step5">
             <div class="step-header">
                 <div class="step-number">5</div>
-                <div class="step-title">🎯 Key Takeaways & Summary</div>
+                <div class="step-title" id="step5-title">🎯 Key Takeaways & Summary</div>
             </div>
             <div class="content">
                 <div class="interactive-element">
-                    <h3>🧠 What You've Learned</h3>
-                    <p>You now understand the fundamental differences between AI, Machine Learning, and Generative AI, and can identify real-world applications in the energy sector.</p>
+                    <h3 id="step5-learned-title">🧠 What You've Learned</h3>
+                    <p id="step5-learned-text">You now understand the fundamental differences between AI, Machine Learning, and Generative AI, and can identify real-world applications in the energy sector.</p>
                 </div>
 
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin: 2rem 0;">
                     <div style="background: #FFFFFF; border: 2px solid #8B5CF6; border-radius: 1rem; padding: 2rem; box-shadow: 0 4px 12px rgba(139, 92, 246, 0.15);">
-                        <h3 style="color: #8B5CF6; font-size: 1.25rem; font-weight: 600; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+                        <h3 id="step5-ai-title" style="color: #8B5CF6; font-size: 1.25rem; font-weight: 600; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
                             🤖 Artificial Intelligence (AI)
                         </h3>
                         <ul style="list-style: none; padding: 0;">
-                            <li style="display: flex; align-items: flex-start; gap: 0.5rem; margin-bottom: 0.5rem; font-size: 0.875rem; color: #6B7280;">
+                            <li id="step5-ai-li1" style="display: flex; align-items: flex-start; gap: 0.5rem; margin-bottom: 0.5rem; font-size: 0.875rem; color: #6B7280;">
                                 <span style="color: #8B5CF6; font-weight: bold;">•</span>
                                 Broad concept of making computers intelligent
                             </li>
-                            <li style="display: flex; align-items: flex-start; gap: 0.5rem; margin-bottom: 0.5rem; font-size: 0.875rem; color: #6B7280;">
+                            <li id="step5-ai-li2" style="display: flex; align-items: flex-start; gap: 0.5rem; margin-bottom: 0.5rem; font-size: 0.875rem; color: #6B7280;">
                                 <span style="color: #8B5CF6; font-weight: bold;">•</span>
                                 Performs tasks requiring human-like intelligence
                             </li>
-                            <li style="display: flex; align-items: flex-start; gap: 0.5rem; margin-bottom: 0.5rem; font-size: 0.875rem; color: #6B7280;">
+                            <li id="step5-ai-li3" style="display: flex; align-items: flex-start; gap: 0.5rem; margin-bottom: 0.5rem; font-size: 0.875rem; color: #6B7280;">
                                 <span style="color: #8B5CF6; font-weight: bold;">•</span>
                                 Already present in many daily applications
                             </li>
-                            <li style="display: flex; align-items: flex-start; gap: 0.5rem; margin-bottom: 0.5rem; font-size: 0.875rem; color: #6B7280;">
+                            <li id="step5-ai-li4" style="display: flex; align-items: flex-start; gap: 0.5rem; margin-bottom: 0.5rem; font-size: 0.875rem; color: #6B7280;">
                                 <span style="color: #8B5CF6; font-weight: bold;">•</span>
                                 Foundation for all other AI technologies
                             </li>
@@ -969,23 +1040,23 @@
                     </div>
 
                     <div style="background: #FFFFFF; border: 2px solid #10B981; border-radius: 1rem; padding: 2rem; box-shadow: 0 4px 12px rgba(16, 185, 129, 0.15);">
-                        <h3 style="color: #10B981; font-size: 1.25rem; font-weight: 600; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+                        <h3 id="step5-ml-title" style="color: #10B981; font-size: 1.25rem; font-weight: 600; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
                             🧠 Machine Learning (ML)
                         </h3>
                         <ul style="list-style: none; padding: 0;">
-                            <li style="display: flex; align-items: flex-start; gap: 0.5rem; margin-bottom: 0.5rem; font-size: 0.875rem; color: #6B7280;">
+                            <li id="step5-ml-li1" style="display: flex; align-items: flex-start; gap: 0.5rem; margin-bottom: 0.5rem; font-size: 0.875rem; color: #6B7280;">
                                 <span style="color: #10B981; font-weight: bold;">•</span>
                                 Subset of AI focused on learning from data
                             </li>
-                            <li style="display: flex; align-items: flex-start; gap: 0.5rem; margin-bottom: 0.5rem; font-size: 0.875rem; color: #6B7280;">
+                            <li id="step5-ml-li2" style="display: flex; align-items: flex-start; gap: 0.5rem; margin-bottom: 0.5rem; font-size: 0.875rem; color: #6B7280;">
                                 <span style="color: #10B981; font-weight: bold;">•</span>
                                 Computers learn patterns without explicit programming
                             </li>
-                            <li style="display: flex; align-items: flex-start; gap: 0.5rem; margin-bottom: 0.5rem; font-size: 0.875rem; color: #6B7280;">
+                            <li id="step5-ml-li3" style="display: flex; align-items: flex-start; gap: 0.5rem; margin-bottom: 0.5rem; font-size: 0.875rem; color: #6B7280;">
                                 <span style="color: #10B981; font-weight: bold;">•</span>
                                 Powers predictive and analytical features
                             </li>
-                            <li style="display: flex; align-items: flex-start; gap: 0.5rem; margin-bottom: 0.5rem; font-size: 0.875rem; color: #6B7280;">
+                            <li id="step5-ml-li4" style="display: flex; align-items: flex-start; gap: 0.5rem; margin-bottom: 0.5rem; font-size: 0.875rem; color: #6B7280;">
                                 <span style="color: #10B981; font-weight: bold;">•</span>
                                 Essential for energy sector optimization
                             </li>
@@ -993,23 +1064,23 @@
                     </div>
 
                     <div style="background: #FFFFFF; border: 2px solid #F59E0B; border-radius: 1rem; padding: 2rem; box-shadow: 0 4px 12px rgba(245, 158, 11, 0.15);">
-                        <h3 style="color: #F59E0B; font-size: 1.25rem; font-weight: 600; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+                        <h3 id="step5-genai-title" style="color: #F59E0B; font-size: 1.25rem; font-weight: 600; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
                             ✨ Generative AI
                         </h3>
                         <ul style="list-style: none; padding: 0;">
-                            <li style="display: flex; align-items: flex-start; gap: 0.5rem; margin-bottom: 0.5rem; font-size: 0.875rem; color: #6B7280;">
+                            <li id="step5-genai-li1" style="display: flex; align-items: flex-start; gap: 0.5rem; margin-bottom: 0.5rem; font-size: 0.875rem; color: #6B7280;">
                                 <span style="color: #F59E0B; font-weight: bold;">•</span>
                                 Creates new, original content
                             </li>
-                            <li style="display: flex; align-items: flex-start; gap: 0.5rem; margin-bottom: 0.5rem; font-size: 0.875rem; color: #6B7280;">
+                            <li id="step5-genai-li2" style="display: flex; align-items: flex-start; gap: 0.5rem; margin-bottom: 0.5rem; font-size: 0.875rem; color: #6B7280;">
                                 <span style="color: #F59E0B; font-weight: bold;">•</span>
                                 Powers modern chatbots and AI assistants
                             </li>
-                            <li style="display: flex; align-items: flex-start; gap: 0.5rem; margin-bottom: 0.5rem; font-size: 0.875rem; color: #6B7280;">
+                            <li id="step5-genai-li3" style="display: flex; align-items: flex-start; gap: 0.5rem; margin-bottom: 0.5rem; font-size: 0.875rem; color: #6B7280;">
                                 <span style="color: #F59E0B; font-weight: bold;">•</span>
                                 Can generate text, images, code, and more
                             </li>
-                            <li style="display: flex; align-items: flex-start; gap: 0.5rem; margin-bottom: 0.5rem; font-size: 0.875rem; color: #6B7280;">
+                            <li id="step5-genai-li4" style="display: flex; align-items: flex-start; gap: 0.5rem; margin-bottom: 0.5rem; font-size: 0.875rem; color: #6B7280;">
                                 <span style="color: #F59E0B; font-weight: bold;">•</span>
                                 Most relevant for your daily work applications
                             </li>
@@ -1018,13 +1089,13 @@
                 </div>
 
                 <div class="success-box">
-                    <h3>🎉 Congratulations!</h3>
-                    <p>You've successfully completed the foundational concepts! You're now ready to test your knowledge with an interactive quiz and then move on to understanding how Large Language Models work in detail.</p>
+                    <h3 id="step5-congrats-title">🎉 Congratulations!</h3>
+                    <p id="step5-congrats-text">You've successfully completed the foundational concepts! You're now ready to test your knowledge with an interactive quiz and then move on to understanding how Large Language Models work in detail.</p>
                 </div>
             </div>
             <div class="step-controls">
-                <button class="btn-secondary" onclick="previousStep()">← Previous</button>
-                <button class="btn-step" onclick="nextStep()">Take the Knowledge Quiz →</button>
+                <button class="btn-secondary" onclick="previousStep()" id="previous-btn-5">← Previous</button>
+                <button class="btn-step" onclick="nextStep()" id="take-quiz-btn">Take the Knowledge Quiz →</button>
             </div>
         </div>
 
@@ -1032,85 +1103,85 @@
         <div class="content-step" id="step6">
             <div class="step-header">
                 <div class="step-number">6</div>
-                <div class="step-title">🧠 Interactive Knowledge Check</div>
+                <div class="step-title" id="step6-title">🧠 Interactive Knowledge Check</div>
             </div>
             <div class="content">
                 <div class="interactive-element">
-                    <h3>🎯 Test Your Understanding</h3>
-                    <p>Complete this interactive quiz to reinforce your learning and ensure you're ready for Module 2. Each question builds on the concepts you've just learned.</p>
+                    <h3 id="step6-test-title">🎯 Test Your Understanding</h3>
+                    <p id="step6-test-text">Complete this interactive quiz to reinforce your learning and ensure you're ready for Module 2. Each question builds on the concepts you've just learned.</p>
                 </div>
 
                 <div class="quiz-container">
                     <div class="quiz-question active" id="question1">
                         <span class="question-number">Question 1 of 4</span>
-                        <div class="question-text">Which of the following best describes the relationship between AI, Machine Learning, and Generative AI?</div>
+                        <div class="question-text" id="question1-text">Which of the following best describes the relationship between AI, Machine Learning, and Generative AI?</div>
                         <ul class="quiz-options">
-                            <li class="quiz-option" data-answer="a">They are three completely separate and unrelated technologies</li>
-                            <li class="quiz-option" data-answer="b">Machine Learning is a subset of AI, and Generative AI is a type of AI that creates content</li>
-                            <li class="quiz-option" data-answer="c">Generative AI is the broadest concept, containing both AI and Machine Learning</li>
-                            <li class="quiz-option" data-answer="d">They are different names for the same technology</li>
+                            <li class="quiz-option" data-answer="a" id="question1-option-a">They are three completely separate and unrelated technologies</li>
+                            <li class="quiz-option" data-answer="b" id="question1-option-b">Machine Learning is a subset of AI, and Generative AI is a type of AI that creates content</li>
+                            <li class="quiz-option" data-answer="c" id="question1-option-c">Generative AI is the broadest concept, containing both AI and Machine Learning</li>
+                            <li class="quiz-option" data-answer="d" id="question1-option-d">They are different names for the same technology</li>
                         </ul>
-                        <div class="quiz-feedback">
+                        <div class="quiz-feedback" id="question1-feedback">
                             <p><strong>Correct!</strong> Machine Learning is indeed a subset of AI (focused on learning from data), and Generative AI is a specialized type of AI that creates new content. Think of it as nested concepts: AI is the broadest, ML is within AI, and Generative AI is a specific application area.</p>
                         </div>
-                        <button class="quiz-button" onclick="checkAnswer(1, 'b')">Submit Answer</button>
+                        <button class="quiz-button" onclick="checkAnswer(1, 'b')" id="submit-answer-btn-1">Submit Answer</button>
                     </div>
 
                     <div class="quiz-question" id="question2">
                         <span class="question-number">Question 2 of 4</span>
-                        <div class="question-text">In the energy sector, which of these is the BEST example of Machine Learning in action?</div>
+                        <div class="question-text" id="question2-text">In the energy sector, which of these is the BEST example of Machine Learning in action?</div>
                         <ul class="quiz-options">
-                            <li class="quiz-option" data-answer="a">Using a calculator to compute energy costs</li>
-                            <li class="quiz-option" data-answer="b">Analyzing 5 years of wind turbine sensor data to predict equipment failures 2-3 weeks in advance</li>
-                            <li class="quiz-option" data-answer="c">Manually reading electricity meters</li>
-                            <li class="quiz-option" data-answer="d">Using Excel to create energy consumption charts</li>
+                            <li class="quiz-option" data-answer="a" id="question2-option-a">Using a calculator to compute energy costs</li>
+                            <li class="quiz-option" data-answer="b" id="question2-option-b">Analyzing 5 years of wind turbine sensor data to predict equipment failures 2-3 weeks in advance</li>
+                            <li class="quiz-option" data-answer="c" id="question2-option-c">Manually reading electricity meters</li>
+                            <li class="quiz-option" data-answer="d" id="question2-option-d">Using Excel to create energy consumption charts</li>
                         </ul>
-                        <div class="quiz-feedback">
+                        <div class="quiz-feedback" id="question2-feedback">
                             <p><strong>Excellent!</strong> This is a perfect example of Machine Learning - the system learns patterns from historical data (5 years of sensor readings) to make predictions (equipment failures). The key is that it learns patterns automatically rather than being explicitly programmed with rules.</p>
                         </div>
-                        <button class="quiz-button" onclick="checkAnswer(2, 'b')">Submit Answer</button>
+                        <button class="quiz-button" onclick="checkAnswer(2, 'b')" id="submit-answer-btn-2">Submit Answer</button>
                     </div>
 
                     <div class="quiz-question" id="question3">
                         <span class="question-number">Question 3 of 4</span>
-                        <div class="question-text">Which of these tasks would be MOST suitable for Generative AI in an energy company?</div>
+                        <div class="question-text" id="question3-text">Which of these tasks would be MOST suitable for Generative AI in an energy company?</div>
                         <ul class="quiz-options">
-                            <li class="quiz-option" data-answer="a">Monitoring real-time electricity grid performance</li>
-                            <li class="quiz-option" data-answer="b">Calculating the exact voltage in power lines</li>
-                            <li class="quiz-option" data-answer="c">Drafting an environmental impact assessment report for a new solar farm project</li>
-                            <li class="quiz-option" data-answer="d">Measuring wind speed at turbine locations</li>
+                            <li class="quiz-option" data-answer="a" id="question3-option-a">Monitoring real-time electricity grid performance</li>
+                            <li class="quiz-option" data-answer="b" id="question3-option-b">Calculating the exact voltage in power lines</li>
+                            <li class="quiz-option" data-answer="c" id="question3-option-c">Drafting an environmental impact assessment report for a new solar farm project</li>
+                            <li class="quiz-option" data-answer="d" id="question3-option-d">Measuring wind speed at turbine locations</li>
                         </ul>
-                        <div class="quiz-feedback">
+                        <div class="quiz-feedback" id="question3-feedback">
                             <p><strong>Perfect!</strong> Generative AI excels at creating new content like reports, documents, and written materials. Drafting an environmental impact assessment involves generating original text based on project parameters - exactly what Generative AI does best. The other options involve measurement, monitoring, or calculation rather than content creation.</p>
                         </div>
-                        <button class="quiz-button" onclick="checkAnswer(3, 'c')">Submit Answer</button>
+                        <button class="quiz-button" onclick="checkAnswer(3, 'c')" id="submit-answer-btn-3">Submit Answer</button>
                     </div>
 
                     <div class="quiz-question" id="question4">
                         <span class="question-number">Question 4 of 4</span>
-                        <div class="question-text">What is the main advantage of using AI tools in energy sector work?</div>
+                        <div class="question-text" id="question4-text">What is the main advantage of using AI tools in energy sector work?</div>
                         <ul class="quiz-options">
-                            <li class="quiz-option" data-answer="a">They completely replace the need for human expertise and judgment</li>
-                            <li class="quiz-option" data-answer="b">They can process vast amounts of information quickly and help make informed decisions faster than humanly possible</li>
-                            <li class="quiz-option" data-answer="c">They are always 100% accurate and never make mistakes</li>
-                            <li class="quiz-option" data-answer="d">They eliminate the need for data verification and quality control</li>
+                            <li class="quiz-option" data-answer="a" id="question4-option-a">They completely replace the need for human expertise and judgment</li>
+                            <li class="quiz-option" data-answer="b" id="question4-option-b">They can process vast amounts of information quickly and help make informed decisions faster than humanly possible</li>
+                            <li class="quiz-option" data-answer="c" id="question4-option-c">They are always 100% accurate and never make mistakes</li>
+                            <li class="quiz-option" data-answer="d" id="question4-option-d">They eliminate the need for data verification and quality control</li>
                         </ul>
-                        <div class="quiz-feedback">
+                        <div class="quiz-feedback" id="question4-feedback">
                             <p><strong>Exactly right!</strong> AI tools are powerful assistants that can process and analyze large amounts of data much faster than humans, helping us make better-informed decisions. However, they don't replace human expertise, aren't always perfect, and still require human oversight and verification - which we'll explore more in later modules.</p>
                         </div>
-                        <button class="quiz-button" onclick="checkAnswer(4, 'b')">Submit Answer</button>
+                        <button class="quiz-button" onclick="checkAnswer(4, 'b')" id="submit-answer-btn-4">Submit Answer</button>
                     </div>
 
                     <div class="quiz-results" id="quizResults">
                         <div class="quiz-score" id="finalScore">0/4</div>
                         <div class="quiz-message" id="scoreMessage">Great job completing the quiz!</div>
-                        <p style="color: #047857; margin: 1rem 0;">You're ready to move on to Module 2, where we'll dive deeper into Large Language Models.</p>
-                        <button class="btn-step" onclick="completeModule()" style="margin-top: 1rem;">Complete Module 1 →</button>
+                        <p style="color: #047857; margin: 1rem 0;" id="quiz-ready-next-module">You're ready to move on to Module 2, where we'll dive deeper into Large Language Models.</p>
+                        <button class="btn-step" onclick="completeModule()" style="margin-top: 1rem;" id="complete-module-btn">Complete Module 1 →</button>
                     </div>
                 </div>
             </div>
             <div class="step-controls">
-                <button class="btn-secondary" onclick="previousStep()">← Previous</button>
+                <button class="btn-secondary" onclick="previousStep()" id="previous-btn-6">← Previous</button>
                 <div></div>
             </div>
         </div>
@@ -1119,7 +1190,7 @@
     <!-- Navigation -->
     <section class="interactive-container">
         <div class="nav-buttons">
-            <a href="index.html" class="btn-back">
+            <a href="index.html" class="btn-back" id="back-to-outline-btn">
                 ← Back to Course Outline
             </a>
             <a href="module2.html" class="btn-next" id="nextModuleBtn" style="display: none;">
@@ -1504,6 +1575,28 @@
             }
         }
 
+        // Audio feedback function
+        function speakFeedback(text, isCorrect) {
+            if ('speechSynthesis' in window) {
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.rate = 1.2;
+                utterance.pitch = isCorrect ? 1.2 : 0.8;
+                utterance.volume = 0.8;
+                
+                // Use different voices for correct/incorrect if available
+                const voices = speechSynthesis.getVoices();
+                if (voices.length > 0) {
+                    // Try to find an English voice
+                    const englishVoice = voices.find(voice => voice.lang.startsWith('en'));
+                    if (englishVoice) {
+                        utterance.voice = englishVoice;
+                    }
+                }
+                
+                speechSynthesis.speak(utterance);
+            }
+        }
+
         // Quiz functionality
         function checkAnswer(questionNum, correctAnswer) {
             const question = document.getElementById(`question${questionNum}`);
@@ -1546,6 +1639,9 @@
                 feedback.style.borderColor = '#10B981';
                 feedback.querySelector('p').style.color = '#047857';
                 quizScore++;
+                
+                // Audio feedback for correct answer
+                speakFeedback("Correct!", true);
             } else {
                 feedback.style.background = '#FEF2F2';
                 feedback.style.borderColor = '#EF4444';
@@ -1553,6 +1649,9 @@
                 // Update feedback text for incorrect answers
                 const feedbackText = feedback.querySelector('p');
                 feedbackText.innerHTML = `<strong>Incorrect.</strong> ${feedbackText.innerHTML.replace('<strong>Correct!</strong>', 'The correct answer is:')}`;
+                
+                // Audio feedback for incorrect answer
+                speakFeedback("Incorrect!", false);
             }
             
             // Show feedback
@@ -1658,6 +1757,7 @@
             // Step 2
             document.getElementById('step2-title').textContent = translations[lang].step2Title;
             document.getElementById('step2-text1').innerHTML = translations[lang].step2Text1;
+            document.getElementById('step2-think-title').textContent = "🎯 " + (translations[lang].step2Think.split(':')[0] || "Think of it like this");
             document.getElementById('step2-think').textContent = translations[lang].step2Think;
             document.getElementById('step2-figcaption').innerHTML = translations[lang].step2FigCaption;
             document.getElementById('step2-examples-title').textContent = translations[lang].step2ExamplesTitle;
@@ -1683,13 +1783,14 @@
             document.getElementById('step3-example4').innerHTML = translations[lang].step3Example4;
             document.getElementById('step3-example5').innerHTML = translations[lang].step3Example5;
             document.getElementById('step3-real-world-title').textContent = translations[lang].step3RealWorldTitle;
-            document.getElementById('step3-real-world-text').textContent = translations[lang].step3RealWorldText;
+            document.getElementById('step3-real-world-text').innerHTML = translations[lang].step3RealWorldText;
             document.getElementById('previous-btn-3').textContent = translations[lang].previousBtn;
             document.getElementById('continue-genai-btn').textContent = translations[lang].continueGenAIBtn;
 
             // Step 4
             document.getElementById('step4-title').textContent = translations[lang].step4Title;
             document.getElementById('step4-text1').innerHTML = translations[lang].step4Text1;
+            document.getElementById('step4-think-title').textContent = "🎯 " + (translations[lang].step4Think.split(':')[0] || "Think of it like this");
             document.getElementById('step4-think').textContent = translations[lang].step4Think;
             document.getElementById('step4-figcaption').innerHTML = translations[lang].step4FigCaption;
             document.getElementById('step4-examples-title').textContent = translations[lang].step4ExamplesTitle;
@@ -1700,9 +1801,9 @@
             document.getElementById('step4-example5').innerHTML = translations[lang].step4Example5;
             document.getElementById('step4-example6').innerHTML = translations[lang].step4Example6;
             document.getElementById('step4-why-matter-title').textContent = translations[lang].step4WhyMatterTitle;
-            document.getElementById('step4-why-matter-text').textContent = translations[lang].step4WhyMatterText;
+            document.getElementById('step4-why-matter-text').innerHTML = translations[lang].step4WhyMatterText;
             document.getElementById('step4-practical-title').textContent = translations[lang].step4PracticalTitle;
-            document.getElementById('step4-practical-text').textContent = translations[lang].step4PracticalText;
+            document.getElementById('step4-practical-text').innerHTML = translations[lang].step4PracticalText;
             document.getElementById('previous-btn-4').textContent = translations[lang].previousBtn;
             document.getElementById('continue-takeaways-btn').textContent = translations[lang].continueTakeawaysBtn;
 
@@ -1711,20 +1812,20 @@
             document.getElementById('step5-learned-title').textContent = translations[lang].step5LearnedTitle;
             document.getElementById('step5-learned-text').textContent = translations[lang].step5LearnedText;
             document.getElementById('step5-ai-title').textContent = translations[lang].step5AITitle;
-            document.getElementById('step5-ai-li1').textContent = translations[lang].step5AILi1;
-            document.getElementById('step5-ai-li2').textContent = translations[lang].step5AILi2;
-            document.getElementById('step5-ai-li3').textContent = translations[lang].step5AILi3;
-            document.getElementById('step5-ai-li4').textContent = translations[lang].step5AILi4;
+            document.getElementById('step5-ai-li1').innerHTML = `<span style="color: #8B5CF6; font-weight: bold;">•</span> ${translations[lang].step5AILi1}`;
+            document.getElementById('step5-ai-li2').innerHTML = `<span style="color: #8B5CF6; font-weight: bold;">•</span> ${translations[lang].step5AILi2}`;
+            document.getElementById('step5-ai-li3').innerHTML = `<span style="color: #8B5CF6; font-weight: bold;">•</span> ${translations[lang].step5AILi3}`;
+            document.getElementById('step5-ai-li4').innerHTML = `<span style="color: #8B5CF6; font-weight: bold;">•</span> ${translations[lang].step5AILi4}`;
             document.getElementById('step5-ml-title').textContent = translations[lang].step5MLTitle;
-            document.getElementById('step5-ml-li1').textContent = translations[lang].step5MLLi1;
-            document.getElementById('step5-ml-li2').textContent = translations[lang].step5MLLi2;
-            document.getElementById('step5-ml-li3').textContent = translations[lang].step5MLLi3;
-            document.getElementById('step5-ml-li4').textContent = translations[lang].step5MLLi4;
+            document.getElementById('step5-ml-li1').innerHTML = `<span style="color: #10B981; font-weight: bold;">•</span> ${translations[lang].step5MLLi1}`;
+            document.getElementById('step5-ml-li2').innerHTML = `<span style="color: #10B981; font-weight: bold;">•</span> ${translations[lang].step5MLLi2}`;
+            document.getElementById('step5-ml-li3').innerHTML = `<span style="color: #10B981; font-weight: bold;">•</span> ${translations[lang].step5MLLi3}`;
+            document.getElementById('step5-ml-li4').innerHTML = `<span style="color: #10B981; font-weight: bold;">•</span> ${translations[lang].step5MLLi4}`;
             document.getElementById('step5-genai-title').textContent = translations[lang].step5GenAITitle;
-            document.getElementById('step5-genai-li1').textContent = translations[lang].step5GenAILi1;
-            document.getElementById('step5-genai-li2').textContent = translations[lang].step5GenAILi2;
-            document.getElementById('step5-genai-li3').textContent = translations[lang].step5GenAILi3;
-            document.getElementById('step5-genai-li4').textContent = translations[lang].step5GenAILi4;
+            document.getElementById('step5-genai-li1').innerHTML = `<span style="color: #F59E0B; font-weight: bold;">•</span> ${translations[lang].step5GenAILi1}`;
+            document.getElementById('step5-genai-li2').innerHTML = `<span style="color: #F59E0B; font-weight: bold;">•</span> ${translations[lang].step5GenAILi2}`;
+            document.getElementById('step5-genai-li3').innerHTML = `<span style="color: #F59E0B; font-weight: bold;">•</span> ${translations[lang].step5GenAILi3}`;
+            document.getElementById('step5-genai-li4').innerHTML = `<span style="color: #F59E0B; font-weight: bold;">•</span> ${translations[lang].step5GenAILi4}`;
             document.getElementById('step5-congrats-title').textContent = translations[lang].step5CongratsTitle;
             document.getElementById('step5-congrats-text').textContent = translations[lang].step5CongratsText;
             document.getElementById('previous-btn-5').textContent = translations[lang].previousBtn;
@@ -1739,31 +1840,31 @@
             document.getElementById('question1-option-b').textContent = translations[lang].question1OptionB;
             document.getElementById('question1-option-c').textContent = translations[lang].question1OptionC;
             document.getElementById('question1-option-d').textContent = translations[lang].question1OptionD;
-            document.getElementById('question1-feedback').innerHTML = translations[lang].question1Feedback;
+            document.getElementById('question1-feedback').innerHTML = `<p>${translations[lang].question1Feedback}</p>`;
             document.getElementById('question2-text').textContent = translations[lang].question2;
             document.getElementById('question2-option-a').textContent = translations[lang].question2OptionA;
             document.getElementById('question2-option-b').textContent = translations[lang].question2OptionB;
             document.getElementById('question2-option-c').textContent = translations[lang].question2OptionC;
             document.getElementById('question2-option-d').textContent = translations[lang].question2OptionD;
-            document.getElementById('question2-feedback').innerHTML = translations[lang].question2Feedback;
+            document.getElementById('question2-feedback').innerHTML = `<p>${translations[lang].question2Feedback}</p>`;
             document.getElementById('question3-text').textContent = translations[lang].question3;
             document.getElementById('question3-option-a').textContent = translations[lang].question3OptionA;
             document.getElementById('question3-option-b').textContent = translations[lang].question3OptionB;
             document.getElementById('question3-option-c').textContent = translations[lang].question3OptionC;
             document.getElementById('question3-option-d').textContent = translations[lang].question3OptionD;
-            document.getElementById('question3-feedback').innerHTML = translations[lang].question3Feedback;
+            document.getElementById('question3-feedback').innerHTML = `<p>${translations[lang].question3Feedback}</p>`;
             document.getElementById('question4-text').textContent = translations[lang].question4;
             document.getElementById('question4-option-a').textContent = translations[lang].question4OptionA;
             document.getElementById('question4-option-b').textContent = translations[lang].question4OptionB;
             document.getElementById('question4-option-c').textContent = translations[lang].question4OptionC;
             document.getElementById('question4-option-d').textContent = translations[lang].question4OptionD;
-            document.getElementById('question4-feedback').innerHTML = translations[lang].question4Feedback;
+            document.getElementById('question4-feedback').innerHTML = `<p>${translations[lang].question4Feedback}</p>`;
             document.getElementById('submit-answer-btn-1').textContent = translations[lang].submitAnswerBtn;
             document.getElementById('submit-answer-btn-2').textContent = translations[lang].submitAnswerBtn;
             document.getElementById('submit-answer-btn-3').textContent = translations[lang].submitAnswerBtn;
             document.getElementById('submit-answer-btn-4').textContent = translations[lang].submitAnswerBtn;
             document.getElementById('finalScore').textContent = translations[lang].quizScore(quizScore);
-            document.getElementById('scoreMessage').textContent = translations[lang][`quizMessage${quizScore}`];
+            document.getElementById('scoreMessage').textContent = translations[lang][`quizMessage${quizScore || 1}`];
             document.getElementById('quiz-ready-next-module').textContent = translations[lang].quizReadyNextModule;
             document.getElementById('complete-module-btn').textContent = translations[lang].completeModuleBtn;
             document.getElementById('previous-btn-6').textContent = translations[lang].previousBtn;

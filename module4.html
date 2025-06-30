@@ -55,13 +55,119 @@
 
         .nav-links a:hover {
             color: #000000;
+            background: #F3F4F6;
         }
 
         .nav-links .active {
             color: #000000;
-            border: 2px solid #000000;
+            background: #E5E7EB;
+            font-weight: 600;
+        }
+
+        .nav-module-links {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        .nav-module-links a {
+            padding: 0.375rem 0.75rem;
+            font-size: 0.875rem;
+            border: 1px solid #E5E7EB;
+            border-radius: 0.375rem;
+            background: #FFFFFF;
+        }
+
+        .nav-module-links a:hover {
+            border-color: #8B5CF6;
+            background: #F3F4F6;
+        }
+
+        .nav-module-links .disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+
+        .nav-prev-next {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        .nav-prev-next a {
+            padding: 0.375rem 0.75rem;
+            font-size: 0.875rem;
+            border: 1px solid #E5E7EB;
+            border-radius: 0.375rem;
+            background: #FFFFFF;
+            font-weight: 500;
+        }
+
+        .nav-prev-next a:hover {
+            border-color: #8B5CF6;
+            background: #F3F4F6;
+        }
+
+        .nav-prev-next .disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+
+        /* Language Switcher */
+        .language-switcher {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropbtn {
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .dropbtn img {
+            vertical-align: middle;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+            right: 0;
             border-radius: 0.5rem;
-            padding: 0.5rem 1rem;
+            overflow: hidden;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1rem;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
         }
 
         /* Hero Section */
@@ -887,16 +993,24 @@
 
     <!-- Navigation -->
     <nav class="nav">
-        <a href="index.html" class="nav-logo">LLM Training Course</a>
+        <a href="index.html" class="nav-logo">🚀 LLM Training Course</a>
         <ul class="nav-links">
             <li><a href="index.html" id="home-link">Home</a></li>
-            <li><a href="module3.html" id="module3-link">Module 3</a></li>
-            <li><a href="#" class="active" id="module4-link">Module 4</a></li>
-            <li><a href="module5.html" id="module5-link">Module 5</a></li>
+            <li class="nav-module-links">
+                <a href="module1.html" id="module1-link">Module 1</a>
+                <a href="module2.html" id="module2-link">Module 2</a>
+                <a href="module3.html" id="module3-link">Module 3</a>
+                <a href="module4.html" class="active" id="module4-link">Module 4</a>
+                <a href="module5.html">Module 5</a>
+            </li>
+            <li class="nav-prev-next">
+                <a href="module3.html">← Prev</a>
+                <a href="module5.html">Next →</a>
+            </li>
             <li class="language-switcher">
                 <div class="dropdown">
                     <button class="dropbtn">
-                        <img id="current-flag" src="https://flagcdn.com/us.svg" alt="English Flag" width="24" height="18">
+                        <img id="current-flag" src="https://flagcdn.com/vn.svg" alt="Vietnamese Flag" width="24" height="18">
                     </button>
                     <div class="dropdown-content">
                         <a href="#" data-lang="en"><img src="https://flagcdn.com/us.svg" alt="English Flag" width="24" height="18"> English</a>
@@ -914,7 +1028,7 @@
             <p class="hero-subtitle" id="hero-subtitle">Mastering Prompt Engineering: Getting the Best Results from AI in Energy Projects</p>
             
             <div class="learning-objectives">
-                <h3>Learning Objectives</h3>
+                <h3 id="learning-objectives-title">Learning Objectives</h3>
                 <ul>
                     <li id="learning-objective-1">Master the fundamental principles of effective prompt engineering</li>
                     <li id="learning-objective-2">Learn energy-specific prompting techniques and templates</li>
@@ -1596,7 +1710,7 @@ Các khuyến nghị chiến lược để tối đa hóa lợi ích và giảm 
         let currentStep = 1;
         const totalSteps = 6;
         let completedSteps = new Set([]);
-        let currentLanguage = localStorage.getItem('language') || 'vi'; // Default to Vietnamese
+        let currentLanguage = localStorage.getItem('language') || 'en'; // Default to English
 
         // Translations object
         const translations = {
@@ -1715,7 +1829,7 @@ Các khuyến nghị chiến lược để tối đa hóa lợi ích và giảm 
                 technique4Example: "Prompt 1: \"Outline the key components of an energy management system for a large industrial facility.\"\n\nPrompt 2: \"Now, for each component you listed, identify the top 2 implementation challenges and potential solutions.\"\n\nPrompt 3: \"Based on the challenges identified, create a phased implementation plan with timelines and resource requirements.\"\n\nPrompt 4: \"Finally, develop KPIs to measure the success of each implementation phase.\"",
                 technique5Title: "🎭Constraint-Based Prompting",
                 technique5Text: "Use specific limitations to focus AI responses. Particularly useful for regulatory compliance and technical specifications.",
-                technique5Example: "\"Ủy ban nhân dân Tỉnh A chấp thuận chủ trương đầu tư đồng thời với chấp thuận nhà Nhà đầu tư: Công ty cổ phần Năng lượng tái tạo B cho Dự án điện gió X [upload file đính kèm nếu thông tin không cần bảo mật]. Hãy sử dụng các công cụ để tìm kiếm thông tin về quy trình chấp thuận đầu tư và xác định xem việc chấp thuận nhà đầu tư không qua đấu thầu như vậy có hợp lệ không. Cần xem xét các quy định của Luật Đầu tư năm 2020 và Nghị định hướng dẫn số 31/2021/NĐ-CP. Trình bày kết quả phân tích theo các quan điểm sau: (1) Nêu quy tắc chung về lựa chọn nhà đầu tư.\n\n(2) Trình bày các trường hợp ngoại lệ.\n\n(3) Phân tích và áp dụng vào trường hợp cụ thể. \n\n(4) Đưa ra kết luận về tính hợp lệ của việc chấp thuận nhà đầu tư trong trường hợp này.\"",
+                technique5Example: "\"Ủy ban nhân dân Tỉnh A chấp thuận chủ trương đầu tư đồng thời với chấp thuận nhà Nhà đầu tư: Công ty cổ phần Năng lượng tái tạo B cho Dự án điện gió X [upload file đính kèm nếu thông tin không cần bảo mật]. Hãy sử dụng các công cụ để tìm kiếm thông tin về quy trình chấp thuận đầu tư và xác định xem việc chấp thuận nhà đầu tư không qua đấu thầu như vậy có hợp lệ không. Cần xem xét các quy định của Luật Đầu tư năm 2020 và Nghị định hướng dẫn số 31/2021/NĐ-CP. Trình bày kết quả phân tích theo các quan điểm sau: (1) Nêu quy tắc chung về lựa chọn nhà đầu tư.\\n\\n(2) Trình bày các trường hợp ngoại lệ.\\n\\n(3) Phân tích và áp dụng vào trường hợp cụ thể. \\n\\n(4) Đưa ra kết luận về tính hợp lệ của việc chấp thuận nhà đầu tư trong trường hợp này.\"",
                 technique6Title: "🔍Perspective Prompting",
                 technique6Text: "Ask AI to consider multiple viewpoints for balanced analysis. Essential for stakeholder management and comprehensive planning.",
                 technique6Example: "\"Ngữ cảnh: Bạn là một nhà quy hoạch dự án đang đánh giá tính khả thi và tác động của một dự án điện gió quy mô lớn dự kiến xây dựng tại một khu vực ven biển thuộc miền Trung Việt Nam.\n\nPrompt mẫu (bằng tiếng Việt):\n\n\"Hãy đóng vai trò là một chuyên gia tư vấn chiến lược độc lập. Tôi cần bạn phân tích toàn diện về dự án điện gió [Tên Dự Án] dự kiến xây dựng tại [Địa điểm cụ thể, ví dụ: Huyện Phù Mỹ, Bình Định].\n\nĐể đảm bảo một cái nhìn đa chiều và cân bằng, hãy xem xét dự án này từ các góc độ sau đây:\n\nChính phủ Việt Nam/Bộ Công Thương: Đánh giá lợi ích kinh tế, đóng góp vào an ninh năng lượng quốc gia, cam kết về năng lượng sạch, và các thách thức trong việc quản lý và cấp phép.\n\nChủ đầu tư/Tập đoàn năng lượng (ví dụ: Siemens Gamesa, Vestas): Phân tích tính khả thi tài chính, lợi nhuận đầu tư, rủi ro kỹ thuật, và khả năng vận hành lâu dài.\n\nCộng đồng dân cư địa phương (ngư dân, nông dân, người dân ven biển): Xem xét tác động đến sinh kế (đánh bắt cá, nông nghiệp), môi trường sống, văn hóa, du lịch, và các mối lo ngại về tiếng ồn, cảnh quan, hoặc mất đất.\n\nCác tổ chức bảo vệ môi trường và đa dạng sinh học (ví dụ: WWF, GreenID): Đánh giá tác động tiềm ẩn đến hệ sinh thái biển, chim di cư, sinh vật hoang dã, và các biện pháp giảm thiểu có thể.\n\nDoanh nghiệp và ngành du lịch địa phương: Phân tích cơ hội (việc làm, phát triển hạ tầng) và thách thức (ảnh hưởng đến cảnh quan du lịch, thu hút du khách).\n\nDựa trên các góc nhìn này, hãy đưa ra một bản phân tích tổng hợp bao gồm:\n\nNhững ưu điểm và cơ hội chính của dự án.\n\nNhững rủi ro và thách thức tiềm ẩn cần được giải quyết.\n\nCác khuyến nghị chiến lược để tối đa hóa lợi ích và giảm thiểu tác động tiêu cực, đồng thời đảm bảo sự hài hòa giữa các bên liên quan.\"",
@@ -2014,7 +2128,7 @@ Các khuyến nghị chiến lược để tối đa hóa lợi ích và giảm 
         document.addEventListener('DOMContentLoaded', function() {
             updateStepDisplay();
             updateProgressBar();
-            setLanguage(currentLanguage); // Set language on load
+            setLanguage(currentLanguage);
             
             // Add click handlers to step dots
             document.querySelectorAll('.step-dot').forEach(dot => {
@@ -2023,6 +2137,15 @@ Các khuyến nghị chiến lược để tối đa hóa lợi ích và giảm 
                     if (targetStep <= Math.max(...completedSteps, currentStep)) {
                         goToStep(targetStep);
                     }
+                });
+            });
+
+            // Language switcher event listeners
+            document.querySelectorAll('.dropdown-content a').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const lang = this.getAttribute('data-lang');
+                    setLanguage(lang);
                 });
             });
         });
@@ -2091,22 +2214,22 @@ Các khuyến nghị chiến lược để tối đa hóa lợi ích và giảm 
             });
             
             // Update navigation buttons
-            const prevBtn = document.querySelector('.btn-prev');
-            const nextBtn = document.querySelector('.btn-next');
+            const prevBtns = document.querySelectorAll('.btn-prev');
+            const nextBtns = document.querySelectorAll('.btn-next');
             
-            if (prevBtn) {
-                prevBtn.disabled = currentStep === 1;
-            }
+            prevBtns.forEach(btn => {
+                btn.disabled = currentStep === 1;
+            });
             
-            if (nextBtn) {
+            nextBtns.forEach(btn => {
                 if (currentStep === totalSteps) {
-                    nextBtn.textContent = translations[currentLanguage].completeModuleBtn;
-                    nextBtn.disabled = true;
+                    btn.textContent = translations[currentLanguage].completeModuleBtn || 'Complete Module';
+                    btn.disabled = true;
                 } else {
-                    nextBtn.textContent = translations[currentLanguage].nextBtn;
-                    nextBtn.disabled = false;
+                    btn.textContent = translations[currentLanguage].nextBtn || 'Next →';
+                    btn.disabled = false;
                 }
-            }
+            });
         }
 
         function updateProgressBar() {
@@ -2122,6 +2245,76 @@ Các khuyến nghị chiến lược để tối đa hóa lợi ích và giảm 
                 top: 0,
                 behavior: 'smooth'
             });
+        }
+
+        function setLanguage(lang) {
+            currentLanguage = lang;
+            localStorage.setItem('language', lang);
+            const t = translations[lang];
+
+            document.getElementById('page-title').textContent = t.pageTitle;
+            document.getElementById('hero-title').textContent = t.heroTitle;
+            document.getElementById('hero-subtitle').textContent = t.heroSubtitle;
+            document.getElementById('learning-objectives-title').textContent = t.learningObjectivesTitle;
+            document.getElementById('learning-objective-1').textContent = t.learningObjective1;
+            document.getElementById('learning-objective-2').textContent = t.learningObjective2;
+            document.getElementById('learning-objective-3').textContent = t.learningObjective3;
+            document.getElementById('learning-objective-4').textContent = t.learningObjective4;
+            document.getElementById('learning-objective-5').textContent = t.learningObjective5;
+
+            document.getElementById('step1-label').textContent = t.step1Label;
+            document.getElementById('step2-label').textContent = t.step2Label;
+            document.getElementById('step3-label').textContent = t.step3Label;
+            document.getElementById('step4-label').textContent = t.step4Label;
+            document.getElementById('step5-label').textContent = t.step5Label;
+            document.getElementById('step6-label').textContent = t.step6Label;
+
+            document.getElementById('step1-title').textContent = t.step1Title;
+            document.getElementById('step1-text1').innerHTML = t.step1Text1;
+            document.getElementById('step1-text2').innerHTML = t.step1Text2;
+            document.getElementById('step1-card-title').textContent = t.step1CardTitle;
+            document.getElementById('step1-card-li1').innerHTML = t.step1CardLi1;
+            document.getElementById('step1-card-li2').innerHTML = t.step1CardLi2;
+            document.getElementById('step1-card-li3').innerHTML = t.step1CardLi3;
+            document.getElementById('step1-card-li4').innerHTML = t.step1CardLi4;
+            document.querySelector('.prompt-label.bad').textContent = t.step1BadPromptLabel;
+            document.querySelector('.prompt-bad').textContent = t.step1BadPrompt;
+            document.querySelector('.prompt-label.good').textContent = t.step1GoodPromptLabel;
+            document.querySelector('.prompt-good').textContent = t.step1GoodPrompt;
+            document.querySelector('.interactive-card h4:last-of-type').textContent = t.step1WhyMatterTitle;
+            document.querySelector('.interactive-card ul:last-of-type li:nth-child(1)').innerHTML = t.step1WhyMatterLi1;
+            document.querySelector('.interactive-card ul:last-of-type li:nth-child(2)').innerHTML = t.step1WhyMatterLi2;
+            document.querySelector('.interactive-card ul:last-of-type li:nth-child(3)').innerHTML = t.step1WhyMatterLi3;
+            document.querySelector('.interactive-card ul:last-of-type li:nth-child(4)').innerHTML = t.step1WhyMatterLi4;
+            document.querySelector('.interactive-card p:last-of-type').textContent = t.step1WhyMatterText;
+
+            const currentFlag = document.getElementById('current-flag');
+            if (currentFlag) {
+                currentFlag.src = lang === 'en' ? 'https://flagcdn.com/us.svg' : 'https://flagcdn.com/vn.svg';
+                currentFlag.alt = lang === 'en' ? 'English Flag' : 'Vietnamese Flag';
+            }
+        }
+
+        // Audio feedback function
+        function speakFeedback(text, isCorrect) {
+            if ('speechSynthesis' in window) {
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.rate = 1.2;
+                utterance.pitch = isCorrect ? 1.2 : 0.8;
+                utterance.volume = 0.8;
+                
+                // Use different voices for correct/incorrect if available
+                const voices = speechSynthesis.getVoices();
+                if (voices.length > 0) {
+                    // Try to find an English voice
+                    const englishVoice = voices.find(voice => voice.lang.startsWith('en'));
+                    if (englishVoice) {
+                        utterance.voice = englishVoice;
+                    }
+                }
+                
+                speechSynthesis.speak(utterance);
+            }
         }
 
         // Quiz functionality
@@ -2140,16 +2333,47 @@ Các khuyến nghị chiến lược để tối đa hóa lợi ích và giảm 
             for (let i = 1; i <= totalQuestions; i++) {
                 const selectedAnswer = document.querySelector(`input[name="q${i}"]:checked`);
                 const resultDiv = document.getElementById(`result${i}`);
+                const questionDiv = document.querySelector(`.quiz-question:nth-child(${i})`);
+                const labels = questionDiv.querySelectorAll('label');
                 
                 if (selectedAnswer) {
                     const isCorrect = selectedAnswer.value === answers[`q${i}`];
+                    
+                    // Highlight correct and incorrect answers
+                    labels.forEach(label => {
+                        const input = label.querySelector('input');
+                        const inputValue = input.value;
+                        
+                        if (inputValue === answers[`q${i}`]) {
+                            // Correct answer - highlight in green
+                            label.style.backgroundColor = '#ECFDF5';
+                            label.style.borderColor = '#10B981';
+                            label.style.color = '#047857';
+                        } else if (input.checked && inputValue !== answers[`q${i}`]) {
+                            // Selected wrong answer - highlight in red
+                            label.style.backgroundColor = '#FEF2F2';
+                            label.style.borderColor = '#EF4444';
+                            label.style.color = '#DC2626';
+                        }
+                        
+                        // Disable further selection
+                        input.disabled = true;
+                        label.style.cursor = 'not-allowed';
+                    });
+                    
                     if (isCorrect) {
                         score++;
                         resultDiv.className = 'quiz-result correct';
                         resultDiv.textContent = translations[currentLanguage][`question${i}FeedbackCorrect`];
+                        
+                        // Audio feedback for correct answer
+                        speakFeedback("Correct!", true);
                     } else {
                         resultDiv.className = 'quiz-result incorrect';
                         resultDiv.textContent = translations[currentLanguage][`question${i}FeedbackIncorrect`];
+                        
+                        // Audio feedback for incorrect answer
+                        speakFeedback("Incorrect!", false);
                     }
                     resultDiv.style.display = 'block';
                 } else {
@@ -2179,6 +2403,10 @@ Các khuyến nghị chiến lược để tối đa hóa lợi ích và giảm 
 
             quizScoreDiv.style.display = 'block';
             
+            // Disable submit button after submission
+            document.querySelector('.quiz-submit').disabled = true;
+            document.querySelector('.quiz-submit').textContent = 'Quiz Completed';
+            
             // Scroll to results
             quizScoreDiv.scrollIntoView({ behavior: 'smooth' });
         }
@@ -2205,6 +2433,7 @@ Các khuyến nghị chiến lược để tối đa hóa lợi ích và giảm 
         function setLanguage(lang) {
             currentLanguage = lang;
             localStorage.setItem('language', lang);
+            const t = translations[lang];
 
             // Update flag
             const currentFlag = document.getElementById('current-flag');
@@ -2213,240 +2442,539 @@ Các khuyến nghị chiến lược để tối đa hóa lợi ích và giảm 
                 currentFlag.alt = lang === 'en' ? 'English Flag' : 'Vietnamese Flag';
             }
 
-            // Update translatable elements
-            document.getElementById('page-title').textContent = translations[lang].pageTitle;
-            document.getElementById('hero-title').textContent = translations[lang].heroTitle;
-            document.getElementById('hero-subtitle').textContent = translations[lang].heroSubtitle;
-            document.getElementById('learning-objectives-title').textContent = translations[lang].learningObjectivesTitle;
-            document.getElementById('learning-objective-1').textContent = translations[lang].learningObjective1;
-            document.getElementById('learning-objective-2').textContent = translations[lang].learningObjective2;
-            document.getElementById('learning-objective-3').textContent = translations[lang].learningObjective3;
-            document.getElementById('learning-objective-4').textContent = translations[lang].learningObjective4;
-            document.getElementById('learning-objective-5').textContent = translations[lang].learningObjective5;
-
-            document.getElementById('step1-label').textContent = translations[lang].step1Label;
-            document.getElementById('step2-label').textContent = translations[lang].step2Label;
-            document.getElementById('step3-label').textContent = translations[lang].step3Label;
-            document.getElementById('step4-label').textContent = translations[lang].step4Label;
-            document.getElementById('step5-label').textContent = translations[lang].step5Label;
-            document.getElementById('step6-label').textContent = translations[lang].step6Label;
-
-            document.getElementById('step1-title').textContent = translations[lang].step1Title;
-            document.getElementById('step1-text1').innerHTML = translations[lang].step1Text1;
-            document.getElementById('step1-text2').innerHTML = translations[lang].step1Text2;
-            document.getElementById('step1-card-title').textContent = translations[lang].step1CardTitle;
-            document.getElementById('step1-card-li1').innerHTML = translations[lang].step1CardLi1;
-            document.getElementById('step1-card-li2').innerHTML = translations[lang].step1CardLi2;
-            document.getElementById('step1-card-li3').innerHTML = translations[lang].step1CardLi3;
-            document.getElementById('step1-card-li4').innerHTML = translations[lang].step1CardLi4;
-            document.getElementById('step1-bad-prompt-label').textContent = translations[lang].step1BadPromptLabel;
-            document.getElementById('step1-bad-prompt').textContent = translations[lang].step1BadPrompt;
-            document.getElementById('step1-good-prompt-label').textContent = translations[lang].step1GoodPromptLabel;
-            document.getElementById('step1-good-prompt').textContent = translations[lang].step1GoodPrompt;
-            document.getElementById('step1-why-matter-title').textContent = translations[lang].step1WhyMatterTitle;
-            document.getElementById('step1-why-matter-li1').innerHTML = translations[lang].step1WhyMatterLi1;
-            document.getElementById('step1-why-matter-li2').innerHTML = translations[lang].step1WhyMatterLi2;
-            document.getElementById('step1-why-matter-li3').innerHTML = translations[lang].step1WhyMatterLi3;
-            document.getElementById('step1-why-matter-li4').innerHTML = translations[lang].step1WhyMatterLi4;
-            document.getElementById('step1-why-matter-text').textContent = translations[lang].step1WhyMatterText;
-            document.getElementById('continue-learning-btn').textContent = translations[lang].continueLearningBtn;
-
-            document.getElementById('step2-title').textContent = translations[lang].step2Title;
-            document.getElementById('step2-text1').textContent = translations[lang].step2Text1;
-            document.getElementById('principle1-title').textContent = translations[lang].principle1Title;
-            document.getElementById('principle1-text').textContent = translations[lang].principle1Text;
-            document.getElementById('principle1-bad-prompt').textContent = translations[lang].principle1BadPrompt;
-            document.getElementById('principle1-good-prompt').textContent = translations[lang].principle1GoodPrompt;
-            document.getElementById('principle2-title').textContent = translations[lang].principle2Title;
-            document.getElementById('principle2-text').textContent = translations[lang].principle2Text;
-            document.getElementById('principle2-example').textContent = translations[lang].principle2Example;
-            document.getElementById('principle3-title').textContent = translations[lang].principle3Title;
-            document.getElementById('principle3-text').textContent = translations[lang].principle3Text;
-            document.getElementById('principle3-example').textContent = translations[lang].principle3Example;
-            document.getElementById('principle4-title').textContent = translations[lang].principle4Title;
-            document.getElementById('principle4-text').textContent = translations[lang].principle4Text;
-            document.getElementById('principle4-example1').textContent = translations[lang].principle4Example1;
-            document.getElementById('principle4-example2').innerHTML = translations[lang].principle4Example2;
-            document.getElementById('principle5-title').textContent = translations[lang].principle5Title;
-            document.getElementById('principle5-text').textContent = translations[lang].principle5Text;
-            document.getElementById('principle5-example').textContent = translations[lang].principle5Example;
-            document.getElementById('principle6-title').textContent = translations[lang].principle6Title;
-            document.getElementById('principle6-text').textContent = translations[lang].principle6Text;
-            document.getElementById('principle6-example').textContent = translations[lang].principle6Example;
-            document.getElementById('clear-framework-title').textContent = translations[lang].clearFrameworkTitle;
-            document.getElementById('clear-framework-text').textContent = translations[lang].clearFrameworkText;
-            document.getElementById('clear-framework-li1').innerHTML = translations[lang].clearFrameworkLi1;
-            document.getElementById('clear-framework-li2').innerHTML = translations[lang].clearFrameworkLi2;
-            document.getElementById('clear-framework-li3').innerHTML = translations[lang].clearFrameworkLi3;
-            document.getElementById('clear-framework-li4').innerHTML = translations[lang].clearFrameworkLi4;
-            document.getElementById('clear-framework-li5').innerHTML = translations[lang].clearFrameworkLi5;
-            document.getElementById('prev-btn-step2').textContent = translations[lang].previousBtn;
-            document.getElementById('next-btn-step2').textContent = translations[lang].nextBtn;
-
-            document.getElementById('step3-title').textContent = translations[lang].step3Title;
-            document.getElementById('step3-text1').textContent = translations[lang].step3Text1;
-            document.getElementById('template1-title').textContent = translations[lang].template1Title;
-            document.getElementById('template1-structure').innerHTML = translations[lang].template1Structure;
-            document.getElementById('template1-example').textContent = translations[lang].template1Example;
-            document.getElementById('template2-title').textContent = translations[lang].template2Title;
-            document.getElementById('template2-structure').innerHTML = translations[lang].template2Structure;
-            document.getElementById('template2-example').textContent = translations[lang].template2Example;
-            document.getElementById('template3-title').textContent = translations[lang].template3Title;
-            document.getElementById('template3-structure').innerHTML = translations[lang].template3Structure;
-            document.getElementById('template3-example').textContent = translations[lang].template3Example;
-            document.getElementById('template4-title').textContent = translations[lang].template4Title;
-            document.getElementById('template4-structure').innerHTML = translations[lang].template4Structure;
-            document.getElementById('template4-example').textContent = translations[lang].template4Example;
-            document.getElementById('template5-title').textContent = translations[lang].template5Title;
-            document.getElementById('template5-structure').innerHTML = translations[lang].template5Structure;
-            document.getElementById('template5-example').textContent = translations[lang].template5Example;
-            document.getElementById('template6-title').textContent = translations[lang].template6Title;
-            document.getElementById('template6-structure').innerHTML = translations[lang].template6Structure;
-            document.getElementById('template6-example').textContent = translations[lang].template6Example;
-            document.getElementById('template-tips-title').textContent = translations[lang].templateTipsTitle;
-            document.getElementById('template-tips-text').textContent = translations[lang].templateTipsText;
-            document.getElementById('template-tips-li1').innerHTML = translations[lang].templateTipsLi1;
-            document.getElementById('template-tips-li2').innerHTML = translations[lang].templateTipsLi2;
-            document.getElementById('template-tips-li3').innerHTML = translations[lang].templateTipsLi3;
-            document.getElementById('template-tips-li4').innerHTML = translations[lang].templateTipsLi4;
-            document.getElementById('prev-btn-step3').textContent = translations[lang].previousBtn;
-            document.getElementById('next-btn-step3').textContent = translations[lang].nextBtn;
-
-            document.getElementById('step4-title').textContent = translations[lang].step4Title;
-            document.getElementById('step4-text1').textContent = translations[lang].step4Text1;
-            document.getElementById('technique1-title').textContent = translations[lang].technique1Title;
-            document.getElementById('technique1-text').textContent = translations[lang].technique1Text;
-            document.getElementById('technique1-example1').textContent = translations[lang].technique1Example1;
-            document.getElementById('technique1-role-title').textContent = translations[lang].technique1RoleTitle;
-            document.getElementById('technique1-example2').textContent = translations[lang].technique1Example2;
-            document.getElementById('technique2-title').textContent = translations[lang].technique2Title;
-            document.getElementById('technique2-text').textContent = translations[lang].technique2Text;
-            document.getElementById('technique2-example-title').textContent = translations[lang].technique2ExampleTitle;
-            document.getElementById('technique2-example').textContent = translations[lang].technique2Example;
-            document.getElementById('technique3-title').textContent = translations[lang].technique3Title;
-            document.getElementById('technique3-text').textContent = translations[lang].technique3Text;
-            document.getElementById('technique3-example').textContent = translations[lang].technique3Example;
-            document.getElementById('technique3-note').textContent = translations[lang].technique3Note;
-            document.getElementById('technique4-title').textContent = translations[lang].technique4Title;
-            document.getElementById('technique4-text').textContent = translations[lang].technique4Text;
-            document.getElementById('technique4-example').textContent = translations[lang].technique4Example;
-            document.getElementById('technique5-title').textContent = translations[lang].technique5Title;
-            document.getElementById('technique5-text').textContent = translations[lang].technique5Text;
-            document.getElementById('technique5-example').textContent = translations[lang].technique5Example;
-            document.getElementById('technique6-title').textContent = translations[lang].technique6Title;
-            document.getElementById('technique6-text').textContent = translations[lang].technique6Text;
-            document.getElementById('technique6-example').textContent = translations[lang].technique6Example;
-            document.getElementById('technique-tips-title').textContent = translations[lang].techniqueTipsTitle;
-            document.getElementById('technique-tips-text').textContent = translations[lang].techniqueTipsText;
-            document.getElementById('technique-tips-li1').innerHTML = translations[lang].techniqueTipsLi1;
-            document.getElementById('technique-tips-li2').innerHTML = translations[lang].techniqueTipsLi2;
-            document.getElementById('technique-tips-li3').innerHTML = translations[lang].techniqueTipsLi3;
-            document.getElementById('technique-tips-li4').innerHTML = translations[lang].techniqueTipsLi4;
-            document.getElementById('technique-tips-li5').innerHTML = translations[lang].techniqueTipsLi5;
-            document.getElementById('technique-tips-li6').innerHTML = translations[lang].techniqueTipsLi6;
-            document.getElementById('prev-btn-step4').textContent = translations[lang].previousBtn;
-            document.getElementById('next-btn-step4').textContent = translations[lang].nextBtn;
-
-            document.getElementById('step5-title').textContent = translations[lang].step5Title;
-            document.getElementById('step5-text1').textContent = translations[lang].step5Text1;
-            document.getElementById('scenario-title').textContent = translations[lang].scenarioTitle;
-            document.getElementById('scenario-situation').innerHTML = translations[lang].scenarioSituation;
-            document.getElementById('scenario-step1').innerHTML = translations[lang].scenarioStep1;
-            document.getElementById('scenario-step2').innerHTML = translations[lang].scenarioStep2;
-            document.getElementById('scenario-step3').innerHTML = translations[lang].scenarioStep3;
-            document.getElementById('scenario-step4').innerHTML = translations[lang].scenarioStep4;
-            document.getElementById('scenario-step5').innerHTML = translations[lang].scenarioStep5;
-            document.getElementById('scenario-result').innerHTML = translations[lang].scenarioResult;
-            document.getElementById('refinement-title').textContent = translations[lang].refinementTitle;
-            document.getElementById('refinement-text').textContent = translations[lang].refinementText;
-            document.getElementById('refinement-li1').innerHTML = translations[lang].refinementLi1;
-            document.getElementById('refinement-li2').innerHTML = translations[lang].refinementLi2;
-            document.getElementById('refinement-li3').innerHTML = translations[lang].refinementLi3;
-            document.getElementById('refinement-li4').innerHTML = translations[lang].refinementLi4;
-            document.getElementById('refinement-li5').innerHTML = translations[lang].refinementLi5;
-            document.getElementById('advanced-refinement-title').textContent = translations[lang].advancedRefinementTitle;
-            document.getElementById('advanced-refinement-text').textContent = translations[lang].advancedRefinementText;
-            document.getElementById('advanced-refinement-li1').innerHTML = translations[lang].advancedRefinementLi1;
-            document.getElementById('advanced-refinement-li2').innerHTML = translations[lang].advancedRefinementLi2;
-            document.getElementById('advanced-refinement-li3').innerHTML = translations[lang].advancedRefinementLi3;
-            document.getElementById('advanced-refinement-li4').innerHTML = translations[lang].advancedRefinementLi4;
-            document.getElementById('advanced-refinement-li5').innerHTML = translations[lang].advancedRefinementLi5;
-            document.getElementById('library-title').textContent = translations[lang].libraryTitle;
-            document.getElementById('library-text').textContent = translations[lang].libraryText;
-            document.getElementById('library-li1').innerHTML = translations[lang].libraryLi1;
-            document.getElementById('library-li2').innerHTML = translations[lang].libraryLi2;
-            document.getElementById('library-li3').innerHTML = translations[lang].libraryLi3;
-            document.getElementById('library-li4').innerHTML = translations[lang].libraryLi4;
-            document.getElementById('library-li5').innerHTML = translations[lang].libraryLi5;
-            document.getElementById('prev-btn-step5').textContent = translations[lang].previousBtn;
-            document.getElementById('next-btn-step5').textContent = translations[lang].nextBtn;
-
-            document.getElementById('step6-title').textContent = translations[lang].step6Title;
-            document.getElementById('step6-text1').textContent = translations[lang].step6Text1;
-            document.getElementById('question1-title').textContent = translations[lang].question1;
-            document.getElementById('question1-option-a').textContent = translations[lang].question1OptionA;
-            document.getElementById('question1-option-b').textContent = translations[lang].question1OptionB;
-            document.getElementById('question1-option-c').textContent = translations[lang].question1OptionC;
-            document.getElementById('question1-option-d').textContent = translations[lang].question1OptionD;
-            document.getElementById('question2-title').textContent = translations[lang].question2;
-            document.getElementById('question2-option-a').textContent = translations[lang].question2OptionA;
-            document.getElementById('question2-option-b').textContent = translations[lang].question2OptionB;
-            document.getElementById('question2-option-c').textContent = translations[lang].question2OptionC;
-            document.getElementById('question2-option-d').textContent = translations[lang].question2OptionD;
-            document.getElementById('question3-title').textContent = translations[lang].question3;
-            document.getElementById('question3-option-a').textContent = translations[lang].question3OptionA;
-            document.getElementById('question3-option-b').textContent = translations[lang].question3OptionB;
-            document.getElementById('question3-option-c').textContent = translations[lang].question3OptionC;
-            document.getElementById('question3-option-d').textContent = translations[lang].question3OptionD;
-            document.getElementById('question4-title').textContent = translations[lang].question4;
-            document.getElementById('question4-option-a').textContent = translations[lang].question4OptionA;
-            document.getElementById('question4-option-b').textContent = translations[lang].question4OptionB;
-            document.getElementById('question4-option-c').textContent = translations[lang].question4OptionC;
-            document.getElementById('question4-option-d').textContent = translations[lang].question4OptionD;
-            document.getElementById('submit-quiz-btn').textContent = translations[lang].submitQuizBtn;
-            document.getElementById('quiz-results-title').textContent = translations[lang].quizResultsTitle;
-            document.getElementById('score-message').textContent = translations[lang][`quizMessage${score}`];
-            document.getElementById('prev-btn-step6').textContent = translations[lang].previousBtn;
-            document.getElementById('complete-module-btn').textContent = translations[lang].completeModuleBtn;
-            document.getElementById('back-to-module-3-btn').textContent = translations[lang].previousModuleBtn;
-            document.getElementById('next-module-5-btn').textContent = translations[lang].nextModuleBtn;
-            document.getElementById('home-link').textContent = translations[lang].homeLink;
-            document.getElementById('module3-link').textContent = translations[lang].moduleLink(3);
-            document.getElementById('module4-link').textContent = translations[lang].moduleLink(4);
-            document.getElementById('module5-link').textContent = translations[lang].moduleLink(5);
-
-            // Update quiz feedback messages
-            document.getElementById('result1').textContent = translations[lang][`question1Feedback${document.querySelector('input[name="q1"]:checked') ? (document.querySelector('input[name="q1"]:checked').value === answers.q1 ? 'Correct' : 'Incorrect') : ''}`];
-            document.getElementById('result2').textContent = translations[lang][`question2Feedback${document.querySelector('input[name="q2"]:checked') ? (document.querySelector('input[name="q2"]:checked').value === answers.q2 ? 'Correct' : 'Incorrect') : ''}`];
-            document.getElementById('result3').textContent = translations[lang][`question3Feedback${document.querySelector('input[name="q3"]:checked') ? (document.querySelector('input[name="q3"]:checked').value === answers.q3 ? 'Correct' : 'Incorrect') : ''}`];
-            document.getElementById('result4').textContent = translations[lang][`question4Feedback${document.querySelector('input[name="q4"]:checked') ? (document.querySelector('input[name="q4"]:checked').value === answers.q4 ? 'Correct' : 'Incorrect') : ''}`];
+            // Update page title and meta
+            document.title = t.pageTitle;
+            const heroTitle = document.getElementById('hero-title');
+            const heroSubtitle = document.getElementById('hero-subtitle');
+            if (heroTitle) heroTitle.textContent = t.heroTitle;
+            if (heroSubtitle) heroSubtitle.textContent = t.heroSubtitle;
+            
+            // Update learning objectives
+            const learningObjectivesTitle = document.querySelector('.learning-objectives h3');
+            if (learningObjectivesTitle) learningObjectivesTitle.textContent = t.learningObjectivesTitle;
+            
+            const objectives = document.querySelectorAll('.learning-objectives li');
+            if (objectives.length >= 5) {
+                objectives[0].textContent = t.learningObjective1;
+                objectives[1].textContent = t.learningObjective2;
+                objectives[2].textContent = t.learningObjective3;
+                objectives[3].textContent = t.learningObjective4;
+                objectives[4].textContent = t.learningObjective5;
+            }
 
             // Update step labels
-            document.querySelector('.step-dot[data-step="1"] .step-label').textContent = translations[lang].step1Label;
-            document.querySelector('.step-dot[data-step="2"] .step-label').textContent = translations[lang].step2Label;
-            document.querySelector('.step-dot[data-step="3"] .step-label').textContent = translations[lang].step3Label;
-            document.querySelector('.step-dot[data-step="4"] .step-label').textContent = translations[lang].step4Label;
-            document.querySelector('.step-dot[data-step="5"] .step-label').textContent = translations[lang].step5Label;
-            document.querySelector('.step-dot[data-step="6"] .step-label').textContent = translations[lang].step6Label;
+            const stepLabels = document.querySelectorAll('.step-label');
+            if (stepLabels.length >= 6) {
+                stepLabels[0].textContent = t.step1Label;
+                stepLabels[1].textContent = t.step2Label;
+                stepLabels[2].textContent = t.step3Label;
+                stepLabels[3].textContent = t.step4Label;
+                stepLabels[4].textContent = t.step5Label;
+                stepLabels[5].textContent = t.step6Label;
+            }
 
-            // Update quiz question numbers
-            document.querySelector('#question1 .question-number').textContent = `Question 1 of ${totalQuestions}`;
-            document.querySelector('#question2 .question-number').textContent = `Question 2 of ${totalQuestions}`;
-            document.querySelector('#question3 .question-number').textContent = `Question 3 of ${totalQuestions}`;
-            document.querySelector('#question4 .question-number').textContent = `Question 4 of ${totalQuestions}`;
+            // Update all step content
+            updateStepContent(t, lang);
 
-            // Update quiz score display
-            document.getElementById('scoreDisplay').textContent = translations[lang].quizScore(score, totalQuestions);
+            // Update quiz content
+            updateQuizContent(t);
+
+            // Update navigation elements
+            updateNavigationElements(t);
+            
+            // Update step display to reflect language changes
+            updateStepDisplay();
         }
 
-        // Event listeners for language selection
-        document.querySelectorAll('.dropdown-content a').forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                const lang = this.getAttribute('data-lang');
-                setLanguage(lang);
+        function updateStepContent(t, lang) {
+            // Step 1
+            const step1Title = document.querySelector('#step1 .section-title');
+            if (step1Title) step1Title.textContent = t.step1Title;
+            
+            const step1Paragraphs = document.querySelectorAll('#step1 .content > p');
+            if (step1Paragraphs.length >= 2) {
+                step1Paragraphs[0].innerHTML = t.step1Text1;
+                step1Paragraphs[1].innerHTML = t.step1Text2;
+            }
+
+            // Update Step 1 interactive cards
+            const step1Cards = document.querySelectorAll('#step1 .interactive-card');
+            if (step1Cards.length >= 2) {
+                const firstCard = step1Cards[0];
+                const cardTitle = firstCard.querySelector('h4');
+                if (cardTitle) cardTitle.innerHTML = t.step1CardTitle;
+                
+                const cardList = firstCard.querySelectorAll('li');
+                if (cardList.length >= 4) {
+                    cardList[0].innerHTML = t.step1CardLi1;
+                    cardList[1].innerHTML = t.step1CardLi2;
+                    cardList[2].innerHTML = t.step1CardLi3;
+                    cardList[3].innerHTML = t.step1CardLi4;
+                }
+
+                const secondCard = step1Cards[1];
+                const secondCardTitle = secondCard.querySelector('h4');
+                if (secondCardTitle) secondCardTitle.innerHTML = t.step1WhyMatterTitle;
+                
+                const secondCardList = secondCard.querySelectorAll('li');
+                if (secondCardList.length >= 4) {
+                    secondCardList[0].innerHTML = t.step1WhyMatterLi1;
+                    secondCardList[1].innerHTML = t.step1WhyMatterLi2;
+                    secondCardList[2].innerHTML = t.step1WhyMatterLi3;
+                    secondCardList[3].innerHTML = t.step1WhyMatterLi4;
+                }
+                
+                const secondCardText = secondCard.querySelector('p:last-of-type');
+                if (secondCardText) secondCardText.textContent = t.step1WhyMatterText;
+            }
+
+            // Update prompt examples in Step 1
+            const step1PromptLabels = document.querySelectorAll('#step1 .prompt-label');
+            if (step1PromptLabels.length >= 2) {
+                step1PromptLabels[0].textContent = t.step1BadPromptLabel;
+                step1PromptLabels[1].textContent = t.step1GoodPromptLabel;
+            }
+            
+            const step1PromptExamples = document.querySelectorAll('#step1 .prompt-bad, #step1 .prompt-good');
+            if (step1PromptExamples.length >= 2) {
+                step1PromptExamples[0].textContent = t.step1BadPrompt;
+                step1PromptExamples[1].textContent = t.step1GoodPrompt;
+            }
+
+            // Step 2
+            const step2Title = document.querySelector('#step2 .section-title');
+            if (step2Title) step2Title.textContent = t.step2Title;
+            
+            const step2Paragraph = document.querySelector('#step2 .content > p');
+            if (step2Paragraph) step2Paragraph.textContent = t.step2Text1;
+
+            // Update principle cards in Step 2
+            const principleCards = document.querySelectorAll('#step2 .principle-card');
+            if (principleCards.length >= 6) {
+                // Principle 1
+                const p1Title = principleCards[0].querySelector('h3');
+                const p1Text = principleCards[0].querySelector('p');
+                if (p1Title) p1Title.textContent = t.principle1Title;
+                if (p1Text) p1Text.textContent = t.principle1Text;
+                
+                const p1PromptLabels = principleCards[0].querySelectorAll('.prompt-label');
+                const p1PromptExamples = principleCards[0].querySelectorAll('.prompt-bad, .prompt-good');
+                if (p1PromptLabels.length >= 2) {
+                    p1PromptLabels[0].textContent = '❌ ' + (lang === 'vi' ? 'Prompt mơ hồ:' : 'Vague Prompt:');
+                    p1PromptLabels[1].textContent = '✅ ' + (lang === 'vi' ? 'Prompt cụ thể:' : 'Specific Prompt:');
+                }
+                if (p1PromptExamples.length >= 2) {
+                    p1PromptExamples[0].textContent = t.principle1BadPrompt;
+                    p1PromptExamples[1].textContent = t.principle1GoodPrompt;
+                }
+
+                // Principle 2
+                const p2Title = principleCards[1].querySelector('h3');
+                const p2Text = principleCards[1].querySelector('p');
+                if (p2Title) p2Title.textContent = t.principle2Title;
+                if (p2Text) p2Text.textContent = t.principle2Text;
+                
+                const p2Example = principleCards[1].querySelector('.technique-example');
+                if (p2Example) p2Example.textContent = t.principle2Example;
+
+                // Principle 3
+                const p3Title = principleCards[2].querySelector('h3');
+                const p3Text = principleCards[2].querySelector('p');
+                if (p3Title) p3Title.textContent = t.principle3Title;
+                if (p3Text) p3Text.textContent = t.principle3Text;
+                
+                const p3Example = principleCards[2].querySelector('.technique-example');
+                if (p3Example) p3Example.textContent = t.principle3Example;
+
+                // Principle 4
+                const p4Title = principleCards[3].querySelector('h3');
+                const p4Text = principleCards[3].querySelector('p');
+                if (p4Title) p4Title.textContent = t.principle4Title;
+                if (p4Text) p4Text.textContent = t.principle4Text;
+                
+                const p4Example = principleCards[3].querySelector('.technique-example');
+                if (p4Example) p4Example.innerHTML = t.principle4Example1 + '<br><br>' + t.principle4Example2;
+
+                // Principle 5
+                const p5Title = principleCards[4].querySelector('h3');
+                const p5Text = principleCards[4].querySelector('p');
+                if (p5Title) p5Title.textContent = t.principle5Title;
+                if (p5Text) p5Text.textContent = t.principle5Text;
+                
+                const p5Example = principleCards[4].querySelector('.technique-example');
+                if (p5Example) p5Example.textContent = t.principle5Example;
+
+                // Principle 6
+                const p6Title = principleCards[5].querySelector('h3');
+                const p6Text = principleCards[5].querySelector('p');
+                if (p6Title) p6Title.textContent = t.principle6Title;
+                if (p6Text) p6Text.textContent = t.principle6Text;
+                
+                const p6Example = principleCards[5].querySelector('.technique-example');
+                if (p6Example) p6Example.textContent = t.principle6Example;
+            }
+
+            // Update CLEAR framework card in Step 2
+            const clearCard = document.querySelector('#step2 .interactive-card');
+            if (clearCard) {
+                const clearTitle = clearCard.querySelector('h4');
+                const clearText = clearCard.querySelector('p');
+                const clearList = clearCard.querySelectorAll('li');
+                
+                if (clearTitle) clearTitle.innerHTML = t.clearFrameworkTitle;
+                if (clearText) clearText.textContent = t.clearFrameworkText;
+                if (clearList.length >= 5) {
+                    clearList[0].innerHTML = t.clearFrameworkLi1;
+                    clearList[1].innerHTML = t.clearFrameworkLi2;
+                    clearList[2].innerHTML = t.clearFrameworkLi3;
+                    clearList[3].innerHTML = t.clearFrameworkLi4;
+                    clearList[4].innerHTML = t.clearFrameworkLi5;
+                }
+            }
+
+            // Step 3
+            const step3Title = document.querySelector('#step3 .section-title');
+            if (step3Title) step3Title.textContent = t.step3Title;
+            
+            const step3Paragraph = document.querySelector('#step3 .content > p');
+            if (step3Paragraph) step3Paragraph.textContent = t.step3Text1;
+
+            // Update template cards in Step 3
+            const templateCards = document.querySelectorAll('#step3 .template-card');
+            if (templateCards.length >= 6) {
+                // Template 1
+                const t1Title = templateCards[0].querySelector('h4');
+                const t1Structure = templateCards[0].querySelector('p');
+                const t1Example = templateCards[0].querySelector('.technique-example');
+                if (t1Title) t1Title.innerHTML = t.template1Title;
+                if (t1Structure) t1Structure.innerHTML = t.template1Structure;
+                if (t1Example) t1Example.textContent = t.template1Example;
+
+                // Template 2
+                const t2Title = templateCards[1].querySelector('h4');
+                const t2Structure = templateCards[1].querySelector('p');
+                const t2Example = templateCards[1].querySelector('.technique-example');
+                if (t2Title) t2Title.innerHTML = t.template2Title;
+                if (t2Structure) t2Structure.innerHTML = t.template2Structure;
+                if (t2Example) t2Example.textContent = t.template2Example;
+
+                // Template 3
+                const t3Title = templateCards[2].querySelector('h4');
+                const t3Structure = templateCards[2].querySelector('p');
+                const t3Example = templateCards[2].querySelector('.technique-example');
+                if (t3Title) t3Title.innerHTML = t.template3Title;
+                if (t3Structure) t3Structure.innerHTML = t.template3Structure;
+                if (t3Example) t3Example.textContent = t.template3Example;
+
+                // Template 4
+                const t4Title = templateCards[3].querySelector('h4');
+                const t4Structure = templateCards[3].querySelector('p');
+                const t4Example = templateCards[3].querySelector('.technique-example');
+                if (t4Title) t4Title.innerHTML = t.template4Title;
+                if (t4Structure) t4Structure.innerHTML = t.template4Structure;
+                if (t4Example) t4Example.textContent = t.template4Example;
+
+                // Template 5
+                const t5Title = templateCards[4].querySelector('h4');
+                const t5Structure = templateCards[4].querySelector('p');
+                const t5Example = templateCards[4].querySelector('.technique-example');
+                if (t5Title) t5Title.innerHTML = t.template5Title;
+                if (t5Structure) t5Structure.innerHTML = t.template5Structure;
+                if (t5Example) t5Example.textContent = t.template5Example;
+
+                // Template 6
+                const t6Title = templateCards[5].querySelector('h4');
+                const t6Structure = templateCards[5].querySelector('p');
+                const t6Example = templateCards[5].querySelector('.technique-example');
+                if (t6Title) t6Title.innerHTML = t.template6Title;
+                if (t6Structure) t6Structure.innerHTML = t.template6Structure;
+                if (t6Example) t6Example.textContent = t.template6Example;
+            }
+
+            // Update template tips card in Step 3
+            const templateTipsCard = document.querySelector('#step3 .interactive-card');
+            if (templateTipsCard) {
+                const tipsTitle = templateTipsCard.querySelector('h4');
+                const tipsText = templateTipsCard.querySelector('p');
+                const tipsList = templateTipsCard.querySelectorAll('li');
+                
+                if (tipsTitle) tipsTitle.innerHTML = t.templateTipsTitle;
+                if (tipsText) tipsText.textContent = t.templateTipsText;
+                if (tipsList.length >= 4) {
+                    tipsList[0].innerHTML = t.templateTipsLi1;
+                    tipsList[1].innerHTML = t.templateTipsLi2;
+                    tipsList[2].innerHTML = t.templateTipsLi3;
+                    tipsList[3].innerHTML = t.templateTipsLi4;
+                }
+            }
+
+            // Step 4
+            const step4Title = document.querySelector('#step4 .section-title');
+            if (step4Title) step4Title.textContent = t.step4Title;
+            
+            const step4Paragraph = document.querySelector('#step4 .content > p');
+            if (step4Paragraph) step4Paragraph.textContent = t.step4Text1;
+
+            // Update technique cards in Step 4
+            const techniqueCards = document.querySelectorAll('#step4 .technique-card');
+            if (techniqueCards.length >= 6) {
+                // Technique 1
+                const tech1Title = techniqueCards[0].querySelector('h3');
+                const tech1Text = techniqueCards[0].querySelector('p');
+                const tech1Examples = techniqueCards[0].querySelectorAll('.technique-example');
+                if (tech1Title) tech1Title.innerHTML = t.technique1Title;
+                if (tech1Text) tech1Text.textContent = t.technique1Text;
+                if (tech1Examples.length >= 2) {
+                    tech1Examples[0].textContent = t.technique1Example1;
+                    tech1Examples[1].textContent = t.technique1Example2;
+                }
+                const tech1RoleTitle = techniqueCards[0].querySelector('h4');
+                if (tech1RoleTitle) tech1RoleTitle.textContent = t.technique1RoleTitle;
+
+                // Technique 2
+                const tech2Title = techniqueCards[1].querySelector('h3');
+                const tech2Text = techniqueCards[1].querySelector('p');
+                const tech2Example = techniqueCards[1].querySelector('.technique-example');
+                if (tech2Title) tech2Title.innerHTML = t.technique2Title;
+                if (tech2Text) tech2Text.textContent = t.technique2Text;
+                if (tech2Example) tech2Example.textContent = t.technique2Example;
+                const tech2ExampleTitle = techniqueCards[1].querySelector('h4');
+                if (tech2ExampleTitle) tech2ExampleTitle.textContent = t.technique2ExampleTitle;
+
+                // Technique 3
+                const tech3Title = techniqueCards[2].querySelector('h3');
+                const tech3Text = techniqueCards[2].querySelector('p');
+                const tech3Example = techniqueCards[2].querySelector('.technique-example');
+                const tech3Note = techniqueCards[2].querySelector('p:last-of-type');
+                if (tech3Title) tech3Title.innerHTML = t.technique3Title;
+                if (tech3Text) tech3Text.textContent = t.technique3Text;
+                if (tech3Example) tech3Example.textContent = t.technique3Example;
+                if (tech3Note) tech3Note.textContent = t.technique3Note;
+
+                // Technique 4
+                const tech4Title = techniqueCards[3].querySelector('h3');
+                const tech4Text = techniqueCards[3].querySelector('p');
+                const tech4Example = techniqueCards[3].querySelector('.technique-example');
+                if (tech4Title) tech4Title.innerHTML = t.technique4Title;
+                if (tech4Text) tech4Text.textContent = t.technique4Text;
+                if (tech4Example) tech4Example.textContent = t.technique4Example;
+
+                // Technique 5
+                const tech5Title = techniqueCards[4].querySelector('h3');
+                const tech5Text = techniqueCards[4].querySelector('p');
+                const tech5Example = techniqueCards[4].querySelector('.technique-example');
+                if (tech5Title) tech5Title.innerHTML = t.technique5Title;
+                if (tech5Text) tech5Text.textContent = t.technique5Text;
+                if (tech5Example) tech5Example.textContent = t.technique5Example;
+
+                // Technique 6
+                const tech6Title = techniqueCards[5].querySelector('h3');
+                const tech6Text = techniqueCards[5].querySelector('p');
+                const tech6Example = techniqueCards[5].querySelector('.technique-example');
+                if (tech6Title) tech6Title.innerHTML = t.technique6Title;
+                if (tech6Text) tech6Text.textContent = t.technique6Text;
+                if (tech6Example) tech6Example.textContent = t.technique6Example;
+            }
+
+            // Update technique tips card in Step 4
+            const techniqueTipsCard = document.querySelector('#step4 .interactive-card');
+            if (techniqueTipsCard) {
+                const tipsTitle = techniqueTipsCard.querySelector('h4');
+                const tipsText = techniqueTipsCard.querySelector('p');
+                const tipsList = techniqueTipsCard.querySelectorAll('li');
+                
+                if (tipsTitle) tipsTitle.innerHTML = t.techniqueTipsTitle;
+                if (tipsText) tipsText.textContent = t.techniqueTipsText;
+                if (tipsList.length >= 6) {
+                    tipsList[0].innerHTML = t.techniqueTipsLi1;
+                    tipsList[1].innerHTML = t.techniqueTipsLi2;
+                    tipsList[2].innerHTML = t.techniqueTipsLi3;
+                    tipsList[3].innerHTML = t.techniqueTipsLi4;
+                    tipsList[4].innerHTML = t.techniqueTipsLi5;
+                    tipsList[5].innerHTML = t.techniqueTipsLi6;
+                }
+            }
+
+            // Step 5
+            const step5Title = document.querySelector('#step5 .section-title');
+            if (step5Title) step5Title.textContent = t.step5Title;
+            
+            const step5Paragraph = document.querySelector('#step5 .content > p');
+            if (step5Paragraph) step5Paragraph.textContent = t.step5Text1;
+
+            // Update scenario section in Step 5
+            const scenarioTitle = document.querySelector('#step5 .scenario-content h3');
+            if (scenarioTitle) scenarioTitle.textContent = t.scenarioTitle;
+            
+            const scenarioSteps = document.querySelectorAll('#step5 .scenario-steps li');
+            if (scenarioSteps.length >= 5) {
+                scenarioSteps[0].innerHTML = scenarioSteps[0].innerHTML.replace(/^.*?<\/strong>/, '<strong>' + t.scenarioStep1.split('</strong>')[0] + '</strong>');
+                scenarioSteps[1].innerHTML = scenarioSteps[1].innerHTML.replace(/^.*?<\/strong>/, '<strong>' + t.scenarioStep2.split('</strong>')[0] + '</strong>');
+                scenarioSteps[2].innerHTML = scenarioSteps[2].innerHTML.replace(/^.*?<\/strong>/, '<strong>' + t.scenarioStep3.split('</strong>')[0] + '</strong>');
+                scenarioSteps[3].innerHTML = scenarioSteps[3].innerHTML.replace(/^.*?<\/strong>/, '<strong>' + t.scenarioStep4.split('</strong>')[0] + '</strong>');
+                scenarioSteps[4].innerHTML = scenarioSteps[4].innerHTML.replace(/^.*?<\/strong>/, '<strong>' + t.scenarioStep5.split('</strong>')[0] + '</strong>');
+            }
+
+            // Update interactive cards in Step 5
+            const step5Cards = document.querySelectorAll('#step5 .interactive-card');
+            if (step5Cards.length >= 3) {
+                // Refinement card
+                const refinementTitle = step5Cards[0].querySelector('h4');
+                const refinementText = step5Cards[0].querySelector('p');
+                const refinementList = step5Cards[0].querySelectorAll('li');
+                if (refinementTitle) refinementTitle.innerHTML = t.refinementTitle;
+                if (refinementText) refinementText.textContent = t.refinementText;
+                if (refinementList.length >= 5) {
+                    refinementList[0].innerHTML = t.refinementLi1;
+                    refinementList[1].innerHTML = t.refinementLi2;
+                    refinementList[2].innerHTML = t.refinementLi3;
+                    refinementList[3].innerHTML = t.refinementLi4;
+                    refinementList[4].innerHTML = t.refinementLi5;
+                }
+
+                // Advanced refinement card
+                const advancedTitle = step5Cards[1].querySelector('h4');
+                const advancedText = step5Cards[1].querySelector('p');
+                const advancedList = step5Cards[1].querySelectorAll('li');
+                if (advancedTitle) advancedTitle.innerHTML = t.advancedRefinementTitle;
+                if (advancedText) advancedText.textContent = t.advancedRefinementText;
+                if (advancedList.length >= 5) {
+                    advancedList[0].innerHTML = t.advancedRefinementLi1;
+                    advancedList[1].innerHTML = t.advancedRefinementLi2;
+                    advancedList[2].innerHTML = t.advancedRefinementLi3;
+                    advancedList[3].innerHTML = t.advancedRefinementLi4;
+                    advancedList[4].innerHTML = t.advancedRefinementLi5;
+                }
+
+                // Library card
+                const libraryTitle = step5Cards[2].querySelector('h4');
+                const libraryText = step5Cards[2].querySelector('p');
+                const libraryList = step5Cards[2].querySelectorAll('li');
+                if (libraryTitle) libraryTitle.innerHTML = t.libraryTitle;
+                if (libraryText) libraryText.textContent = t.libraryText;
+                if (libraryList.length >= 5) {
+                    libraryList[0].innerHTML = t.libraryLi1;
+                    libraryList[1].innerHTML = t.libraryLi2;
+                    libraryList[2].innerHTML = t.libraryLi3;
+                    libraryList[3].innerHTML = t.libraryLi4;
+                    libraryList[4].innerHTML = t.libraryLi5;
+                }
+            }
+
+            // Step 6
+            const step6Title = document.querySelector('#step6 .section-title');
+            if (step6Title) step6Title.textContent = t.step6Title;
+            
+            const step6Paragraph = document.querySelector('#step6 .content > p');
+            if (step6Paragraph) step6Paragraph.textContent = t.step6Text1;
+        }
+
+        function updateQuizContent(t) {
+            // Update quiz questions
+            const questions = document.querySelectorAll('.quiz-question h4');
+            if (questions.length >= 4) {
+                questions[0].textContent = t.question1;
+                questions[1].textContent = t.question2;
+                questions[2].textContent = t.question3;
+                questions[3].textContent = t.question4;
+            }
+
+            // Update quiz options
+            const q1Options = document.querySelectorAll('input[name="q1"] + label');
+            if (q1Options.length >= 4) {
+                q1Options[0].childNodes[1].textContent = ' ' + t.question1OptionA;
+                q1Options[1].childNodes[1].textContent = ' ' + t.question1OptionB;
+                q1Options[2].childNodes[1].textContent = ' ' + t.question1OptionC;
+                q1Options[3].childNodes[1].textContent = ' ' + t.question1OptionD;
+            }
+
+            const q2Options = document.querySelectorAll('input[name="q2"] + label');
+            if (q2Options.length >= 4) {
+                q2Options[0].childNodes[1].textContent = ' ' + t.question2OptionA;
+                q2Options[1].childNodes[1].textContent = ' ' + t.question2OptionB;
+                q2Options[2].childNodes[1].textContent = ' ' + t.question2OptionC;
+                q2Options[3].childNodes[1].textContent = ' ' + t.question2OptionD;
+            }
+
+            const q3Options = document.querySelectorAll('input[name="q3"] + label');
+            if (q3Options.length >= 4) {
+                q3Options[0].childNodes[1].textContent = ' ' + t.question3OptionA;
+                q3Options[1].childNodes[1].textContent = ' ' + t.question3OptionB;
+                q3Options[2].childNodes[1].textContent = ' ' + t.question3OptionC;
+                q3Options[3].childNodes[1].textContent = ' ' + t.question3OptionD;
+            }
+
+            const q4Options = document.querySelectorAll('input[name="q4"] + label');
+            if (q4Options.length >= 4) {
+                q4Options[0].childNodes[1].textContent = ' ' + t.question4OptionA;
+                q4Options[1].childNodes[1].textContent = ' ' + t.question4OptionB;
+                q4Options[2].childNodes[1].textContent = ' ' + t.question4OptionC;
+                q4Options[3].childNodes[1].textContent = ' ' + t.question4OptionD;
+            }
+
+            // Update submit button
+            const submitBtn = document.querySelector('.quiz-submit');
+            if (submitBtn) submitBtn.textContent = t.submitQuizBtn;
+
+            // Update quiz results title
+            const quizResultsTitle = document.querySelector('#quizScore h3');
+            if (quizResultsTitle) quizResultsTitle.textContent = t.quizResultsTitle;
+        }
+
+        function updateNavigationElements(t) {
+            // Update navigation buttons
+            const prevBtns = document.querySelectorAll('.btn-prev');
+            const nextBtns = document.querySelectorAll('.btn-next');
+            prevBtns.forEach(btn => btn.textContent = t.previousBtn);
+            nextBtns.forEach(btn => {
+                if (!btn.disabled) {
+                    btn.textContent = t.nextBtn;
+                }
             });
-        })
+
+            // Update navigation links
+            const homeLink = document.getElementById('home-link');
+            if (homeLink) homeLink.textContent = t.homeLink;
+            
+            const moduleLinks = document.querySelectorAll('.nav-module-links a');
+            moduleLinks.forEach((link, index) => {
+                if (link.textContent.includes('Module') || link.textContent.includes('Mô-đun')) {
+                    link.textContent = t.moduleLink(index + 1);
+                }
+            });
+
+            // Update module navigation buttons
+            const prevModuleBtn = document.querySelector('.btn-back');
+            const nextModuleBtn = document.querySelector('.btn-forward');
+            if (prevModuleBtn) prevModuleBtn.textContent = t.previousModuleBtn;
+            if (nextModuleBtn) nextModuleBtn.textContent = t.nextModuleBtn;
+        }
+
+        // Additional helper functions
+        function completeModule() {
+            // Mark module 4 as completed in localStorage
+            let completedModules = JSON.parse(localStorage.getItem('completedModules') || '[]');
+            if (!completedModules.includes(4)) {
+                completedModules.push(4);
+                localStorage.setItem('completedModules', JSON.stringify(completedModules));
+            }
+
+            // Update current module to next available
+            let currentModule = parseInt(localStorage.getItem('currentModule') || '1');
+            if (currentModule === 4) {
+                localStorage.setItem('currentModule', '5');
+            }
+
+            // Redirect to the next module or homepage
+            window.location.href = 'module5.html';
+        }
+
+        // Make functions globally available
+        window.nextStep = nextStep;
+        window.previousStep = previousStep;
+        window.goToStep = goToStep;
+        window.checkQuiz = checkQuiz;
+        window.completeModule = completeModule;
     </script>
 </body>
 </html>
