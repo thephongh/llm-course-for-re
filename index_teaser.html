@@ -1,0 +1,1524 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title">Giới thiệu về LLM và AI tạo sinh cho chuyên gia năng lượng</title>
+    <link rel="stylesheet" href="liquid-glass.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #6B7280;
+            background: #FFFFFF;
+        }
+
+        /* Navigation */
+        .nav {
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            color: #000000;
+            font-size: 1.25rem;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: #6B7280;
+            font-size: 1rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: color 0.2s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 0.375rem;
+        }
+
+        .nav-links a:hover {
+            color: #000000;
+            background: #F3F4F6;
+        }
+
+        .nav-links .active {
+            color: #000000;
+            background: #E5E7EB;
+            font-weight: 600;
+        }
+
+        .nav-module-links {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        .nav-module-links a {
+            padding: 0.375rem 0.75rem;
+            font-size: 0.875rem;
+            border: 1px solid #E5E7EB;
+            border-radius: 0.375rem;
+            background: #FFFFFF;
+        }
+
+        .nav-module-links a:hover {
+            border-color: #8B5CF6;
+            background: #F3F4F6;
+        }
+
+        .nav-module-links .disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+
+        /* Language Switcher */
+        .language-switcher {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropbtn {
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .dropbtn img {
+            vertical-align: middle;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+            right: 0; /* Align to the right */
+            border-radius: 0.5rem;
+            overflow: hidden;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1rem;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        /* Language Switcher */
+        .language-switcher {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropbtn {
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .dropbtn img {
+            vertical-align: middle;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+            right: 0; /* Align to the right */
+            border-radius: 0.5rem;
+            overflow: hidden;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1rem;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        /* Progress Bar */
+        .progress-container {
+            background: #F3F4F6;
+            padding: 1rem 2rem;
+            border-bottom: 1px solid #E5E7EB;
+        }
+
+        .progress-bar {
+            background: #E5E7EB;
+            height: 8px;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 0.5rem;
+        }
+
+        .progress-fill {
+            background: linear-gradient(135deg, #8B5CF6 0%, #EC4899 100%);
+            height: 100%;
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        .progress-text {
+            font-size: 0.875rem;
+            color: #6B7280;
+            text-align: center;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 700;
+            line-height: 1.1;
+            color: #FFFFFF;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-subtitle {
+            font-size: 1.125rem;
+            font-weight: 400;
+            line-height: 1.6;
+            color: #FFFFFF;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* Course Stats */
+        .course-stats {
+            padding: 2rem;
+            margin: 2rem auto 0;
+            max-width: 600px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            text-align: center;
+        }
+
+        .stat-item {
+            color: #FFFFFF;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            opacity: 0.9;
+        }
+
+        /* Buttons */
+        .btn-primary {
+            background: #000000;
+            color: #FFFFFF;
+            border: none;
+            border-radius: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary:hover {
+            background: #1F2937;
+            transform: translateY(-1px);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: #FFFFFF;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.4);
+        }
+
+        /* Interactive Learning Path */
+        .learning-path {
+            background: #F9FAFB;
+            padding: 4rem 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 700;
+            line-height: 1.2;
+            color: #000000;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .learning-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .step-item {
+            background: #FFFFFF;
+            border: 2px solid #E5E7EB;
+            border-radius: 1rem;
+            padding: 2rem;
+            position: relative;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .step-item:hover {
+            border-color: #8B5CF6;
+            box-shadow: 0 8px 25px rgba(139, 92, 246, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .step-item.completed {
+            border-color: #10B981;
+            background: linear-gradient(135deg, #ECFDF5 0%, #F0FDF4 100%);
+        }
+
+        .step-item.current {
+            border-color: #F59E0B;
+            background: linear-gradient(135deg, #FFFBEB 0%, #FEF3C7 100%);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.4); }
+            50% { box-shadow: 0 0 0 10px rgba(245, 158, 11, 0); }
+        }
+
+        .step-number {
+            position: absolute;
+            top: -15px;
+            left: 2rem;
+            background: linear-gradient(135deg, #8B5CF6 0%, #EC4899 100%);
+            color: #FFFFFF;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.125rem;
+        }
+
+        .step-item.completed .step-number {
+            background: #10B981;
+        }
+
+        .step-item.current .step-number {
+            background: #F59E0B;
+        }
+
+        .step-content h3 {
+            color: #000000;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            margin-top: 0.5rem;
+        }
+
+        .step-content p {
+            color: #6B7280;
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .step-meta {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .step-duration {
+            background: #F3F4F6;
+            color: #6B7280;
+            font-size: 0.875rem;
+            font-weight: 500;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+        }
+
+        .step-status {
+            font-size: 0.875rem;
+            font-weight: 500;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+        }
+
+        .step-item.completed .step-status {
+            background: #DCFCE7;
+            color: #166534;
+        }
+
+        .step-item.current .step-status {
+            background: #FEF3C7;
+            color: #92400E;
+        }
+
+        .step-item:not(.completed):not(.current) .step-status {
+            background: #F3F4F6;
+            color: #6B7280;
+        }
+
+        /* Module Preview Cards */
+        .module-preview {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .preview-card {
+            background: #FFFFFF;
+            border: 1px solid #E5E7EB;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            transition: all 0.2s ease;
+        }
+
+        .preview-card:hover {
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .preview-card h4 {
+            color: #000000;
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .preview-card p {
+            color: #6B7280;
+            font-size: 0.875rem;
+            line-height: 1.5;
+        }
+
+        /* Interactive Features Section */
+        .features-section {
+            background: linear-gradient(135deg, #8B5A2B 0%, #D97706 25%, #F59E0B 50%, #EF4444 75%, #7C2D12 100%);
+            padding: 4rem 2rem;
+            position: relative;
+        }
+
+        .features-section h2 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 700;
+            line-height: 1.2;
+            color: #FFFFFF;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .features-section p {
+            font-size: 1.125rem;
+            font-weight: 400;
+            line-height: 1.6;
+            color: #FFFFFF;
+            opacity: 0.9;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 0.75rem;
+            border: 1px solid rgba(229, 231, 235, 0.3);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            text-align: center;
+            transition: transform 0.2s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .feature-icon {
+            width: 3rem;
+            height: 3rem;
+            background: linear-gradient(135deg, #8B5CF6 0%, #EC4899 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 1.5rem;
+            color: #FFFFFF;
+        }
+
+        .feature-card h3 {
+            color: #000000;
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-card p {
+            color: #6B7280;
+            font-size: 1rem;
+            line-height: 1.5;
+            opacity: 1;
+        }
+
+        /* Course Overview Section */
+        .overview-section {
+            background: #FFFFFF;
+            padding: 4rem 2rem;
+        }
+
+        .overview-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .overview-card {
+            background: #FFFFFF;
+            border: 1px solid #E5E7EB;
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            transition: all 0.2s ease;
+        }
+
+        .overview-card:hover {
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .overview-card h3 {
+            color: #000000;
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .overview-icon {
+            width: 2rem;
+            height: 2rem;
+            background: linear-gradient(135deg, #3B82F6 0%, #10B981 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            color: #FFFFFF;
+        }
+
+        .overview-card p {
+            color: #6B7280;
+            font-size: 1rem;
+            line-height: 1.5;
+            margin-bottom: 1rem;
+        }
+
+        .overview-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .overview-card li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+            font-size: 0.875rem;
+            color: #6B7280;
+        }
+
+        .overview-card li::before {
+            content: "•";
+            color: #3B82F6;
+            font-weight: bold;
+            flex-shrink: 0;
+            margin-top: 0.125rem;
+        }
+
+        /* Footer */
+        .footer {
+            background: #111827;
+            color: #9CA3AF;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .footer p {
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .footer-author {
+            color: #FFFFFF;
+            font-weight: 500;
+            font-size: 1.125rem;
+        }
+
+        .footer-note {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid #374151;
+            font-size: 0.875rem;
+            opacity: 0.8;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav {
+                padding: 1rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .hero {
+                padding: 1rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .course-stats {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .learning-path {
+                padding: 2rem 1rem;
+            }
+            
+            .features-section {
+                padding: 2rem 1rem;
+            }
+            
+            .overview-section {
+                padding: 2rem 1rem;
+            }
+            
+            .overview-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav liquid-glass-nav">
+        <a href="index.html" class="nav-logo">
+            <img src="logo.png" alt="LLM Training Course Logo" style="height: 32px; width: auto; margin-right: 8px; vertical-align: middle;">
+            LLM Training Course
+        </a>
+        <ul class="nav-links">
+            <li><a href="index.html" class="active">Home</a></li>
+            <li class="nav-module-links">
+                <a href="#" class="disabled">Module 1</a>
+                <a href="#" class="disabled">Module 2</a>
+                <a href="#" class="disabled">Module 3</a>
+                <a href="#" class="disabled">Module 4</a>
+                <a href="#" class="disabled">Module 5</a>
+            </li>
+            <li class="language-switcher">
+                <div class="dropdown">
+                    <button class="dropbtn">
+                        <img id="current-flag" src="https://flagcdn.com/vn.svg" alt="Vietnamese Flag" width="24" height="18">
+                    </button>
+                    <div class="dropdown-content">
+                        <a href="#" data-lang="en"><img src="https://flagcdn.com/us.svg" alt="English Flag" width="24" height="18"> English</a>
+                        <a href="#" data-lang="vi"><img src="https://flagcdn.com/vn.svg" alt="Vietnamese Flag" width="24" height="18"> Tiếng Việt</a>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Progress Bar -->
+    <div class="progress-container">
+        <div class="progress-bar progress-glass">
+            <div class="progress-fill progress-fill-glass" id="progressFill"></div>
+        </div>
+        <div class="progress-text" id="progressText"></div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero hero-glass liquid-float">
+        <div class="hero-content">
+            <h1 id="hero-title">🤖 Đào tạo AI tương tác cho chuyên gia năng lượng</h1>
+            <p class="hero-subtitle" id="hero-subtitle">
+                <strong>Làm chủ các Mô hình ngôn ngữ lớn (LLM) và AI tạo sinh</strong><br>
+                Thông qua trải nghiệm học tập tương tác, từng bước. Mỗi mô-đun được xây dựng dựa trên mô-đun trước đó, với các ví dụ thực tế, hướng dẫn trực quan và phản hồi tức thì để đảm bảo bạn thực sự hiểu từng khái niệm trước khi tiếp tục.
+            </p>
+            <div class="hero-buttons">
+                <a href="#learning-path" class="btn-primary liquid-glass-button liquid-shimmer" id="start-learning-btn">🎯 Bắt đầu học tương tác</a>
+                <a href="#about" class="btn-secondary liquid-glass-button" id="learn-more-btn">📚 Tìm hiểu thêm</a>
+            </div>
+            
+            <div class="course-stats stats-glass liquid-animation">
+                <div class="stat-item">
+                    <span class="stat-number" id="hours-total-num">4</span>
+                    <span class="stat-label" id="hours-total-label">Tổng số giờ</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" id="interactive-modules-num">5</span>
+                    <span class="stat-label" id="interactive-modules-label">Mô-đun tương tác</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" id="quiz-questions-num">20</span>
+                    <span class="stat-label" id="quiz-questions-label">Câu hỏi trắc nghiệm</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Learning Path -->
+    <section class="learning-path" id="learning-path">
+        <div class="container">
+            <h2 class="section-title" id="learning-journey-title">🎯 Hành trình học tập tương tác của bạn</h2>
+            <p style="text-align: center; font-size: 1.125rem; margin-bottom: 3rem; max-width: 800px; margin-left: auto; margin-right: auto; color: #6B7280;" id="learning-journey-subtitle">
+                Hãy theo dõi lộ trình từng bước này được thiết kế đặc biệt cho các chuyên gia năng lượng bận rộn. Mỗi mô-đun chỉ mở khóa sau khi hoàn thành mô-đun trước đó, đảm bảo bạn xây dựng nền tảng vững chắc trước khi tiến xa hơn.
+            </p>
+            
+            <div class="learning-steps">
+                <div class="step-item current module-card-glass liquid-shimmer interactive-glass" data-module="1">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <div class="step-meta">
+                            <span class="step-duration" id="module1-duration">⏱️ ~42 phút</span>
+                            <span class="step-status" id="module1-status">Bắt đầu tại đây</span>
+                        </div>
+                        <h3 id="module1-title">🧠 Kiến thức cơ bản về AI & Ứng dụng năng lượng</h3>
+                        <p id="module1-description">Xây dựng nền tảng của bạn bằng cách hiểu về AI, Học máy và AI tạo sinh với các ví dụ thực tế trong ngành năng lượng. Các sơ đồ tương tác và nghiên cứu điển hình giúp các khái niệm phức tạp trở nên rõ ràng.</p>
+                        <div class="module-preview">
+                            <div class="preview-card">
+                                <h4 id="module1-learn-title">🔍 Bạn sẽ học gì</h4>
+                                <p id="module1-learn-description">Các định nghĩa rõ ràng, ứng dụng trong ngành năng lượng, ví dụ về bảo trì dự đoán và kiểm tra kiến thức tương tác.</p>
+                            </div>
+                            <div class="preview-card">
+                                <h4 id="module1-outcome-title">🎯 Kết quả chính</h4>
+                                <p id="module1-outcome-description">Tự tin giải thích các khái niệm AI và xác định các cơ hội trong công việc năng lượng của bạn.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step-item module-card-glass interactive-glass" data-module="2">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <div class="step-meta">
+                            <span class="step-duration" id="module2-duration">⏱️ ~42 phút</span>
+                            <span class="step-status" id="module2-status">Đã khóa</span>
+                        </div>
+                        <h3 id="module2-title">🤖 Hiểu về các Mô hình ngôn ngữ lớn (LLM)</h3>
+                        <p id="module2-description">Đi sâu vào cách LLM hoạt động với các giải thích trực quan về token, tham số và bộ biến đổi. Xem chính xác cách các mô hình này xử lý và tạo văn bản.</p>
+                        <div class="module-preview">
+                            <div class="preview-card">
+                                <h4 id="module2-learn-title">🔍 Bạn sẽ học gì</h4>
+                                <p id="module2-learn-description">Kiến trúc LLM, xử lý token, khả năng của mô hình và ứng dụng tài liệu năng lượng.</p>
+                            </div>
+                            <div class="preview-card">
+                                <h4 id="module2-outcome-title">🎯 Kết quả chính</h4>
+                                <p id="module2-outcome-description">Hiểu cách LLM hoạt động và những hạn chế của chúng để sử dụng chuyên nghiệp.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step-item module-card-glass interactive-glass" data-module="3">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <div class="step-meta">
+                            <span class="step-duration" id="module3-duration">⏱️ ~42 phút</span>
+                            <span class="step-status" id="module3-status">Đã khóa</span>
+                        </div>
+                        <h3 id="module3-title">💬 Chatbot AI trong công việc năng lượng hàng ngày</h3>
+                        <p id="module3-description">Khám phá các ứng dụng chatbot thực tế với các bản demo tương tác. Học cách tích hợp trợ lý AI vào lập kế hoạch dự án, phân tích và giao tiếp với các bên liên quan.</p>
+                        <div class="module-preview">
+                            <div class="preview-card">
+                                <h4 id="module3-learn-title">🔍 Bạn sẽ học gì</h4>
+                                <p id="module3-learn-description">Khả năng của Chatbot, quy trình làm việc năng lượng, chiến lược tích hợp và các tình huống thực hành.</p>
+                            </div>
+                            <div class="preview-card">
+                                <h4 id="module3-outcome-title">🎯 Kết quả chính</h4>
+                                <p id="module3-outcome-description">Sử dụng chatbot AI hiệu quả để nâng cao công việc hàng ngày trong ngành năng lượng của bạn.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step-item module-card-glass interactive-glass" data-module="4">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <div class="step-meta">
+                            <span class="step-duration" id="module4-duration">⏱️ ~42 phút</span>
+                            <span class="step-status" id="module4-status">Đã khóa</span>
+                        </div>
+                        <h3 id="module4-title">✍️ Làm chủ kỹ thuật Prompt Engineering</h3>
+                        <p id="module4-description">Học nghệ thuật tạo ra các prompt hiệu quả thông qua các bài tập tương tác. Thực hành với các mẫu dành riêng cho năng lượng và xem kết quả tức thì.</p>
+                        <div class="module-preview">
+                            <div class="preview-card">
+                                <h4 id="module4-learn-title">🔍 Bạn sẽ học gì</h4>
+                                <p id="module4-learn-description">Các khung prompt, mẫu năng lượng, kỹ thuật nâng cao và trình tạo prompt tương tác.
+</p>
+                            </div>
+                            <div class="preview-card">
+                                <h4 id="module4-outcome-title">🎯 Kết quả chính</h4>
+                                <p id="module4-outcome-description">Tạo các prompt mạnh mẽ mang lại kết quả tối ưu cho các ứng dụng năng lượng.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step-item module-card-glass interactive-glass" data-module="5">
+                    <div class="step-number">5</div>
+                    <div class="step-content">
+                        <div class="step-meta">
+                            <span class="step-duration" id="module5-duration">⏱️ ~42 phút</span>
+                            <span class="step-status" id="module5-status">Đã khóa</span>
+                        </div>
+                        <h3 id="module5-title">🛡️ Đạo đức & Thực hành tốt nhất</h3>
+                        <p id="module5-description">Làm chủ việc sử dụng AI có trách nhiệm với các tình huống tương tác dành riêng cho cơ sở hạ tầng năng lượng. Học các kỹ thuật bảo mật và xác minh quan trọng.</p>
+                        <div class="module-preview">
+                            <div class="preview-card">
+                                <h4 id="module5-learn-title">🔍 Bạn sẽ học gì</h4>
+                                <p id="module5-learn-description">Các tình huống đạo đức năng lượng, hướng dẫn bảo mật, kỹ thuật xác minh và khung AI có trách nhiệm.</p>
+                            </div>
+                            <div class="preview-card">
+                                <h4 id="module5-outcome-title">🎯 Kết quả chính</h4>
+                                <p id="module5-outcome-description">Triển khai các giải pháp AI một cách an toàn và có trách nhiệm trong cơ sở hạ tầng năng lượng.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 3rem; padding: 2rem; background: #FFFFFF; border-radius: 1rem; border: 2px solid #10B981;">
+                <h3 style="color: #047857; font-size: 1.5rem; font-weight: 600; margin-bottom: 1rem;" id="ready-to-transform-title">🎉 Sẵn sàng thay đổi sự nghiệp năng lượng của bạn với AI?</h3>
+                <p style="font-size: 1rem; color: #6B7280; margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto;" id="ready-to-transform-description">
+                    Tham gia cùng hàng ngàn chuyên gia năng lượng đang tận dụng AI để nâng cao công việc của họ, đưa ra quyết định tốt hơn và thúc đẩy đổi mới trong quá trình chuyển đổi năng lượng.
+                </p>
+                <button class="btn-primary disabled" style="font-size: 1.125rem; padding: 1rem 2rem; background: #6B7280; cursor: not-allowed;" id="begin-journey-btn">
+                    🚀 Bắt đầu hành trình AI của bạn →
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Features Section -->
+    <section class="features-section">
+        <div class="container">
+            <h2 id="why-training-works-title">🌟 Tại sao khóa đào tạo tương tác này hiệu quả</h2>
+            <p id="why-training-works-subtitle">Trải nghiệm một phương pháp tiếp cận mang tính cách mạng đối với giáo dục AI được thiết kế đặc biệt cho các chuyên gia năng lượng bận rộn, những người cần kiến thức thực tế, có thể áp dụng.</p>
+            
+            <div class="features-grid">
+                <div class="feature-card liquid-glass-card interactive-glass">
+                    <div class="feature-icon">🎯</div>
+                    <h3 id="step-by-step-title">Học từng bước</h3>
+                    <p id="step-by-step-description">Nội dung được tiết lộ dần dần, ngăn ngừa tình trạng quá tải thông tin. Mỗi khái niệm được xây dựng một cách tự nhiên dựa trên khái niệm trước đó, đảm bảo sự hiểu biết vững chắc.</p>
+                </div>
+                <div class="feature-card liquid-glass-card interactive-glass">
+                    <div class="feature-icon">🔒</div>
+                    <h3 id="guided-progression-title">Tiến trình có hướng dẫn</h3>
+                    <p id="guided-progression-description">Các mô-đun chỉ mở khóa sau khi hoàn thành các điều kiện tiên quyết, đảm bảo bạn nắm vững các kiến thức cơ bản trước khi chuyển sang các ứng dụng phức tạp.</p>
+                </div>
+                <div class="feature-card liquid-glass-card interactive-glass">
+                    <div class="feature-icon">⚡</div>
+                    <h3 id="energy-focused-title">Ví dụ tập trung vào năng lượng</h3>
+                    <p id="energy-focused-description">Mọi ví dụ, nghiên cứu điển hình và ứng dụng đều được điều chỉnh đặc biệt cho các chuyên gia năng lượng và các thách thức thực tế của ngành.</p>
+                </div>
+                <div class="feature-card liquid-glass-card interactive-glass">
+                    <div class="feature-icon">🎮</div>
+                    <h3 id="interactive-elements-title">Các yếu tố tương tác</h3>
+                    <p id="interactive-elements-description">Tham gia vào các sơ đồ trực quan, câu đố tương tác, bài tập thực hành và phản hồi tức thì để củng cố việc học.</p>
+                </div>
+                <div class="feature-card liquid-glass-card interactive-glass">
+                    <div class="feature-icon">📊</div>
+                    <h3 id="progress-tracking-title">Theo dõi tiến độ</h3>
+                    <p id="progress-tracking-description">Các chỉ số tiến độ trực quan và trạng thái hoàn thành giúp bạn duy trì động lực và theo dõi hành trình học tập của mình.</p>
+                </div>
+                <div class="feature-card liquid-glass-card interactive-glass">
+                    <div class="feature-icon">🚀</div>
+                    <h3 id="immediate-application-title">Ứng dụng tức thì</h3>
+                    <p id="immediate-application-description">Bắt đầu sử dụng các công cụ AI một cách hiệu quả trong công việc hàng ngày của bạn ngay lập tức với các prompt thực tế và các kỹ thuật đã được chứng minh.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Course Overview -->
+    <section class="overview-section" id="about">
+        <div class="container">
+            <h2 class="section-title" id="course-overview-title">📚 Tổng quan khóa học</h2>
+            
+            <div class="overview-grid">
+                <div class="overview-card liquid-glass-card interactive-glass">
+                    <h3 id="target-audience-title"><span class="overview-icon">🎯</span>Đối tượng mục tiêu</h3>
+                    <p id="target-audience-description">Các chuyên gia trong ngành năng lượng bao gồm:</p>
+                    <ul id="target-audience-list">
+                        <li>Các nhà phát triển và quản lý dự án</li>
+                        <li>Các nhà quản lý và vận hành tài sản</li>
+                        <li>Kỹ sư và nhà phân tích kỹ thuật</li>
+                        <li>Các chuyên gia phát triển kinh doanh</li>
+                        <li>Các giám đốc điều hành và nhà ra quyết định</li>
+                        <li>Các chuyên gia về quy định và tuân thủ</li>
+                    </ul>
+                </div>
+
+                <div class="overview-card liquid-glass-card interactive-glass">
+                    <h3 id="interactive-learning-title"><span class="overview-icon">📚</span>Học tập tương tác</h3>
+                    <p id="interactive-learning-description">Phương pháp đào tạo mang tính cách mạng với:</p>
+                    <ul id="interactive-learning-list">
+                        <li>Tiết lộ nội dung từng bước</li>
+                        <li>Sơ đồ và hoạt ảnh trực quan tương tác</li>
+                        <li>Các tình huống và nghiên cứu điển hình thực hành</li>
+                        <li>Phản hồi tức thì và theo dõi tiến độ</li>
+                        <li>Các ví dụ cụ thể về năng lượng xuyên suốt</li>
+                        <li>Tự học theo tốc độ của riêng bạn với hướng dẫn</li>
+                    </ul>
+                </div>
+
+                <div class="overview-card liquid-glass-card interactive-glass">
+                    <h3 id="learning-outcomes-title"><span class="overview-icon">🚀</span>Kết quả học tập</h3>
+                    <p id="learning-outcomes-description">Sau khi hoàn thành, bạn sẽ tự tin:</p>
+                    <ul id="learning-outcomes-list">
+                        <li>Hiểu các nguyên tắc cơ bản về AI, ML và AI tạo sinh</li>
+                        <li>Sử dụng hiệu quả các công cụ LLM trong công việc hàng ngày</li>
+                        <li>Áp dụng các kỹ thuật prompt engineering nâng cao</li>
+                        <li>Điều hướng các cân nhắc về đạo đức và bảo mật</li>
+                        <li>Triển khai các giải pháp AI một cách có trách nhiệm</li>
+                        <li>Luôn cập nhật các khả năng AI đang phát triển</li>
+                    </ul>
+                </div>
+
+                <div class="overview-card liquid-glass-card interactive-glass">
+                    <h3 id="time-investment-title"><span class="overview-icon">⏱️</span>Thời gian đầu tư</h3>
+                    <p id="time-investment-description">Tối ưu hóa cho các chuyên gia bận rộn:</p>
+                    <ul id="time-investment-list">
+                        <li>Tổng thời lượng: 3.5 giờ</li>
+                        <li>Trung bình 42 phút mỗi mô-đun</li>
+                        <li>Định dạng tương tác, hấp dẫn</li>
+                        <li>Có thể hoàn thành trong nhiều buổi</li>
+                        <li>Tiến độ tự động lưu</li>
+                        <li>Ứng dụng ngay lập tức vào công việc của bạn</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p id="footer-thanks">🎓 Cảm ơn bạn đã chọn trải nghiệm đào tạo AI tương tác này!</p>
+            <p id="footer-confident">Chúng tôi tin rằng bạn sẽ có được các kỹ năng thực tế để nâng cao công việc trong ngành năng lượng của mình với các công nghệ AI.</p>
+            <p class="footer-author" id="footer-author">Tác giả khóa học: Phong Han</p>
+            
+            <div class="footer-note">
+                <p id="footer-note-text">Khóa học tương tác này thể hiện trạng thái hiện tại của công nghệ AI và các phương pháp hay nhất tính đến năm 2024. Bối cảnh AI phát triển nhanh chóng, vì vậy chúng tôi khuyến khích tiếp tục học hỏi và cập nhật những phát triển mới nhất trong lĩnh vực này.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Progress tracking and module management
+        let completedModules = JSON.parse(localStorage.getItem('completedModules') || '[]');
+        let currentModule = parseInt(localStorage.getItem('currentModule') || '1');
+        let currentLanguage = localStorage.getItem('language') || 'vi'; // Default to Vietnamese
+
+        // Translations object
+        const translations = {
+            en: {
+                // Hero Section
+                heroTitle: "🤖 Interactive AI Training For Energy Professionals",
+                heroSubtitle: "<strong>Master Large Language Models and Generative AI</strong><br>Through an interactive, step-by-step learning experience. Each module builds upon the previous one, with hands-on examples, visual guides, and immediate feedback to ensure you truly understand each concept before moving forward.",
+                startLearningBtn: "🎯 Start Interactive Learning",
+                learnMoreBtn: "📚 Learn More",
+                hoursTotalNum: "4",
+                hoursTotalLabel: "Hours Total",
+                interactiveModulesNum: "5",
+                interactiveModulesLabel: "Interactive Modules",
+                quizQuestionsNum: "20",
+                quizQuestionsLabel: "Quiz Questions",
+
+                // Progress Bar
+                progressTextReady: "Ready to start your AI learning journey!",
+                progressTextCompleted: "🎉 Congratulations! You've completed all modules!",
+                progressTextProgress: (completed, total, percent) => `Progress: ${completed}/${total} modules completed (${percent}%)`,
+
+                // Learning Path Section
+                learningJourneyTitle: "🎯 Your Interactive Learning Journey",
+                learningJourneySubtitle: "Follow this step-by-step path designed specifically for busy energy professionals. Each module unlocks only after completing the previous one, ensuring you build a solid foundation before advancing.",
+                
+                module1Duration: "⏱️ ~42 min",
+                module1StatusStart: "Start Here",
+                module1StatusLocked: "Locked",
+                module1StatusCompleted: "✅ Completed",
+                module1StatusContinue: "Continue",
+                module1Title: "🧠 AI Fundamentals & Energy Applications",
+                module1Description: "Build your foundation by understanding AI, Machine Learning, and Generative AI with real energy sector examples. Interactive diagrams and case studies make complex concepts clear.",
+                module1LearnTitle: "🔍 What You'll Learn",
+                module1LearnDescription: "Clear definitions, energy sector applications, predictive maintenance examples, and interactive knowledge checks.",
+                module1OutcomeTitle: "🎯 Key Outcome",
+                module1OutcomeDescription: "Confidently explain AI concepts and identify opportunities in your energy work.",
+
+                module2Duration: "⏱️ ~42 min",
+                module2Title: "🤖 Understanding Large Language Models",
+                module2Description: "Dive deep into how LLMs work with visual explanations of tokens, parameters, and transformers. See exactly how these models process and generate text.",
+                module2LearnTitle: "🔍 What You'll Learn",
+                module2LearnDescription: "LLM architecture, token processing, model capabilities, and energy documentation applications.",
+                module2OutcomeTitle: "🎯 Key Outcome",
+                module2OutcomeDescription: "Understand how LLMs work and their limitations for professional use.",
+
+                module3Duration: "⏱️ ~42 min",
+                module3Title: "💬 AI Chatbots in Daily Energy Work",
+                module3Description: "Explore practical chatbot applications with interactive demos. Learn to integrate AI assistants into project planning, analysis, and stakeholder communication.",
+                module3LearnTitle: "🔍 What You'll Learn",
+                module3LearnDescription: "Chatbot capabilities, energy workflows, integration strategies, and hands-on practice scenarios.",
+                module3OutcomeTitle: "🎯 Key Outcome",
+                module3OutcomeDescription: "Effectively use AI chatbots to enhance your daily energy sector work.",
+
+                module4Duration: "⏱️ ~42 min",
+                module4Title: "✍️ Mastering Prompt Engineering",
+                module4Description: "Learn the art of crafting effective prompts through interactive exercises. Practice with energy-specific templates and see immediate results.",
+                module4LearnTitle: "🔍 What You'll Learn",
+                module4LearnDescription: "Prompt frameworks, energy templates, advanced techniques, and interactive prompt builder.",
+                module4OutcomeTitle: "🎯 Key Outcome",
+                module4OutcomeDescription: "Create powerful prompts that get optimal results for energy applications.",
+
+                module5Duration: "⏱️ ~42 min",
+                module5Title: "🛡️ Ethics & Best Practices",
+                module5Description: "Master responsible AI usage with interactive scenarios specific to energy infrastructure. Learn critical security and verification techniques.",
+                module5LearnTitle: "🔍 What You'll Learn",
+                module5LearnDescription: "Energy ethics scenarios, security guidelines, verification techniques, and responsible AI frameworks.",
+                module5OutcomeTitle: "🎯 Key Outcome",
+                module5OutcomeDescription: "Implement AI solutions safely and responsibly in energy infrastructure.",
+
+                readyToTransformTitle: "🎉 Ready to Transform Your Energy Career with AI?",
+                readyToTransformDescription: "Join thousands of energy professionals who are already leveraging AI to enhance their work, make better decisions, and drive innovation in the energy transition.",
+                beginJourneyBtn: "🚀 Begin Your AI Journey →",
+
+                // Why This Interactive Training Works Section
+                whyTrainingWorksTitle: "🌟 Why This Interactive Training Works",
+                whyTrainingWorksSubtitle: "Experience a revolutionary approach to AI education designed specifically for busy energy professionals who need practical, applicable knowledge.",
+                stepByStepTitle: "Step-by-Step Learning",
+                stepByStepDescription: "Content is revealed progressively, preventing information overload. Each concept builds naturally on the previous one, ensuring solid understanding.",
+                guidedProgressionTitle: "Guided Progression",
+                guidedProgressionDescription: "Modules unlock only after completing prerequisites, ensuring you master fundamentals before advancing to complex applications.",
+                energyFocusedTitle: "Energy-Focused Examples",
+                energyFocusedDescription: "Every example, case study, and application is tailored specifically for energy professionals and real industry challenges.",
+                interactiveElementsTitle: "Interactive Elements",
+                interactiveElementsDescription: "Engage with visual diagrams, interactive quizzes, hands-on exercises, and immediate feedback to reinforce learning.",
+                progressTrackingTitle: "Progress Tracking",
+                progressTrackingDescription: "Visual progress indicators and completion status help you stay motivated and track your learning journey.",
+                immediateApplicationTitle: "Immediate Application",
+                immediateApplicationDescription: "Start using AI tools effectively in your daily work right away with practical prompts and proven techniques.",
+
+                // Course Overview Section
+                courseOverviewTitle: "📚 Course Overview",
+                targetAudienceTitle: "🎯Target Audience",
+                targetAudienceDescription: "Energy sector professionals including:",
+                targetAudienceList: [
+                    "Project developers and managers",
+                    "Asset managers and operators",
+                    "Engineers and technical analysts",
+                    "Business development professionals",
+                    "Executives and decision makers",
+                    "Regulatory and compliance specialists"
+                ],
+                interactiveLearningTitle: "📚Interactive Learning",
+                interactiveLearningDescription: "Revolutionary training approach featuring:",
+                interactiveLearningList: [
+                    "Step-by-step content revelation",
+                    "Interactive visual diagrams and animations",
+                    "Hands-on scenarios and case studies",
+                    "Immediate feedback and progress tracking",
+                    "Energy-specific examples throughout",
+                    "Self-paced with guided progression"
+                ],
+                learningOutcomesTitle: "🚀Learning Outcomes",
+                learningOutcomesDescription: "By completion, you will confidently:",
+                learningOutcomesList: [
+                    "Understand AI, ML, and Generative AI fundamentals",
+                    "Effectively use LLM tools in daily work",
+                    "Apply advanced prompt engineering techniques",
+                    "Navigate ethical and security considerations",
+                    "Implement AI solutions responsibly",
+                    "Stay current with evolving AI capabilities"
+                ],
+                timeInvestmentTitle: "⏱️Time Investment",
+                timeInvestmentDescription: "Optimized for busy professionals:",
+                timeInvestmentList: [
+                    "Total duration: 3.5 hours",
+                    "Average 42 minutes per module",
+                    "Interactive, engaging format",
+                    "Can be completed over multiple sessions",
+                    "Progress automatically saved",
+                    "Immediate application to your work"
+                ],
+
+                // Footer
+                footerThanks: "🎓 Thank you for choosing this interactive AI training experience!",
+                footerConfident: "We're confident you'll gain practical skills to enhance your energy sector work with AI technologies.",
+                footerAuthor: "Course Author: Phong Han",
+                footerNoteText: "This interactive course represents the current state of AI technology and best practices as of 2024. The AI landscape evolves rapidly, so we encourage continued learning and staying updated with the latest developments in the field."
+            },
+            vi: {
+                // Hero Section
+                heroTitle: "🤖 Đào tạo AI tương tác cho chuyên gia năng lượng",
+                heroSubtitle: "<strong>Làm chủ các Mô hình ngôn ngữ lớn (LLM) và AI tạo sinh</strong><br>Thông qua trải nghiệm học tập tương tác, từng bước. Mỗi mô-đun được xây dựng dựa trên mô-đun trước đó, với các ví dụ thực tế, hướng dẫn trực quan và phản hồi tức thì để đảm bảo bạn thực sự hiểu từng khái niệm trước khi tiếp tục.",
+                startLearningBtn: "🎯 Bắt đầu học tương tác",
+                learnMoreBtn: "📚 Tìm hiểu thêm",
+                hoursTotalNum: "4",
+                hoursTotalLabel: "Tổng số giờ",
+                interactiveModulesNum: "5",
+                interactiveModulesLabel: "Mô-đun tương tác",
+                quizQuestionsNum: "20",
+                quizQuestionsLabel: "Câu hỏi trắc nghiệm",
+
+                // Progress Bar
+                progressTextReady: "Sẵn sàng bắt đầu hành trình học AI của bạn!",
+                progressTextCompleted: "🎉 Chúc mừng! Bạn đã hoàn thành tất cả các mô-đun!",
+                progressTextProgress: (completed, total, percent) => `Tiến độ: ${completed}/${total} mô-đun đã hoàn thành (${percent}%)`,
+
+                // Learning Path Section
+                learningJourneyTitle: "🎯 Hành trình học tập tương tác của bạn",
+                learningJourneySubtitle: "Hãy theo dõi lộ trình từng bước này được thiết kế đặc biệt cho các chuyên gia năng lượng bận rộn. Mỗi mô-đun chỉ mở khóa sau khi hoàn thành mô-đun trước đó, đảm bảo bạn xây dựng nền tảng vững chắc trước khi tiến xa hơn.",
+
+                module1Duration: "⏱️ ~42 phút",
+                module1StatusStart: "Bắt đầu tại đây",
+                module1StatusLocked: "Đã khóa",
+                module1StatusCompleted: "✅ Đã hoàn thành",
+                module1StatusContinue: "Tiếp tục",
+                module1Title: "🧠 Kiến thức cơ bản về AI & Ứng dụng năng lượng",
+                module1Description: "Xây dựng nền tảng của bạn bằng cách hiểu về AI, Học máy và AI tạo sinh với các ví dụ thực tế trong ngành năng lượng. Các sơ đồ tương tác và nghiên cứu điển hình giúp các khái niệm phức tạp trở nên rõ ràng.",
+                module1LearnTitle: "🔍 Bạn sẽ học gì",
+                module1LearnDescription: "Các định nghĩa rõ ràng, ứng dụng trong ngành năng lượng, ví dụ về bảo trì dự đoán và kiểm tra kiến thức tương tác.",
+                module1OutcomeTitle: "🎯 Kết quả chính",
+                module1OutcomeDescription: "Tự tin giải thích các khái niệm AI và xác định các cơ hội trong công việc năng lượng của bạn.",
+
+                module2Duration: "⏱️ ~42 phút",
+                module2Title: "🤖 Hiểu về các Mô hình ngôn ngữ lớn (LLM)",
+                module2Description: "Đi sâu vào cách LLM hoạt động với các giải thích trực quan về token, tham số và bộ biến đổi. Xem chính xác cách các mô hình này xử lý và tạo văn bản.",
+                module2LearnTitle: "🔍 Bạn sẽ học gì",
+                module2LearnDescription: "Kiến trúc LLM, xử lý token, khả năng của mô hình và ứng dụng tài liệu năng lượng.",
+                module2OutcomeTitle: "🎯 Kết quả chính",
+                module2OutcomeDescription: "Hiểu cách LLM hoạt động và những hạn chế của chúng để sử dụng chuyên nghiệp.",
+
+                module3Duration: "⏱️ ~42 phút",
+                module3Title: "💬 Chatbot AI trong công việc năng lượng hàng ngày",
+                module3Description: "Khám phá các ứng dụng chatbot thực tế với các bản demo tương tác. Học cách tích hợp trợ lý AI vào lập kế hoạch dự án, phân tích và giao tiếp với các bên liên quan.",
+                module3LearnTitle: "🔍 Bạn sẽ học gì",
+                module3LearnDescription: "Khả năng của Chatbot, quy trình làm việc năng lượng, chiến lược tích hợp và các tình huống thực hành.",
+                module3OutcomeTitle: "🎯 Kết quả chính",
+                module3OutcomeDescription: "Sử dụng chatbot AI hiệu quả để nâng cao công việc hàng ngày trong ngành năng lượng của bạn.",
+
+                module4Duration: "⏱️ ~42 phút",
+                module4Title: "✍️ Làm chủ kỹ thuật Prompt Engineering",
+                module4Description: "Học nghệ thuật tạo ra các prompt hiệu quả thông qua các bài tập tương tác. Thực hành với các mẫu dành riêng cho năng lượng và xem kết quả tức thì.",
+                module4LearnTitle: "🔍 Bạn sẽ học gì",
+                module4LearnDescription: "Các khung prompt, mẫu năng lượng, kỹ thuật nâng cao và trình tạo prompt tương tác.",
+                module4OutcomeTitle: "🎯 Kết quả chính",
+                module4OutcomeDescription: "Tạo các prompt mạnh mẽ mang lại kết quả tối ưu cho các ứng dụng năng lượng.",
+
+                module5Duration: "⏱️ ~42 phút",
+                module5Title: "🛡️ Đạo đức & Thực hành tốt nhất",
+                module5Description: "Làm chủ việc sử dụng AI có trách nhiệm với các tình huống tương tác dành riêng cho cơ sở hạ tầng năng lượng. Học các kỹ thuật bảo mật và xác minh quan trọng.",
+                module5LearnTitle: "🔍 Bạn sẽ học gì",
+                module5LearnDescription: "Các tình huống đạo đức năng lượng, hướng dẫn bảo mật, kỹ thuật xác minh và khung AI có trách nhiệm.",
+                module5OutcomeTitle: "🎯 Kết quả chính",
+                module5OutcomeDescription: "Triển khai các giải pháp AI một cách an toàn và có trách nhiệm trong cơ sở hạ tầng năng lượng.",
+
+                readyToTransformTitle: "🎉 Sẵn sàng thay đổi sự nghiệp năng lượng của bạn với AI?",
+                readyToTransformDescription: "Tham gia cùng hàng ngàn chuyên gia năng lượng đang tận dụng AI để nâng cao công việc của họ, đưa ra quyết định tốt hơn và thúc đẩy đổi mới trong quá trình chuyển đổi năng lượng.",
+                beginJourneyBtn: "🚀 Bắt đầu hành trình AI của bạn →",
+
+                // Why This Interactive Training Works Section
+                whyTrainingWorksTitle: "🌟 Tại sao khóa đào tạo tương tác này hiệu quả",
+                whyTrainingWorksSubtitle: "Trải nghiệm một phương pháp tiếp cận mang tính cách mạng đối với giáo dục AI được thiết kế đặc biệt cho các chuyên gia năng lượng bận rộn, những người cần kiến thức thực tế, có thể áp dụng.",
+                stepByStepTitle: "Học từng bước",
+                stepByStepDescription: "Nội dung được tiết lộ dần dần, ngăn ngừa tình trạng quá tải thông tin. Mỗi khái niệm được xây dựng một cách tự nhiên dựa trên khái niệm trước đó, đảm bảo sự hiểu biết vững chắc.",
+                guidedProgressionTitle: "Tiến trình có hướng dẫn",
+                guidedProgressionDescription: "Các mô-đun chỉ mở khóa sau khi hoàn thành các điều kiện tiên quyết, đảm bảo bạn nắm vững các kiến thức cơ bản trước khi chuyển sang các ứng dụng phức tạp.",
+                energyFocusedTitle: "Ví dụ tập trung vào năng lượng",
+                energyFocusedDescription: "Mọi ví dụ, nghiên cứu điển hình và ứng dụng đều được điều chỉnh đặc biệt cho các chuyên gia năng lượng và các thách thức thực tế của ngành.",
+                interactiveElementsTitle: "Các yếu tố tương tác",
+                interactiveElementsDescription: "Tham gia vào các sơ đồ trực quan, câu đố tương tác, bài tập thực hành và phản hồi tức thì để củng cố việc học.",
+                progressTrackingTitle: "Theo dõi tiến độ",
+                progressTrackingDescription: "Các chỉ số tiến độ trực quan và trạng thái hoàn thành giúp bạn duy trì động lực và theo dõi hành trình học tập của mình.",
+                immediateApplicationTitle: "Ứng dụng tức thì",
+                immediateApplicationDescription: "Bắt đầu sử dụng các công cụ AI một cách hiệu quả trong công việc hàng ngày của bạn ngay lập tức với các prompt thực tế và các kỹ thuật đã được chứng minh.",
+
+                // Course Overview Section
+                courseOverviewTitle: "📚 Tổng quan khóa học",
+                targetAudienceTitle: "🎯Đối tượng mục tiêu",
+                targetAudienceDescription: "Các chuyên gia trong ngành năng lượng bao gồm:",
+                targetAudienceList: [
+                    "Các nhà phát triển và quản lý dự án",
+                    "Các nhà quản lý và vận hành tài sản",
+                    "Kỹ sư và nhà phân tích kỹ thuật",
+                    "Các chuyên gia phát triển kinh doanh",
+                    "Các giám đốc điều hành và nhà ra quyết định",
+                    "Các chuyên gia về quy định và tuân thủ"
+                ],
+                interactiveLearningTitle: "📚Học tập tương tác",
+                interactiveLearningDescription: "Phương pháp đào tạo mang tính cách mạng với:",
+                interactiveLearningList: [
+                    "Tiết lộ nội dung từng bước",
+                    "Sơ đồ và hoạt ảnh trực quan tương tác",
+                    "Các tình huống và nghiên cứu điển hình thực hành",
+                    "Phản hồi tức thì và theo dõi tiến độ",
+                    "Các ví dụ cụ thể về năng lượng xuyên suốt",
+                    "Tự học theo tốc độ của riêng bạn với hướng dẫn"
+                ],
+                learningOutcomesTitle: "🚀Kết quả học tập",
+                learningOutcomesDescription: "Sau khi hoàn thành, bạn sẽ tự tin:",
+                learningOutcomesList: [
+                    "Hiểu các nguyên tắc cơ bản về AI, ML và AI tạo sinh",
+                    "Sử dụng hiệu quả các công cụ LLM trong công việc hàng ngày",
+                    "Áp dụng các kỹ thuật prompt engineering nâng cao",
+                    "Điều hướng các cân nhắc về đạo đức và bảo mật",
+                    "Triển khai các giải pháp AI một cách có trách nhiệm",
+                    "Luôn cập nhật các khả năng AI đang phát triển"
+                ],
+                timeInvestmentTitle: "⏱️Thời gian đầu tư",
+                timeInvestmentDescription: "Tối ưu hóa cho các chuyên gia bận rộn:",
+                timeInvestmentList: [
+                    "Tổng thời lượng: 3.5 giờ",
+                    "Trung bình 42 phút mỗi mô-đun",
+                    "Định dạng tương tác, hấp dẫn",
+                    "Có thể hoàn thành trong nhiều buổi",
+                    "Tiến độ tự động lưu",
+                    "Ứng dụng ngay lập tức vào công việc của bạn"
+                ],
+
+                // Footer
+                footerThanks: "🎓 Cảm ơn bạn đã chọn trải nghiệm đào tạo AI tương tác này!",
+                footerConfident: "Chúng tôi tin rằng bạn sẽ có được các kỹ năng thực tế để nâng cao công việc trong ngành năng lượng của mình với các công nghệ AI.",
+                footerAuthor: "Tác giả khóa học: Phong Han",
+                footerNoteText: "Khóa học tương tác này thể hiện trạng thái hiện tại của công nghệ AI và các phương pháp hay nhất tính đến năm 2024. Bối cảnh AI phát triển nhanh chóng, vì vậy chúng tôi khuyến khích tiếp tục học hỏi và cập nhật những phát triển mới nhất trong lĩnh vực này."
+            }
+        };
+
+        // Initialize progress on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            updateProgress();
+            updateModuleStates();
+            setLanguage(currentLanguage); // Set language on load
+        });
+
+        function updateProgress() {
+            const progressFill = document.getElementById('progressFill');
+            const progressText = document.getElementById('progressText');
+            
+            const progress = (completedModules.length / 5) * 100;
+            progressFill.style.width = progress + '%';
+            
+            if (completedModules.length === 0) {
+                progressText.textContent = translations[currentLanguage].progressTextReady;
+            } else if (completedModules.length === 5) {
+                progressText.textContent = translations[currentLanguage].progressTextCompleted;
+            } else {
+                progressText.textContent = translations[currentLanguage].progressTextProgress(completedModules.length, 5, Math.round(progress));
+            }
+        }
+
+        function updateModuleStates() {
+            const stepItems = document.querySelectorAll('.step-item');
+            
+            stepItems.forEach((item, index) => {
+                const moduleNum = index + 1;
+                const statusSpan = item.querySelector('.step-status');
+                
+                // Remove all state classes
+                item.classList.remove('completed', 'current');
+                
+                if (completedModules.includes(moduleNum)) {
+                    item.classList.add('completed');
+                    statusSpan.textContent = translations[currentLanguage][`module${moduleNum}StatusCompleted`];
+                } else if (moduleNum === currentModule) {
+                    item.classList.add('current');
+                    statusSpan.textContent = moduleNum === 1 ? translations[currentLanguage].module1StatusStart : translations[currentLanguage].module1StatusContinue;
+                } else if (moduleNum > currentModule) {
+                    statusSpan.textContent = translations[currentLanguage].module1StatusLocked;
+                }
+            });
+        }
+
+        function startModule(moduleNum) {
+            // Check if module is accessible
+            if (moduleNum > currentModule && !completedModules.includes(moduleNum - 1) && moduleNum !== 1) {
+                alert(currentLanguage === 'en' ? 'Please complete the previous modules first to unlock this one.' : 'Vui lòng hoàn thành các mô-đun trước để mở khóa mô-đun này.');
+                return;
+            }
+            
+            // Navigate to module
+            window.location.href = `module${moduleNum}.html`;
+        }
+
+        // Function to mark module as completed (called from individual module pages)
+        function markModuleCompleted(moduleNum) {
+            if (!completedModules.includes(moduleNum)) {
+                completedModules.push(moduleNum);
+                localStorage.setItem('completedModules', JSON.stringify(completedModules));
+            }
+            
+            // Update current module to next available
+            if (moduleNum === currentModule && currentModule < 5) {
+                currentModule = moduleNum + 1;
+                localStorage.setItem('currentModule', currentModule.toString());
+            }
+            
+            updateProgress();
+            updateModuleStates();
+        }
+
+        // Language switching logic
+        function setLanguage(lang) {
+            currentLanguage = lang;
+            localStorage.setItem('language', lang);
+
+            // Update flag
+            const currentFlag = document.getElementById('current-flag');
+            if (currentFlag) {
+                currentFlag.src = lang === 'en' ? 'https://flagcdn.com/us.svg' : 'https://flagcdn.com/vn.svg';
+                currentFlag.alt = lang === 'en' ? 'English Flag' : 'Vietnamese Flag';
+            }
+
+            // Update translatable elements
+            document.getElementById('hero-title').innerHTML = translations[lang].heroTitle;
+            document.getElementById('hero-subtitle').innerHTML = translations[lang].heroSubtitle;
+            document.getElementById('start-learning-btn').textContent = translations[lang].startLearningBtn;
+            document.getElementById('learn-more-btn').textContent = translations[lang].learnMoreBtn;
+            document.getElementById('hours-total-num').textContent = translations[lang].hoursTotalNum;
+            document.getElementById('hours-total-label').textContent = translations[lang].hoursTotalLabel;
+            document.getElementById('interactive-modules-num').textContent = translations[lang].interactiveModulesNum;
+            document.getElementById('interactive-modules-label').textContent = translations[lang].interactiveModulesLabel;
+            document.getElementById('quiz-questions-num').textContent = translations[lang].quizQuestionsNum;
+            document.getElementById('quiz-questions-label').textContent = translations[lang].quizQuestionsLabel;
+
+            document.getElementById('learning-journey-title').textContent = translations[lang].learningJourneyTitle;
+            document.getElementById('learning-journey-subtitle').textContent = translations[lang].learningJourneySubtitle;
+
+            // Modules
+            for (let i = 1; i <= 5; i++) {
+                const moduleDuration = document.getElementById(`module${i}-duration`);
+                if (moduleDuration) moduleDuration.textContent = translations[lang][`module${i}Duration`];
+                
+                const moduleTitle = document.getElementById(`module${i}-title`);
+                if (moduleTitle) moduleTitle.textContent = translations[lang][`module${i}Title`];
+                
+                const moduleDescription = document.getElementById(`module${i}-description`);
+                if (moduleDescription) moduleDescription.textContent = translations[lang][`module${i}Description`];
+                
+                const moduleLearnTitle = document.getElementById(`module${i}-learn-title`);
+                if (moduleLearnTitle) moduleLearnTitle.textContent = translations[lang][`module${i}LearnTitle`];
+                
+                const moduleLearnDescription = document.getElementById(`module${i}-learn-description`);
+                if (moduleLearnDescription) moduleLearnDescription.textContent = translations[lang][`module${i}LearnDescription`];
+                
+                const moduleOutcomeTitle = document.getElementById(`module${i}-outcome-title`);
+                if (moduleOutcomeTitle) moduleOutcomeTitle.textContent = translations[lang][`module${i}OutcomeTitle`];
+                
+                const moduleOutcomeDescription = document.getElementById(`module${i}-outcome-description`);
+                if (moduleOutcomeDescription) moduleOutcomeDescription.textContent = translations[lang][`module${i}OutcomeDescription`];
+            }
+            updateModuleStates(); // Update module statuses based on new language
+
+            document.getElementById('ready-to-transform-title').textContent = translations[lang].readyToTransformTitle;
+            document.getElementById('ready-to-transform-description').textContent = translations[lang].readyToTransformDescription;
+            document.getElementById('begin-journey-btn').textContent = translations[lang].beginJourneyBtn;
+
+            document.getElementById('why-training-works-title').textContent = translations[lang].whyTrainingWorksTitle;
+            document.getElementById('why-training-works-subtitle').textContent = translations[lang].whyTrainingWorksSubtitle;
+            document.getElementById('step-by-step-title').textContent = translations[lang].stepByStepTitle;
+            document.getElementById('step-by-step-description').textContent = translations[lang].stepByStepDescription;
+            document.getElementById('guided-progression-title').textContent = translations[lang].guidedProgressionTitle;
+            document.getElementById('guided-progression-description').textContent = translations[lang].guidedProgressionDescription;
+            document.getElementById('energy-focused-title').textContent = translations[lang].energyFocusedTitle;
+            document.getElementById('energy-focused-description').textContent = translations[lang].energyFocusedDescription;
+            document.getElementById('interactive-elements-title').textContent = translations[lang].interactiveElementsTitle;
+            document.getElementById('interactive-elements-description').textContent = translations[lang].interactiveElementsDescription;
+            document.getElementById('progress-tracking-title').textContent = translations[lang].progressTrackingTitle;
+            document.getElementById('progress-tracking-description').textContent = translations[lang].progressTrackingDescription;
+            document.getElementById('immediate-application-title').textContent = translations[lang].immediateApplicationTitle;
+            document.getElementById('immediate-application-description').textContent = translations[lang].immediateApplicationDescription;
+
+            document.getElementById('course-overview-title').textContent = translations[lang].courseOverviewTitle;
+            document.getElementById('target-audience-title').innerHTML = `<span class="overview-icon">🎯</span>${translations[lang].targetAudienceTitle}`;
+            document.getElementById('target-audience-description').textContent = translations[lang].targetAudienceDescription;
+            const targetAudienceList = document.getElementById('target-audience-list');
+            if (targetAudienceList) {
+                targetAudienceList.innerHTML = translations[lang].targetAudienceList.map(item => `<li>${item}</li>`).join('');
+            }
+
+            document.getElementById('interactive-learning-title').innerHTML = `<span class="overview-icon">📚</span>${translations[lang].interactiveLearningTitle}`;
+            document.getElementById('interactive-learning-description').textContent = translations[lang].interactiveLearningDescription;
+            const interactiveLearningList = document.getElementById('interactive-learning-list');
+            if (interactiveLearningList) {
+                interactiveLearningList.innerHTML = translations[lang].interactiveLearningList.map(item => `<li>${item}</li>`).join('');
+            }
+
+            document.getElementById('learning-outcomes-title').innerHTML = `<span class="overview-icon">🚀</span>${translations[lang].learningOutcomesTitle}`;
+            document.getElementById('learning-outcomes-description').textContent = translations[lang].learningOutcomesDescription;
+            const learningOutcomesList = document.getElementById('learning-outcomes-list');
+            if (learningOutcomesList) {
+                learningOutcomesList.innerHTML = translations[lang].learningOutcomesList.map(item => `<li>${item}</li>`).join('');
+            }
+
+            document.getElementById('time-investment-title').innerHTML = `<span class="overview-icon">⏱️</span>${translations[lang].timeInvestmentTitle}`;
+            document.getElementById('time-investment-description').textContent = translations[lang].timeInvestmentDescription;
+            const timeInvestmentList = document.getElementById('time-investment-list');
+            if (timeInvestmentList) {
+                timeInvestmentList.innerHTML = translations[lang].timeInvestmentList.map(item => `<li>${item}</li>`).join('');
+            }
+
+            document.getElementById('footer-thanks').textContent = translations[lang].footerThanks;
+            document.getElementById('footer-confident').textContent = translations[lang].footerConfident;
+            document.getElementById('footer-author').textContent = translations[lang].footerAuthor;
+            document.getElementById('footer-note-text').textContent = translations[lang].footerNoteText;
+        }
+
+        // Event listeners for language selection
+        document.querySelectorAll('.dropdown-content a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const lang = this.getAttribute('data-lang');
+                setLanguage(lang);
+            });
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
