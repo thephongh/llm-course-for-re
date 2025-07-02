@@ -39,8 +39,9 @@
 
         .nav-links {
             display: flex;
-            gap: 2rem;
+            gap: 1.5rem;
             list-style: none;
+            align-items: center;
         }
 
         .nav-links a {
@@ -49,10 +50,44 @@
             font-weight: 500;
             text-decoration: none;
             transition: color 0.2s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 0.375rem;
         }
 
         .nav-links a:hover {
             color: #000000;
+            background: #F3F4F6;
+        }
+
+        .nav-links .active {
+            color: #000000;
+            background: #E5E7EB;
+            font-weight: 600;
+        }
+
+        .nav-module-links {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        .nav-module-links a {
+            padding: 0.375rem 0.75rem;
+            font-size: 0.875rem;
+            border: 1px solid #E5E7EB;
+            border-radius: 0.375rem;
+            background: #FFFFFF;
+        }
+
+        .nav-module-links a:hover {
+            border-color: #8B5CF6;
+            background: #F3F4F6;
+        }
+
+        .nav-module-links .disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            pointer-events: none;
         }
 
         /* Language Switcher */
@@ -690,13 +725,19 @@
 <body>
     <!-- Navigation -->
     <nav class="nav liquid-glass-nav">
-        <a href="#" class="nav-logo">
+        <a href="index.html" class="nav-logo">
             <img src="logo.png" alt="LLM Training Course Logo" style="height: 32px; width: auto; margin-right: 8px; vertical-align: middle;">
             LLM Training Course
         </a>
         <ul class="nav-links">
-            <li><a href="#learning-path">Learning Path</a></li>
-            <li><a href="#about">About</a></li>
+            <li><a href="index.html" class="active">Home</a></li>
+            <li class="nav-module-links">
+                <a href="#" class="disabled">Module 1</a>
+                <a href="#" class="disabled">Module 2</a>
+                <a href="#" class="disabled">Module 3</a>
+                <a href="#" class="disabled">Module 4</a>
+                <a href="#" class="disabled">Module 5</a>
+            </li>
             <li class="language-switcher">
                 <div class="dropdown">
                     <button class="dropbtn">
@@ -758,7 +799,7 @@
             </p>
             
             <div class="learning-steps">
-                <div class="step-item current module-card-glass liquid-shimmer interactive-glass" data-module="1" onclick="startModule(1)">
+                <div class="step-item current module-card-glass liquid-shimmer interactive-glass" data-module="1">
                     <div class="step-number">1</div>
                     <div class="step-content">
                         <div class="step-meta">
@@ -780,7 +821,7 @@
                     </div>
                 </div>
 
-                <div class="step-item module-card-glass interactive-glass" data-module="2" onclick="startModule(2)">
+                <div class="step-item module-card-glass interactive-glass" data-module="2">
                     <div class="step-number">2</div>
                     <div class="step-content">
                         <div class="step-meta">
@@ -802,7 +843,7 @@
                     </div>
                 </div>
 
-                <div class="step-item module-card-glass interactive-glass" data-module="3" onclick="startModule(3)">
+                <div class="step-item module-card-glass interactive-glass" data-module="3">
                     <div class="step-number">3</div>
                     <div class="step-content">
                         <div class="step-meta">
@@ -824,7 +865,7 @@
                     </div>
                 </div>
 
-                <div class="step-item module-card-glass interactive-glass" data-module="4" onclick="startModule(4)">
+                <div class="step-item module-card-glass interactive-glass" data-module="4">
                     <div class="step-number">4</div>
                     <div class="step-content">
                         <div class="step-meta">
@@ -847,7 +888,7 @@
                     </div>
                 </div>
 
-                <div class="step-item module-card-glass interactive-glass" data-module="5" onclick="startModule(5)">
+                <div class="step-item module-card-glass interactive-glass" data-module="5">
                     <div class="step-number">5</div>
                     <div class="step-content">
                         <div class="step-meta">
@@ -870,12 +911,12 @@
                 </div>
             </div>
 
-            <div class="liquid-glass-floating liquid-animation" style="text-align: center; margin-top: 3rem; padding: 2rem; border-radius: 1rem;">
+            <div style="text-align: center; margin-top: 3rem; padding: 2rem; background: #FFFFFF; border-radius: 1rem; border: 2px solid #10B981;">
                 <h3 style="color: #047857; font-size: 1.5rem; font-weight: 600; margin-bottom: 1rem;" id="ready-to-transform-title">🎉 Sẵn sàng thay đổi sự nghiệp năng lượng của bạn với AI?</h3>
                 <p style="font-size: 1rem; color: #6B7280; margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto;" id="ready-to-transform-description">
                     Tham gia cùng hàng ngàn chuyên gia năng lượng đang tận dụng AI để nâng cao công việc của họ, đưa ra quyết định tốt hơn và thúc đẩy đổi mới trong quá trình chuyển đổi năng lượng.
                 </p>
-                <button onclick="startModule(1)" class="btn-primary liquid-glass-button liquid-shimmer" style="font-size: 1.125rem; padding: 1rem 2rem; background: #047857;" id="begin-journey-btn">
+                <button class="btn-primary disabled" style="font-size: 1.125rem; padding: 1rem 2rem; background: #6B7280; cursor: not-allowed;" id="begin-journey-btn">
                     🚀 Bắt đầu hành trình AI của bạn →
                 </button>
             </div>
@@ -929,7 +970,7 @@
             <h2 class="section-title" id="course-overview-title">📚 Tổng quan khóa học</h2>
             
             <div class="overview-grid">
-                <div class="overview-card">
+                <div class="overview-card liquid-glass-card interactive-glass">
                     <h3 id="target-audience-title"><span class="overview-icon">🎯</span>Đối tượng mục tiêu</h3>
                     <p id="target-audience-description">Các chuyên gia trong ngành năng lượng bao gồm:</p>
                     <ul id="target-audience-list">
@@ -942,7 +983,7 @@
                     </ul>
                 </div>
 
-                <div class="overview-card">
+                <div class="overview-card liquid-glass-card interactive-glass">
                     <h3 id="interactive-learning-title"><span class="overview-icon">📚</span>Học tập tương tác</h3>
                     <p id="interactive-learning-description">Phương pháp đào tạo mang tính cách mạng với:</p>
                     <ul id="interactive-learning-list">
@@ -955,7 +996,7 @@
                     </ul>
                 </div>
 
-                <div class="overview-card">
+                <div class="overview-card liquid-glass-card interactive-glass">
                     <h3 id="learning-outcomes-title"><span class="overview-icon">🚀</span>Kết quả học tập</h3>
                     <p id="learning-outcomes-description">Sau khi hoàn thành, bạn sẽ tự tin:</p>
                     <ul id="learning-outcomes-list">
@@ -968,7 +1009,7 @@
                     </ul>
                 </div>
 
-                <div class="overview-card">
+                <div class="overview-card liquid-glass-card interactive-glass">
                     <h3 id="time-investment-title"><span class="overview-icon">⏱️</span>Thời gian đầu tư</h3>
                     <p id="time-investment-description">Tối ưu hóa cho các chuyên gia bận rộn:</p>
                     <ul id="time-investment-list">
@@ -1329,8 +1370,8 @@
                 return;
             }
             
-            // Navigate to module and ensure it starts from the top
-            window.location.href = `module${moduleNum}.html#top`;
+            // Navigate to module
+            window.location.href = `module${moduleNum}.html`;
         }
 
         // Function to mark module as completed (called from individual module pages)
