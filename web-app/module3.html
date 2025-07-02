@@ -1163,6 +1163,7 @@
                         </div>
                     </div>
 
+
                     <p id="step1-takeaway"><strong>Key takeaway:</strong> While each platform has unique strengths, they all excel at understanding natural language and generating human-like responses. The choice often depends on your specific needs: real-time information, document analysis, safety considerations, or integration requirements.</p>
                 </div>
 
@@ -1183,24 +1184,56 @@
                             <h4><span class="use-case-icon">💡</span>Project Development & Planning</h4>
                             <p>Use chatbots to brainstorm solutions, analyze feasibility, and develop comprehensive project plans.</p>
                             
-                            <div class="example-prompt">"I'm developing a 50MW solar farm in Texas. What are the key permitting requirements, potential environmental concerns, and grid interconnection considerations I should address in my initial feasibility study?"</div>
+                            <!-- Bad vs Good Prompt Examples -->
+                            <div style="background: #FEF2F2; border: 2px solid #EF4444; border-radius: 8px; padding: 1.5rem; margin: 1rem 0;">
+                                <h5 style="color: #DC2626; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
+                                    ❌ <strong>Vague/Bad Prompt:</strong>
+                                </h5>
+                                <div style="font-family: monospace; background: white; padding: 1rem; border-radius: 4px; font-size: 0.9rem;">"Tell me about solar energy projects in Vietnam."</div>
+                            </div>
                             
-                            <div class="example-response"><strong>Typical AI Response:</strong> The AI would provide a structured analysis covering ERCOT interconnection procedures, Texas environmental regulations, land use requirements, and typical permitting timelines, helping you create a comprehensive development roadmap.</div>
+                            <div style="background: #F0FDF4; border: 2px solid #22C55E; border-radius: 8px; padding: 1.5rem; margin: 1rem 0;">
+                                <h5 style="color: #16A34A; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
+                                    ✅ <strong>Better/Good Prompt:</strong>
+                                </h5>
+                                <div style="font-family: monospace; background: white; padding: 1rem; border-radius: 4px; font-size: 0.9rem;">"I'm developing a 100MW rooftop solar program in Ho Chi Minh City's industrial zones. Create a comprehensive development roadmap including: 1) MOIT licensing requirements under Circular 39/2015, 2) EVN grid connection procedures and technical standards, 3) feed-in-tariff eligibility criteria, 4) environmental impact assessment requirements under Vietnamese law, and 5) potential financing options including green bonds and international development funding. Present this as a timeline with key milestones."</div>
+                            </div>
                             
-                            <div class="example-prompt">"Generate a risk assessment matrix for an offshore wind project, including technical, financial, environmental, and regulatory risks with mitigation strategies."</div>
+                            <div class="example-response"><strong>Why it's better:</strong> The improved prompt specifies location (HCMC), project scale (100MW rooftop), exact regulatory framework (Circular 39/2015), stakeholders (MOIT, EVN), and desired output format (timeline with milestones). This gives the AI clear parameters to provide actionable, Vietnam-specific guidance.</div>
                         </div>
 
                         <div class="use-case-card">
                             <h4><span class="use-case-icon">🇻🇳</span>Vietnamese Regulatory Compliance & Documentation</h4>
                             <p>Navigate Vietnamese energy regulations and create compliant documentation efficiently.</p>
                             
-                            <div class="example-prompt">"Summarize the key requirements of Vietnam's Circular 39/2015/TT-BCT on the Development of Grid-Connected Solar Power Projects and explain how these affect our 100MW rooftop solar program in Ho Chi Minh City."</div>
+                            <!-- Bad vs Good Prompt Examples for Vietnamese Regulatory Context -->
+                            <div style="background: #FEF2F2; border: 2px solid #EF4444; border-radius: 8px; padding: 1.5rem; margin: 1rem 0;">
+                                <h5 style="color: #DC2626; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
+                                    ❌ <strong>Vague/Bad Prompt:</strong>
+                                </h5>
+                                <div style="font-family: monospace; background: white; padding: 1rem; border-radius: 4px; font-size: 0.9rem;">"What are Vietnam's renewable energy regulations?"</div>
+                            </div>
                             
-                            <div class="example-response"><strong>Typical AI Response:</strong> The AI would break down complex Vietnamese regulatory language into actionable insights, highlighting specific licensing requirements, technical standards for EVN grid connection, feed-in-tariff conditions, and compliance timelines for MOIT approval processes.</div>
+                            <div style="background: #F0FDF4; border: 2px solid #22C55E; border-radius: 8px; padding: 1.5rem; margin: 1rem 0;">
+                                <h5 style="color: #16A34A; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
+                                    ✅ <strong>Better/Good Prompt:</strong>
+                                </h5>
+                                <div style="font-family: monospace; background: white; padding: 1rem; border-radius: 4px; font-size: 0.9rem;">"Analyze Vietnam's Circular 39/2015/TT-BCT requirements for our 100MW rooftop solar portfolio in Ho Chi Minh City industrial parks. Provide: 1) Step-by-step MOIT licensing process with exact documentation requirements, 2) EVN grid connection technical standards and approval timeline, 3) Feed-in-tariff eligibility criteria and current rates, 4) Environmental compliance requirements under MONRE guidelines, 5) Potential regulatory risks and mitigation strategies. Format as an executive summary for our investment committee."</div>
+                            </div>
                             
-                            <div class="example-prompt">"Draft an environmental impact assessment outline for a wind farm in Binh Thuan province, including all required sections under Vietnamese Environmental Protection Law 2020 and MONRE guidelines."</div>
+                            <div style="background: #FEF2F2; border: 2px solid #EF4444; border-radius: 8px; padding: 1.5rem; margin: 1rem 0;">
+                                <h5 style="color: #DC2626; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
+                                    ❌ <strong>Vague/Bad Prompt:</strong>
+                                </h5>
+                                <div style="font-family: monospace; background: white; padding: 1rem; border-radius: 4px; font-size: 0.9rem;">"Write environmental report for wind farm."</div>
+                            </div>
                             
-                            <div class="example-prompt">"Create a compliance checklist for Decree 13/2020/ND-CP on investment incentives for renewable energy projects, focusing on preferential loan conditions and tax exemptions."</div>
+                            <div style="background: #F0FDF4; border: 2px solid #22C55E; border-radius: 8px; padding: 1.5rem; margin: 1rem 0;">
+                                <h5 style="color: #16A34A; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
+                                    ✅ <strong>Better/Good Prompt:</strong>
+                                </h5>
+                                <div style="font-family: monospace; background: white; padding: 1rem; border-radius: 4px; font-size: 0.9rem;">"Create a detailed Environmental Impact Assessment outline for a 200MW offshore wind farm in Binh Thuan province following Vietnamese Environmental Protection Law 2020 and MONRE Circular 01/2021. Include: 1) Baseline environmental assessment covering marine ecosystems, fishing communities, and coastal erosion, 2) Impact analysis on local fishing industry and tourism, 3) Mitigation measures for noise, visual impact, and marine life protection, 4) Community consultation requirements and stakeholder engagement plan, 5) Environmental monitoring program during construction and operation. Structure according to MONRE's standard EIA format."</div>
+                            </div>
                         </div>
 
                         <div class="use-case-card">
@@ -1255,26 +1288,57 @@
                             <h4><span class="use-case-icon">🔧</span>Operations & Maintenance</h4>
                             <p>Optimize maintenance schedules, troubleshoot issues, and improve operational efficiency.</p>
                             
-                            <div class="example-prompt">"Our gas turbine is showing decreased efficiency and higher NOx emissions. Based on these symptoms: [specific data], what are the most likely causes and recommended diagnostic steps?"</div>
+                            <!-- Bad vs Good Prompt Examples for Technical Analysis -->
+                            <div style="background: #FEF2F2; border: 2px solid #EF4444; border-radius: 8px; padding: 1.5rem; margin: 1rem 0;">
+                                <h5 style="color: #DC2626; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
+                                    ❌ <strong>Vague/Bad Prompt:</strong>
+                                </h5>
+                                <div style="font-family: monospace; background: white; padding: 1rem; border-radius: 4px; font-size: 0.9rem;">"My turbine has problems. Help fix."</div>
+                            </div>
                             
-                            <div class="example-response"><strong>Typical AI Response:</strong> The AI would provide a systematic troubleshooting approach, ranking potential causes by probability, suggesting specific tests, and recommending maintenance actions based on the symptoms described.</div>
-                            
-                            <div class="example-prompt">"Create a predictive maintenance schedule for our wind farm based on manufacturer recommendations, historical failure data, and seasonal weather patterns."</div>
+                            <div style="background: #F0FDF4; border: 2px solid #22C55E; border-radius: 8px; padding: 1.5rem; margin: 1rem 0;">
+                                <h5 style="color: #16A34A; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
+                                    ✅ <strong>Better/Good Prompt:</strong>
+                                </h5>
+                                <div style="font-family: monospace; background: white; padding: 1rem; border-radius: 4px; font-size: 0.9rem;">"Our Vestas V136-3.45MW wind turbine at Bac Lieu wind farm is showing: 1) 15% decrease in power output over 3 months, 2) Increased vibration levels in gearbox (measured at 8.5 mm/s vs normal 4.2 mm/s), 3) Higher than normal bearing temperatures (85°C vs typical 70°C), 4) Oil analysis shows increased metal particles. Operating in Vietnam's tropical monsoon conditions with high humidity and salt air exposure. Provide: systematic diagnostic approach, most likely root causes ranked by probability, specific maintenance actions for tropical climate conditions, and estimated repair timeline considering spare parts availability in Vietnam."</div>
+                            </div>
                         </div>
 
                         <div class="use-case-card">
                             <h4><span class="use-case-icon">🤝</span>Vietnamese Stakeholder Communication & Community Engagement</h4>
                             <p>Facilitate effective communication with local communities, government agencies, and project stakeholders in Vietnam.</p>
                             
-                            <div class="example-prompt">"Draft a community presentation explaining our 200MW wind farm project in the Mekong Delta region for local farmers and fishing communities. Address common concerns about noise, environmental impact, and economic benefits in easy-to-understand Vietnamese language."</div>
+                            <!-- Bad vs Good Prompt Examples for Vietnamese Stakeholder Communication -->
+                            <div style="background: #FEF2F2; border: 2px solid #EF4444; border-radius: 8px; padding: 1.5rem; margin: 1rem 0;">
+                                <h5 style="color: #DC2626; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
+                                    ❌ <strong>Vague/Bad Prompt:</strong>
+                                </h5>
+                                <div style="font-family: monospace; background: white; padding: 1rem; border-radius: 4px; font-size: 0.9rem;">"Make presentation about wind farm for Vietnamese people."</div>
+                            </div>
                             
-                            <div class="example-response"><strong>Typical AI Response:</strong> The AI would create a culturally-sensitive presentation that addresses specific concerns relevant to Mekong Delta communities, includes economic impact data in local context, and uses simple language to explain technical concepts while highlighting job creation and environmental benefits.</div>
+                            <div style="background: #F0FDF4; border: 2px solid #22C55E; border-radius: 8px; padding: 1.5rem; margin: 1rem 0;">
+                                <h5 style="color: #16A34A; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
+                                    ✅ <strong>Better/Good Prompt:</strong>
+                                </h5>
+                                <div style="font-family: monospace; background: white; padding: 1rem; border-radius: 4px; font-size: 0.9rem;">"Create a community presentation for our 200MW Ca Mau wind farm project targeting local fishing communities and rice farmers in the Mekong Delta. Address specific concerns: 1) Impact on traditional fishing grounds and aquaculture ponds, 2) Noise levels during harvest season affecting livestock, 3) Visual impact on rural landscape, 4) Construction disruption to rice farming cycles. Include: economic benefits (local jobs, community funds, infrastructure improvements), environmental advantages (reducing coal dependency, improving air quality), and cultural sensitivity to Khmer and Vietnamese communities. Use simple analogies comparing wind turbines to traditional irrigation systems. Provide talking points in both Vietnamese and Khmer languages, with visual aids showing actual project benefits from similar installations in Soc Trang province."</div>
+                            </div>
                             
-                            <div class="example-prompt">"Prepare talking points for a meeting with MONRE officials regarding our solar farm environmental assessment in Ninh Thuan province, including responses to typical regulatory questions and compliance documentation."</div>
+                            <div style="background: #FEF2F2; border: 2px solid #EF4444; border-radius: 8px; padding: 1.5rem; margin: 1rem 0;">
+                                <h5 style="color: #DC2626; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
+                                    ❌ <strong>Vague/Bad Prompt:</strong>
+                                </h5>
+                                <div style="font-family: monospace; background: white; padding: 1rem; border-radius: 4px; font-size: 0.9rem;">"Write FAQ about insurance for renewable energy."</div>
+                            </div>
                             
-                            <div class="example-prompt">"Create a FAQ document for local media in Vietnamese about grid stability impacts from our offshore wind project, using analogies that non-technical audiences can understand."</div>
+                            <div style="background: #F0FDF4; border: 2px solid #22C55E; border-radius: 8px; padding: 1.5rem; margin: 1rem 0;">
+                                <h5 style="color: #16A34A; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
+                                    ✅ <strong>Better/Good Prompt:</strong>
+                                </h5>
+                                <div style="font-family: monospace; background: white; padding: 1rem; border-radius: 4px; font-size: 0.9rem;">"Develop comprehensive FAQ document for Vietnamese renewable energy investors about insurance requirements and options. Cover: 1) Mandatory insurance requirements under Vietnamese law for wind/solar projects, 2) Typhoon and weather-related coverage specific to Vietnam's climate risks, 3) Construction all-risk insurance during monsoon season, 4) Performance guarantees and revenue protection for feed-in-tariff projects, 5) Available insurance providers in Vietnam vs international markets, 6) Typical premium costs as percentage of project CAPEX, 7) Claims process and dispute resolution mechanisms. Include specific examples from Gia Lai solar farms and Bac Lieu wind projects. Target audience: CFOs and project finance teams with basic insurance knowledge."</div>
+                            </div>
                         </div>
                     </div>
+
 
                     <div class="interactive-card">
                         <h4><span class="card-icon">⚡</span>Technical Analysis Best Practices</h4>
