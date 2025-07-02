@@ -804,14 +804,14 @@
         <li><a href="index.html" id="home-link">Home</a></li>
         <li class="nav-module-links">
           <a href="module1.html" class="active" id="module1-link">Module 1</a>
-          <a href="module2.html" id="module2-link">Module 2</a>
-          <a href="module3.html">Module 3</a>
-          <a href="module4.html">Module 4</a>
-          <a href="module5.html">Module 5</a>
+          <a href="#" class="disabled" id="module2-link">Module 2</a>
+          <a href="#" class="disabled">Module 3</a>
+          <a href="#" class="disabled">Module 4</a>
+          <a href="#" class="disabled">Module 5</a>
         </li>
         <li class="nav-prev-next">
           <a href="index.html" class="disabled">← Prev</a>
-          <a href="module2.html">Next →</a>
+          <a href="#" class="disabled">Next →</a>
         </li>
         <li class="language-switcher">
           <div class="dropdown">
@@ -1887,8 +1887,8 @@
           ← Back to Course Outline
         </a>
         <a
-          href="module2.html#top"
-          class="btn-next"
+          href="#"
+          class="btn-next disabled"
           id="nextModuleBtn"
           style="display: none"
         >
@@ -2923,6 +2923,17 @@
           e.preventDefault();
           const lang = this.getAttribute("data-lang");
           setLanguage(lang);
+        });
+      });
+
+      // Handle disabled link clicks for teaser version
+      document.querySelectorAll('a.disabled').forEach(link => {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          const message = currentLanguage === 'en' ? 
+            'This is a teaser version. Only Module 1 is available. Contact us for full course access.' :
+            'Đây là phiên bản dùng thử. Chỉ có Mô-đun 1 khả dụng. Liên hệ chúng tôi để truy cập khóa học đầy đủ.';
+          alert(message);
         });
       });
 
