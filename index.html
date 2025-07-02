@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title id="page-title">Giới thiệu về LLM và AI tạo sinh cho chuyên gia năng lượng</title>
-    <link rel="stylesheet" href="liquid-glass.css">
     <style>
         * {
             margin: 0;
@@ -21,6 +20,9 @@
 
         /* Navigation */
         .nav {
+            background: #FFFFFF;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(229, 231, 235, 0.3);
             padding: 1rem 2rem;
             position: sticky;
             top: 0;
@@ -39,9 +41,8 @@
 
         .nav-links {
             display: flex;
-            gap: 1.5rem;
+            gap: 2rem;
             list-style: none;
-            align-items: center;
         }
 
         .nav-links a {
@@ -50,44 +51,10 @@
             font-weight: 500;
             text-decoration: none;
             transition: color 0.2s ease;
-            padding: 0.5rem 1rem;
-            border-radius: 0.375rem;
         }
 
         .nav-links a:hover {
             color: #000000;
-            background: #F3F4F6;
-        }
-
-        .nav-links .active {
-            color: #000000;
-            background: #E5E7EB;
-            font-weight: 600;
-        }
-
-        .nav-module-links {
-            display: flex;
-            gap: 0.5rem;
-            align-items: center;
-        }
-
-        .nav-module-links a {
-            padding: 0.375rem 0.75rem;
-            font-size: 0.875rem;
-            border: 1px solid #E5E7EB;
-            border-radius: 0.375rem;
-            background: #FFFFFF;
-        }
-
-        .nav-module-links a:hover {
-            border-color: #8B5CF6;
-            background: #F3F4F6;
-        }
-
-        .nav-module-links .disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-            pointer-events: none;
         }
 
         /* Language Switcher */
@@ -220,6 +187,7 @@
 
         /* Hero Section */
         .hero {
+            background: linear-gradient(135deg, #6B46C1 0%, #7C3AED 15%, #8B5CF6 30%, #EC4899 45%, #F97316 60%, #EAB308 75%, #22C55E 90%, #06B6D4 100%);
             min-height: 100vh;
             display: flex;
             align-items: center;
@@ -264,6 +232,9 @@
 
         /* Course Stats */
         .course-stats {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 1rem;
             padding: 2rem;
             margin: 2rem auto 0;
             max-width: 600px;
@@ -465,6 +436,37 @@
             color: #6B7280;
         }
 
+        /* Locked Module Styles for Teaser Version */
+        .step-item.locked {
+            background: #F9FAFB;
+            border-color: #D1D5DB;
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .step-item.locked:hover {
+            border-color: #D1D5DB;
+            box-shadow: none;
+            transform: none;
+        }
+
+        .step-item.locked .step-number {
+            background: #9CA3AF;
+        }
+
+        .step-item.locked .step-status {
+            background: #F3F4F6;
+            color: #9CA3AF;
+        }
+
+        .step-item.locked .step-content h3 {
+            color: #9CA3AF;
+        }
+
+        .step-item.locked .step-content p {
+            color: #D1D5DB;
+        }
+
         /* Module Preview Cards */
         .module-preview {
             display: grid;
@@ -589,11 +591,18 @@
         }
 
         .overview-card {
+            background: #FFFFFF;
+            border: 1px solid #E5E7EB;
             border-radius: 1rem;
             padding: 2rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
             transition: all 0.2s ease;
         }
 
+        .overview-card:hover {
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            transform: translateY(-2px);
+        }
 
         .overview-card h3 {
             color: #000000;
@@ -717,20 +726,11 @@
 </head>
 <body>
     <!-- Navigation -->
-    <nav class="nav liquid-glass-nav">
-        <a href="index.html" class="nav-logo">
-            <img src="logo.png" alt="LLM Training Course Logo" style="height: 32px; width: auto; margin-right: 8px; vertical-align: middle;">
-            LLM Training Course
-        </a>
+    <nav class="nav">
+        <a href="#" class="nav-logo">🚀 LLM Training Course</a>
         <ul class="nav-links">
-            <li><a href="index.html" class="active">Home</a></li>
-            <li class="nav-module-links">
-                <a href="#" class="disabled">Module 1</a>
-                <a href="#" class="disabled">Module 2</a>
-                <a href="#" class="disabled">Module 3</a>
-                <a href="#" class="disabled">Module 4</a>
-                <a href="#" class="disabled">Module 5</a>
-            </li>
+            <li><a href="#learning-path">Learning Path</a></li>
+            <li><a href="#about">About</a></li>
             <li class="language-switcher">
                 <div class="dropdown">
                     <button class="dropbtn">
@@ -745,16 +745,21 @@
         </ul>
     </nav>
 
+    <!-- Teaser Banner -->
+    <div style="background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%); color: white; text-align: center; padding: 1rem; font-weight: 600; box-shadow: 0 2px 8px rgba(245, 158, 11, 0.3);">
+        <span id="teaser-banner">🔥 TEASER VERSION - Only Module 1 Available | Contact us for full course access</span>
+    </div>
+
     <!-- Progress Bar -->
     <div class="progress-container">
-        <div class="progress-bar progress-glass">
-            <div class="progress-fill progress-fill-glass" id="progressFill"></div>
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
         </div>
         <div class="progress-text" id="progressText"></div>
     </div>
 
     <!-- Hero Section -->
-    <section class="hero hero-glass liquid-float">
+    <section class="hero">
         <div class="hero-content">
             <h1 id="hero-title">🤖 Đào tạo AI tương tác cho chuyên gia năng lượng</h1>
             <p class="hero-subtitle" id="hero-subtitle">
@@ -762,11 +767,11 @@
                 Thông qua trải nghiệm học tập tương tác, từng bước. Mỗi mô-đun được xây dựng dựa trên mô-đun trước đó, với các ví dụ thực tế, hướng dẫn trực quan và phản hồi tức thì để đảm bảo bạn thực sự hiểu từng khái niệm trước khi tiếp tục.
             </p>
             <div class="hero-buttons">
-                <a href="#learning-path" class="btn-primary liquid-glass-button liquid-shimmer" id="start-learning-btn">🎯 Bắt đầu học tương tác</a>
-                <a href="#about" class="btn-secondary liquid-glass-button" id="learn-more-btn">📚 Tìm hiểu thêm</a>
+                <a href="#learning-path" class="btn-primary" id="start-learning-btn">🎯 Bắt đầu học tương tác</a>
+                <a href="#about" class="btn-secondary" id="learn-more-btn">📚 Tìm hiểu thêm</a>
             </div>
             
-            <div class="course-stats stats-glass liquid-animation">
+            <div class="course-stats">
                 <div class="stat-item">
                     <span class="stat-number" id="hours-total-num">4</span>
                     <span class="stat-label" id="hours-total-label">Tổng số giờ</span>
@@ -792,7 +797,7 @@
             </p>
             
             <div class="learning-steps">
-                <div class="step-item current module-card-glass liquid-shimmer interactive-glass" data-module="1">
+                <div class="step-item current" data-module="1" onclick="startModule(1)">
                     <div class="step-number">1</div>
                     <div class="step-content">
                         <div class="step-meta">
@@ -814,12 +819,12 @@
                     </div>
                 </div>
 
-                <div class="step-item module-card-glass interactive-glass" data-module="2">
+                <div class="step-item locked" data-module="2">
                     <div class="step-number">2</div>
                     <div class="step-content">
                         <div class="step-meta">
                             <span class="step-duration" id="module2-duration">⏱️ ~42 phút</span>
-                            <span class="step-status" id="module2-status">Đã khóa</span>
+                            <span class="step-status" id="module2-status">Chỉ xem thử</span>
                         </div>
                         <h3 id="module2-title">🤖 Hiểu về các Mô hình ngôn ngữ lớn (LLM)</h3>
                         <p id="module2-description">Đi sâu vào cách LLM hoạt động với các giải thích trực quan về token, tham số và bộ biến đổi. Xem chính xác cách các mô hình này xử lý và tạo văn bản.</p>
@@ -836,12 +841,12 @@
                     </div>
                 </div>
 
-                <div class="step-item module-card-glass interactive-glass" data-module="3">
+                <div class="step-item locked" data-module="3">
                     <div class="step-number">3</div>
                     <div class="step-content">
                         <div class="step-meta">
                             <span class="step-duration" id="module3-duration">⏱️ ~42 phút</span>
-                            <span class="step-status" id="module3-status">Đã khóa</span>
+                            <span class="step-status" id="module3-status">Chỉ xem thử</span>
                         </div>
                         <h3 id="module3-title">💬 Chatbot AI trong công việc năng lượng hàng ngày</h3>
                         <p id="module3-description">Khám phá các ứng dụng chatbot thực tế với các bản demo tương tác. Học cách tích hợp trợ lý AI vào lập kế hoạch dự án, phân tích và giao tiếp với các bên liên quan.</p>
@@ -858,12 +863,12 @@
                     </div>
                 </div>
 
-                <div class="step-item module-card-glass interactive-glass" data-module="4">
+                <div class="step-item locked" data-module="4">
                     <div class="step-number">4</div>
                     <div class="step-content">
                         <div class="step-meta">
                             <span class="step-duration" id="module4-duration">⏱️ ~42 phút</span>
-                            <span class="step-status" id="module4-status">Đã khóa</span>
+                            <span class="step-status" id="module4-status">Chỉ xem thử</span>
                         </div>
                         <h3 id="module4-title">✍️ Làm chủ kỹ thuật Prompt Engineering</h3>
                         <p id="module4-description">Học nghệ thuật tạo ra các prompt hiệu quả thông qua các bài tập tương tác. Thực hành với các mẫu dành riêng cho năng lượng và xem kết quả tức thì.</p>
@@ -881,12 +886,12 @@
                     </div>
                 </div>
 
-                <div class="step-item module-card-glass interactive-glass" data-module="5">
+                <div class="step-item locked" data-module="5">
                     <div class="step-number">5</div>
                     <div class="step-content">
                         <div class="step-meta">
                             <span class="step-duration" id="module5-duration">⏱️ ~42 phút</span>
-                            <span class="step-status" id="module5-status">Đã khóa</span>
+                            <span class="step-status" id="module5-status">Chỉ xem thử</span>
                         </div>
                         <h3 id="module5-title">🛡️ Đạo đức & Thực hành tốt nhất</h3>
                         <p id="module5-description">Làm chủ việc sử dụng AI có trách nhiệm với các tình huống tương tác dành riêng cho cơ sở hạ tầng năng lượng. Học các kỹ thuật bảo mật và xác minh quan trọng.</p>
@@ -904,12 +909,12 @@
                 </div>
             </div>
 
-            <div class="liquid-glass-floating liquid-animation" style="text-align: center; margin-top: 3rem; padding: 2rem; border-radius: 1rem;">
+            <div style="text-align: center; margin-top: 3rem; padding: 2rem; background: #FFFFFF; border-radius: 1rem; border: 2px solid #10B981;">
                 <h3 style="color: #047857; font-size: 1.5rem; font-weight: 600; margin-bottom: 1rem;" id="ready-to-transform-title">🎉 Sẵn sàng thay đổi sự nghiệp năng lượng của bạn với AI?</h3>
                 <p style="font-size: 1rem; color: #6B7280; margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto;" id="ready-to-transform-description">
                     Tham gia cùng hàng ngàn chuyên gia năng lượng đang tận dụng AI để nâng cao công việc của họ, đưa ra quyết định tốt hơn và thúc đẩy đổi mới trong quá trình chuyển đổi năng lượng.
                 </p>
-                <button class="btn-primary liquid-glass-button disabled" style="font-size: 1.125rem; padding: 1rem 2rem; background: #6B7280; cursor: not-allowed;" id="begin-journey-btn">
+                <button onclick="startModule(1)" class="btn-primary" style="font-size: 1.125rem; padding: 1rem 2rem; background: #047857;" id="begin-journey-btn">
                     🚀 Bắt đầu hành trình AI của bạn →
                 </button>
             </div>
@@ -923,32 +928,32 @@
             <p id="why-training-works-subtitle">Trải nghiệm một phương pháp tiếp cận mang tính cách mạng đối với giáo dục AI được thiết kế đặc biệt cho các chuyên gia năng lượng bận rộn, những người cần kiến thức thực tế, có thể áp dụng.</p>
             
             <div class="features-grid">
-                <div class="feature-card liquid-glass-card interactive-glass">
+                <div class="feature-card">
                     <div class="feature-icon">🎯</div>
                     <h3 id="step-by-step-title">Học từng bước</h3>
                     <p id="step-by-step-description">Nội dung được tiết lộ dần dần, ngăn ngừa tình trạng quá tải thông tin. Mỗi khái niệm được xây dựng một cách tự nhiên dựa trên khái niệm trước đó, đảm bảo sự hiểu biết vững chắc.</p>
                 </div>
-                <div class="feature-card liquid-glass-card interactive-glass">
+                <div class="feature-card">
                     <div class="feature-icon">🔒</div>
                     <h3 id="guided-progression-title">Tiến trình có hướng dẫn</h3>
                     <p id="guided-progression-description">Các mô-đun chỉ mở khóa sau khi hoàn thành các điều kiện tiên quyết, đảm bảo bạn nắm vững các kiến thức cơ bản trước khi chuyển sang các ứng dụng phức tạp.</p>
                 </div>
-                <div class="feature-card liquid-glass-card interactive-glass">
+                <div class="feature-card">
                     <div class="feature-icon">⚡</div>
                     <h3 id="energy-focused-title">Ví dụ tập trung vào năng lượng</h3>
                     <p id="energy-focused-description">Mọi ví dụ, nghiên cứu điển hình và ứng dụng đều được điều chỉnh đặc biệt cho các chuyên gia năng lượng và các thách thức thực tế của ngành.</p>
                 </div>
-                <div class="feature-card liquid-glass-card interactive-glass">
+                <div class="feature-card">
                     <div class="feature-icon">🎮</div>
                     <h3 id="interactive-elements-title">Các yếu tố tương tác</h3>
                     <p id="interactive-elements-description">Tham gia vào các sơ đồ trực quan, câu đố tương tác, bài tập thực hành và phản hồi tức thì để củng cố việc học.</p>
                 </div>
-                <div class="feature-card liquid-glass-card interactive-glass">
+                <div class="feature-card">
                     <div class="feature-icon">📊</div>
                     <h3 id="progress-tracking-title">Theo dõi tiến độ</h3>
                     <p id="progress-tracking-description">Các chỉ số tiến độ trực quan và trạng thái hoàn thành giúp bạn duy trì động lực và theo dõi hành trình học tập của mình.</p>
                 </div>
-                <div class="feature-card liquid-glass-card interactive-glass">
+                <div class="feature-card">
                     <div class="feature-icon">🚀</div>
                     <h3 id="immediate-application-title">Ứng dụng tức thì</h3>
                     <p id="immediate-application-description">Bắt đầu sử dụng các công cụ AI một cách hiệu quả trong công việc hàng ngày của bạn ngay lập tức với các prompt thực tế và các kỹ thuật đã được chứng minh.</p>
@@ -963,7 +968,7 @@
             <h2 class="section-title" id="course-overview-title">📚 Tổng quan khóa học</h2>
             
             <div class="overview-grid">
-                <div class="overview-card liquid-glass-card interactive-glass">
+                <div class="overview-card">
                     <h3 id="target-audience-title"><span class="overview-icon">🎯</span>Đối tượng mục tiêu</h3>
                     <p id="target-audience-description">Các chuyên gia trong ngành năng lượng bao gồm:</p>
                     <ul id="target-audience-list">
@@ -976,7 +981,7 @@
                     </ul>
                 </div>
 
-                <div class="overview-card liquid-glass-card interactive-glass">
+                <div class="overview-card">
                     <h3 id="interactive-learning-title"><span class="overview-icon">📚</span>Học tập tương tác</h3>
                     <p id="interactive-learning-description">Phương pháp đào tạo mang tính cách mạng với:</p>
                     <ul id="interactive-learning-list">
@@ -989,7 +994,7 @@
                     </ul>
                 </div>
 
-                <div class="overview-card liquid-glass-card interactive-glass">
+                <div class="overview-card">
                     <h3 id="learning-outcomes-title"><span class="overview-icon">🚀</span>Kết quả học tập</h3>
                     <p id="learning-outcomes-description">Sau khi hoàn thành, bạn sẽ tự tin:</p>
                     <ul id="learning-outcomes-list">
@@ -1002,7 +1007,7 @@
                     </ul>
                 </div>
 
-                <div class="overview-card liquid-glass-card interactive-glass">
+                <div class="overview-card">
                     <h3 id="time-investment-title"><span class="overview-icon">⏱️</span>Thời gian đầu tư</h3>
                     <p id="time-investment-description">Tối ưu hóa cho các chuyên gia bận rộn:</p>
                     <ul id="time-investment-list">
@@ -1040,6 +1045,9 @@
         // Translations object
         const translations = {
             en: {
+                // Teaser Banner
+                teaserBanner: "🔥 TEASER VERSION - Only Module 1 Available | Contact us for full course access",
+                
                 // Hero Section
                 heroTitle: "🤖 Interactive AI Training For Energy Professionals",
                 heroSubtitle: "<strong>Master Large Language Models and Generative AI</strong><br>Through an interactive, step-by-step learning experience. Each module builds upon the previous one, with hands-on examples, visual guides, and immediate feedback to ensure you truly understand each concept before moving forward.",
@@ -1175,6 +1183,9 @@
                 footerNoteText: "This interactive course represents the current state of AI technology and best practices as of 2024. The AI landscape evolves rapidly, so we encourage continued learning and staying updated with the latest developments in the field."
             },
             vi: {
+                // Teaser Banner
+                teaserBanner: "🔥 PHIÊN BẢN DÙNG THỬ - Chỉ có Mô-đun 1 khả dụng | Liên hệ chúng tôi để truy cập khóa học đầy đủ",
+                
                 // Hero Section
                 heroTitle: "🤖 Đào tạo AI tương tác cho chuyên gia năng lượng",
                 heroSubtitle: "<strong>Làm chủ các Mô hình ngôn ngữ lớn (LLM) và AI tạo sinh</strong><br>Thông qua trải nghiệm học tập tương tác, từng bước. Mỗi mô-đun được xây dựng dựa trên mô-đun trước đó, với các ví dụ thực tế, hướng dẫn trực quan và phản hồi tức thì để đảm bảo bạn thực sự hiểu từng khái niệm trước khi tiếp tục.",
@@ -1357,14 +1368,16 @@
         }
 
         function startModule(moduleNum) {
-            // Check if module is accessible
-            if (moduleNum > currentModule && !completedModules.includes(moduleNum - 1) && moduleNum !== 1) {
-                alert(currentLanguage === 'en' ? 'Please complete the previous modules first to unlock this one.' : 'Vui lòng hoàn thành các mô-đun trước để mở khóa mô-đun này.');
+            // Teaser version: Only allow access to Module 1
+            if (moduleNum > 1) {
+                alert(currentLanguage === 'en' ? 
+                    'This is a teaser version. Only Module 1 is available. Contact us for full course access.' : 
+                    'Đây là phiên bản dùng thử. Chỉ có Mô-đun 1 khả dụng. Liên hệ chúng tôi để truy cập khóa học đầy đủ.');
                 return;
             }
             
-            // Navigate to module
-            window.location.href = `module${moduleNum}.html`;
+            // Navigate to module and ensure it starts from the top
+            window.location.href = `module${moduleNum}.html#top`;
         }
 
         // Function to mark module as completed (called from individual module pages)
@@ -1397,6 +1410,7 @@
             }
 
             // Update translatable elements
+            document.getElementById('teaser-banner').innerHTML = translations[lang].teaserBanner;
             document.getElementById('hero-title').innerHTML = translations[lang].heroTitle;
             document.getElementById('hero-subtitle').innerHTML = translations[lang].heroSubtitle;
             document.getElementById('start-learning-btn').textContent = translations[lang].startLearningBtn;

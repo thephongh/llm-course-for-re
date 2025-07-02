@@ -55,13 +55,119 @@
 
         .nav-links a:hover {
             color: #000000;
+            background: #F3F4F6;
         }
 
         .nav-links .active {
             color: #000000;
-            border: 2px solid #000000;
+            background: #E5E7EB;
+            font-weight: 600;
+        }
+
+        .nav-module-links {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        .nav-module-links a {
+            padding: 0.375rem 0.75rem;
+            font-size: 0.875rem;
+            border: 1px solid #E5E7EB;
+            border-radius: 0.375rem;
+            background: #FFFFFF;
+        }
+
+        .nav-module-links a:hover {
+            border-color: #8B5CF6;
+            background: #F3F4F6;
+        }
+
+        .nav-module-links .disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+
+        .nav-prev-next {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        .nav-prev-next a {
+            padding: 0.375rem 0.75rem;
+            font-size: 0.875rem;
+            border: 1px solid #E5E7EB;
+            border-radius: 0.375rem;
+            background: #FFFFFF;
+            font-weight: 500;
+        }
+
+        .nav-prev-next a:hover {
+            border-color: #8B5CF6;
+            background: #F3F4F6;
+        }
+
+        .nav-prev-next .disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+
+        /* Language Switcher */
+        .language-switcher {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropbtn {
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .dropbtn img {
+            vertical-align: middle;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+            right: 0;
             border-radius: 0.5rem;
-            padding: 0.5rem 1rem;
+            overflow: hidden;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1rem;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
         }
 
         /* Hero Section */
@@ -866,7 +972,7 @@
         }
     </style>
 </head>
-<body>
+<body id="top">
     <!-- Progress Bar -->
     <div class="progress-container">
         <div class="progress-bar" id="progressBar"></div>
@@ -874,15 +980,24 @@
 
     <!-- Navigation -->
     <nav class="nav">
-        <a href="index.html" class="nav-logo">LLM Training Course</a>
+        <a href="index.html" class="nav-logo">🚀 LLM Training Course</a>
         <ul class="nav-links">
             <li><a href="index.html" id="home-link">Home</a></li>
-            <li><a href="module4.html" id="module4-link">Module 4</a></li>
-            <li><a href="#" class="active" id="module5-link">Module 5</a></li>
+            <li class="nav-module-links">
+                <a href="module1.html#top" id="module1-link">Module 1</a>
+                <a href="module2.html#top" id="module2-link">Module 2</a>
+                <a href="module3.html#top" id="module3-link">Module 3</a>
+                <a href="module4.html#top" id="module4-link">Module 4</a>
+                <a href="module5.html" class="active" id="module5-link">Module 5</a>
+            </li>
+            <li class="nav-prev-next">
+                <a href="module4.html#top">← Prev</a>
+                <a href="index.html" class="disabled">Complete</a>
+            </li>
             <li class="language-switcher">
                 <div class="dropdown">
                     <button class="dropbtn">
-                        <img id="current-flag" src="https://flagcdn.com/us.svg" alt="English Flag" width="24" height="18">
+                        <img id="current-flag" src="https://flagcdn.com/vn.svg" alt="Vietnamese Flag" width="24" height="18">
                     </button>
                     <div class="dropdown-content">
                         <a href="#" data-lang="en"><img src="https://flagcdn.com/us.svg" alt="English Flag" width="24" height="18"> English</a>
@@ -896,17 +1011,17 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="container">
-            <h1>Module 5</h1>
-            <p class="hero-subtitle">Best Practices and Ethics in Energy AI Applications: Responsible Innovation for Critical Infrastructure</p>
+            <h1 id="hero-title">Module 5</h1>
+            <p class="hero-subtitle" id="hero-subtitle">Best Practices and Ethics in Energy AI Applications: Responsible Innovation for Critical Infrastructure</p>
             
             <div class="learning-objectives">
-                <h3>Learning Objectives</h3>
+                <h3 id="learning-objectives-title">Learning Objectives</h3>
                 <ul>
-                    <li>Understand ethical considerations specific to AI use in energy infrastructure</li>
-                    <li>Master data security and privacy best practices for energy professionals</li>
-                    <li>Learn to verify AI outputs and maintain professional judgment</li>
-                    <li>Apply responsible AI principles to real energy sector scenarios</li>
-                    <li>Develop strategies for staying current with evolving AI capabilities and regulations</li>
+                    <li id="objective1">Understand ethical considerations specific to AI use in energy infrastructure</li>
+                    <li id="objective2">Master data security and privacy best practices for energy professionals</li>
+                    <li id="objective3">Learn to verify AI outputs and maintain professional judgment</li>
+                    <li id="objective4">Apply responsible AI principles to real energy sector scenarios</li>
+                    <li id="objective5">Develop strategies for staying current with evolving AI capabilities and regulations</li>
                 </ul>
             </div>
         </div>
@@ -1107,20 +1222,38 @@
                                 <li><strong>GDPR/Privacy laws:</strong> Customer data protection requirements</li>
                                 <li><strong>SOX compliance:</strong> Financial reporting accuracy for public companies</li>
                             </ul>
+                            
+                            <!-- Vietnamese Regulations Section -->
+                            <div style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); border-left: 4px solid #f59e0b; padding: 1.5rem; margin: 1.5rem 0; border-radius: 0.5rem;">
+                                <h5 style="color: #92400e; font-weight: 600; margin-bottom: 1rem;">🇻🇳 Vietnamese Energy Sector Regulations:</h5>
+                                <ul style="color: #78350f; margin-left: 1rem; line-height: 1.6;">
+                                    <li><strong>Law on Cyber Information Security (2015):</strong> National framework for protecting critical information infrastructure including power systems</li>
+                                    <li><strong>MOIT Regulations:</strong> Ministry of Industry and Trade oversight of energy data management and grid operations</li>
+                                    <li><strong>ERAV Guidelines:</strong> Electricity Regulatory Authority of Vietnam requirements for power market data protection</li>
+                                    <li><strong>Circular 39/2015/TT-BCT:</strong> Technical and data standards for renewable energy grid integration</li>
+                                    <li><strong>Vietnamese Personal Data Protection Decree (15/2020/ND-CP):</strong> Customer energy consumption data privacy requirements</li>
+                                    <li><strong>Critical Infrastructure Protection Law (2021):</strong> Security measures for power generation and transmission facilities</li>
+                                </ul>
+                            </div>
+                            
+                            <!-- Add Vietnamese Regulatory Framework Illustration -->
                         </div>
                     </div>
 
                     <div class="interactive-card">
-                        <h4><span class="card-icon">✅</span>Safe AI Usage Checklist</h4>
-                        <p>Before using AI tools with any energy sector data:</p>
+                        <h4><span class="card-icon">✅</span>Responsible AI Checklist for Vietnamese Energy Professionals</h4>
+                        <p>Before using AI tools with any energy sector data in Vietnam:</p>
                         <ul>
-                            <li>☐ Classify the data according to your organization's security policy</li>
-                            <li>☐ Verify that the AI platform meets your security requirements</li>
-                            <li>☐ Remove or anonymize any sensitive information</li>
-                            <li>☐ Check that usage complies with relevant regulations</li>
-                            <li>☐ Document the AI tool usage for audit purposes</li>
-                            <li>☐ Review outputs to ensure no sensitive information is inadvertently revealed</li>
-                            <li>☐ Store AI interactions securely according to company policy</li>
+                            <li>☐ <strong>Data Classification:</strong> Classify the data according to Vietnamese critical infrastructure protection standards</li>
+                            <li>☐ <strong>Platform Security:</strong> Verify that the AI platform meets MOIT cybersecurity requirements for energy sector</li>
+                            <li>☐ <strong>Data Protection:</strong> Remove or anonymize any sensitive EVN grid data, customer information, or proprietary technical specifications</li>
+                            <li>☐ <strong>Regulatory Compliance:</strong> Ensure usage complies with Law on Cyber Information Security and ERAV guidelines</li>
+                            <li>☐ <strong>Vietnamese Context:</strong> Verify AI outputs are accurate for Vietnam's regulatory environment and market conditions</li>
+                            <li>☐ <strong>Audit Documentation:</strong> Document AI tool usage for compliance with Vietnamese data protection laws</li>
+                            <li>☐ <strong>Output Review:</strong> Review outputs to ensure no sensitive information about Vietnam's energy infrastructure is revealed</li>
+                            <li>☐ <strong>Cultural Sensitivity:</strong> Ensure AI recommendations consider Vietnamese energy transition goals and local community impacts</li>
+                            <li>☐ <strong>Language Accuracy:</strong> Verify Vietnamese technical terminology and regulatory references are correct</li>
+                            <li>☐ <strong>Secure Storage:</strong> Store AI interactions according to Vietnamese cybersecurity requirements for energy sector</li>
                         </ul>
                     </div>
 
@@ -1376,6 +1509,41 @@
                                 </ul>
                             </div>
                         </div>
+
+                        <!-- Vietnam-Specific Energy Transition Scenario -->
+                        <div class="scenario-card" style="border: 2px solid #059669; background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); margin-top: 2rem;">
+                            <h4><span class="scenario-icon">🇻🇳</span>Scenario 5: Vietnam's Energy Transition Forest Protection Dilemma</h4>
+                            
+                            <div class="scenario-situation">
+                                <strong>Situation:</strong> An AI model suggests that the most cost-effective way to expand Vietnam's transmission grid to accommodate new offshore wind farms in Binh Thuan province is to build 220kV transmission lines through Dong Nai Biosphere Reserve, a UNESCO-protected forest area. The AI analysis shows this route would reduce construction costs by 40% and improve grid reliability, helping Vietnam meet its renewable energy targets under PDP8. However, this conflicts with Vietnam's biodiversity protection commitments and indigenous community rights.
+                            </div>
+                            
+                            <div class="scenario-analysis">
+                                <strong>Vietnamese Energy Transition Considerations:</strong>
+                                <ul style="color: #166534;">
+                                    <li>Balancing renewable energy goals (15.8% by 2030) with environmental protection laws</li>
+                                    <li>Respecting indigenous community rights and traditional land use</li>
+                                    <li>Meeting international climate commitments while preserving biodiversity</li>
+                                    <li>EVN grid integration requirements vs. environmental impact</li>
+                                    <li>MONRE environmental assessment compliance</li>
+                                    <li>Public consultation requirements under Vietnamese law</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="scenario-action">
+                                <strong>Culturally-Sensitive Approach for Vietnam:</strong>
+                                <ul style="color: #166534;">
+                                    <li>Conduct thorough consultation with affected indigenous communities in their language</li>
+                                    <li>Explore submarine cables along the coast as alternative transmission route</li>
+                                    <li>Partner with MONRE to develop biodiversity offset programs</li>
+                                    <li>Consider smaller distributed transmission infrastructure</li>
+                                    <li>Engage Vietnamese environmental NGOs and academic institutions</li>
+                                    <li>Evaluate economic benefits sharing with local communities</li>
+                                    <li>Ensure compliance with both renewable energy targets and forest protection laws</li>
+                                </ul>
+                            </div>
+                        </div>
+
                     </div>
 
                     <div class="interactive-card">
@@ -1720,7 +1888,7 @@
 
             <!-- Module Navigation -->
             <div class="module-nav-buttons">
-                <a href="module4.html" class="btn-back">
+                <a href="module4.html#top" class="btn-back">
                     ← Previous: Prompt Engineering
                 </a>
                 <a href="index.html" class="btn-home">
@@ -1735,11 +1903,218 @@
         let currentStep = 1;
         const totalSteps = 6;
         let completedSteps = new Set([]);
+        let currentLanguage = localStorage.getItem('language') || 'vi'; // Default to Vietnamese
+
+        const translations = {
+            en: {
+                pageTitle: "Module 5: Best Practices and Ethics in Energy AI Applications",
+                heroTitle: "Module 5",
+                heroSubtitle: "Best Practices and Ethics in Energy AI Applications: Responsible Innovation for Critical Infrastructure",
+                learningObjectivesTitle: "Learning Objectives",
+                objective1: "Understand ethical considerations specific to AI use in energy infrastructure",
+                objective2: "Master data security and privacy best practices for energy professionals",
+                objective3: "Learn to verify AI outputs and maintain professional judgment",
+                objective4: "Apply responsible AI principles to real energy sector scenarios",
+                objective5: "Develop strategies for staying current with evolving AI capabilities and regulations",
+                step1Label: "Ethical Foundations",
+                step2Label: "Data Security",
+                step3Label: "Verification & Quality",
+                step4Label: "Real-World Scenarios",
+                step5Label: "Future Outlook",
+                step6Label: "Knowledge Check",
+                step1Title: "Step 1: Ethical Foundations for Energy AI Applications",
+                step1Text1: "As AI becomes increasingly integrated into energy sector operations, the stakes for responsible usage have never been higher. <strong>Energy infrastructure is critical to society</strong> - decisions made using AI tools can impact millions of people, billions of dollars in investments, and the stability of our power systems.",
+                step1Text2: "<strong>The energy sector's unique challenges</strong> require special consideration when applying AI tools. Unlike other industries, energy decisions affect public safety, environmental sustainability, and economic stability on a massive scale.",
+                step2Title: "Step 2: Data Security and Privacy Best Practices",
+                step2Text1: "Energy sector data is among the most sensitive and regulated in the economy. <strong>Protecting this information</strong> when using AI tools requires understanding both the technical and regulatory landscape.",
+                step3Title: "Step 3: Verification and Quality Assurance",
+                step3Text1: "<strong>AI tools are powerful assistants, not replacements for professional judgment.</strong> In the energy sector, where accuracy and reliability are paramount, establishing robust verification processes is essential for responsible AI usage.",
+                step4Title: "Step 4: Real-World Ethical Scenarios",
+                step4Text1: "Learn how to navigate complex ethical situations that arise when using AI tools in energy sector work. These scenarios are based on real challenges faced by energy professionals.",
+                step5Title: "Step 5: Future Outlook and Staying Current",
+                step5Text1: "The AI landscape is evolving rapidly, and the energy sector is experiencing unprecedented transformation. <strong>Staying current with both AI developments and energy sector changes</strong> is essential for continued professional effectiveness and ethical practice.",
+                step6Title: "Step 6: Knowledge Check",
+                step6Text1: "Test your understanding of best practices and ethics in energy AI applications with this comprehensive assessment:",
+                question1: "When using AI tools for energy sector work, what is the MOST important consideration regarding data security?",
+                question1OptionA: "Using the most advanced AI platform available",
+                question1OptionB: "Never sharing sensitive energy infrastructure or customer data without proper authorization",
+                question1OptionC: "Getting the fastest possible results from AI analysis",
+                question1OptionD: "Using free AI tools to minimize costs",
+                question1FeedbackCorrect: "Correct! Data security is paramount in the energy sector. Never share sensitive infrastructure or customer data with AI tools without proper authorization and security review.",
+                question1FeedbackIncorrect: "Incorrect. The most important consideration is data security - never sharing sensitive energy infrastructure or customer data without proper authorization and security protocols.",
+                question2: "You receive AI analysis suggesting operational changes that could save $10M annually but might slightly increase environmental impact. What should be your FIRST step?",
+                question2OptionA: "Immediately implement the changes to capture the savings",
+                question2OptionB: "Reject the AI recommendations due to environmental concerns",
+                question2OptionC: "Verify the AI calculations and explore alternative solutions that achieve both financial and environmental goals",
+                question2OptionD: "Ask the AI to provide different recommendations",
+                question2FeedbackCorrect: "Correct! Always verify AI calculations and explore alternatives that can achieve both financial and environmental goals. This demonstrates responsible professional judgment.",
+                question2FeedbackIncorrect: "Incorrect. The first step should be to verify AI calculations and explore alternative solutions that achieve both financial and environmental objectives.",
+                question3: "Which approach BEST demonstrates responsible AI verification in energy applications?",
+                question3OptionA: "Trusting AI outputs because they're generated by advanced algorithms",
+                question3OptionB: "Cross-referencing AI calculations with independent tools and industry standards",
+                question3OptionC: "Using multiple AI tools and averaging their results",
+                question3OptionD: "Only verifying AI outputs when they seem unusual",
+                question3FeedbackCorrect: "Correct! Responsible AI verification requires cross-referencing calculations with independent tools and comparing recommendations to industry standards and professional experience.",
+                question3FeedbackIncorrect: "Incorrect. Responsible verification requires cross-referencing AI calculations with independent tools and industry standards, not simply trusting AI outputs.",
+                question4: "In the renewable energy siting scenario, what is the MOST important ethical consideration when AI recommends using agricultural land?",
+                question4OptionA: "Maximizing renewable energy generation at the lowest cost",
+                question4OptionB: "Following AI recommendations exactly as provided",
+                question4OptionC: "Engaging affected communities early and exploring solutions that balance climate benefits with local impacts",
+                question4OptionD: "Avoiding any projects that might affect agricultural land",
+                question4FeedbackCorrect: "Correct! Ethical energy development requires engaging affected communities early and finding solutions that balance climate benefits with local community impacts and needs.",
+                question4FeedbackIncorrect: "Incorrect. The most important ethical consideration is engaging affected communities early and exploring solutions that balance climate benefits with local impacts.",
+                submitQuizBtn: "Submit Quiz",
+                quizResultsTitle: "Quiz Results",
+                quizScore: (score, total) => `${score}/${total}`,
+                quizMessage4: "Outstanding! You have mastered the principles of ethical and responsible AI usage in energy applications. You're ready to lead by example in your organization.",
+                quizMessage3: "Excellent work! You understand the key principles of responsible AI usage. Review the areas where you missed questions to strengthen your knowledge.",
+                quizMessage2: "Good progress! You're developing solid understanding. Consider reviewing the module content, especially the sections on ethics and verification practices.",
+                quizMessage1: "Please review the module content carefully, focusing on data security, ethical decision-making, and verification procedures for energy AI applications.",
+                alertSelectAnswer: "Please select an answer for this question.",
+                completeModuleBtn: "Complete Module",
+                previousBtn: "← Previous",
+                nextBtn: "Next →",
+                homeLink: "Home",
+                moduleLink: (num) => `Module ${num}`,
+            },
+            vi: {
+                pageTitle: "Mô-đun 5: Các phương pháp hay nhất và đạo đức trong ứng dụng AI năng lượng",
+                heroTitle: "Mô-đun 5",
+                heroSubtitle: "Các phương pháp hay nhất và đạo đức trong ứng dụng AI năng lượng: Đổi mới có trách nhiệm cho cơ sở hạ tầng quan trọng",
+                learningObjectivesTitle: "Mục tiêu học tập",
+                objective1: "Hiểu các cân nhắc về đạo đức cụ thể đối với việc sử dụng AI trong cơ sở hạ tầng năng lượng",
+                objective2: "Nắm vững các phương pháp hay nhất về bảo mật dữ liệu và quyền riêng tư cho các chuyên gia năng lượng",
+                objective3: "Học cách xác minh kết quả đầu ra của AI và duy trì khả năng phán đoán chuyên môn",
+                objective4: "Áp dụng các nguyên tắc AI có trách nhiệm vào các tình huống thực tế của ngành năng lượng",
+                objective5: "Phát triển các chiến lược để luôn cập nhật các khả năng và quy định về AI đang phát triển",
+                step1Label: "Nền tảng đạo đức",
+                step2Label: "Bảo mật dữ liệu",
+                step3Label: "Xác minh & Chất lượng",
+                step4Label: "Tình huống thực tế",
+                step5Label: "Triển vọng tương lai",
+                step6Label: "Kiểm tra kiến thức",
+                step1Title: "Bước 1: Nền tảng đạo đức cho các ứng dụng AI năng lượng",
+                step1Text1: "Khi AI ngày càng được tích hợp vào các hoạt động của ngành năng lượng, mức độ quan trọng của việc sử dụng có trách nhiệm chưa bao giờ cao hơn. <strong>Cơ sở hạ tầng năng lượng rất quan trọng đối với xã hội</strong> - các quyết định được đưa ra bằng cách sử dụng các công cụ AI có thể tác động đến hàng triệu người, hàng tỷ đô la đầu tư và sự ổn định của hệ thống điện của chúng ta.",
+                step1Text2: "<strong>Những thách thức độc đáo của ngành năng lượng</strong> đòi hỏi sự cân nhắc đặc biệt khi áp dụng các công cụ AI. Không giống như các ngành khác, các quyết định về năng lượng ảnh hưởng đến an toàn công cộng, tính bền vững môi trường và ổn định kinh tế ở quy mô lớn.",
+                step2Title: "Bước 2: Các phương pháp hay nhất về bảo mật và quyền riêng tư dữ liệu",
+                step2Text1: "Dữ liệu ngành năng lượng là một trong những dữ liệu nhạy cảm và được quản lý chặt chẽ nhất trong nền kinh tế. <strong>Bảo vệ thông tin này</strong> khi sử dụng các công cụ AI đòi hỏi phải hiểu cả bối cảnh kỹ thuật và quy định.",
+                step3Title: "Bước 3: Xác minh và đảm bảo chất lượng",
+                step3Text1: "<strong>Các công cụ AI là những trợ lý mạnh mẽ, không phải là sự thay thế cho khả năng phán đoán chuyên nghiệp.</strong> Trong ngành năng lượng, nơi độ chính xác và độ tin cậy là tối quan trọng, việc thiết lập các quy trình xác minh mạnh mẽ là điều cần thiết cho việc sử dụng AI có trách nhiệm.",
+                step4Title: "Bước 4: Các tình huống đạo đức trong thế giới thực",
+                step4Text1: "Học cách điều hướng các tình huống đạo đức phức tạp phát sinh khi sử dụng các công cụ AI trong công việc ngành năng lượng. Những tình huống này dựa trên những thách thức thực tế mà các chuyên gia năng lượng phải đối mặt.",
+                step5Title: "Bước 5: Triển vọng tương lai và luôn cập nhật",
+                step5Text1: "Bối cảnh AI đang phát triển nhanh chóng, và ngành năng lượng đang trải qua sự chuyển đổi chưa từng có. <strong>Luôn cập nhật với cả sự phát triển của AI và những thay đổi trong ngành năng lượng</strong> là điều cần thiết cho hiệu quả chuyên môn liên tục và thực hành đạo đức.",
+                step6Title: "Bước 6: Kiểm tra kiến thức",
+                step6Text1: "Kiểm tra sự hiểu biết của bạn về các phương pháp hay nhất và đạo đức trong các ứng dụng AI năng lượng với đánh giá toàn diện này:",
+                question1: "Khi sử dụng các công cụ AI cho công việc ngành năng lượng, cân nhắc QUAN TRỌNG NHẤT về bảo mật dữ liệu là gì?",
+                question1OptionA: "Sử dụng nền tảng AI tiên tiến nhất có sẵn",
+                question1OptionB: "Không bao giờ chia sẻ dữ liệu cơ sở hạ tầng năng lượng nhạy cảm hoặc dữ liệu khách hàng mà không có sự ủy quyền thích hợp",
+                question1OptionC: "Nhận được kết quả nhanh nhất có thể từ phân tích AI",
+                question1OptionD: "Sử dụng các công cụ AI miễn phí để giảm thiểu chi phí",
+                question1FeedbackCorrect: "Chính xác! Bảo mật dữ liệu là tối quan trọng trong ngành năng lượng. Không bao giờ chia sẻ dữ liệu cơ sở hạ tầng hoặc khách hàng nhạy cảm với các công cụ AI mà không có sự ủy quyền và xem xét bảo mật thích hợp.",
+                question1FeedbackIncorrect: "Không chính xác. Cân nhắc quan trọng nhất là bảo mật dữ liệu - không bao giờ chia sẻ dữ liệu cơ sở hạ tầng năng lượng nhạy cảm hoặc dữ liệu khách hàng mà không có sự ủy quyền và các giao thức bảo mật thích hợp.",
+                question2: "Bạn nhận được phân tích AI đề xuất các thay đổi hoạt động có thể tiết kiệm 10 triệu USD hàng năm nhưng có thể làm tăng nhẹ tác động môi trường. Bước ĐẦU TIÊN của bạn nên là gì?",
+                question2OptionA: "Ngay lập tức thực hiện các thay đổi để nắm bắt khoản tiết kiệm",
+                question2OptionB: "Từ chối các khuyến nghị AI do lo ngại về môi trường",
+                question2OptionC: "Xác minh các tính toán AI và khám phá các giải pháp thay thế đạt được cả mục tiêu tài chính và môi trường",
+                question2OptionD: "Yêu cầu AI cung cấp các khuyến nghị khác",
+                question2FeedbackCorrect: "Chính xác! Luôn xác minh các tính toán AI và khám phá các lựa chọn thay thế có thể đạt được cả mục tiêu tài chính và môi trường. Điều này thể hiện khả năng phán đoán chuyên nghiệp có trách nhiệm.",
+                question2FeedbackIncorrect: "Không chính xác. Bước đầu tiên nên là xác minh các tính toán AI và khám phá các giải pháp thay thế đạt được cả mục tiêu tài chính và môi trường.",
+                question3: "Cách tiếp cận nào thể hiện TỐT NHẤT việc xác minh AI có trách nhiệm trong các ứng dụng năng lượng?",
+                question3OptionA: "Tin tưởng vào đầu ra AI vì chúng được tạo ra bởi các thuật toán tiên tiến",
+                question3OptionB: "Tham chiếu chéo các tính toán AI với các công cụ độc lập và tiêu chuẩn ngành",
+                question3OptionC: "Sử dụng nhiều công cụ AI và lấy trung bình kết quả của chúng",
+                question3OptionD: "Chỉ xác minh đầu ra AI khi chúng có vẻ bất thường",
+                question3FeedbackCorrect: "Chính xác! Xác minh AI có trách nhiệm đòi hỏi tham chiếu chéo các tính toán với các công cụ độc lập và so sánh các khuyến nghị với tiêu chuẩn ngành và kinh nghiệm chuyên nghiệp.",
+                question3FeedbackIncorrect: "Không chính xác. Xác minh có trách nhiệm đòi hỏi tham chiếu chéo các tính toán AI với các công cụ độc lập và tiêu chuẩn ngành, không chỉ đơn giản là tin tưởng vào đầu ra AI.",
+                question4: "Trong tình huống định vị năng lượng tái tạo, cân nhắc đạo đức QUAN TRỌNG NHẤT khi AI khuyến nghị sử dụng đất nông nghiệp là gì?",
+                question4OptionA: "Tối đa hóa việc tạo ra năng lượng tái tạo với chi phí thấp nhất",
+                question4OptionB: "Tuân theo các khuyến nghị AI chính xác như được cung cấp",
+                question4OptionC: "Tham gia với các cộng đồng bị ảnh hưởng sớm và khám phá các giải pháp cân bằng lợi ích khí hậu với tác động địa phương",
+                question4OptionD: "Tránh bất kỳ dự án nào có thể ảnh hưởng đến đất nông nghiệp",
+                question4FeedbackCorrect: "Chính xác! Phát triển năng lượng có đạo đức đòi hỏi tham gia với các cộng đồng bị ảnh hưởng sớm và tìm ra các giải pháp cân bằng lợi ích khí hậu với tác động và nhu cầu của cộng đồng địa phương.",
+                question4FeedbackIncorrect: "Không chính xác. Cân nhắc đạo đức quan trọng nhất là tham gia với các cộng đồng bị ảnh hưởng sớm và khám phá các giải pháp cân bằng lợi ích khí hậu với tác động địa phương.",
+                submitQuizBtn: "Gửi bài kiểm tra",
+                quizResultsTitle: "Kết quả bài kiểm tra",
+                quizScore: (score, total) => `${score}/${total}`,
+                quizMessage4: "Xuất sắc! Bạn đã nắm vững các nguyên tắc sử dụng AI có đạo đức và có trách nhiệm trong các ứng dụng năng lượng. Bạn đã sẵn sàng để dẫn đầu bằng ví dụ trong tổ chức của mình.",
+                quizMessage3: "Làm việc xuất sắc! Bạn hiểu các nguyên tắc chính của việc sử dụng AI có trách nhiệm. Xem lại các lĩnh vực mà bạn đã bỏ lỡ câu hỏi để củng cố kiến thức của bạn.",
+                quizMessage2: "Tiến bộ tốt! Bạn đang phát triển sự hiểu biết vững chắc. Hãy xem xét việc xem lại nội dung mô-đun, đặc biệt là các phần về đạo đức và thực hành xác minh.",
+                quizMessage1: "Vui lòng xem lại nội dung mô-đun một cách cẩn thận, tập trung vào bảo mật dữ liệu, ra quyết định có đạo đức và các thủ tục xác minh cho các ứng dụng AI năng lượng.",
+                alertSelectAnswer: "Vui lòng chọn một câu trả lời cho câu hỏi này.",
+                completeModuleBtn: "Hoàn thành Mô-đun",
+                previousBtn: "← Trước",
+                nextBtn: "Tiếp theo →",
+                homeLink: "Trang chủ",
+                moduleLink: (num) => `Mô-đun ${num}`,
+                // Step 1 Ethics Cards Content
+                ethicsCard1Title: "Minh bạch và Trách nhiệm",
+                ethicsCard1Text: "Các chuyên gia năng lượng phải có khả năng giải thích các quyết định được hỗ trợ bởi AI cho các cơ quan quản lý, các bên liên quan và công chúng. Điều này có nghĩa là hiểu cách các công cụ AI hoạt động và sẵn sàng biện minh cho việc sử dụng chúng trong các quyết định quan trọng.",
+                ethicsCard1List1: "Ghi lại việc sử dụng công cụ AI trong báo cáo dự án",
+                ethicsCard1List2: "Duy trì hồ sơ về các lời nhắc và đầu ra cho đường dẫn kiểm toán",
+                ethicsCard1List3: "Sẵn sàng giải thích các quyết định được hỗ trợ bởi AI cho các bên liên quan không có kỹ thuật",
+                ethicsCard1List4: "Hiểu các hạn chế của các công cụ AI bạn đang sử dụng",
+                ethicsCard2Title: "Trách nhiệm Môi trường",
+                ethicsCard2Text: "Các khuyến nghị của AI phải phù hợp với các mục tiêu môi trường và cam kết bền vững. Xem xét tác động rộng hơn của các giải pháp được AI đề xuất đối với biến đổi khí hậu và công bằng môi trường.",
+                ethicsCard2List1: "Xác minh rằng các khuyến nghị AI hỗ trợ các mục tiêu khử carbon",
+                ethicsCard2List2: "Xem xét các tác động công bằng môi trường của các dự án năng lượng",
+                ethicsCard2List3: "Đánh giá tác động môi trường vòng đời, không chỉ hiệu quả hoạt động",
+                ethicsCard2List4: "Đảm bảo các công cụ AI không duy trì các thực hành không bền vững",
+                ethicsCard3Title: "Quyền riêng tư và Bảo mật Dữ liệu",
+                ethicsCard3Text: "Dữ liệu năng lượng thường nhạy cảm và được quy định. Bảo vệ thông tin khách hàng, dữ liệu hoạt động và kế hoạch chiến lược vừa là nghĩa vụ đạo đức vừa là yêu cầu pháp lý.",
+                ethicsCard3List1: "Không bao giờ chia sẻ dữ liệu khách hàng với các công cụ AI mà không có sự ủy quyền thích hợp",
+                ethicsCard3List2: "Hiểu các chính sách lưu giữ dữ liệu của các nền tảng AI",
+                ethicsCard3List3: "Sử dụng dữ liệu ẩn danh hoặc tổng hợp khi có thể",
+                ethicsCard3List4: "Tuân thủ các quy định ngành (NERC CIP, GDPR, v.v.)",
+                ethicsCard4Title: "Độ tin cậy và An toàn",
+                ethicsCard4Text: "Sự cố cơ sở hạ tầng năng lượng có thể là thảm khốc. Các công cụ AI nên tăng cường, không làm tổn hại đến độ tin cậy và an toàn của hệ thống năng lượng.",
+                ethicsCard4List1: "Luôn xác minh các khuyến nghị AI so với các tiêu chuẩn an toàn đã được thiết lập",
+                ethicsCard4List2: "Duy trì sự giám sát của con người đối với các quyết định an toàn quan trọng",
+                ethicsCard4List3: "Kiểm tra kỹ lưỡng các giải pháp được AI đề xuất trước khi triển khai",
+                ethicsCard4List4: "Có kế hoạch dự phòng khi các công cụ AI không khả dụng",
+                ethicsCard5Title: "Công bằng và Bình đẳng",
+                ethicsCard5Text: "Các quyết định về năng lượng ảnh hưởng đến các cộng đồng khác nhau một cách khác nhau. Đảm bảo các công cụ AI không duy trì hoặc khuếch đại sự bất bình đẳng hiện có trong việc tiếp cận và khả năng chi trả năng lượng.",
+                ethicsCard5List1: "Xem xét tác động đến các cộng đồng thu nhập thấp và thiệt thòi",
+                ethicsCard5List2: "Đảm bảo các khuyến nghị AI không tạo ra rào cản tiếp cận năng lượng",
+                ethicsCard5List3: "Đánh giá các tác động về khả năng chi trả của các giải pháp được AI đề xuất",
+                ethicsCard5List4: "Thúc đẩy sự tham gia của các bên liên quan bao gồm trong quy hoạch được hỗ trợ bởi AI",
+                ethicsCard6Title: "Năng lực Chuyên nghiệp",
+                ethicsCard6Text: "Sử dụng các công cụ AI một cách có trách nhiệm đòi hỏi học tập liên tục và phát triển chuyên nghiệp. Luôn cập nhật với cả khả năng AI và các thực hành tốt nhất của ngành năng lượng.",
+                ethicsCard6List1: "Liên tục cập nhật hiểu biết của bạn về khả năng và hạn chế của công cụ AI",
+                ethicsCard6List2: "Tham gia phát triển chuyên nghiệp về đạo đức AI",
+                ethicsCard6List3: "Chia sẻ kiến thức và thực hành tốt nhất với đồng nghiệp",
+                ethicsCard6List4: "Duy trì khả năng phán đoán kỹ thuật chuyên nghiệp cùng với hỗ trợ AI",
+                // Decision Framework
+                decisionFrameworkTitle: "Khung Ra quyết định Đạo đức",
+                decisionFrameworkText: "Khi sử dụng các công cụ AI cho công việc ngành năng lượng, hãy tự hỏi:",
+                decisionFramework1: "Minh bạch: Tôi có thể giải thích cách công cụ AI này đóng góp vào quyết định của tôi không?",
+                decisionFramework2: "Trách nhiệm: Tôi có sẵn sàng chịu trách nhiệm cho quyết định được hỗ trợ bởi AI này không?",
+                decisionFramework3: "An toàn: Tôi đã xác minh rằng khuyến nghị này đáp ứng tất cả các yêu cầu an toàn chưa?",
+                decisionFramework4: "Bình đẳng: Giải pháp này có phục vụ công bằng tất cả các cộng đồng bị ảnh hưởng không?",
+                decisionFramework5: "Bền vững: Điều này có phù hợp với các mục tiêu môi trường dài hạn không?",
+                decisionFramework6: "Tuân thủ: Điều này có đáp ứng tất cả các quy định và tiêu chuẩn liên quan không?",
+                // Step 2 Security Content
+                securityAlertTitle: "Cảnh báo Bảo mật Quan trọng",
+                securityAlertText: "Không bao giờ tải lên dữ liệu cơ sở hạ tầng năng lượng nhạy cảm, thông tin khách hàng hoặc chi tiết hoạt động độc quyền lên các nền tảng AI công cộng mà không có xem xét và ủy quyền bảo mật thích hợp.",
+                sensitiveDataTitle: "Các loại Dữ liệu Năng lượng Nhạy cảm",
+                sensitiveDataText: "Hiểu thông tin nào cần bảo vệ đặc biệt:",
+                sensitiveData1: "Dữ liệu Khách hàng: Mô hình sử dụng, thông tin thanh toán, chi tiết cá nhân",
+                sensitiveData2: "Dữ liệu Hoạt động: Trạng thái hệ thống thời gian thực, tham số điều khiển, lịch bảo trì",
+                sensitiveData3: "Chi tiết Cơ sở hạ tầng: Vị trí cơ sở, biện pháp bảo mật, đánh giá lỗ hổng",
+                sensitiveData4: "Thông tin Tài chính: Chiến lược giá cả, cấu trúc chi phí, kế hoạch đầu tư",
+                sensitiveData5: "Kế hoạch Chiến lược: Dự án tương lai, thông tin cạnh tranh, chiến lược quy định",
+                sensitiveData6: "Tuân thủ Quy định: Kết quả kiểm toán, báo cáo vi phạm, kế hoạch khắc phục",
+                // Continue with more translations...
+            }
+        };
 
         // Initialize the module
         document.addEventListener('DOMContentLoaded', function() {
+            // Scroll to top when page loads
+            window.scrollTo({ top: 0, behavior: 'smooth' });
             updateStepDisplay();
             updateProgressBar();
+            setLanguage(currentLanguage);
             
             // Add click handlers to step dots
             document.querySelectorAll('.step-dot').forEach(dot => {
@@ -1748,6 +2123,15 @@
                     if (targetStep <= Math.max(...completedSteps, currentStep)) {
                         goToStep(targetStep);
                     }
+                });
+            });
+
+            // Language switcher event listeners
+            document.querySelectorAll('.dropdown-content a').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const lang = this.getAttribute('data-lang');
+                    setLanguage(lang);
                 });
             });
         });
@@ -1816,22 +2200,22 @@
             });
             
             // Update navigation buttons
-            const prevBtn = document.querySelector('.btn-prev');
-            const nextBtn = document.querySelector('.btn-next');
+            const prevBtns = document.querySelectorAll('.btn-prev');
+            const nextBtns = document.querySelectorAll('.btn-next');
             
-            if (prevBtn) {
-                prevBtn.disabled = currentStep === 1;
-            }
+            prevBtns.forEach(btn => {
+                btn.disabled = currentStep === 1;
+            });
             
-            if (nextBtn) {
+            nextBtns.forEach(btn => {
                 if (currentStep === totalSteps) {
-                    nextBtn.textContent = 'Course Complete';
-                    nextBtn.disabled = true;
+                    btn.textContent = translations[currentLanguage].completeModuleBtn || 'Course Complete';
+                    btn.disabled = true;
                 } else {
-                    nextBtn.textContent = 'Next →';
-                    nextBtn.disabled = false;
+                    btn.textContent = translations[currentLanguage].nextBtn || 'Next →';
+                    btn.disabled = false;
                 }
-            }
+            });
         }
 
         function updateProgressBar() {
@@ -1848,6 +2232,363 @@
                 behavior: 'smooth'
             });
         }
+
+        function setLanguage(lang) {
+            currentLanguage = lang;
+            localStorage.setItem('language', lang);
+            const t = translations[lang];
+
+            // Update flag
+            const currentFlag = document.getElementById('current-flag');
+            if (currentFlag) {
+                currentFlag.src = lang === 'en' ? 'https://flagcdn.com/us.svg' : 'https://flagcdn.com/vn.svg';
+                currentFlag.alt = lang === 'en' ? 'English Flag' : 'Vietnamese Flag';
+            }
+
+            // Update basic elements
+            document.title = t.pageTitle;
+            document.getElementById('hero-title').textContent = t.heroTitle;
+            document.getElementById('hero-subtitle').textContent = t.heroSubtitle;
+            
+            // Update learning objectives
+            const learningObjectivesTitle = document.querySelector('.learning-objectives h3');
+            if (learningObjectivesTitle) learningObjectivesTitle.textContent = t.learningObjectivesTitle;
+            
+            const objectives = document.querySelectorAll('.learning-objectives li');
+            if (objectives.length >= 5) {
+                objectives[0].textContent = t.objective1;
+                objectives[1].textContent = t.objective2;
+                objectives[2].textContent = t.objective3;
+                objectives[3].textContent = t.objective4;
+                objectives[4].textContent = t.objective5;
+            }
+
+            // Update step labels
+            const stepLabels = document.querySelectorAll('.step-label');
+            if (stepLabels.length >= 6) {
+                stepLabels[0].textContent = t.step1Label;
+                stepLabels[1].textContent = t.step2Label;
+                stepLabels[2].textContent = t.step3Label;
+                stepLabels[3].textContent = t.step4Label;
+                stepLabels[4].textContent = t.step5Label;
+                stepLabels[5].textContent = t.step6Label;
+            }
+
+            // Update step content
+            updateStepContent(t);
+
+            // Update quiz content
+            updateQuizContent(t);
+
+            // Update navigation elements
+            updateNavigationElements(t);
+            
+            // Update step display to reflect language changes
+            updateStepDisplay();
+        }
+
+        function updateStepContent(t) {
+            // Update step titles
+            const stepTitles = document.querySelectorAll('.section-title');
+            if (stepTitles.length >= 6) {
+                stepTitles[0].textContent = t.step1Title;
+                stepTitles[1].textContent = t.step2Title;
+                stepTitles[2].textContent = t.step3Title;
+                stepTitles[3].textContent = t.step4Title;
+                stepTitles[4].textContent = t.step5Title;
+                stepTitles[5].textContent = t.step6Title;
+            }
+
+            // Update step content paragraphs
+            const step1Paragraphs = document.querySelectorAll('#step1 .content > p');
+            if (step1Paragraphs.length >= 2) {
+                step1Paragraphs[0].innerHTML = t.step1Text1;
+                step1Paragraphs[1].innerHTML = t.step1Text2;
+            }
+
+            const step2Paragraph = document.querySelector('#step2 .content > p');
+            if (step2Paragraph) step2Paragraph.innerHTML = t.step2Text1;
+
+            const step3Paragraph = document.querySelector('#step3 .content > p');
+            if (step3Paragraph) step3Paragraph.innerHTML = t.step3Text1;
+
+            const step4Paragraph = document.querySelector('#step4 .content > p');
+            if (step4Paragraph) step4Paragraph.textContent = t.step4Text1;
+
+            const step5Paragraph = document.querySelector('#step5 .content > p');
+            if (step5Paragraph) step5Paragraph.innerHTML = t.step5Text1;
+
+            const step6Paragraph = document.querySelector('#step6 .content > p');
+            if (step6Paragraph) step6Paragraph.textContent = t.step6Text1;
+
+            // Update Step 1 Ethics Cards
+            updateEthicsCards(t);
+
+            // Update Step 2 Security Content
+            updateSecurityContent(t);
+
+            // Update Step 3 Verification Content
+            updateVerificationContent(t);
+
+            // Update Step 4 Scenarios
+            updateScenariosContent(t);
+
+            // Update Step 5 Future Content
+            updateFutureContent(t);
+
+            // Update Interactive Cards
+            updateInteractiveCards(t);
+        }
+
+        function updateEthicsCards(t) {
+            if (currentLanguage === 'vi') {
+                const ethicsCards = document.querySelectorAll('.ethics-card');
+                if (ethicsCards.length >= 6) {
+                    // Card 1: Transparency and Accountability
+                    const card1Title = ethicsCards[0].querySelector('h3');
+                    const card1Text = ethicsCards[0].querySelector('p');
+                    const card1Lists = ethicsCards[0].querySelectorAll('li');
+                    if (card1Title) card1Title.innerHTML = '<span class="ethics-icon">⚖️</span>' + t.ethicsCard1Title;
+                    if (card1Text) card1Text.textContent = t.ethicsCard1Text;
+                    if (card1Lists.length >= 4) {
+                        card1Lists[0].textContent = t.ethicsCard1List1;
+                        card1Lists[1].textContent = t.ethicsCard1List2;
+                        card1Lists[2].textContent = t.ethicsCard1List3;
+                        card1Lists[3].textContent = t.ethicsCard1List4;
+                    }
+
+                    // Card 2: Environmental Responsibility
+                    const card2Title = ethicsCards[1].querySelector('h3');
+                    const card2Text = ethicsCards[1].querySelector('p');
+                    const card2Lists = ethicsCards[1].querySelectorAll('li');
+                    if (card2Title) card2Title.innerHTML = '<span class="ethics-icon">🌍</span>' + t.ethicsCard2Title;
+                    if (card2Text) card2Text.textContent = t.ethicsCard2Text;
+                    if (card2Lists.length >= 4) {
+                        card2Lists[0].textContent = t.ethicsCard2List1;
+                        card2Lists[1].textContent = t.ethicsCard2List2;
+                        card2Lists[2].textContent = t.ethicsCard2List3;
+                        card2Lists[3].textContent = t.ethicsCard2List4;
+                    }
+
+                    // Card 3: Data Privacy and Security
+                    const card3Title = ethicsCards[2].querySelector('h3');
+                    const card3Text = ethicsCards[2].querySelector('p');
+                    const card3Lists = ethicsCards[2].querySelectorAll('li');
+                    if (card3Title) card3Title.innerHTML = '<span class="ethics-icon">🔒</span>' + t.ethicsCard3Title;
+                    if (card3Text) card3Text.textContent = t.ethicsCard3Text;
+                    if (card3Lists.length >= 4) {
+                        card3Lists[0].textContent = t.ethicsCard3List1;
+                        card3Lists[1].textContent = t.ethicsCard3List2;
+                        card3Lists[2].textContent = t.ethicsCard3List3;
+                        card3Lists[3].textContent = t.ethicsCard3List4;
+                    }
+
+                    // Card 4: Reliability and Safety
+                    const card4Title = ethicsCards[3].querySelector('h3');
+                    const card4Text = ethicsCards[3].querySelector('p');
+                    const card4Lists = ethicsCards[3].querySelectorAll('li');
+                    if (card4Title) card4Title.innerHTML = '<span class="ethics-icon">⚡</span>' + t.ethicsCard4Title;
+                    if (card4Text) card4Text.textContent = t.ethicsCard4Text;
+                    if (card4Lists.length >= 4) {
+                        card4Lists[0].textContent = t.ethicsCard4List1;
+                        card4Lists[1].textContent = t.ethicsCard4List2;
+                        card4Lists[2].textContent = t.ethicsCard4List3;
+                        card4Lists[3].textContent = t.ethicsCard4List4;
+                    }
+
+                    // Card 5: Fairness and Equity
+                    const card5Title = ethicsCards[4].querySelector('h3');
+                    const card5Text = ethicsCards[4].querySelector('p');
+                    const card5Lists = ethicsCards[4].querySelectorAll('li');
+                    if (card5Title) card5Title.innerHTML = '<span class="ethics-icon">🤝</span>' + t.ethicsCard5Title;
+                    if (card5Text) card5Text.textContent = t.ethicsCard5Text;
+                    if (card5Lists.length >= 4) {
+                        card5Lists[0].textContent = t.ethicsCard5List1;
+                        card5Lists[1].textContent = t.ethicsCard5List2;
+                        card5Lists[2].textContent = t.ethicsCard5List3;
+                        card5Lists[3].textContent = t.ethicsCard5List4;
+                    }
+
+                    // Card 6: Professional Competence
+                    const card6Title = ethicsCards[5].querySelector('h3');
+                    const card6Text = ethicsCards[5].querySelector('p');
+                    const card6Lists = ethicsCards[5].querySelectorAll('li');
+                    if (card6Title) card6Title.innerHTML = '<span class="ethics-icon">📚</span>' + t.ethicsCard6Title;
+                    if (card6Text) card6Text.textContent = t.ethicsCard6Text;
+                    if (card6Lists.length >= 4) {
+                        card6Lists[0].textContent = t.ethicsCard6List1;
+                        card6Lists[1].textContent = t.ethicsCard6List2;
+                        card6Lists[2].textContent = t.ethicsCard6List3;
+                        card6Lists[3].textContent = t.ethicsCard6List4;
+                    }
+                }
+            }
+        }
+
+        function updateSecurityContent(t) {
+            if (currentLanguage === 'vi') {
+                // Update security warning
+                const securityWarningTitle = document.querySelector('.security-warning h3');
+                const securityWarningText = document.querySelector('.security-warning p');
+                if (securityWarningTitle) securityWarningTitle.innerHTML = '⚠️ ' + t.securityAlertTitle;
+                if (securityWarningText) securityWarningText.textContent = t.securityAlertText;
+
+                // Update sensitive data card
+                const sensitiveDataCard = document.querySelector('#step2 .interactive-card');
+                if (sensitiveDataCard) {
+                    const title = sensitiveDataCard.querySelector('h4');
+                    const text = sensitiveDataCard.querySelector('p');
+                    const lists = sensitiveDataCard.querySelectorAll('li');
+                    if (title) title.innerHTML = '<span class="card-icon">🔐</span>' + t.sensitiveDataTitle;
+                    if (text) text.textContent = t.sensitiveDataText;
+                    if (lists.length >= 6) {
+                        lists[0].innerHTML = '<strong>Dữ liệu Khách hàng:</strong> ' + t.sensitiveData1.split(': ')[1];
+                        lists[1].innerHTML = '<strong>Dữ liệu Hoạt động:</strong> ' + t.sensitiveData2.split(': ')[1];
+                        lists[2].innerHTML = '<strong>Chi tiết Cơ sở hạ tầng:</strong> ' + t.sensitiveData3.split(': ')[1];
+                        lists[3].innerHTML = '<strong>Thông tin Tài chính:</strong> ' + t.sensitiveData4.split(': ')[1];
+                        lists[4].innerHTML = '<strong>Kế hoạch Chiến lược:</strong> ' + t.sensitiveData5.split(': ')[1];
+                        lists[5].innerHTML = '<strong>Tuân thủ Quy định:</strong> ' + t.sensitiveData6.split(': ')[1];
+                    }
+                }
+            }
+        }
+
+        function updateVerificationContent(t) {
+            // This function can be expanded to translate verification cards content
+        }
+
+        function updateScenariosContent(t) {
+            // This function can be expanded to translate scenario cards content
+        }
+
+        function updateFutureContent(t) {
+            // This function can be expanded to translate future section content
+        }
+
+        function updateInteractiveCards(t) {
+            if (currentLanguage === 'vi') {
+                // Update decision framework card
+                const decisionFrameworkCard = document.querySelector('#step1 .interactive-card');
+                if (decisionFrameworkCard) {
+                    const title = decisionFrameworkCard.querySelector('h4');
+                    const text = decisionFrameworkCard.querySelector('p');
+                    const lists = decisionFrameworkCard.querySelectorAll('li');
+                    if (title) title.innerHTML = '<span class="card-icon">🎯</span>' + t.decisionFrameworkTitle;
+                    if (text) text.textContent = t.decisionFrameworkText;
+                    if (lists.length >= 6) {
+                        lists[0].innerHTML = '<strong>Minh bạch:</strong> ' + t.decisionFramework1.split(': ')[1];
+                        lists[1].innerHTML = '<strong>Trách nhiệm:</strong> ' + t.decisionFramework2.split(': ')[1];
+                        lists[2].innerHTML = '<strong>An toàn:</strong> ' + t.decisionFramework3.split(': ')[1];
+                        lists[3].innerHTML = '<strong>Bình đẳng:</strong> ' + t.decisionFramework4.split(': ')[1];
+                        lists[4].innerHTML = '<strong>Bền vững:</strong> ' + t.decisionFramework5.split(': ')[1];
+                        lists[5].innerHTML = '<strong>Tuân thủ:</strong> ' + t.decisionFramework6.split(': ')[1];
+                    }
+                }
+            }
+        }
+
+        function updateQuizContent(t) {
+            // Update quiz questions
+            const questions = document.querySelectorAll('.quiz-question h4');
+            if (questions.length >= 4) {
+                questions[0].textContent = t.question1;
+                questions[1].textContent = t.question2;
+                questions[2].textContent = t.question3;
+                questions[3].textContent = t.question4;
+            }
+
+            // Update quiz options
+            const q1Options = document.querySelectorAll('input[name="q1"] + label');
+            if (q1Options.length >= 4) {
+                q1Options[0].childNodes[1].textContent = ' ' + t.question1OptionA;
+                q1Options[1].childNodes[1].textContent = ' ' + t.question1OptionB;
+                q1Options[2].childNodes[1].textContent = ' ' + t.question1OptionC;
+                q1Options[3].childNodes[1].textContent = ' ' + t.question1OptionD;
+            }
+
+            const q2Options = document.querySelectorAll('input[name="q2"] + label');
+            if (q2Options.length >= 4) {
+                q2Options[0].childNodes[1].textContent = ' ' + t.question2OptionA;
+                q2Options[1].childNodes[1].textContent = ' ' + t.question2OptionB;
+                q2Options[2].childNodes[1].textContent = ' ' + t.question2OptionC;
+                q2Options[3].childNodes[1].textContent = ' ' + t.question2OptionD;
+            }
+
+            const q3Options = document.querySelectorAll('input[name="q3"] + label');
+            if (q3Options.length >= 4) {
+                q3Options[0].childNodes[1].textContent = ' ' + t.question3OptionA;
+                q3Options[1].childNodes[1].textContent = ' ' + t.question3OptionB;
+                q3Options[2].childNodes[1].textContent = ' ' + t.question3OptionC;
+                q3Options[3].childNodes[1].textContent = ' ' + t.question3OptionD;
+            }
+
+            const q4Options = document.querySelectorAll('input[name="q4"] + label');
+            if (q4Options.length >= 4) {
+                q4Options[0].childNodes[1].textContent = ' ' + t.question4OptionA;
+                q4Options[1].childNodes[1].textContent = ' ' + t.question4OptionB;
+                q4Options[2].childNodes[1].textContent = ' ' + t.question4OptionC;
+                q4Options[3].childNodes[1].textContent = ' ' + t.question4OptionD;
+            }
+
+            // Update submit button
+            const submitBtn = document.querySelector('.quiz-submit');
+            if (submitBtn) submitBtn.textContent = t.submitQuizBtn;
+
+            // Update quiz results title
+            const quizResultsTitle = document.querySelector('#quizScore h3');
+            if (quizResultsTitle) quizResultsTitle.textContent = t.quizResultsTitle;
+        }
+
+        function updateNavigationElements(t) {
+            // Update navigation buttons
+            const prevBtns = document.querySelectorAll('.btn-prev');
+            const nextBtns = document.querySelectorAll('.btn-next');
+            prevBtns.forEach(btn => btn.textContent = t.previousBtn);
+            nextBtns.forEach(btn => {
+                if (!btn.disabled) {
+                    btn.textContent = t.nextBtn;
+                }
+            });
+
+            // Update navigation links
+            const homeLink = document.getElementById('home-link');
+            if (homeLink) homeLink.textContent = t.homeLink;
+            
+            const moduleLinks = document.querySelectorAll('.nav-module-links a');
+            moduleLinks.forEach((link, index) => {
+                if (link.textContent.includes('Module') || link.textContent.includes('Mô-đun')) {
+                    link.textContent = t.moduleLink(index + 1);
+                }
+            });
+        }
+
+        // Audio feedback function
+        function speakFeedback(text, isCorrect) {
+            if ('speechSynthesis' in window) {
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.rate = 1.2;
+                utterance.pitch = isCorrect ? 1.2 : 0.8;
+                utterance.volume = 0.8;
+                
+                // Use different voices for correct/incorrect if available
+                const voices = speechSynthesis.getVoices();
+                if (voices.length > 0) {
+                    // Try to find an English voice
+                    const englishVoice = voices.find(voice => voice.lang.startsWith('en'));
+                    if (englishVoice) {
+                        utterance.voice = englishVoice;
+                    }
+                }
+                
+                speechSynthesis.speak(utterance);
+            }
+        }
+
+        // Make functions globally available
+        window.nextStep = nextStep;
+        window.previousStep = previousStep;
+        window.goToStep = goToStep;
+        window.checkQuiz = checkQuiz;
 
         // Quiz functionality
         function checkQuiz() {
@@ -1884,16 +2625,47 @@
             for (let i = 1; i <= totalQuestions; i++) {
                 const selectedAnswer = document.querySelector(`input[name="q${i}"]:checked`);
                 const resultDiv = document.getElementById(`result${i}`);
+                const questionDiv = document.querySelector(`.quiz-question:nth-child(${i})`);
+                const labels = questionDiv.querySelectorAll('label');
                 
                 if (selectedAnswer) {
                     const isCorrect = selectedAnswer.value === answers[`q${i}`];
+                    
+                    // Highlight correct and incorrect answers
+                    labels.forEach(label => {
+                        const input = label.querySelector('input');
+                        const inputValue = input.value;
+                        
+                        if (inputValue === answers[`q${i}`]) {
+                            // Correct answer - highlight in green
+                            label.style.backgroundColor = '#ECFDF5';
+                            label.style.borderColor = '#10B981';
+                            label.style.color = '#047857';
+                        } else if (input.checked && inputValue !== answers[`q${i}`]) {
+                            // Selected wrong answer - highlight in red
+                            label.style.backgroundColor = '#FEF2F2';
+                            label.style.borderColor = '#EF4444';
+                            label.style.color = '#DC2626';
+                        }
+                        
+                        // Disable further selection
+                        input.disabled = true;
+                        label.style.cursor = 'not-allowed';
+                    });
+                    
                     if (isCorrect) {
                         score++;
                         resultDiv.className = 'quiz-result correct';
                         resultDiv.textContent = explanations[`q${i}`].correct;
+                        
+                        // Audio feedback for correct answer
+                        speakFeedback("Correct!", true);
                     } else {
                         resultDiv.className = 'quiz-result incorrect';
                         resultDiv.textContent = explanations[`q${i}`].incorrect;
+                        
+                        // Audio feedback for incorrect answer
+                        speakFeedback("Incorrect!", false);
                     }
                     resultDiv.style.display = 'block';
                 } else {
@@ -1922,6 +2694,10 @@
             }
 
             quizScore.style.display = 'block';
+            
+            // Disable submit button after submission
+            document.querySelector('.quiz-submit').disabled = true;
+            document.querySelector('.quiz-submit').textContent = 'Quiz Completed';
             
             // Scroll to results
             quizScore.scrollIntoView({ behavior: 'smooth' });

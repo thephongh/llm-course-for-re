@@ -55,13 +55,119 @@
 
         .nav-links a:hover {
             color: #000000;
+            background: #F3F4F6;
         }
 
         .nav-links .active {
             color: #000000;
-            border: 2px solid #000000;
+            background: #E5E7EB;
+            font-weight: 600;
+        }
+
+        .nav-module-links {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        .nav-module-links a {
+            padding: 0.375rem 0.75rem;
+            font-size: 0.875rem;
+            border: 1px solid #E5E7EB;
+            border-radius: 0.375rem;
+            background: #FFFFFF;
+        }
+
+        .nav-module-links a:hover {
+            border-color: #8B5CF6;
+            background: #F3F4F6;
+        }
+
+        .nav-module-links .disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+
+        .nav-prev-next {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        .nav-prev-next a {
+            padding: 0.375rem 0.75rem;
+            font-size: 0.875rem;
+            border: 1px solid #E5E7EB;
+            border-radius: 0.375rem;
+            background: #FFFFFF;
+            font-weight: 500;
+        }
+
+        .nav-prev-next a:hover {
+            border-color: #8B5CF6;
+            background: #F3F4F6;
+        }
+
+        .nav-prev-next .disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+
+        /* Language Switcher */
+        .language-switcher {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropbtn {
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .dropbtn img {
+            vertical-align: middle;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+            right: 0;
             border-radius: 0.5rem;
-            padding: 0.5rem 1rem;
+            overflow: hidden;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1rem;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
         }
 
         /* Hero Section */
@@ -850,7 +956,7 @@
         }
     </style>
 </head>
-<body>
+<body id="top">
     <!-- Progress Bar -->
     <div class="progress-container">
         <div class="progress-bar" id="progressBar"></div>
@@ -858,16 +964,24 @@
 
     <!-- Navigation -->
     <nav class="nav">
-        <a href="index.html" class="nav-logo">LLM Training Course</a>
+        <a href="index.html" class="nav-logo">🚀 LLM Training Course</a>
         <ul class="nav-links">
             <li><a href="index.html" id="home-link">Home</a></li>
-            <li><a href="module2.html" id="module2-link">Module 2</a></li>
-            <li><a href="#" class="active" id="module3-link">Module 3</a></li>
-            <li><a href="module4.html" id="module4-link">Module 4</a></li>
+            <li class="nav-module-links">
+                <a href="module1.html#top" id="module1-link">Module 1</a>
+                <a href="module2.html#top" id="module2-link">Module 2</a>
+                <a href="module3.html" class="active" id="module3-link">Module 3</a>
+                <a href="module4.html#top">Module 4</a>
+                <a href="module5.html#top">Module 5</a>
+            </li>
+            <li class="nav-prev-next">
+                <a href="module2.html#top">← Prev</a>
+                <a href="module4.html#top">Next →</a>
+            </li>
             <li class="language-switcher">
                 <div class="dropdown">
                     <button class="dropbtn">
-                        <img id="current-flag" src="https://flagcdn.com/us.svg" alt="English Flag" width="24" height="18">
+                        <img id="current-flag" src="https://flagcdn.com/vn.svg" alt="Vietnamese Flag" width="24" height="18">
                     </button>
                     <div class="dropdown-content">
                         <a href="#" data-lang="en"><img src="https://flagcdn.com/us.svg" alt="English Flag" width="24" height="18"> English</a>
@@ -881,17 +995,17 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="container">
-            <h1>Module 3</h1>
-            <p class="hero-subtitle">Chatbots in Daily Energy Work: Practical Applications for Energy Professionals</p>
+            <h1 id="hero-title">Module 3</h1>
+            <p class="hero-subtitle" id="hero-subtitle">Chatbots in Daily Energy Work: Practical Applications for Energy Professionals</p>
             
             <div class="learning-objectives">
-                <h3>Learning Objectives</h3>
+                <h3 id="learning-objectives-title">Learning Objectives</h3>
                 <ul>
-                    <li>Understand different AI chatbot platforms and their capabilities</li>
-                    <li>Learn practical applications of chatbots in energy sector work</li>
-                    <li>Master effective prompting techniques for energy-specific tasks</li>
-                    <li>Recognize limitations and best practices for professional use</li>
-                    <li>Apply chatbots to real energy project scenarios</li>
+                    <li id="objective1">Understand different AI chatbot platforms and their capabilities</li>
+                    <li id="objective2">Learn practical applications of chatbots in energy sector work</li>
+                    <li id="objective3">Master effective prompting techniques for energy-specific tasks</li>
+                    <li id="objective4">Recognize limitations and best practices for professional use</li>
+                    <li id="objective5">Apply chatbots to real energy project scenarios</li>
                 </ul>
             </div>
         </div>
@@ -940,71 +1054,117 @@
             <!-- Step 1: Understanding AI Chatbot Platforms -->
             <div class="step-content active" id="step1">
                 <div class="content">
-                    <h2 class="section-title">Step 1: Understanding AI Chatbot Platforms</h2>
-                    <p>AI chatbots are user-friendly interfaces that allow you to interact directly with powerful Large Language Models. Think of them as your personal AI assistant, specifically designed to understand natural language and provide intelligent responses. For energy professionals, these tools can dramatically enhance productivity and decision-making capabilities.</p>
+                    <h2 class="section-title" id="step1-title">Step 1: Understanding AI Chatbot Platforms</h2>
+                    <p id="step1-text1">AI chatbots are user-friendly interfaces that allow you to interact directly with powerful Large Language Models. Think of them as your personal AI assistant, specifically designed to understand natural language and provide intelligent responses. For energy professionals, these tools can dramatically enhance productivity and decision-making capabilities.</p>
 
                     <div class="interactive-card">
-                        <h4><span class="card-icon">🤖</span>What makes a chatbot "intelligent"?</h4>
-                        <p>Unlike traditional rule-based chatbots that follow pre-programmed scripts, AI chatbots powered by LLMs can:</p>
+                        <h4 id="step1-card-title"><span class="card-icon">🤖</span>What makes a chatbot "intelligent"?</h4>
+                        <p id="step1-card-text">Unlike traditional rule-based chatbots that follow pre-programmed scripts, AI chatbots powered by LLMs can:</p>
                         <ul>
-                            <li><strong>Understand context:</strong> They grasp the nuances of your questions and maintain conversation context</li>
-                            <li><strong>Generate original content:</strong> Create new text, reports, and analyses rather than just retrieving stored information</li>
-                            <li><strong>Adapt to different domains:</strong> Apply their knowledge to specific fields like energy, engineering, and project management</li>
-                            <li><strong>Learn from conversation:</strong> Improve responses based on the ongoing dialogue within a session</li>
+                            <li id="step1-card-li1"><strong>Understand context:</strong> They grasp the nuances of your questions and maintain conversation context</li>
+                            <li id="step1-card-li2"><strong>Generate original content:</strong> Create new text, reports, and analyses rather than just retrieving stored information</li>
+                            <li id="step1-card-li3"><strong>Adapt to different domains:</strong> Apply their knowledge to specific fields like energy, engineering, and project management</li>
+                            <li id="step1-card-li4"><strong>Learn from conversation:</strong> Improve responses based on the ongoing dialogue within a session</li>
                         </ul>
                     </div>
 
                     <div class="platform-grid">
                         <div class="platform-card">
-                            <h4><span class="platform-icon">🤖</span>ChatGPT (OpenAI)</h4>
-                            <p>The pioneer in conversational AI, known for its versatility and strong reasoning capabilities. Excellent for complex energy project analysis and technical writing.</p>
+                            <h4 id="platform1-title"><span class="platform-icon">🤖</span>ChatGPT (OpenAI)</h4>
+                            <p id="platform1-text">The pioneer in conversational AI, known for its versatility and strong reasoning capabilities. Excellent for complex energy project analysis and technical writing.</p>
                             <ul class="features">
-                                <li>GPT-4 model with advanced reasoning</li>
-                                <li>Code generation and analysis capabilities</li>
-                                <li>Document upload and analysis (paid version)</li>
-                                <li>Web browsing for current information (paid version)</li>
-                                <li>Custom GPTs for specialized energy applications</li>
+                                <li id="platform1-li1">GPT-4 model with advanced reasoning</li>
+                                <li id="platform1-li2">Code generation and analysis capabilities</li>
+                                <li id="platform1-li3">Document upload and analysis (paid version)</li>
+                                <li id="platform1-li4">Web browsing for current information (paid version)</li>
+                                <li id="platform1-li5">Custom GPTs for specialized energy applications</li>
                             </ul>
                         </div>
                         
                         <div class="platform-card">
-                            <h4><span class="platform-icon">🔍</span>Gemini (Google)</h4>
-                            <p>Google's advanced AI with strong integration to Google services and real-time web access. Particularly useful for research and data analysis in energy projects.</p>
+                            <h4 id="platform2-title"><span class="platform-icon">🔍</span>Gemini (Google)</h4>
+                            <p id="platform2-text">Google's advanced AI with strong integration to Google services and real-time web access. Particularly useful for research and data analysis in energy projects.</p>
                             <ul class="features">
-                                <li>Real-time web search integration</li>
-                                <li>Google Workspace integration</li>
-                                <li>Strong multimodal capabilities (text, images, code)</li>
-                                <li>Access to current energy market data</li>
-                                <li>Integration with Google Earth for site analysis</li>
+                                <li id="platform2-li1">Real-time web search integration</li>
+                                <li id="platform2-li2">Google Workspace integration</li>
+                                <li id="platform2-li3">Strong multimodal capabilities (text, images, code)</li>
+                                <li id="platform2-li4">Access to current energy market data</li>
+                                <li id="platform2-li5">Integration with Google Earth for site analysis</li>
                             </ul>
                         </div>
                         
                         <div class="platform-card">
-                            <h4><span class="platform-icon">🛡️</span>Claude (Anthropic)</h4>
-                            <p>Developed with a focus on safety and helpfulness, excellent for detailed analysis and handling sensitive energy project information with care.</p>
+                            <h4 id="platform3-title"><span class="platform-icon">🛡️</span>Claude (Anthropic)</h4>
+                            <p id="platform3-text">Developed with a focus on safety and helpfulness, excellent for detailed analysis and handling sensitive energy project information with care.</p>
                             <ul class="features">
-                                <li>Strong focus on safety and accuracy</li>
-                                <li>Excellent for long-form analysis</li>
-                                <li>Constitutional AI for ethical responses</li>
-                                <li>Great for regulatory compliance analysis</li>
-                                <li>Handles complex technical documents well</li>
+                                <li id="platform3-li1">Strong focus on safety and accuracy</li>
+                                <li id="platform3-li2">Excellent for long-form analysis</li>
+                                <li id="platform3-li3">Constitutional AI for ethical responses</li>
+                                <li id="platform3-li4">Great for regulatory compliance analysis</li>
+                                <li id="platform3-li5">Handles complex technical documents well</li>
                             </ul>
                         </div>
                         
                         <div class="platform-card">
-                            <h4><span class="platform-icon">🔗</span>Perplexity AI</h4>
-                            <p>Combines LLM capabilities with real-time web search, providing cited sources for answers. Perfect for energy market research and regulatory updates.</p>
+                            <h4 id="platform4-title"><span class="platform-icon">🔗</span>Perplexity AI</h4>
+                            <p id="platform4-text">Combines LLM capabilities with real-time web search, providing cited sources for answers. Perfect for energy market research and regulatory updates.</p>
                             <ul class="features">
-                                <li>Real-time web search with citations</li>
-                                <li>Source verification and links</li>
-                                <li>Current energy market information</li>
-                                <li>Regulatory and policy updates</li>
-                                <li>Academic and technical paper access</li>
+                                <li id="platform4-li1">Real-time web search with citations</li>
+                                <li id="platform4-li2">Source verification and links</li>
+                                <li id="platform4-li3">Current energy market information</li>
+                                <li id="platform4-li4">Regulatory and policy updates</li>
+                                <li id="platform4-li5">Academic and technical paper access</li>
                             </ul>
                         </div>
                     </div>
 
-                    <p><strong>Key takeaway:</strong> While each platform has unique strengths, they all excel at understanding natural language and generating human-like responses. The choice often depends on your specific needs: real-time information, document analysis, safety considerations, or integration requirements.</p>
+                    <!-- Choosing the Right Tool Section -->
+                    <div style="background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border: 2px solid #16a34a; border-radius: 12px; padding: 2rem; margin: 2rem 0; box-shadow: 0 4px 12px rgba(22, 163, 74, 0.15);">
+                        <h3 id="step1-tool-selection-title" style="color: #166534; font-size: 1.3rem; font-weight: 600; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem;">
+                            🎯 Choosing the Right Tool for Vietnamese Energy Professionals
+                        </h3>
+                        
+                        <div class="tool-comparison-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem;">
+                            <div>
+                                <h4 style="color: #166534; font-weight: 600; margin-bottom: 1rem;">📊 For Research & Analysis:</h4>
+                                <ul style="color: #15803d; margin-left: 1rem; line-height: 1.6;">
+                                    <li><strong>Perplexity AI:</strong> Latest FIT rates, EVN grid code updates, new government policies</li>
+                                    <li><strong>ChatGPT:</strong> Technical analysis, comprehensive reports, financial modeling</li>
+                                    <li><strong>Claude:</strong> Complex document analysis, regulatory compliance reviews</li>
+                                </ul>
+                            </div>
+                            
+                            <div>
+                                <h4 style="color: #166534; font-weight: 600; margin-bottom: 1rem;">✍️ For Communication & Documentation:</h4>
+                                <ul style="color: #15803d; margin-left: 1rem; line-height: 1.6;">
+                                    <li><strong>Claude:</strong> Stakeholder presentations, Vietnamese translation quality</li>
+                                    <li><strong>ChatGPT:</strong> Technical reports, training materials, proposal writing</li>
+                                    <li><strong>Gemini:</strong> Quick responses, simple document creation</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="task-specific-recommendations" style="background: white; border: 1px solid #16a34a; border-radius: 8px; padding: 1.5rem;">
+                            <h4 style="color: #166534; margin-bottom: 1rem;">🇻🇳 Task-Specific Recommendations for Vietnam:</h4>
+                            <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; font-size: 0.9rem;">
+                                <div>
+                                    <strong style="color: #166534;">MOIT/EVN Submissions:</strong><br>
+                                    <span style="color: #374151;">Claude + ChatGPT for formal documentation</span>
+                                </div>
+                                <div>
+                                    <strong style="color: #166534;">Market Research:</strong><br>
+                                    <span style="color: #374151;">Perplexity AI for real-time data</span>
+                                </div>
+                                <div>
+                                    <strong style="color: #166534;">Community Engagement:</strong><br>
+                                    <span style="color: #374151;">Claude for Vietnamese cultural sensitivity</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <p id="step1-takeaway"><strong>Key takeaway:</strong> While each platform has unique strengths, they all excel at understanding natural language and generating human-like responses. The choice often depends on your specific needs: real-time information, document analysis, safety considerations, or integration requirements.</p>
                 </div>
 
                 <div class="step-navigation-buttons">
@@ -1024,22 +1184,56 @@
                             <h4><span class="use-case-icon">💡</span>Project Development & Planning</h4>
                             <p>Use chatbots to brainstorm solutions, analyze feasibility, and develop comprehensive project plans.</p>
                             
-                            <div class="example-prompt">"I'm developing a 50MW solar farm in Texas. What are the key permitting requirements, potential environmental concerns, and grid interconnection considerations I should address in my initial feasibility study?"</div>
+                            <!-- Bad vs Good Prompt Examples -->
+                            <div style="background: #FEF2F2; border: 2px solid #EF4444; border-radius: 8px; padding: 1.5rem; margin: 1rem 0;">
+                                <h5 style="color: #DC2626; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
+                                    ❌ <strong>Vague/Bad Prompt:</strong>
+                                </h5>
+                                <div style="font-family: monospace; background: white; padding: 1rem; border-radius: 4px; font-size: 0.9rem;">"Tell me about solar energy projects in Vietnam."</div>
+                            </div>
                             
-                            <div class="example-response"><strong>Typical AI Response:</strong> The AI would provide a structured analysis covering ERCOT interconnection procedures, Texas environmental regulations, land use requirements, and typical permitting timelines, helping you create a comprehensive development roadmap.</div>
+                            <div style="background: #F0FDF4; border: 2px solid #22C55E; border-radius: 8px; padding: 1.5rem; margin: 1rem 0;">
+                                <h5 style="color: #16A34A; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
+                                    ✅ <strong>Better/Good Prompt:</strong>
+                                </h5>
+                                <div style="font-family: monospace; background: white; padding: 1rem; border-radius: 4px; font-size: 0.9rem;">"I'm developing a 100MW rooftop solar program in Ho Chi Minh City's industrial zones. Create a comprehensive development roadmap including: 1) MOIT licensing requirements under Circular 39/2015, 2) EVN grid connection procedures and technical standards, 3) feed-in-tariff eligibility criteria, 4) environmental impact assessment requirements under Vietnamese law, and 5) potential financing options including green bonds and international development funding. Present this as a timeline with key milestones."</div>
+                            </div>
                             
-                            <div class="example-prompt">"Generate a risk assessment matrix for an offshore wind project, including technical, financial, environmental, and regulatory risks with mitigation strategies."</div>
+                            <div class="example-response"><strong>Why it's better:</strong> The improved prompt specifies location (HCMC), project scale (100MW rooftop), exact regulatory framework (Circular 39/2015), stakeholders (MOIT, EVN), and desired output format (timeline with milestones). This gives the AI clear parameters to provide actionable, Vietnam-specific guidance.</div>
                         </div>
 
                         <div class="use-case-card">
-                            <h4><span class="use-case-icon">⚖️</span>Regulatory Compliance & Documentation</h4>
-                            <p>Navigate complex regulations and create compliant documentation efficiently.</p>
+                            <h4><span class="use-case-icon">🇻🇳</span>Vietnamese Regulatory Compliance & Documentation</h4>
+                            <p>Navigate Vietnamese energy regulations and create compliant documentation efficiently.</p>
                             
-                            <div class="example-prompt">"Summarize the key changes in the latest FERC Order 2222 and explain how these affect our distributed energy resource aggregation project in California."</div>
+                            <!-- Bad vs Good Prompt Examples for Vietnamese Regulatory Context -->
+                            <div style="background: #FEF2F2; border: 2px solid #EF4444; border-radius: 8px; padding: 1.5rem; margin: 1rem 0;">
+                                <h5 style="color: #DC2626; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
+                                    ❌ <strong>Vague/Bad Prompt:</strong>
+                                </h5>
+                                <div style="font-family: monospace; background: white; padding: 1rem; border-radius: 4px; font-size: 0.9rem;">"What are Vietnam's renewable energy regulations?"</div>
+                            </div>
                             
-                            <div class="example-response"><strong>Typical AI Response:</strong> The AI would break down complex regulatory language into actionable insights, highlighting specific impacts on your project, compliance requirements, and strategic opportunities.</div>
+                            <div style="background: #F0FDF4; border: 2px solid #22C55E; border-radius: 8px; padding: 1.5rem; margin: 1rem 0;">
+                                <h5 style="color: #16A34A; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
+                                    ✅ <strong>Better/Good Prompt:</strong>
+                                </h5>
+                                <div style="font-family: monospace; background: white; padding: 1rem; border-radius: 4px; font-size: 0.9rem;">"Analyze Vietnam's Circular 39/2015/TT-BCT requirements for our 100MW rooftop solar portfolio in Ho Chi Minh City industrial parks. Provide: 1) Step-by-step MOIT licensing process with exact documentation requirements, 2) EVN grid connection technical standards and approval timeline, 3) Feed-in-tariff eligibility criteria and current rates, 4) Environmental compliance requirements under MONRE guidelines, 5) Potential regulatory risks and mitigation strategies. Format as an executive summary for our investment committee."</div>
+                            </div>
                             
-                            <div class="example-prompt">"Draft an environmental impact assessment outline for a battery energy storage system, including all required sections under NEPA guidelines."</div>
+                            <div style="background: #FEF2F2; border: 2px solid #EF4444; border-radius: 8px; padding: 1.5rem; margin: 1rem 0;">
+                                <h5 style="color: #DC2626; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
+                                    ❌ <strong>Vague/Bad Prompt:</strong>
+                                </h5>
+                                <div style="font-family: monospace; background: white; padding: 1rem; border-radius: 4px; font-size: 0.9rem;">"Write environmental report for wind farm."</div>
+                            </div>
+                            
+                            <div style="background: #F0FDF4; border: 2px solid #22C55E; border-radius: 8px; padding: 1.5rem; margin: 1rem 0;">
+                                <h5 style="color: #16A34A; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
+                                    ✅ <strong>Better/Good Prompt:</strong>
+                                </h5>
+                                <div style="font-family: monospace; background: white; padding: 1rem; border-radius: 4px; font-size: 0.9rem;">"Create a detailed Environmental Impact Assessment outline for a 200MW offshore wind farm in Binh Thuan province following Vietnamese Environmental Protection Law 2020 and MONRE Circular 01/2021. Include: 1) Baseline environmental assessment covering marine ecosystems, fishing communities, and coastal erosion, 2) Impact analysis on local fishing industry and tourism, 3) Mitigation measures for noise, visual impact, and marine life protection, 4) Community consultation requirements and stakeholder engagement plan, 5) Environmental monitoring program during construction and operation. Structure according to MONRE's standard EIA format."</div>
+                            </div>
                         </div>
 
                         <div class="use-case-card">
@@ -1094,24 +1288,57 @@
                             <h4><span class="use-case-icon">🔧</span>Operations & Maintenance</h4>
                             <p>Optimize maintenance schedules, troubleshoot issues, and improve operational efficiency.</p>
                             
-                            <div class="example-prompt">"Our gas turbine is showing decreased efficiency and higher NOx emissions. Based on these symptoms: [specific data], what are the most likely causes and recommended diagnostic steps?"</div>
+                            <!-- Bad vs Good Prompt Examples for Technical Analysis -->
+                            <div style="background: #FEF2F2; border: 2px solid #EF4444; border-radius: 8px; padding: 1.5rem; margin: 1rem 0;">
+                                <h5 style="color: #DC2626; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
+                                    ❌ <strong>Vague/Bad Prompt:</strong>
+                                </h5>
+                                <div style="font-family: monospace; background: white; padding: 1rem; border-radius: 4px; font-size: 0.9rem;">"My turbine has problems. Help fix."</div>
+                            </div>
                             
-                            <div class="example-response"><strong>Typical AI Response:</strong> The AI would provide a systematic troubleshooting approach, ranking potential causes by probability, suggesting specific tests, and recommending maintenance actions based on the symptoms described.</div>
-                            
-                            <div class="example-prompt">"Create a predictive maintenance schedule for our wind farm based on manufacturer recommendations, historical failure data, and seasonal weather patterns."</div>
+                            <div style="background: #F0FDF4; border: 2px solid #22C55E; border-radius: 8px; padding: 1.5rem; margin: 1rem 0;">
+                                <h5 style="color: #16A34A; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
+                                    ✅ <strong>Better/Good Prompt:</strong>
+                                </h5>
+                                <div style="font-family: monospace; background: white; padding: 1rem; border-radius: 4px; font-size: 0.9rem;">"Our Vestas V136-3.45MW wind turbine at Bac Lieu wind farm is showing: 1) 15% decrease in power output over 3 months, 2) Increased vibration levels in gearbox (measured at 8.5 mm/s vs normal 4.2 mm/s), 3) Higher than normal bearing temperatures (85°C vs typical 70°C), 4) Oil analysis shows increased metal particles. Operating in Vietnam's tropical monsoon conditions with high humidity and salt air exposure. Provide: systematic diagnostic approach, most likely root causes ranked by probability, specific maintenance actions for tropical climate conditions, and estimated repair timeline considering spare parts availability in Vietnam."</div>
+                            </div>
                         </div>
 
                         <div class="use-case-card">
-                            <h4><span class="use-case-icon">🎓</span>Training & Knowledge Management</h4>
-                            <p>Create training materials, explain complex concepts, and facilitate knowledge transfer.</p>
+                            <h4><span class="use-case-icon">🤝</span>Vietnamese Stakeholder Communication & Community Engagement</h4>
+                            <p>Facilitate effective communication with local communities, government agencies, and project stakeholders in Vietnam.</p>
                             
-                            <div class="example-prompt">"Explain power system stability and grid integration challenges to new engineers joining our transmission planning team. Include practical examples and common issues they'll encounter."</div>
+                            <!-- Bad vs Good Prompt Examples for Vietnamese Stakeholder Communication -->
+                            <div style="background: #FEF2F2; border: 2px solid #EF4444; border-radius: 8px; padding: 1.5rem; margin: 1rem 0;">
+                                <h5 style="color: #DC2626; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
+                                    ❌ <strong>Vague/Bad Prompt:</strong>
+                                </h5>
+                                <div style="font-family: monospace; background: white; padding: 1rem; border-radius: 4px; font-size: 0.9rem;">"Make presentation about wind farm for Vietnamese people."</div>
+                            </div>
                             
-                            <div class="example-response"><strong>Typical AI Response:</strong> The AI would create a comprehensive yet accessible explanation with real-world examples, common scenarios, and practical tips that new engineers can immediately apply in their work.</div>
+                            <div style="background: #F0FDF4; border: 2px solid #22C55E; border-radius: 8px; padding: 1.5rem; margin: 1rem 0;">
+                                <h5 style="color: #16A34A; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
+                                    ✅ <strong>Better/Good Prompt:</strong>
+                                </h5>
+                                <div style="font-family: monospace; background: white; padding: 1rem; border-radius: 4px; font-size: 0.9rem;">"Create a community presentation for our 200MW Ca Mau wind farm project targeting local fishing communities and rice farmers in the Mekong Delta. Address specific concerns: 1) Impact on traditional fishing grounds and aquaculture ponds, 2) Noise levels during harvest season affecting livestock, 3) Visual impact on rural landscape, 4) Construction disruption to rice farming cycles. Include: economic benefits (local jobs, community funds, infrastructure improvements), environmental advantages (reducing coal dependency, improving air quality), and cultural sensitivity to Khmer and Vietnamese communities. Use simple analogies comparing wind turbines to traditional irrigation systems. Provide talking points in both Vietnamese and Khmer languages, with visual aids showing actual project benefits from similar installations in Soc Trang province."</div>
+                            </div>
                             
-                            <div class="example-prompt">"Create a safety training module outline for substation maintenance work, including hazard identification, safety procedures, and emergency response protocols."</div>
+                            <div style="background: #FEF2F2; border: 2px solid #EF4444; border-radius: 8px; padding: 1.5rem; margin: 1rem 0;">
+                                <h5 style="color: #DC2626; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
+                                    ❌ <strong>Vague/Bad Prompt:</strong>
+                                </h5>
+                                <div style="font-family: monospace; background: white; padding: 1rem; border-radius: 4px; font-size: 0.9rem;">"Write FAQ about insurance for renewable energy."</div>
+                            </div>
+                            
+                            <div style="background: #F0FDF4; border: 2px solid #22C55E; border-radius: 8px; padding: 1.5rem; margin: 1rem 0;">
+                                <h5 style="color: #16A34A; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
+                                    ✅ <strong>Better/Good Prompt:</strong>
+                                </h5>
+                                <div style="font-family: monospace; background: white; padding: 1rem; border-radius: 4px; font-size: 0.9rem;">"Develop comprehensive FAQ document for Vietnamese renewable energy investors about insurance requirements and options. Cover: 1) Mandatory insurance requirements under Vietnamese law for wind/solar projects, 2) Typhoon and weather-related coverage specific to Vietnam's climate risks, 3) Construction all-risk insurance during monsoon season, 4) Performance guarantees and revenue protection for feed-in-tariff projects, 5) Available insurance providers in Vietnam vs international markets, 6) Typical premium costs as percentage of project CAPEX, 7) Claims process and dispute resolution mechanisms. Include specific examples from Gia Lai solar farms and Bac Lieu wind projects. Target audience: CFOs and project finance teams with basic insurance knowledge."</div>
+                            </div>
                         </div>
                     </div>
+
 
                     <div class="interactive-card">
                         <h4><span class="card-icon">⚡</span>Technical Analysis Best Practices</h4>
@@ -1394,10 +1621,10 @@
 
             <!-- Module Navigation -->
             <div class="module-nav-buttons">
-                <a href="module2.html" class="btn-back">
+                <a href="module2.html#top" class="btn-back">
                     ← Previous: Understanding LLMs
                 </a>
-                <a href="module4.html" class="btn-forward">
+                <a href="module4.html#top" class="btn-forward">
                     Next: Prompt Engineering →
                 </a>
             </div>
@@ -1409,11 +1636,115 @@
         let currentStep = 1;
         const totalSteps = 6;
         let completedSteps = new Set([]);
+        let currentLanguage = localStorage.getItem('language') || 'vi'; // Default to Vietnamese
+
+        const translations = {
+            en: {
+                pageTitle: "Module 3: Chatbots in Daily Energy Work",
+                heroTitle: "Module 3",
+                heroSubtitle: "Chatbots in Daily Energy Work: Practical Applications for Energy Professionals",
+                learningObjectivesTitle: "Learning Objectives",
+                objective1: "Understand different AI chatbot platforms and their capabilities",
+                objective2: "Learn practical applications of chatbots in energy sector work",
+                objective3: "Master effective prompting techniques for energy-specific tasks",
+                objective4: "Recognize limitations and best practices for professional use",
+                objective5: "Apply chatbots to real energy project scenarios",
+                step1Title: "Step 1: Understanding AI Chatbot Platforms",
+                step1Text1: "AI chatbots are user-friendly interfaces that allow you to interact directly with powerful Large Language Models. Think of them as your personal AI assistant, specifically designed to understand natural language and provide intelligent responses. For energy professionals, these tools can dramatically enhance productivity and decision-making capabilities.",
+                step1CardTitle: "What makes a chatbot 'intelligent'?",
+                step1CardText: "Unlike traditional rule-based chatbots that follow pre-programmed scripts, AI chatbots powered by LLMs can:",
+                step1CardLi1: "<strong>Understand context:</strong> They grasp the nuances of your questions and maintain conversation context",
+                step1CardLi2: "<strong>Generate original content:</strong> Create new text, reports, and analyses rather than just retrieving stored information",
+                step1CardLi3: "<strong>Adapt to different domains:</strong> Apply their knowledge to specific fields like energy, engineering, and project management",
+                step1CardLi4: "<strong>Learn from conversation:</strong> Improve responses based on the ongoing dialogue within a session",
+                platform1Title: "ChatGPT (OpenAI)",
+                platform1Text: "The pioneer in conversational AI, known for its versatility and strong reasoning capabilities. Excellent for complex energy project analysis and technical writing.",
+                platform1Li1: "GPT-4 model with advanced reasoning",
+                platform1Li2: "Code generation and analysis capabilities",
+                platform1Li3: "Document upload and analysis (paid version)",
+                platform1Li4: "Web browsing for current information (paid version)",
+                platform1Li5: "Custom GPTs for specialized energy applications",
+                platform2Title: "Gemini (Google)",
+                platform2Text: "Google's advanced AI with strong integration to Google services and real-time web access. Particularly useful for research and data analysis in energy projects.",
+                platform2Li1: "Real-time web search integration",
+                platform2Li2: "Google Workspace integration",
+                platform2Li3: "Strong multimodal capabilities (text, images, code)",
+                platform2Li4: "Access to current energy market data",
+                platform2Li5: "Integration with Google Earth for site analysis",
+                platform3Title: "Claude (Anthropic)",
+                platform3Text: "Developed with a focus on safety and helpfulness, excellent for detailed analysis and handling sensitive energy project information with care.",
+                platform3Li1: "Strong focus on safety and accuracy",
+                platform3Li2: "Excellent for long-form analysis",
+                platform3Li3: "Constitutional AI for ethical responses",
+                platform3Li4: "Great for regulatory compliance analysis",
+                platform3Li5: "Handles complex technical documents well",
+                platform4Title: "Perplexity AI",
+                platform4Text: "Combines LLM capabilities with real-time web search, providing cited sources for answers. Perfect for energy market research and regulatory updates.",
+                platform4Li1: "Real-time web search with citations",
+                platform4Li2: "Source verification and links",
+                platform4Li3: "Current energy market information",
+                platform4Li4: "Regulatory and policy updates",
+                platform4Li5: "Academic and technical paper access",
+                step1Takeaway: "<strong>Key takeaway:</strong> While each platform has unique strengths, they all excel at understanding natural language and generating human-like responses. The choice often depends on your specific needs: real-time information, document analysis, safety considerations, or integration requirements."
+            },
+            vi: {
+                pageTitle: "Mô-đun 3: Chatbots trong công việc năng lượng hàng ngày",
+                heroTitle: "Mô-đun 3",
+                heroSubtitle: "Chatbots trong công việc năng lượng hàng ngày: Ứng dụng thực tế cho các chuyên gia năng lượng",
+                learningObjectivesTitle: "Mục tiêu học tập",
+                objective1: "Hiểu các nền tảng chatbot AI khác nhau và khả năng của chúng",
+                objective2: "Tìm hiểu các ứng dụng thực tế của chatbot trong công việc ngành năng lượng",
+                objective3: "Nắm vững các kỹ thuật gợi ý hiệu quả cho các nhiệm vụ cụ thể của ngành năng lượng",
+                objective4: "Nhận biết các hạn chế và các phương pháp hay nhất để sử dụng chuyên nghiệp",
+                objective5: "Áp dụng chatbot vào các kịch bản dự án năng lượng thực tế",
+                step1Title: "Bước 1: Tìm hiểu về các nền tảng Chatbot AI",
+                step1Text1: "Chatbot AI là giao diện thân thiện với người dùng cho phép bạn tương tác trực tiếp với các Mô hình ngôn ngữ lớn mạnh mẽ. Hãy coi chúng như trợ lý AI cá nhân của bạn, được thiết kế đặc biệt để hiểu ngôn ngữ tự nhiên và cung cấp các phản hồi thông minh. Đối với các chuyên gia năng lượng, những công cụ này có thể tăng cường đáng kể năng suất và khả năng ra quyết định.",
+                step1CardTitle: "Điều gì làm cho một chatbot 'thông minh'?",
+                step1CardText: "Không giống như các chatbot dựa trên quy tắc truyền thống tuân theo các kịch bản được lập trình sẵn, các chatbot AI được cung cấp bởi LLM có thể:",
+                step1CardLi1: "<strong>Hiểu ngữ cảnh:</strong> Chúng nắm bắt được các sắc thái trong câu hỏi của bạn và duy trì ngữ cảnh cuộc trò chuyện",
+                step1CardLi2: "<strong>Tạo nội dung gốc:</strong> Tạo văn bản, báo cáo và phân tích mới thay vì chỉ truy xuất thông tin được lưu trữ",
+                step1CardLi3: "<strong>Thích ứng với các lĩnh vực khác nhau:</strong> Áp dụng kiến thức của họ vào các lĩnh vực cụ thể như năng lượng, kỹ thuật và quản lý dự án",
+                step1CardLi4: "<strong>Học hỏi từ cuộc trò chuyện:</strong> Cải thiện các câu trả lời dựa trên cuộc đối thoại đang diễn ra trong một phiên",
+                platform1Title: "ChatGPT (OpenAI)",
+                platform1Text: "Người tiên phong trong lĩnh vực AI đàm thoại, được biết đến với tính linh hoạt và khả năng suy luận mạnh mẽ. Tuyệt vời cho phân tích dự án năng lượng phức tạp và viết kỹ thuật.",
+                platform1Li1: "Mô hình GPT-4 với khả năng suy luận nâng cao",
+                platform1Li2: "Khả năng tạo và phân tích mã",
+                platform1Li3: "Tải lên và phân tích tài liệu (phiên bản trả phí)",
+                platform1Li4: "Duyệt web để biết thông tin hiện tại (phiên bản trả phí)",
+                platform1Li5: "GPT tùy chỉnh cho các ứng dụng năng lượng chuyên biệt",
+                platform2Title: "Gemini (Google)",
+                platform2Text: "AI tiên tiến của Google với sự tích hợp mạnh mẽ với các dịch vụ của Google và truy cập web thời gian thực. Đặc biệt hữu ích cho nghiên cứu và phân tích dữ liệu trong các dự án năng lượng.",
+                platform2Li1: "Tích hợp tìm kiếm web thời gian thực",
+                platform2Li2: "Tích hợp Google Workspace",
+                platform2Li3: "Khả năng đa phương thức mạnh mẽ (văn bản, hình ảnh, mã)",
+                platform2Li4: "Truy cập dữ liệu thị trường năng lượng hiện tại",
+                platform2Li5: "Tích hợp với Google Earth để phân tích địa điểm",
+                platform3Title: "Claude (Anthropic)",
+                platform3Text: "Được phát triển với trọng tâm là an toàn và hữu ích, tuyệt vời để phân tích chi tiết và xử lý thông tin dự án năng lượng nhạy cảm một cách cẩn thận.",
+                platform3Li1: "Tập trung mạnh vào an toàn và chính xác",
+                platform3Li2: "Tuyệt vời cho phân tích dạng dài",
+                platform3Li3: "AI lập hiến cho các phản hồi có đạo đức",
+                platform3Li4: "Tuyệt vời cho phân tích tuân thủ quy định",
+                platform3Li5: "Xử lý tốt các tài liệu kỹ thuật phức tạp",
+                platform4Title: "Perplexity AI",
+                platform4Text: "Kết hợp khả năng của LLM với tìm kiếm web thời gian thực, cung cấp các nguồn được trích dẫn cho câu trả lời. Hoàn hảo cho nghiên cứu thị trường năng lượng và cập nhật quy định.",
+                platform4Li1: "Tìm kiếm web thời gian thực với các trích dẫn",
+                platform4Li2: "Xác minh nguồn và liên kết",
+                platform4Li3: "Thông tin thị trường năng lượng hiện tại",
+                platform4Li4: "Cập nhật quy định và chính sách",
+                platform4Li5: "Truy cập các bài báo học thuật và kỹ thuật",
+                step1Takeaway: "<strong>Điểm mấu chốt:</strong> Mặc dù mỗi nền tảng đều có những điểm mạnh riêng, nhưng tất cả chúng đều vượt trội trong việc hiểu ngôn ngữ tự nhiên và tạo ra các phản hồi giống như con người. Sự lựa chọn thường phụ thuộc vào nhu cầu cụ thể của bạn: thông tin thời gian thực, phân tích tài liệu, cân nhắc về an toàn hoặc yêu cầu tích hợp."
+            }
+        };
 
         // Initialize the module
+        // Initialize the module
         document.addEventListener('DOMContentLoaded', function() {
+            // Scroll to top when page loads
+            window.scrollTo({ top: 0, behavior: 'smooth' });
             updateStepDisplay();
             updateProgressBar();
+            setLanguage(currentLanguage);
             
             // Add click handlers to step dots
             document.querySelectorAll('.step-dot').forEach(dot => {
@@ -1422,6 +1753,14 @@
                     if (targetStep <= Math.max(...completedSteps, currentStep)) {
                         goToStep(targetStep);
                     }
+                });
+            });
+
+            document.querySelectorAll('.language-switcher .dropdown-content a').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const lang = this.getAttribute('data-lang');
+                    setLanguage(lang);
                 });
             });
         });
@@ -1523,6 +1862,93 @@
             });
         }
 
+        function setLanguage(lang) {
+            currentLanguage = lang;
+            localStorage.setItem('language', lang);
+            const t = translations[lang];
+
+            document.getElementById('page-title').textContent = t.pageTitle;
+            document.getElementById('hero-title').textContent = t.heroTitle;
+            document.getElementById('hero-subtitle').textContent = t.heroSubtitle;
+            document.getElementById('learning-objectives-title').textContent = t.learningObjectivesTitle;
+            document.getElementById('objective1').textContent = t.objective1;
+            document.getElementById('objective2').textContent = t.objective2;
+            document.getElementById('objective3').textContent = t.objective3;
+            document.getElementById('objective4').textContent = t.objective4;
+            document.getElementById('objective5').textContent = t.objective5;
+
+            document.getElementById('step1-title').textContent = t.step1Title;
+            document.getElementById('step1-text1').textContent = t.step1Text1;
+            document.getElementById('step1-card-title').innerHTML = `<span class="card-icon">🤖</span>${t.step1CardTitle}`;
+            document.getElementById('step1-card-text').textContent = t.step1CardText;
+            document.getElementById('step1-card-li1').innerHTML = t.step1CardLi1;
+            document.getElementById('step1-card-li2').innerHTML = t.step1CardLi2;
+            document.getElementById('step1-card-li3').innerHTML = t.step1CardLi3;
+            document.getElementById('step1-card-li4').innerHTML = t.step1CardLi4;
+
+            document.getElementById('platform1-title').innerHTML = `<span class="platform-icon">🤖</span>${t.platform1Title}`;
+            document.getElementById('platform1-text').textContent = t.platform1Text;
+            document.getElementById('platform1-li1').textContent = t.platform1Li1;
+            document.getElementById('platform1-li2').textContent = t.platform1Li2;
+            document.getElementById('platform1-li3').textContent = t.platform1Li3;
+            document.getElementById('platform1-li4').textContent = t.platform1Li4;
+            document.getElementById('platform1-li5').textContent = t.platform1Li5;
+
+            document.getElementById('platform2-title').innerHTML = `<span class="platform-icon">🔍</span>${t.platform2Title}`;
+            document.getElementById('platform2-text').textContent = t.platform2Text;
+            document.getElementById('platform2-li1').textContent = t.platform2Li1;
+            document.getElementById('platform2-li2').textContent = t.platform2Li2;
+            document.getElementById('platform2-li3').textContent = t.platform2Li3;
+            document.getElementById('platform2-li4').textContent = t.platform2Li4;
+            document.getElementById('platform2-li5').textContent = t.platform2Li5;
+
+            document.getElementById('platform3-title').innerHTML = `<span class="platform-icon">🛡️</span>${t.platform3Title}`;
+            document.getElementById('platform3-text').textContent = t.platform3Text;
+            document.getElementById('platform3-li1').textContent = t.platform3Li1;
+            document.getElementById('platform3-li2').textContent = t.platform3Li2;
+            document.getElementById('platform3-li3').textContent = t.platform3Li3;
+            document.getElementById('platform3-li4').textContent = t.platform3Li4;
+            document.getElementById('platform3-li5').textContent = t.platform3Li5;
+
+            document.getElementById('platform4-title').innerHTML = `<span class="platform-icon">🔗</span>${t.platform4Title}`;
+            document.getElementById('platform4-text').textContent = t.platform4Text;
+            document.getElementById('platform4-li1').textContent = t.platform4Li1;
+            document.getElementById('platform4-li2').textContent = t.platform4Li2;
+            document.getElementById('platform4-li3').textContent = t.platform4Li3;
+            document.getElementById('platform4-li4').textContent = t.platform4Li4;
+            document.getElementById('platform4-li5').textContent = t.platform4Li5;
+
+            document.getElementById('step1-takeaway').innerHTML = t.step1Takeaway;
+
+            const currentFlag = document.getElementById('current-flag');
+            if (currentFlag) {
+                currentFlag.src = lang === 'en' ? 'https://flagcdn.com/us.svg' : 'https://flagcdn.com/vn.svg';
+                currentFlag.alt = lang === 'en' ? 'English Flag' : 'Vietnamese Flag';
+            }
+        }
+
+        // Audio feedback function
+        function speakFeedback(text, isCorrect) {
+            if ('speechSynthesis' in window) {
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.rate = 1.2;
+                utterance.pitch = isCorrect ? 1.2 : 0.8;
+                utterance.volume = 0.8;
+                
+                // Use different voices for correct/incorrect if available
+                const voices = speechSynthesis.getVoices();
+                if (voices.length > 0) {
+                    // Try to find an English voice
+                    const englishVoice = voices.find(voice => voice.lang.startsWith('en'));
+                    if (englishVoice) {
+                        utterance.voice = englishVoice;
+                    }
+                }
+                
+                speechSynthesis.speak(utterance);
+            }
+        }
+
         // Quiz functionality
         function checkQuiz() {
             const answers = {
@@ -1558,16 +1984,47 @@
             for (let i = 1; i <= totalQuestions; i++) {
                 const selectedAnswer = document.querySelector(`input[name="q${i}"]:checked`);
                 const resultDiv = document.getElementById(`result${i}`);
+                const questionDiv = document.querySelector(`.quiz-question:nth-child(${i})`);
+                const labels = questionDiv.querySelectorAll('label');
                 
                 if (selectedAnswer) {
                     const isCorrect = selectedAnswer.value === answers[`q${i}`];
+                    
+                    // Highlight correct and incorrect answers
+                    labels.forEach(label => {
+                        const input = label.querySelector('input');
+                        const inputValue = input.value;
+                        
+                        if (inputValue === answers[`q${i}`]) {
+                            // Correct answer - highlight in green
+                            label.style.backgroundColor = '#ECFDF5';
+                            label.style.borderColor = '#10B981';
+                            label.style.color = '#047857';
+                        } else if (input.checked && inputValue !== answers[`q${i}`]) {
+                            // Selected wrong answer - highlight in red
+                            label.style.backgroundColor = '#FEF2F2';
+                            label.style.borderColor = '#EF4444';
+                            label.style.color = '#DC2626';
+                        }
+                        
+                        // Disable further selection
+                        input.disabled = true;
+                        label.style.cursor = 'not-allowed';
+                    });
+                    
                     if (isCorrect) {
                         score++;
                         resultDiv.className = 'quiz-result correct';
                         resultDiv.textContent = explanations[`q${i}`].correct;
+                        
+                        // Audio feedback for correct answer
+                        speakFeedback("Correct!", true);
                     } else {
                         resultDiv.className = 'quiz-result incorrect';
                         resultDiv.textContent = explanations[`q${i}`].incorrect;
+                        
+                        // Audio feedback for incorrect answer
+                        speakFeedback("Incorrect!", false);
                     }
                     resultDiv.style.display = 'block';
                 } else {
@@ -1596,6 +2053,10 @@
             }
 
             quizScore.style.display = 'block';
+            
+            // Disable submit button after submission
+            document.querySelector('.quiz-submit').disabled = true;
+            document.querySelector('.quiz-submit').textContent = 'Quiz Completed';
             
             // Scroll to results
             quizScore.scrollIntoView({ behavior: 'smooth' });
