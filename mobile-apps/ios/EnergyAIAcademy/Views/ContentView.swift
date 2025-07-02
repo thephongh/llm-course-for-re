@@ -5,6 +5,10 @@ struct ContentView: View {
     
     var body: some View {
         ZStack(alignment: .bottom) {
+            // Liquid Glass Background
+            Color.liquidGlassBackground
+                .ignoresSafeArea()
+            
             VStack(spacing: 0) {
                 StatusBarView()
                 

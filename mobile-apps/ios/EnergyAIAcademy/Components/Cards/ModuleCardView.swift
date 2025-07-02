@@ -66,11 +66,51 @@ struct ModuleCardView: View {
             }
         }
         .padding(16)
-        .background(cardBackgroundForStatus)
+        .background(
+            ZStack {
+                cardBackgroundForStatus
+                
+                // Liquid Glass overlay
+                RoundedRectangle(cornerRadius: 12)
+                    .fill(Material.ultraThinMaterial)
+                    .opacity(glassOpacityForStatus)
+                
+                // Glass reflection
+                RoundedRectangle(cornerRadius: 12)
+                    .fill(
+                        LinearGradient(
+                            colors: [
+                                Color.white.opacity(0.3),
+                                Color.white.opacity(0.1),
+                                Color.clear
+                            ],
+                            startPoint: .topLeading,
+                            endPoint: .center
+                        )
+                    )
+            }
+        )
         .cornerRadius(12)
         .overlay(
             RoundedRectangle(cornerRadius: 12)
-                .stroke(borderColorForStatus, lineWidth: 1)
+                .stroke(
+                    LinearGradient(
+                        colors: [
+                            Color.white.opacity(0.4),
+                            Color.white.opacity(0.1),
+                            borderColorForStatus.opacity(0.3)
+                        ],
+                        startPoint: .topLeading,
+                        endPoint: .bottomTrailing
+                    ),
+                    lineWidth: 1
+                )
+        )
+        .shadow(
+            color: Color.black.opacity(0.1),
+            radius: 8,
+            x: 0,
+            y: 4
         )
         .onTapGesture {
             if module.status != .locked {
@@ -115,6 +155,14 @@ struct ModuleCardView: View {
         switch module.status {
         case .completed, .locked: return Color.black
         case .current: return Color.white
+        }
+    }
+    
+    private var glassOpacityForStatus: Double {
+        switch module.status {
+        case .completed: return 0.6
+        case .current: return 0.3
+        case .locked: return 0.8
         }
     }
 }

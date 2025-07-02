@@ -12,6 +12,13 @@ extension Color {
     static let successGreen = Color(red: 0.20, green: 0.78, blue: 0.35)
     static let warningOrange = Color(red: 1.00, green: 0.23, blue: 0.19)
     
+    // Liquid Glass Colors
+    static let glassWhite = Color.white.opacity(0.15)
+    static let glassBlack = Color.black.opacity(0.05)
+    static let glassPrimary = Color.primaryBlue.opacity(0.2)
+    static let glassAccent = Color.gradientPurple.opacity(0.15)
+    static let glassSurface = Color.white.opacity(0.1)
+    
     // Background Colors
     static let homeGradient = LinearGradient(
         colors: [.gradientPurple, .gradientBlue, .gradientPink, .gradientOrange],
@@ -21,6 +28,18 @@ extension Color {
     
     static let practiceGradient = LinearGradient(
         colors: [Color(red: 0.54, green: 0.35, blue: 0.17), Color(red: 0.85, green: 0.46, blue: 0.02)],
+        startPoint: .topLeading,
+        endPoint: .bottomTrailing
+    )
+    
+    // Liquid Glass Backgrounds
+    static let liquidGlassBackground = LinearGradient(
+        colors: [
+            Color.gradientPurple.opacity(0.2),
+            Color.gradientBlue.opacity(0.15),
+            Color.gradientPink.opacity(0.1),
+            Color.gradientOrange.opacity(0.15)
+        ],
         startPoint: .topLeading,
         endPoint: .bottomTrailing
     )

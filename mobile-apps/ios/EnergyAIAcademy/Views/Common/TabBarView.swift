@@ -36,13 +36,45 @@ struct TabBarView: View {
         .padding(.top, 8)
         .padding(.bottom, 34) // Safe area
         .background(
-            Color.white
-                .overlay(
-                    Rectangle()
-                        .frame(height: 1)
-                        .foregroundColor(Color.gray.opacity(0.3)),
-                    alignment: .top
-                )
+            ZStack {
+                // Glass material background
+                Rectangle()
+                    .fill(Material.regularMaterial)
+                
+                // Additional glass overlay
+                Rectangle()
+                    .fill(Color.white.opacity(0.1))
+                
+                // Glass reflection at top
+                Rectangle()
+                    .fill(
+                        LinearGradient(
+                            colors: [
+                                Color.white.opacity(0.3),
+                                Color.clear
+                            ],
+                            startPoint: .top,
+                            endPoint: .center
+                        )
+                    )
+                    .frame(height: 30)
+                    .offset(y: -15)
+            }
+            .overlay(
+                Rectangle()
+                    .frame(height: 0.5)
+                    .fill(
+                        LinearGradient(
+                            colors: [
+                                Color.white.opacity(0.6),
+                                Color.white.opacity(0.2)
+                            ],
+                            startPoint: .leading,
+                            endPoint: .trailing
+                        )
+                    ),
+                alignment: .top
+            )
         )
     }
 }
@@ -69,9 +101,39 @@ struct TabItemView: View {
             .padding(.horizontal, 8)
             .background(
                 isSelected ? 
-                RoundedRectangle(cornerRadius: 6)
-                    .stroke(Color.black, lineWidth: 2) :
-                nil
+                ZStack {
+                    // Glass background for selected tab
+                    RoundedRectangle(cornerRadius: 8)
+                        .fill(Material.ultraThinMaterial)
+                        .opacity(0.7)
+                    
+                    // Glass reflection
+                    RoundedRectangle(cornerRadius: 8)
+                        .fill(
+                            LinearGradient(
+                                colors: [
+                                    Color.white.opacity(0.4),
+                                    Color.clear
+                                ],
+                                startPoint: .top,
+                                endPoint: .center
+                            )
+                        )
+                    
+                    // Glass border
+                    RoundedRectangle(cornerRadius: 8)
+                        .stroke(
+                            LinearGradient(
+                                colors: [
+                                    Color.white.opacity(0.6),
+                                    Color.white.opacity(0.2)
+                                ],
+                                startPoint: .topLeading,
+                                endPoint: .bottomTrailing
+                            ),
+                            lineWidth: 1
+                        )
+                } : nil
             )
         }
         .buttonStyle(PlainButtonStyle())
