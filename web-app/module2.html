@@ -1001,6 +1001,21 @@
                     </div>
                 </div>
 
+                <div class="interactive-element" style="background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%); border-left: 4px solid #0ea5e9; padding: 1.5rem; margin: 2rem 0; border-radius: 0.5rem;">
+                    <h3 id="step2-params-analogy-title" style="color: #0ea5e9; font-size: 1.1rem; font-weight: 600; margin-bottom: 1rem;">
+                        🎛️ The Control Panel Analogy
+                    </h3>
+                    <p id="step2-params-analogy-text" style="color: #374151; line-height: 1.6; margin-bottom: 1rem;">
+                        Imagine LLM parameters as a massive control panel with billions of tiny knobs and dials, like the control room of a power plant. Each parameter is a dial that gets fine-tuned during training:
+                    </p>
+                    <ul style="color: #374151; margin-left: 1rem;">
+                        <li style="margin-bottom: 0.5rem;"><strong>Temperature dials:</strong> Control how "creative" or "conservative" responses are</li>
+                        <li style="margin-bottom: 0.5rem;"><strong>Pattern recognition dials:</strong> Adjust sensitivity to different types of energy data patterns</li>
+                        <li style="margin-bottom: 0.5rem;"><strong>Context memory dials:</strong> Determine how much previous information to remember</li>
+                        <li><strong>Domain expertise dials:</strong> Fine-tune understanding of energy sector terminology and concepts</li>
+                    </ul>
+                </div>
+
                 <div class="interactive-element">
                     <h3 id="step2-perspective-title">🎯 Scale Perspective</h3>
                     <p id="step2-perspective-text">GPT-4 has approximately 1.76 trillion parameters and was trained on hundreds of billions of words. If you read one page per minute, 8 hours a day, it would take you over 1,000 years to read the amount of text these models process during training!</p>
@@ -1029,11 +1044,22 @@
                 <p id="step3-text1">Understanding how LLMs work helps you use them more effectively. Let's break down the process into simple, digestible concepts:</p>
 
                 <h3 id="step3-tokens-title" style="color: #000000; font-size: 1.25rem; font-weight: 600; margin: 2rem 0 1rem;">🧩 Tokens: The Building Blocks</h3>
-                <p id="step3-tokens-text">LLMs don't read words letter by letter. Instead, they break down text into <strong>"tokens"</strong> - which can be whole words, parts of words, or even punctuation.</p>
+                <p id="step3-tokens-text">LLMs don't read words letter by letter. Instead, they break down text into <strong>"tokens"</strong> - which can be whole words, parts of words, or even punctuation. Think of tokens like LEGO blocks that can be combined in countless ways to build complex structures.</p>
+
+                <div class="interactive-element" style="background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 8px; padding: 1.5rem; margin: 1.5rem 0;">
+                    <h3 id="step3-token-analogy-title" style="color: #1e40af; margin-bottom: 1rem;">🎯 Building Blocks Analogy</h3>
+                    <p id="step3-token-analogy-text" style="margin-bottom: 1rem;">
+                        Just like how you can build a house using different types of blocks (foundation blocks, wall blocks, roof blocks), LLMs use token "blocks" to understand and generate text. Each token is a reusable component that can be combined with others to create meaning.
+                    </p>
+                </div>
 
                 <div class="example-box">
-                    <h3 id="step3-token-example-title">💡 Token Example</h3>
-                    <p id="step3-token-example-text"><strong>Word:</strong> "unbelievable" might be broken into tokens: "un," "believe," and "able." This helps LLMs handle a massive vocabulary efficiently and understand word relationships better.</p>
+                    <h3 id="step3-token-example-title">💡 Vietnamese Energy Token Example</h3>
+                    <p id="step3-token-example-text">
+                        <strong>Vietnamese phrase:</strong> "Năng lượng mặt trời" (solar energy) might be tokenized as: "Năng", "lượng", "mặt", "trời"<br><br>
+                        <strong>English technical term:</strong> "photovoltaic" might be broken into: "photo", "volt", "aic"<br><br>
+                        This tokenization helps LLMs understand both Vietnamese energy terminology and complex English technical terms, making them effective for multilingual energy professionals.
+                    </p>
                 </div>
 
                 <div class="image-container">
@@ -1046,9 +1072,20 @@
                 <h3 id="step3-transformer-title" style="color: #000000; font-size: 1.25rem; font-weight: 600; margin: 2rem 0 1rem;">🧠 Transformers: The "Brain" Architecture</h3>
                 <p id="step3-transformer-text">The underlying architecture that makes LLMs so powerful is called a <strong>Transformer</strong>. Think of it as a clever system that allows the LLM to pay attention to different parts of the input text when generating an output.</p>
 
+                <div class="interactive-element" style="background: #fefce8; border: 2px solid #eab308; border-radius: 8px; padding: 1.5rem; margin: 1.5rem 0;">
+                    <h3 id="step3-attention-analogy-title" style="color: #a16207; margin-bottom: 1rem;">🔍 The Spotlight Analogy</h3>
+                    <p id="step3-attention-analogy-text" style="margin-bottom: 1rem;">
+                        Imagine you're reading a complex energy audit report at night with a powerful flashlight. Instead of lighting up one word at a time, your flashlight can simultaneously highlight multiple important sections across different pages - the executive summary, key findings, recommendations, and critical data points. The Transformer's attention mechanism works like this intelligent spotlight, focusing on relevant information from anywhere in the input to generate the best response.
+                    </p>
+                </div>
+
                 <div class="interactive-element">
-                    <h3 id="step3-attention-title">🎯 Attention Mechanism Example</h3>
-                    <p id="step3-attention-text">If you ask an LLM to summarize a long energy report, the Transformer helps it identify and focus on the most important sentences and ideas throughout the entire document, rather than just the last few words. This is a huge leap from older models that had trouble remembering context from earlier in a conversation or document.</p>
+                    <h3 id="step3-attention-title">🎯 Attention Mechanism in Energy Context</h3>
+                    <p id="step3-attention-text">When analyzing "The solar farm in Ninh Thuan province generated 150 GWh in 2023, but efficiency dropped 12% due to equipment failures," the Transformer simultaneously pays attention to:<br><br>
+                    • <strong>Location:</strong> "Ninh Thuan province"<br>
+                    • <strong>Performance data:</strong> "150 GWh" and "12% drop"<br>
+                    • <strong>Root cause:</strong> "equipment failures"<br><br>
+                    This allows it to provide comprehensive, contextually-aware analysis rather than focusing on just the last few words.</p>
                 </div>
 
                 <div class="image-container">
@@ -1187,6 +1224,46 @@
                         <img src="../public/media/chatbot_interface_example.png" alt="Example of LLM chatbot interface for energy sector applications">
                         <figcaption id="step4-figcaption">🔍 <strong>Figure 2.4:</strong> LLM Interface Example - Modern LLM interfaces make it easy to interact with these powerful tools for various energy sector tasks, from report generation to technical analysis.</figcaption>
                     </figure>
+                </div>
+
+                <!-- New LLMs and Energy Data Section -->
+                <div style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); border: 2px solid #f59e0b; border-radius: 12px; padding: 2rem; margin: 2rem 0; box-shadow: 0 4px 12px rgba(245, 158, 11, 0.15);">
+                    <h3 id="step4-energy-data-title" style="color: #92400e; font-size: 1.3rem; font-weight: 600; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem;">
+                        📊 LLMs and Energy Data: Why They Work So Well Together
+                    </h3>
+                    
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem;">
+                        <div>
+                            <h4 style="color: #92400e; font-weight: 600; margin-bottom: 0.5rem;">🗂️ Types of Energy Data LLMs Understand:</h4>
+                            <ul style="color: #78350f; margin-left: 1rem; line-height: 1.6;">
+                                <li>Technical manuals and equipment specifications</li>
+                                <li>Research papers and industry reports</li>
+                                <li>Regulatory documents and compliance guides</li>
+                                <li>Market analysis and pricing data</li>
+                                <li>Environmental impact assessments</li>
+                                <li>Grid operation and maintenance records</li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <h4 style="color: #92400e; font-weight: 600; margin-bottom: 0.5rem;">⚡ Why This Makes LLMs Valuable:</h4>
+                            <ul style="color: #78350f; margin-left: 1rem; line-height: 1.6;">
+                                <li>They "understand" industry terminology</li>
+                                <li>They recognize standard formats and structures</li>
+                                <li>They can cross-reference different data types</li>
+                                <li>They maintain context across complex datasets</li>
+                                <li>They can translate technical concepts into plain language</li>
+                                <li>They work with both Vietnamese and English energy terms</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="example-box" style="background: white; border: 1px solid #f59e0b; border-radius: 8px; padding: 1.5rem; margin-top: 1rem;">
+                        <h4 id="step4-vietnam-data-title" style="color: #92400e; margin-bottom: 1rem;">🇻🇳 Vietnam Energy Data Example:</h4>
+                        <p id="step4-vietnam-data-text" style="color: #374151; line-height: 1.6;">
+                            An LLM trained on energy data can understand that when you mention "EVN transmission losses" it relates to Vietnam Electricity Group's grid efficiency, "PDP8 targets" refers to the national Power Development Plan 8, and "FIT rates" means Feed-in-Tariff pricing for renewable energy. This deep contextual understanding allows LLMs to provide relevant, accurate assistance for Vietnamese energy professionals working with both local regulations and international standards.
+                        </p>
+                    </div>
                 </div>
 
                 <div class="success-box">
