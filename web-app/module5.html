@@ -972,7 +972,7 @@
         }
     </style>
 </head>
-<body>
+<body id="top">
     <!-- Progress Bar -->
     <div class="progress-container">
         <div class="progress-bar" id="progressBar"></div>
@@ -984,14 +984,14 @@
         <ul class="nav-links">
             <li><a href="index.html" id="home-link">Home</a></li>
             <li class="nav-module-links">
-                <a href="module1.html" id="module1-link">Module 1</a>
-                <a href="module2.html" id="module2-link">Module 2</a>
-                <a href="module3.html" id="module3-link">Module 3</a>
-                <a href="module4.html" id="module4-link">Module 4</a>
+                <a href="module1.html#top" id="module1-link">Module 1</a>
+                <a href="module2.html#top" id="module2-link">Module 2</a>
+                <a href="module3.html#top" id="module3-link">Module 3</a>
+                <a href="module4.html#top" id="module4-link">Module 4</a>
                 <a href="module5.html" class="active" id="module5-link">Module 5</a>
             </li>
             <li class="nav-prev-next">
-                <a href="module4.html">← Prev</a>
+                <a href="module4.html#top">← Prev</a>
                 <a href="index.html" class="disabled">Complete</a>
             </li>
             <li class="language-switcher">
@@ -1835,7 +1835,7 @@
 
             <!-- Module Navigation -->
             <div class="module-nav-buttons">
-                <a href="module4.html" class="btn-back">
+                <a href="module4.html#top" class="btn-back">
                     ← Previous: Prompt Engineering
                 </a>
                 <a href="index.html" class="btn-home">
@@ -2057,6 +2057,8 @@
 
         // Initialize the module
         document.addEventListener('DOMContentLoaded', function() {
+            // Scroll to top when page loads
+            window.scrollTo({ top: 0, behavior: 'smooth' });
             updateStepDisplay();
             updateProgressBar();
             setLanguage(currentLanguage);

@@ -1332,8 +1332,8 @@
                 return;
             }
             
-            // Navigate to module
-            window.location.href = `module${moduleNum}.html`;
+            // Navigate to module and ensure it starts from the top
+            window.location.href = `module${moduleNum}.html#top`;
         }
 
         // Function to mark module as completed (called from individual module pages)

@@ -832,22 +832,22 @@
         }
     </style>
 </head>
-<body>
+<body id="top">
     <!-- Navigation -->
     <nav class="nav">
         <a href="index.html" class="nav-logo">🚀 LLM Training Course</a>
         <ul class="nav-links">
             <li><a href="index.html" id="home-link">Home</a></li>
             <li class="nav-module-links">
-                <a href="module1.html" id="module1-link">Module 1</a>
+                <a href="module1.html#top" id="module1-link">Module 1</a>
                 <a href="module2.html" class="active" id="module2-link">Module 2</a>
-                <a href="module3.html" id="module3-link">Module 3</a>
-                <a href="module4.html">Module 4</a>
-                <a href="module5.html">Module 5</a>
+                <a href="module3.html#top" id="module3-link">Module 3</a>
+                <a href="module4.html#top">Module 4</a>
+                <a href="module5.html#top">Module 5</a>
             </li>
             <li class="nav-prev-next">
-                <a href="module1.html">← Prev</a>
-                <a href="module3.html">Next →</a>
+                <a href="module1.html#top">← Prev</a>
+                <a href="module3.html#top">Next →</a>
             </li>
             <li class="language-switcher">
                 <div class="dropdown">
@@ -918,7 +918,7 @@
 
                 <div class="image-container">
                     <figure>
-                        <img src="public/media/ai_ml_dl_venn_diagram.png" alt="Diagram showing LLMs as a subset of Generative AI">
+                        <img src="../public/media/ai_ml_dl_venn_diagram.png" alt="Diagram showing LLMs as a subset of Generative AI">
                         <figcaption id="step1-figcaption">🔍 <strong>Figure 2.1:</strong> LLMs in Context - Large Language Models are a specialized type of Generative AI focused on understanding and creating human language.</figcaption>
                     </figure>
                 </div>
@@ -1038,7 +1038,7 @@
 
                 <div class="image-container">
                     <figure>
-                        <img src="public/media/tokens_illustration.png" alt="Illustration showing how text is broken down into tokens">
+                        <img src="../public/media/tokens_illustration.png" alt="Illustration showing how text is broken down into tokens">
                         <figcaption id="step3-figcaption1">🔍 <strong>Figure 2.2:</strong> Text Tokenization - This process allows LLMs to efficiently handle complex vocabulary and understand word relationships, making them more effective at processing technical energy sector terminology.</figcaption>
                     </figure>
                 </div>
@@ -1053,7 +1053,7 @@
 
                 <div class="image-container">
                     <figure>
-                        <img src="public/media/transformer_simplified.png" alt="Simplified diagram of Transformer attention mechanism">
+                        <img src="../public/media/transformer_simplified.png" alt="Simplified diagram of Transformer attention mechanism">
                         <figcaption id="step3-figcaption2">🔍 <strong>Figure 2.3:</strong> Transformer Attention - The Transformer architecture allows LLMs to focus on relevant parts of the input when generating responses, enabling better context understanding and more coherent outputs.</figcaption>
                     </figure>
                 </div>
@@ -1184,7 +1184,7 @@
 
                 <div class="image-container">
                     <figure>
-                        <img src="public/media/chatbot_interface_example.png" alt="Example of LLM chatbot interface for energy sector applications">
+                        <img src="../public/media/chatbot_interface_example.png" alt="Example of LLM chatbot interface for energy sector applications">
                         <figcaption id="step4-figcaption">🔍 <strong>Figure 2.4:</strong> LLM Interface Example - Modern LLM interfaces make it easy to interact with these powerful tools for various energy sector tasks, from report generation to technical analysis.</figcaption>
                     </figure>
                 </div>
@@ -1344,10 +1344,10 @@
     <!-- Navigation -->
     <section class="interactive-container">
         <div class="nav-buttons">
-            <a href="module1.html" class="btn-back" id="back-to-module1-btn">
+            <a href="module1.html#top" class="btn-back" id="back-to-module1-btn">
                 ← Back to Module 1
             </a>
-            <a href="module3.html" class="btn-next" id="nextModuleBtn" style="display: none;">
+            <a href="module3.html#top" class="btn-next" id="nextModuleBtn" style="display: none;">
                 Next: Prompt Engineering →
             </a>
         </div>
@@ -1702,6 +1702,8 @@
 
         // Initialize module
         document.addEventListener('DOMContentLoaded', function() {
+            // Scroll to top when page loads
+            window.scrollTo({ top: 0, behavior: 'smooth' });
             updateProgress();
             updateStepIndicators();
             setLanguage(currentLanguage); // Set language on load
