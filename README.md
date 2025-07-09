@@ -6,36 +6,63 @@ This repository contains the source files for a training course designed to intr
 
 The course provides a foundational understanding of AI concepts, explains how LLMs work in simple terms, and offers practical guidance on using AI chatbots like ChatGPT, Gemini, and Claude effectively in a professional context. The content is tailored for individuals in roles such as project development and asset management.
 
-## Current Structure
+## Project Structure
 
-The course is built as a modern Next.js web application with the following structure:
+This repository contains two distinct versions of the LLM course:
 
-- **Next.js Framework**: Built with React and TypeScript for a modern, interactive experience
-- **Tailwind CSS**: For responsive and professional styling
-- **Media Assets**: Comprehensive visual aids and diagrams in the `public/media/` directory
-- **Modular Design**: Clean component structure for easy maintenance and updates
+### 📁 original-app/
+**Standalone HTML Version** - The original working application
+- **Pure HTML/CSS/JavaScript** - No build process required
+- **Local Development** - Can be run with any simple HTTP server
+- **Offline Capable** - All assets are local
+- **Easy to Modify** - Direct HTML/CSS/JS editing
+
+### 📁 netlify-app/
+**Netlify Deployment Version** - Optimized for production
+- **Next.js Static Export** - Pre-built and optimized
+- **Production Ready** - Minified and optimized assets
+- **CDN Optimized** - Fast loading and delivery
+- **Automatic Deployments** - Integrates with Netlify
+
+### 📁 Root Directory
+**Next.js Development Environment** - For development and building
+- **Development Server** - Hot reload and development tools
+- **Build System** - Generates the netlify-app output
+- **Configuration** - Next.js, Netlify, and build configurations
 
 ## Getting Started
 
-First, install the dependencies:
+### For Local Development (original-app)
+
+The quickest way to run the course locally:
+
+```bash
+cd original-app
+npm start
+# or
+node server.js
+# or
+python -m http.server 8000
+```
+
+Open [http://localhost:8000](http://localhost:8000) to view the course.
+
+### For Next.js Development
+
+If you want to modify the Next.js version:
 
 ```bash
 npm install
-```
-
-Then, run the development server:
-
-```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the course.
+
+### For Netlify Deployment
+
+The `netlify-app` folder contains ready-to-deploy files. Simply:
+1. Deploy the `netlify-app` folder to Netlify
+2. Or use the GitHub integration as described in the deployment section
 
 ## Course Content
 

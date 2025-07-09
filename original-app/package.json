@@ -1,0 +1,13 @@
+{
+  "name": "llm-course-original",
+  "version": "1.0.0",
+  "description": "Original LLM Course - Standalone HTML Version",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "serve": "node server.js"
+  },
+  "keywords": ["llm", "course", "energy", "ai", "education"],
+  "author": "Phong Han",
+  "license": "MIT"
+}
