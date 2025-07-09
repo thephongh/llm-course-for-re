@@ -1,12 +1,9 @@
 import { useEffect } from 'react';
-import { useRouter } from 'next/router';
 
 export default function Home() {
-  const router = useRouter();
-
   useEffect(() => {
-    // Redirect to the HTML file in the public directory
-    window.location.href = '/index.html';
+    // Redirect to the actual course HTML file
+    window.location.replace('/course.html');
   }, []);
 
   return (
