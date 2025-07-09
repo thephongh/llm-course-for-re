@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 47, "column": 0}, "map": {"version":3,"sources":["file:///Users/thephongh/01-coding/websites/llm-course-for-re-backup/pages/index.js"],"sourcesContent":["import { useEffect } from 'react';\nimport { useRouter } from 'next/router';\n\nexport default function Home() {\n  const router = useRouter();\n\n  useEffect(() => {\n    // Redirect to the HTML file in the public directory\n    window.location.href = '/index.html';\n  }, []);\n\n  return (\n    <div style={{ \n      display: 'flex', \n      justifyContent: 'center', \n      alignItems: 'center', \n      height: '100vh',\n      fontFamily: 'system-ui, -apple-system, sans-serif'\n    }}>\n      <p>Redirecting to course...</p>\n    </div>\n  );\n}"],"names":[],"mappings":";;;;AAAA;AACA;;;;AAEe,SAAS;IACtB,MAAM,SAAS,CAAA,GAAA,uHAAA,CAAA,YAAS,AAAD;IAEvB,CAAA,GAAA,mGAAA,CAAA,YAAS,AAAD,EAAE;QACR,oDAAoD;QACpD,OAAO,QAAQ,CAAC,IAAI,GAAG;IACzB,GAAG,EAAE;IAEL,qBACE,qKAAC;QAAI,OAAO;YACV,SAAS;YACT,gBAAgB;YAChB,YAAY;YACZ,QAAQ;YACR,YAAY;QACd;kBACE,cAAA,qKAAC;sBAAE;;;;;;;;;;;AAGT","debugId":null}}]
+}
