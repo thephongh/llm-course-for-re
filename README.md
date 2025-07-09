@@ -69,11 +69,65 @@ This course serves as a solid foundation, but it can be significantly enhanced. 
 - **Case Studies**: Energy sector-specific AI implementation examples
 - **Resource Library**: Curated additional reading and tools
 
-## Deploy on Vercel
+## Deployment
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Deploy on Netlify (Recommended)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This Next.js application is configured for static export and optimized for Netlify deployment.
+
+#### Option 1: GitHub Integration (Recommended)
+
+1. **Go to Netlify Dashboard**
+   - Visit [netlify.com](https://netlify.com) and log in
+   - Click "Add new site" → "Import an existing project"
+
+2. **Connect Your GitHub Repository**
+   - Choose "Deploy with GitHub"
+   - Select your repository: `thephongh/llm-course-for-re`
+   - Choose branch: `main`
+
+3. **Configure Build Settings**
+   ```
+   Build command: npm run build
+   Publish directory: out
+   ```
+
+4. **Deploy**
+   - Click "Deploy site"
+   - Your site will be available at `https://your-site-name.netlify.app`
+
+#### Option 2: Manual Deployment
+
+1. **Build the site locally**
+   ```bash
+   npm run build
+   ```
+
+2. **Deploy manually**
+   - Go to [netlify.com](https://netlify.com) → "Sites"
+   - Drag the `out` folder to the deployment area
+
+#### Configuration Files
+
+The project includes optimized configuration for Netlify:
+
+- **`netlify.toml`** - Build configuration and redirects
+- **`next.config.js`** - Static export configuration
+- **`package.json`** - Updated with export script
+
+#### Features
+
+- ✅ **Automatic Deployments** - Deploy on every push to main branch
+- ✅ **Preview Deployments** - Every PR gets a preview URL
+- ✅ **Custom Domain** - Add your own domain in Netlify settings
+- ✅ **HTTPS** - Free SSL certificates included
+- ✅ **Mobile Language Switcher** - Fixed for all device sizes
+
+### Alternative: Deploy on Vercel
+
+You can also deploy on [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+
+Check out the [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
 
 ---
 
