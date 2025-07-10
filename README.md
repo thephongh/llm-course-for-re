@@ -27,7 +27,7 @@ This repository contains two distinct versions of the LLM course:
 ### 📁 Root Directory
 **Next.js Development Environment** - For development and building
 - **Development Server** - Hot reload and development tools
-- **Build System** - Generates the netlify-app output
+- **Build System** - Generates static exports for deployment
 - **Configuration** - Next.js, Netlify, and build configurations
 
 ## Getting Started
