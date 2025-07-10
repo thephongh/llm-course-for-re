@@ -11,17 +11,17 @@ The course provides a foundational understanding of AI concepts, explains how LL
 This repository contains a streamlined LLM course with the following structure:
 
 ### 📁 netlify-app/
-**Production-Ready Version** - Optimized for deployment
-- **Static HTML/CSS/JavaScript** - No build process required for deployment
+**Production-Ready Static Files** - Ready for deployment
+- **Static HTML/CSS/JavaScript** - Pre-built, no build process required
 - **Production Optimized** - Minified and optimized assets
 - **CDN Ready** - Fast loading and delivery
-- **Netlify Optimized** - Includes all necessary deployment configurations
+- **Self-Contained** - Includes all necessary files and configurations
 
 ### 📁 Root Directory
-**Next.js Development Environment** - For development and building
+**Next.js Development Environment** - For future development
 - **Development Server** - Hot reload and development tools (`npm run dev`)
-- **Build System** - Generates static exports to netlify-app directory
-- **Configuration** - Next.js, Netlify, and build configurations
+- **Build System** - Can generate new static exports if needed
+- **Configuration** - Next.js setup for potential future enhancements
 
 ## Getting Started
 
@@ -36,15 +36,12 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000) to view the course with hot reload.
 
-### For Local Testing (Production Build)
+### For Local Testing (Static Files)
 
-To test the production build locally:
+To test the production version locally:
 
 ```bash
-npm run build
-# This generates static files in netlify-app/
-
-# Serve the static files
+# Serve the pre-built static files
 cd netlify-app
 python -m http.server 8000
 # or
@@ -110,7 +107,7 @@ This Next.js application is configured for static export and optimized for Netli
 
 3. **Configure Build Settings**
    ```
-   Build command: npm run build
+   Build command: (leave blank - pre-built static files)
    Publish directory: netlify-app
    ```
 
