@@ -8,59 +8,54 @@ The course provides a foundational understanding of AI concepts, explains how LL
 
 ## Project Structure
 
-This repository contains two distinct versions of the LLM course:
-
-### 📁 original-app/
-**Standalone HTML Version** - The original working application
-- **Pure HTML/CSS/JavaScript** - No build process required
-- **Local Development** - Can be run with any simple HTTP server
-- **Offline Capable** - All assets are local
-- **Easy to Modify** - Direct HTML/CSS/JS editing
+This repository contains a streamlined LLM course with the following structure:
 
 ### 📁 netlify-app/
-**Netlify Deployment Version** - Optimized for production
-- **Next.js Static Export** - Pre-built and optimized
-- **Production Ready** - Minified and optimized assets
-- **CDN Optimized** - Fast loading and delivery
-- **Automatic Deployments** - Integrates with Netlify
+**Production-Ready Version** - Optimized for deployment
+- **Static HTML/CSS/JavaScript** - No build process required for deployment
+- **Production Optimized** - Minified and optimized assets
+- **CDN Ready** - Fast loading and delivery
+- **Netlify Optimized** - Includes all necessary deployment configurations
 
 ### 📁 Root Directory
 **Next.js Development Environment** - For development and building
-- **Development Server** - Hot reload and development tools
-- **Build System** - Generates static exports for deployment
+- **Development Server** - Hot reload and development tools (`npm run dev`)
+- **Build System** - Generates static exports to netlify-app directory
 - **Configuration** - Next.js, Netlify, and build configurations
 
 ## Getting Started
 
-### For Local Development (original-app)
+### For Local Development
 
-The quickest way to run the course locally:
-
-```bash
-cd original-app
-npm start
-# or
-node server.js
-# or
-python -m http.server 8000
-```
-
-Open [http://localhost:8000](http://localhost:8000) to view the course.
-
-### For Next.js Development
-
-If you want to modify the Next.js version:
+To run the course locally during development:
 
 ```bash
 npm install
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the course.
+Open [http://localhost:3000](http://localhost:3000) to view the course with hot reload.
 
-### For Netlify Deployment
+### For Local Testing (Production Build)
 
-The `netlify-app` folder contains ready-to-deploy files. Simply:
+To test the production build locally:
+
+```bash
+npm run build
+# This generates static files in netlify-app/
+
+# Serve the static files
+cd netlify-app
+python -m http.server 8000
+# or
+npx serve .
+```
+
+Open [http://localhost:8000](http://localhost:8000) to view the production version.
+
+### For Deployment
+
+The `netlify-app` folder contains ready-to-deploy static files:
 1. Deploy the `netlify-app` folder to Netlify
 2. Or use the GitHub integration as described in the deployment section
 
@@ -116,7 +111,7 @@ This Next.js application is configured for static export and optimized for Netli
 3. **Configure Build Settings**
    ```
    Build command: npm run build
-   Publish directory: out
+   Publish directory: netlify-app
    ```
 
 4. **Deploy**
@@ -132,7 +127,7 @@ This Next.js application is configured for static export and optimized for Netli
 
 2. **Deploy manually**
    - Go to [netlify.com](https://netlify.com) → "Sites"
-   - Drag the `out` folder to the deployment area
+   - Drag the `netlify-app` folder to the deployment area
 
 #### Configuration Files
 
