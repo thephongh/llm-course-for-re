@@ -1,6 +1,10 @@
 [build]
-  # Pure static site deployment - no build process needed
+  command = "npm run build"
   publish = "netlify-app"
+
+[build.environment]
+  NODE_VERSION = "18"
+  NETLIFY_NEXT_PLUGIN_SKIP = "true"
 
 [[redirects]]
   from = "/*"

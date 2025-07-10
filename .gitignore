@@ -23,7 +23,3 @@ build/
 .cache/
 *.log
 *.tmp
-
-# Development files (to prevent Netlify framework detection)
-package.json
-next.config.js
