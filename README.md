@@ -29,14 +29,13 @@ netlify-app/
 ├── media/             # Course assets (images, etc.)
 ├── _next/             # Next.js static assets
 ├── 404.html           # Error page
-└── netlify.toml       # Netlify configuration
 ```
 
 ### 📁 Root Directory
 **Next.js Development Environment** - For future development
 - **Development Server** - Hot reload and development tools (`npm run dev`)
 - **Build System** - Can generate new static exports if needed
-- **Configuration** - Next.js setup for potential future enhancements
+- **Configuration** - Next.js setup and Netlify deployment config (`netlify.toml`)
 
 ## Getting Started
 
@@ -122,7 +121,7 @@ netlify deploy --prod --dir=.
 
 The project includes optimized configuration for Netlify:
 
-- **`netlify-app/netlify.toml`** - Deployment configuration and redirects
+- **`netlify.toml`** - Deployment configuration and redirects (root directory)
 - **`next.config.js`** - Next.js development configuration
 - **`package.json`** - Dependencies and development scripts
 
@@ -131,7 +130,7 @@ The project includes optimized configuration for Netlify:
 ```toml
 [build]
   # No build command needed - using pre-built static files
-  publish = "."
+  publish = "netlify-app"
 
 [[redirects]]
   from = "/*"

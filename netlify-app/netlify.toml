@@ -1,8 +1,0 @@
-[build]
-  # No build command needed - using pre-built static files
-  publish = "."
-
-[[redirects]]
-  from = "/*"
-  to = "/course.html"
-  status = 200

@@ -1,17 +1,8 @@
 [build]
-  command = "npm run build"
-  publish = "out"
-
-[build.environment]
-  NODE_VERSION = "18"
+  # No build command needed - using pre-built static files
+  publish = "netlify-app"
 
 [[redirects]]
   from = "/*"
-  to = "/index.html"
+  to = "/course.html"
   status = 200
-
-[context.production]
-  command = "npm run build"
-
-[context.deploy-preview]
-  command = "npm run build"
