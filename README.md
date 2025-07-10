@@ -17,6 +17,21 @@ This repository contains a streamlined LLM course with the following structure:
 - **CDN Ready** - Fast loading and delivery
 - **Self-Contained** - Includes all necessary files and configurations
 
+```
+netlify-app/
+├── index.html          # Landing page (redirects to course.html)
+├── course.html         # Main course content
+├── module1.html        # Module pages
+├── module2.html
+├── module3.html
+├── module4.html
+├── module5.html
+├── media/             # Course assets (images, etc.)
+├── _next/             # Next.js static assets
+├── 404.html           # Error page
+└── netlify.toml       # Netlify configuration
+```
+
 ### 📁 Root Directory
 **Next.js Development Environment** - For future development
 - **Development Server** - Hot reload and development tools (`npm run dev`)
@@ -50,12 +65,6 @@ npx serve .
 
 Open [http://localhost:8000](http://localhost:8000) to view the production version.
 
-### For Deployment
-
-The `netlify-app` folder contains ready-to-deploy static files:
-1. Deploy the `netlify-app` folder to Netlify
-2. Or use the GitHub integration as described in the deployment section
-
 ## Course Content
 
 The course covers five main modules:
@@ -66,33 +75,11 @@ The course covers five main modules:
 4. **Prompt Engineering**: Best practices for effective AI interaction
 5. **Ethics and Limitations**: Responsible AI usage and understanding limitations
 
-## Future Improvements
-
-This course serves as a solid foundation, but it can be significantly enhanced. Here are some suggestions for future development:
-
-### 1. Enhanced Interactive Features
-
-- **Quizzes and Assessments**: Interactive quizzes at the end of each module
-- **Progress Tracking**: User accounts and progress monitoring
-- **Interactive Examples**: Live prompt playground for hands-on practice
-
-### 2. Mobile Application
-
-- **Cross-Platform**: React Native or Flutter development
-- **Offline Access**: Downloadable content for offline learning
-- **Push Notifications**: Learning reminders and updates
-
-### 3. Enhanced Content
-
-- **Video Content**: Embedded video lectures and demonstrations
-- **Case Studies**: Energy sector-specific AI implementation examples
-- **Resource Library**: Curated additional reading and tools
-
 ## Deployment
 
 ### Deploy on Netlify (Recommended)
 
-This Next.js application is configured for static export and optimized for Netlify deployment.
+This application uses pre-built static files optimized for Netlify deployment.
 
 #### Option 1: GitHub Integration (Recommended)
 
@@ -117,30 +104,90 @@ This Next.js application is configured for static export and optimized for Netli
 
 #### Option 2: Manual Deployment
 
-1. **Build the site locally**
-   ```bash
-   npm run build
-   ```
-
-2. **Deploy manually**
+1. **Deploy manually**
    - Go to [netlify.com](https://netlify.com) → "Sites"
    - Drag the `netlify-app` folder to the deployment area
+   - Site will be deployed instantly
 
-#### Configuration Files
+#### Option 3: Netlify CLI
+
+```bash
+npm install -g netlify-cli
+netlify login
+cd netlify-app
+netlify deploy --prod --dir=.
+```
+
+### Configuration Files
 
 The project includes optimized configuration for Netlify:
 
-- **`netlify.toml`** - Build configuration and redirects
-- **`next.config.js`** - Static export configuration
-- **`package.json`** - Updated with export script
+- **`netlify-app/netlify.toml`** - Deployment configuration and redirects
+- **`next.config.js`** - Next.js development configuration
+- **`package.json`** - Dependencies and development scripts
 
-#### Features
+### Current netlify.toml Configuration
 
+```toml
+[build]
+  # No build command needed - using pre-built static files
+  publish = "."
+
+[[redirects]]
+  from = "/*"
+  to = "/course.html"
+  status = 200
+```
+
+### Features
+
+- ✅ **Static Export** - Pre-built for optimal performance
+- ✅ **No Build Required** - Deploy static files directly
+- ✅ **Automatic Redirects** - Routes to main course content
+- ✅ **Mobile Responsive** - Works on all device sizes
+- ✅ **SEO Optimized** - Proper meta tags and structure
+- ✅ **Fast Loading** - Optimized images and assets
 - ✅ **Automatic Deployments** - Deploy on every push to main branch
 - ✅ **Preview Deployments** - Every PR gets a preview URL
 - ✅ **Custom Domain** - Add your own domain in Netlify settings
 - ✅ **HTTPS** - Free SSL certificates included
-- ✅ **Mobile Language Switcher** - Fixed for all device sizes
+
+## Technical Details
+
+- Built with Next.js 15.3.4 and React 19
+- Static export for maximum compatibility
+- Optimized for CDN delivery
+- All assets are pre-optimized and minified
+- No server-side rendering required
+
+## Future Improvements
+
+This course serves as a solid foundation, but it can be significantly enhanced. Here are some suggestions for future development:
+
+### 1. Enhanced Interactive Features
+
+- **Quizzes and Assessments**: Interactive quizzes at the end of each module
+- **Progress Tracking**: User accounts and progress monitoring
+- **Interactive Examples**: Live prompt playground for hands-on practice
+
+### 2. Mobile Application
+
+- **Cross-Platform**: React Native or Flutter development
+- **Offline Access**: Downloadable content for offline learning
+- **Push Notifications**: Learning reminders and updates
+
+### 3. Enhanced Content
+
+- **Video Content**: Embedded video lectures and demonstrations
+- **Case Studies**: Energy sector-specific AI implementation examples
+- **Resource Library**: Curated additional reading and tools
+
+## Troubleshooting
+
+If the site shows "Redirecting to course..." and gets stuck:
+1. Check that `course.html` exists in the deployment
+2. Verify that redirects are working properly in netlify.toml
+3. Check browser console for any JavaScript errors
 
 ### Alternative: Deploy on Vercel
 
