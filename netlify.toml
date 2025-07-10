@@ -1,18 +1,7 @@
 [build]
-  # No build command needed - using pre-built static files
-  command = ""
+  # Move Next.js files temporarily to prevent auto-detection, then deploy static files
+  command = "mv package.json package.json.bak 2>/dev/null || true; mv next.config.js next.config.js.bak 2>/dev/null || true"
   publish = "netlify-app"
-  ignore = "false"
-
-# Disable automatic framework detection
-[build.environment]
-  NETLIFY_SKIP_NEXTJS_PLUGIN = "true"
-
-[[plugins]]
-  # Explicitly disable Next.js plugin
-  package = "@netlify/plugin-nextjs"
-  [plugins.inputs]
-    disable = true
 
 [[redirects]]
   from = "/*"
