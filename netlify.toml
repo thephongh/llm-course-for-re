@@ -1,6 +1,5 @@
 [build]
-  # Move Next.js files temporarily to prevent auto-detection, then deploy static files
-  command = "mv package.json package.json.bak 2>/dev/null || true; mv next.config.js next.config.js.bak 2>/dev/null || true"
+  # Pure static site deployment - no build process needed
   publish = "netlify-app"
 
 [[redirects]]

@@ -1,4 +1,5 @@
 node_modules
+package-lock.json
 
 # Local Netlify folder
 .netlify
@@ -16,8 +17,13 @@ Thumbs.db
 out/
 dist/
 build/
+.next/
 
 # Cache directories
 .cache/
 *.log
 *.tmp
+
+# Development files (to prevent Netlify framework detection)
+package.json
+next.config.js

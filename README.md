@@ -32,23 +32,30 @@ netlify-app/
 ```
 
 ### 📁 Root Directory
-**Next.js Development Environment** - For future development
-- **Development Server** - Hot reload and development tools (`npm run dev`)
-- **Build System** - Can generate new static exports if needed
-- **Configuration** - Next.js setup and Netlify deployment config (`netlify.toml`)
+**Deployment Configuration** - For static site deployment
+- **Development Files** - Next.js files renamed to `.dev` extensions (for development use)
+- **Deployment Config** - Netlify configuration (`netlify.toml`)
+- **Documentation** - Project README and documentation
 
 ## Getting Started
 
-### For Local Development
+### For Local Development (Optional)
 
-To run the course locally during development:
+To run the course locally with Next.js development server:
 
 ```bash
+# Restore development files
+mv package.json.dev package.json
+mv next.config.js.dev next.config.js
+
+# Install and run
 npm install
 npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) to view the course with hot reload.
+
+**Note:** Development files are renamed to prevent Netlify framework detection.
 
 ### For Local Testing (Static Files)
 
@@ -122,15 +129,14 @@ netlify deploy --prod --dir=.
 The project includes optimized configuration for Netlify:
 
 - **`netlify.toml`** - Deployment configuration and redirects (root directory)
-- **`next.config.js`** - Next.js development configuration
-- **`package.json`** - Dependencies and development scripts
+- **`next.config.js.dev`** - Next.js development configuration (renamed)
+- **`package.json.dev`** - Dependencies and development scripts (renamed)
 
 ### Current netlify.toml Configuration
 
 ```toml
 [build]
-  # Move Next.js files temporarily to prevent auto-detection, then deploy static files
-  command = "mv package.json package.json.bak 2>/dev/null || true; mv next.config.js next.config.js.bak 2>/dev/null || true"
+  # Pure static site deployment - no build process needed
   publish = "netlify-app"
 
 [[redirects]]
