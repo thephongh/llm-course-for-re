@@ -130,7 +130,19 @@ The project includes optimized configuration for Netlify:
 ```toml
 [build]
   # No build command needed - using pre-built static files
+  command = ""
   publish = "netlify-app"
+  ignore = "false"
+
+# Disable automatic framework detection
+[build.environment]
+  NETLIFY_SKIP_NEXTJS_PLUGIN = "true"
+
+[[plugins]]
+  # Explicitly disable Next.js plugin
+  package = "@netlify/plugin-nextjs"
+  [plugins.inputs]
+    disable = true
 
 [[redirects]]
   from = "/*"
